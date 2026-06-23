@@ -1,0 +1,189 @@
+# Verified-curation records for Travel Guide concepts.
+records:
+  - id: travel-guides/best-time-to-visit
+    type: Travel Guide
+    title: Best Time to Visit East Java
+    description: When to go — the dry season gives the clearest conditions for East Java's volcanoes and waterfalls; the wet season brings cloud and muddier access.
+    resource: https://javavolcano-touroperator.com/travel-guide/best-time-to-visit
+    tags: [travel-guide, planning, season, weather]
+    timestamp: "2026-06-23T00:00:00+07:00"
+    status: reviewed
+    visibility: public
+    last_verified: "2026-06-23"
+    body: |
+      # Overview
+
+      There is no universally bad time to visit East Java, but the dry season
+      (roughly April–October) generally offers the clearest skies for sunrise and
+      the most reliable access; the wet season brings more cloud and muddier
+      trails and roads. Each destination has its own best window — see the guide
+      for month-by-month detail.
+
+      # Related Concepts
+
+      - [Destinations](/destinations/index.md)
+      - [Weather, Volcanic Activity & Closures](/travel-guides/weather-and-closures.md)
+    citations:
+      - https://javavolcano-touroperator.com/travel-guide/best-time-to-visit
+
+  - id: travel-guides/packing-and-fitness
+    type: Travel Guide
+    title: Packing & Fitness
+    description: What to bring and the fitness each destination needs — warm layers for cold pre-dawn starts, grippy footwear for volcanic and canyon terrain, and waterproofing where you get wet.
+    resource: https://javavolcano-touroperator.com/travel-guide/packing-and-fitness
+    tags: [travel-guide, packing, fitness, preparation]
+    timestamp: "2026-06-23T00:00:00+07:00"
+    status: reviewed
+    visibility: public
+    last_verified: "2026-06-23"
+    body: |
+      # Overview
+
+      Preparation comes down to three things: layering for cold pre-dawn starts
+      (viewpoints can sit around 5–15°C), good grip for volcanic sand and canyon
+      steps, and waterproofing where you will get wet. Fitness needs vary by
+      destination — Mount Bromo suits most fitness levels, while the Ijen crater
+      hike and canyon descents are more demanding. JVTO provides gas masks and
+      trekking poles on Ijen.
+
+      # Related Concepts
+
+      - [Kawah Ijen](/destinations/kawah-ijen.md)
+      - [Mount Bromo](/destinations/mount-bromo.md)
+    citations:
+      - https://javavolcano-touroperator.com/travel-guide/packing-and-fitness
+
+  - id: travel-guides/safety-on-tours
+    type: Travel Guide
+    title: Safety on Tours
+    description: How JVTO makes safety decisions — a written framework with pre-hike briefings, trained guides, proper equipment, and contingency procedures.
+    resource: https://javavolcano-touroperator.com/travel-guide/safety-on-tours
+    tags: [travel-guide, safety, briefing, plan-b]
+    timestamp: "2026-06-23T00:00:00+07:00"
+    status: reviewed
+    visibility: public
+    last_verified: "2026-06-23"
+    body: |
+      # Overview
+
+      JVTO treats safety as a written framework applied before and during every
+      tour rather than a marketing line: pre-hike safety briefings, trained
+      guides, proper equipment, and written contingency ("Plan-B") procedures. The
+      approach reflects the founder's background as a serving Tourist Police
+      officer.
+
+      # Related Concepts
+
+      - [Police-led operations](/trust/claims/police-led.md)
+      - [Ijen Health Screening](/policies/ijen-health-screening.md)
+    citations:
+      - https://javavolcano-touroperator.com/travel-guide/safety-on-tours
+
+  - id: travel-guides/weather-and-closures
+    type: Travel Guide
+    title: Weather, Volcanic Activity & Closures
+    description: What happens when conditions change — Bromo and Ijen are active volcanoes, and JVTO follows authority instructions and activates a Plan-B if access is restricted.
+    resource: https://javavolcano-touroperator.com/travel-guide/weather-and-closures
+    tags: [travel-guide, weather, closures, volcanic-activity, plan-b]
+    timestamp: "2026-06-23T00:00:00+07:00"
+    status: reviewed
+    visibility: public
+    last_verified: "2026-06-23"
+    body: |
+      # Overview
+
+      Bromo and Ijen are active volcanoes, and the waterfalls are rain-sensitive
+      canyon environments. When volcanic alert levels rise, park authorities may
+      restrict or close access, and JVTO follows those instructions without
+      exception. If a closure affects a booking, JVTO offers reasonable
+      alternatives where feasible — a different viewpoint, adjusted timing, or a
+      replacement destination — and where a key part of the itinerary cannot run
+      at all, Travel Credit applies to the unused portion under the booking terms.
+
+      The annual Tengger "Kasada" ceremony at Bromo falls on a lunar-calendar date
+      that varies each year and can restrict crater access during that window.
+
+      # Related Concepts
+
+      - [Natural Phenomena Are Not Guaranteed](/policies/natural-phenomena.md)
+      - [Mount Bromo](/destinations/mount-bromo.md)
+    citations:
+      - https://javavolcano-touroperator.com/travel-guide/weather-and-closures
+      - https://javavolcano-touroperator.com/policy/booking-payment-cancellation
+
+  - id: travel-guides/bromo-vs-ijen
+    type: Travel Guide
+    title: Mount Bromo vs Kawah Ijen
+    description: Which volcano suits you — Bromo is an easier sunrise caldera experience, Ijen is a more demanding pre-dawn hike for the blue fire and acidic crater lake.
+    resource: https://javavolcano-touroperator.com/travel-guide/bromo-vs-ijen-comparison
+    tags: [travel-guide, comparison, bromo, ijen, planning]
+    timestamp: "2026-06-23T00:00:00+07:00"
+    status: reviewed
+    visibility: public
+    last_verified: "2026-06-23"
+    body: |
+      # Overview
+
+      The two signature volcanoes suit different travelers. **Mount Bromo**
+      (about 2,329 m) is a sunrise-and-caldera experience with little sustained
+      hiking — a 4WD jeep does most of the work. **Kawah Ijen** (about 2,386 m) is
+      a strenuous pre-dawn hike rewarded by the "blue fire" and a turquoise acidic
+      crater lake. Many travelers do both on a multi-day route.
+
+      # Related Concepts
+
+      - [Mount Bromo](/destinations/mount-bromo.md)
+      - [Kawah Ijen](/destinations/kawah-ijen.md)
+    citations:
+      - https://javavolcano-touroperator.com/travel-guide/bromo-vs-ijen-comparison
+
+  - id: travel-guides/surabaya-vs-bali-starting-point
+    type: Travel Guide
+    title: Starting from Surabaya vs Bali
+    description: Choosing your origin — the destinations are the same volcanoes and waterfalls; the difference is logistics, transfer times, and (for Bali) a ferry crossing.
+    resource: https://javavolcano-touroperator.com/travel-guide/surabaya-vs-bali-starting-point
+    tags: [travel-guide, planning, surabaya, bali, logistics]
+    timestamp: "2026-06-23T00:00:00+07:00"
+    status: reviewed
+    visibility: public
+    last_verified: "2026-06-23"
+    body: |
+      # Overview
+
+      JVTO runs private packages from both Surabaya and Bali. The destinations are
+      the same East Java volcanoes and waterfalls; what changes is the logistics —
+      where you begin, the direction of travel, and the first transfer time. There
+      are more routes from Surabaya, while Bali-origin routes add a ferry crossing.
+      Choose the origin that fits your flights and timeline.
+
+      # Related Concepts
+
+      - [All tours](/tours/index.md)
+    citations:
+      - https://javavolcano-touroperator.com/travel-guide/surabaya-vs-bali-starting-point
+
+  - id: travel-guides/how-many-days
+    type: Travel Guide
+    title: How Many Days Do You Need?
+    description: Matching trip length to what you want to see — from a single Bromo sunrise to a multi-day circuit adding Ijen, waterfalls, and the coast.
+    resource: https://javavolcano-touroperator.com/travel-guide/bromo-ijen-itinerary-guide
+    tags: [travel-guide, planning, itinerary, duration]
+    timestamp: "2026-06-23T00:00:00+07:00"
+    status: reviewed
+    visibility: public
+    last_verified: "2026-06-23"
+    body: |
+      # Overview
+
+      The right trip length depends on how many destinations you want and where
+      you start. Short itineraries focus on a single Bromo sunrise; adding days
+      brings in Kawah Ijen, the Tumpak Sewu and Madakaripura waterfalls, and the
+      Papuma coast on the longest circuits. See the itinerary guide for what each
+      duration covers, day by day.
+
+      # Related Concepts
+
+      - [All tours](/tours/index.md)
+      - [Starting from Surabaya vs Bali](/travel-guides/surabaya-vs-bali-starting-point.md)
+    citations:
+      - https://javavolcano-touroperator.com/travel-guide/bromo-ijen-itinerary-guide
