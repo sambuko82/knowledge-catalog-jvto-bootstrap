@@ -178,26 +178,31 @@ def build_packages() -> list[str]:
 def build_policies() -> list[str]:
     """Generate Policy drafts from the Policy Bundle snapshot, if present and clean.
 
-    Skips silently when the policy snapshot is absent so package-only runs keep
-    working. Internal source paths are never printed; only customer-facing policy
-    text (with Obsidian wikilinks flattened) reaches the public draft.
+    Skips silently only when no policy snapshot is present at all, so package-only
+    runs keep working. Once any policy snapshot file exists the manifest is
+    mandatory and must report a compatible schema and ``clean: true`` (mirroring
+    build_packages); a partial/failed fetch is treated as blocking rather than
+    silently producing ungated drafts. Internal source paths are never printed;
+    only customer-facing policy text (with Obsidian wikilinks flattened) reaches
+    the public draft.
     """
     base = "output/website/policy-bundle"
     bundle_path = snapshot(f"{base}/policy-bundle.json")
-    if not bundle_path.exists():
-        return []
-
-    schema = ""
-    generated_at = None
     manifest_path = snapshot(f"{base}/_manifest.json")
-    if manifest_path.exists():
-        manifest = read_json(manifest_path)
-        schema = str(manifest.get("schema_version", ""))
-        if not manifest.get("clean"):
-            raise RuntimeError("Policy Bundle manifest is not clean; candidate generation blocked.")
-        if not schema.startswith("policy-bundle/v1"):
-            raise RuntimeError(f"Unsupported Policy Bundle schema: {schema}")
-        generated_at = manifest.get("generated_at")
+    if not bundle_path.exists() and not manifest_path.exists():
+        return []
+    if not manifest_path.exists():
+        raise RuntimeError("Policy Bundle manifest is missing; cannot verify the clean/schema gate.")
+    if not bundle_path.exists():
+        raise RuntimeError("Policy Bundle manifest present but policy-bundle.json is missing.")
+
+    manifest = read_json(manifest_path)
+    schema = str(manifest.get("schema_version", ""))
+    if not manifest.get("clean"):
+        raise RuntimeError("Policy Bundle manifest is not clean; candidate generation blocked.")
+    if not schema.startswith("policy-bundle/v1"):
+        raise RuntimeError(f"Unsupported Policy Bundle schema: {schema}")
+    generated_at = manifest.get("generated_at")
 
     built: list[str] = []
     for policy in read_json(bundle_path):

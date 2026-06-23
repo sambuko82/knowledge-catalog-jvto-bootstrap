@@ -273,6 +273,30 @@ class OkfToolsTest(unittest.TestCase):
             validation = subprocess.run([sys.executable, "scripts/validate_okf.py", "--strict-links"], cwd=TOOL_ROOT, env=env, capture_output=True, text=True)
             self.assertEqual(validation.returncode, 0, validation.stderr)
 
+    def test_policy_build_requires_manifest(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            snapshot_root = root / "snapshots"
+            policy_dir = snapshot_root / "llm_wiki" / "output" / "website" / "policy-bundle"
+            policy_dir.mkdir(parents=True)
+            # Bundle present but manifest absent (e.g. partial/failed fetch): must
+            # block, not silently generate ungated drafts.
+            (policy_dir / "policy-bundle.json").write_text(
+                json.dumps([{"policy_id": "x", "domain": "X", "evidence": []}]), encoding="utf-8"
+            )
+            bundle_root = root / "bundle"
+            bundle_root.mkdir()
+            env = os.environ.copy()
+            env.update({
+                "JVTO_OKF_SNAPSHOT_ROOT": str(snapshot_root),
+                "JVTO_OKF_BUNDLE_ROOT": str(bundle_root),
+                "JVTO_OKF_BUILD_ROOT": str(root / "build"),
+            })
+            result = subprocess.run([sys.executable, "scripts/build_bundle.py", "--policies"], cwd=TOOL_ROOT, env=env, capture_output=True, text=True)
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("manifest is missing", result.stderr + result.stdout)
+            self.assertFalse((bundle_root / "policies" / "x.md").exists())
+
     def test_curated_verified_concept_passes_release(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
