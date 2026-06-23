@@ -36,13 +36,22 @@ python scripts/fetch_snapshots.py --local
 Both modes enforce the same allow-list and `forbidden_prefixes` guard and write
 the same snapshot layout, so the build and validate steps are identical.
 
-## 2. Generate package candidates
+## 2. Generate draft candidates (packages + policies)
 
 ```bash
-python scripts/build_bundle.py --packages
+python scripts/build_bundle.py --packages   # Tour Package drafts
+python scripts/build_bundle.py --policies   # Policy drafts
+# or both, plus curated concepts and indexes, in one pass:
+python scripts/build_bundle.py --all
 ```
 
-This runs only if Package Readiness reports a compatible schema and `clean: true`. Each package concept is written with `status: generated_pending_review`.
+Each generator runs only if its source bundle reports a compatible schema and
+`clean: true` (Package Readiness for `--packages`, the Policy Bundle for
+`--policies`; policy generation is skipped silently when its snapshot is
+absent). Every generated concept is written with
+`status: generated_pending_review` and cannot enter a release until a reviewer
+promotes it. Policy drafts flatten Obsidian wikilinks and never print internal
+source paths.
 
 ## 3. Add manually curated concepts
 
@@ -52,7 +61,9 @@ Copy and edit the template:
 cp curation/templates/concepts.example.yaml curation/approved/destinations.yaml
 ```
 
-Only add records after verifying every fact against the listed public citations. Use `reviewed` or `published` status.
+Only add records after verifying every fact against the listed public citations.
+Use a release-eligible status: `reviewed`, `verified`, or `qualified` (the
+verified-curation skill emits `verified`/`qualified`), or `published`.
 
 ## 4. Build curated concepts and indexes
 
@@ -66,13 +77,19 @@ python scripts/build_bundle.py --curated --indexes
 python scripts/validate_okf.py --strict-links
 ```
 
+This checks frontmatter parsing, required fields (`type`, `title`, `description`,
+`tags`, `timestamp`, `id`, `status`), a known status value, unique concept ids,
+citation presence for material types, forbidden/sensitive terms, and internal
+link resolution.
+
 ## 6. Validate release candidate
 
 ```bash
 python scripts/validate_okf.py --release --strict-links
 ```
 
-A release cannot contain `draft`, `needs_review`, or `generated_pending_review` concepts.
+A release may contain only `reviewed`, `verified`, `qualified`, or `published`
+concepts; `draft`, `needs_review`, and `generated_pending_review` are blocked.
 
 ## 7. Generate graph
 

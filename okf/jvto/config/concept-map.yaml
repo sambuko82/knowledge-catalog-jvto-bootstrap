@@ -17,7 +17,7 @@ concept_families:
     public_verification_required: true
   policies:
     output_root: policies/
-    source_mode: manual_public_curation
+    source_mode: controlled_automation
     upstream_candidates: [llm_wiki:output/website/policy-bundle/policy-bundle.json]
     public_verification_required: true
   travel_guides:

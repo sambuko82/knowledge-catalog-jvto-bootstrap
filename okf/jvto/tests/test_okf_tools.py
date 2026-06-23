@@ -224,6 +224,169 @@ class OkfToolsTest(unittest.TestCase):
             )
             self.assertEqual(result.returncode, 2, result.stdout + result.stderr)
 
+    def test_policy_candidate_build_and_validate(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            snapshot_root = root / "snapshots"
+            policy_dir = snapshot_root / "llm_wiki" / "output" / "website" / "policy-bundle"
+            policy_dir.mkdir(parents=True)
+            (policy_dir / "_manifest.json").write_text(
+                json.dumps({"schema_version": "policy-bundle/v1.0", "clean": True, "generated_at": "2026-06-23T00:00:00Z"}),
+                encoding="utf-8",
+            )
+            (policy_dir / "policy-bundle.json").write_text(
+                json.dumps([
+                    {
+                        "policy_id": "booking-paths",
+                        "domain": "Booking Paths",
+                        "notes": "Two official booking paths.",
+                        "consumers": ["faq", "website"],
+                        "evidence": [
+                            {"section": "Booking Flow", "text": "Website instant book and WhatsApp-assisted. See [[products/packages-overview|the overview]]."}
+                        ],
+                    }
+                ]),
+                encoding="utf-8",
+            )
+
+            bundle_root = root / "bundle"
+            for sub in ("tours", "policies"):
+                (bundle_root / sub).mkdir(parents=True)
+                (bundle_root / sub / "index.md").write_text(f"# {sub}\n", encoding="utf-8")
+
+            env = os.environ.copy()
+            env.update({
+                "JVTO_OKF_SNAPSHOT_ROOT": str(snapshot_root),
+                "JVTO_OKF_BUNDLE_ROOT": str(bundle_root),
+                "JVTO_OKF_BUILD_ROOT": str(root / "build"),
+            })
+            result = subprocess.run([sys.executable, "scripts/build_bundle.py", "--policies", "--indexes"], cwd=TOOL_ROOT, env=env, capture_output=True, text=True)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            concept = bundle_root / "policies" / "booking-paths.md"
+            self.assertTrue(concept.exists())
+            content = concept.read_text(encoding="utf-8")
+            self.assertIn("type: Policy", content)
+            self.assertIn("generated_pending_review", content)
+            self.assertIn("# Citations", content)
+            self.assertNotIn("[[", content)  # Obsidian wikilinks flattened
+
+            validation = subprocess.run([sys.executable, "scripts/validate_okf.py", "--strict-links"], cwd=TOOL_ROOT, env=env, capture_output=True, text=True)
+            self.assertEqual(validation.returncode, 0, validation.stderr)
+
+    def test_curated_verified_concept_passes_release(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            curation = root / "approved"
+            curation.mkdir(parents=True)
+            (curation / "organization.yaml").write_text(
+                textwrap.dedent(
+                    """\
+                    records:
+                      - id: organization
+                        type: Organization
+                        title: JVTO
+                        description: Private volcano tour operator.
+                        tags: [organization, jvto]
+                        timestamp: "2026-06-23T00:00:00+07:00"
+                        status: verified
+                        visibility: public
+                        last_verified: "2026-06-23"
+                        body: |
+                          # Overview
+                          JVTO runs private volcano tours.
+                          # Related Concepts
+                          - [Tours](/tours/index.md)
+                        citations:
+                          - https://javavolcano-touroperator.com
+                    """
+                ),
+                encoding="utf-8",
+            )
+            bundle_root = root / "bundle"
+            (bundle_root / "tours").mkdir(parents=True)
+            (bundle_root / "tours" / "index.md").write_text("# tours\n", encoding="utf-8")
+
+            env = os.environ.copy()
+            env.update({
+                "JVTO_OKF_CURATION_ROOT": str(curation),
+                "JVTO_OKF_BUNDLE_ROOT": str(bundle_root),
+                "JVTO_OKF_BUILD_ROOT": str(root / "build"),
+            })
+            build = subprocess.run([sys.executable, "scripts/build_bundle.py", "--curated", "--indexes"], cwd=TOOL_ROOT, env=env, capture_output=True, text=True)
+            self.assertEqual(build.returncode, 0, build.stderr)
+            concept = bundle_root / "organization.md"
+            self.assertTrue(concept.exists())
+            content = concept.read_text(encoding="utf-8")
+            self.assertIn("status: verified", content)
+            self.assertIn("# Citations", content)
+
+            release = subprocess.run([sys.executable, "scripts/validate_okf.py", "--release", "--strict-links"], cwd=TOOL_ROOT, env=env, capture_output=True, text=True)
+            self.assertEqual(release.returncode, 0, release.stderr)
+
+    def test_validate_rejects_missing_required_fields(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            bundle_root = root / "bundle" / "references"
+            bundle_root.mkdir(parents=True)
+            (bundle_root / "bad.md").write_text(
+                textwrap.dedent(
+                    """\
+                    ---
+                    type: Reference
+                    id: references/bad
+                    description: Missing title and tags.
+                    timestamp: "2026-06-23T00:00:00Z"
+                    status: draft
+                    visibility: public
+                    ---
+
+                    # Body
+                    """
+                ),
+                encoding="utf-8",
+            )
+            env = os.environ.copy()
+            env.update({
+                "JVTO_OKF_BUNDLE_ROOT": str(root / "bundle"),
+                "JVTO_OKF_BUILD_ROOT": str(root / "build"),
+            })
+            result = subprocess.run([sys.executable, "scripts/validate_okf.py"], cwd=TOOL_ROOT, env=env, capture_output=True, text=True)
+            self.assertEqual(result.returncode, 2, result.stdout)
+            self.assertIn("Missing required field: title", result.stderr)
+            self.assertIn("Missing required field: tags", result.stderr)
+
+    def test_validate_rejects_duplicate_ids(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            refs = root / "bundle" / "references"
+            refs.mkdir(parents=True)
+            record = textwrap.dedent(
+                """\
+                ---
+                type: Reference
+                title: Dup
+                description: Duplicate id case.
+                tags: [reference]
+                timestamp: "2026-06-23T00:00:00Z"
+                id: references/dup
+                status: reviewed
+                visibility: public
+                ---
+
+                # Body
+                """
+            )
+            (refs / "a.md").write_text(record, encoding="utf-8")
+            (refs / "b.md").write_text(record, encoding="utf-8")
+            env = os.environ.copy()
+            env.update({
+                "JVTO_OKF_BUNDLE_ROOT": str(root / "bundle"),
+                "JVTO_OKF_BUILD_ROOT": str(root / "build"),
+            })
+            result = subprocess.run([sys.executable, "scripts/validate_okf.py"], cwd=TOOL_ROOT, env=env, capture_output=True, text=True)
+            self.assertEqual(result.returncode, 2, result.stdout)
+            self.assertIn("Duplicate id", result.stderr)
+
 
 if __name__ == "__main__":
     unittest.main()
