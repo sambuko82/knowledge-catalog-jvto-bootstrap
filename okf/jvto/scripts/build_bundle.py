@@ -8,7 +8,8 @@ Generators:
 
 Generated drafts are always written as ``generated_pending_review`` and cannot
 enter a release. Only curated records with a release-eligible status produce
-public concepts. Indexes and the bundle log are regenerated/appended on build.
+public concepts. Indexes are regenerated on build and list only release-eligible
+concepts. The bundle log (log.md) is not modified by the build.
 """
 from __future__ import annotations
 

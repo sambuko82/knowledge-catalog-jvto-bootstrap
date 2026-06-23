@@ -15,7 +15,7 @@ any runtime access** to the private upstream repositories.
 
 ```text
 upstream snapshots        controlled extraction      curation              validation        release
-(local clone or remote)   (gated, draft-only)        (human verified)      (8 rule classes)  (gate)
+(local clone or remote)   (gated, draft-only)        (human verified)      (11 rule checks)  (gate)
         │                         │                        │                      │              │
 llm-wiki ─┐                 build_packages() ─┐      curation/approved/*.yaml     │              │
 itinerary ┤─ fetch_snapshots ─► snapshots ──► build_policies() ─► drafts ─┐       ▼              ▼

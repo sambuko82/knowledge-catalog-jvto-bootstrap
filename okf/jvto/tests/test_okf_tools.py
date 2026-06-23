@@ -534,6 +534,10 @@ class OkfToolsTest(unittest.TestCase):
             self.assertNotIn("Draft Tour", index)
 
     def test_repeated_build_is_idempotent(self) -> None:
+        # Scope: the committed Markdown under the bundle is deterministic when
+        # curation records carry stable timestamps. The local build-report.json
+        # (in BUILD_ROOT, git-ignored) is intentionally time-stamped and is not
+        # part of this comparison.
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
             curation = root / "approved"
