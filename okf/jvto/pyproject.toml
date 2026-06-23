@@ -12,5 +12,12 @@ dependencies = ["PyYAML>=6.0"]
 [project.optional-dependencies]
 dev = ["pytest>=7.0"]
 
+# This project ships no importable package — the scripts are run directly
+# (python scripts/<name>.py) and the install only exists to provide dependencies.
+# Declaring an empty module list disables setuptools flat-layout auto-discovery,
+# which otherwise fails on the config/, curation/, sources/, and skills/ dirs.
+[tool.setuptools]
+py-modules = []
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
