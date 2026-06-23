@@ -20,4 +20,13 @@ python scripts/build_bundle.py --all
 python scripts/validate_okf.py --strict-links
 ```
 
+If an upstream repository is private (e.g. `llm-wiki`) or you are offline, fetch
+from local clones instead of the network:
+
+```bash
+JVTO_OKF_LOCAL_LLM_WIKI=/path/to/llm-wiki \
+JVTO_OKF_LOCAL_ITINERARY_CORE=/path/to/jvto-itinerary-core \
+python scripts/fetch_snapshots.py --local
+```
+
 Do not run the release check until every generated candidate has been manually reviewed and its status changed to `reviewed` or `published`.
