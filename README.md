@@ -1,30 +1,47 @@
 # JVTO OKF Bootstrap for Knowledge Catalog
 
-A clean additive starter for building a **public, standalone Java Volcano Tour Operator (JVTO) Open Knowledge Format bundle** inside `knowledge-catalog`.
+This is a clean additive starter for building a **public, standalone Java Volcano Tour Operator (JVTO) Open Knowledge Format (OKF) bundle** inside the `knowledge-catalog` repository.
 
-This starter deliberately does **not** copy, merge, or depend on `llm-wiki` at runtime. It uses controlled local snapshots from two upstream repositories only during curation:
+It is intentionally **not** a copy of `llm-wiki` and it does not make `llm-wiki` a runtime dependency. The two upstream repositories are used only as controlled snapshot sources during curation:
 
-- `sambuko82/llm-wiki`: package readiness plus policy, trust, destination, and travel-guide candidates.
-- `sambuko82/jvto-itinerary-core`: operational route context used to review public itinerary language.
+- `sambuko82/llm-wiki` — package readiness, policy, trust, destination, and public-content candidates.
+- `sambuko82/jvto-itinerary-core` — detailed operational route and itinerary context that may guide curation but is never copied automatically into the public bundle.
 
-## Target placement
+## Target location after merge
 
 ```text
 knowledge-catalog/
 └── okf/
-    ├── bundles/jvto/     # final public, portable OKF bundle
-    └── jvto/             # source contracts, local snapshots, curation and validation tools
+    ├── bundles/
+    │   └── jvto/              # final public, portable OKF bundle
+    └── jvto/                  # curation tooling, source contracts, docs, snapshots
 ```
 
-## Start
+## Start here
 
 1. Read `okf/jvto/docs/00-goal-and-boundaries.md`.
 2. Read `okf/jvto/docs/01-source-to-output-map.md`.
-3. Run the setup in `okf/jvto/docs/03-operating-procedure.md`.
-4. Commit only the public bundle and reviewed curation records. Do not commit local snapshots or build reports.
+3. Create a virtual environment in `okf/jvto/` and install dependencies.
+4. Run `python scripts/fetch_snapshots.py`.
+5. Run `python scripts/build_bundle.py`.
+6. Review generated package concepts. They are intentionally marked `generated_pending_review`.
+7. Add verified, public-safe concepts using `curation/approved/*.yaml`.
+8. Use `okf/jvto/skills/jvto-okf-verified-curation/SKILL.md` whenever a concept needs generation and claim-level verification in the same workflow.
+9. Run `python scripts/validate_okf.py --strict-links`.
+10. Only release after `python scripts/validate_okf.py --release --strict-links` passes.
+11. Generate `viz.html` with Knowledge Catalog's existing `reference-agent visualize` command.
 
-## Delivery model
+## Merge into `knowledge-catalog`
 
-- `llm-wiki` and `jvto-itinerary-core` are **curation inputs**, not public sources of truth.
-- Public concepts must link to current official JVTO pages, authority pages, partner pages, or public platform profiles.
-- Generated package concepts are marked `generated_pending_review`; the release validator rejects them until a human changes them to `reviewed` or `published`.
+Copy the two directories below into the existing `knowledge-catalog/okf/` directory:
+
+```text
+okf/jvto/
+okf/bundles/jvto/
+```
+
+The bootstrap deliberately does not overwrite existing Knowledge Catalog source files, sample bundles, or the reference agent.
+
+## Security boundary
+
+Never commit snapshot files, raw database exports, PII, private vendor rates, operational cost details, internal customer chats, API secrets, or raw credential scans. `okf/jvto/sources/snapshots/` and `okf/jvto/build/` are gitignored except for their README/.gitkeep files.
