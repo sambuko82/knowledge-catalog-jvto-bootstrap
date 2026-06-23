@@ -1,17 +1,25 @@
 # Java Volcano Tour Operator — Knowledge Bundle
 
-This is a public, curated Open Knowledge Format bundle. Concepts are added only after public-source verification.
+Public, self-contained Open Knowledge Format bundle for JVTO. Start here, then
+open a subdirectory index below; each concept declares its own `type`, `status`,
+`tags`, `timestamp`, and citations so an agent can navigate progressively.
 
 ## Subdirectories
 
-* [Destinations](destinations/index.md) - Visitor-facing destination knowledge.
-* [Tours](tours/index.md) - Public tour package concepts.
-* [Travel Guides](travel-guides/index.md) - Preparation and planning concepts.
-* [Policies](policies/index.md) - Customer-facing policy concepts.
-* [Trust](trust/index.md) - Bounded claims and public verification concepts.
-* [Reviews](reviews/index.md) - Public review-platform concepts.
-* [References](references/index.md) - Reusable public sources.
+* [Destinations](destinations/index.md) - JVTO destinations concepts.
+* [Policies](policies/index.md) - JVTO policies concepts.
+* [References](references/index.md) - JVTO references concepts.
+* [Reviews](reviews/index.md) - JVTO reviews concepts.
+* [Tours](tours/index.md) - JVTO tours concepts.
+* [Travel Guides](travel-guides/index.md) - JVTO travel guides concepts.
+* [Trust](trust/index.md) - JVTO trust concepts.
+
+## Concepts
+
+* [Java Volcano Tour Operator (JVTO)](organization.md) - Private, police-led volcano tour operator based in East Java, running tours to Kawah Ijen, Mount Bromo, Tumpak Sewu, and Madakaripura.
 
 ## Reading Rules
 
-Use standard Markdown links for relationships. Check each concept's `status`, `last_verified`, and citations before relying on a claim.
+Check each concept's `status`, `last_verified`, and citations. Only `reviewed`,
+`verified`, `qualified`, or `published` concepts are release-eligible;
+`generated_pending_review` drafts cannot enter a public release.

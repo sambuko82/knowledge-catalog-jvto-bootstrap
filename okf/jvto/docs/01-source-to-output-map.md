@@ -7,7 +7,8 @@
 | `llm-wiki/.../package-itineraries.json` | day titles | Add itinerary outline to candidate | package itinerary summary | same Tour Package concept | human review required |
 | `llm-wiki/.../package-pricing.json` | tier existence, currency, ferry indicator | give reviewer context only | no price auto-published | local snapshot only | current public page review required |
 | `llm-wiki/.../booking-compatibility.json` | booking mode flags | add review note only | booking language candidate | same Tour Package concept | human review required |
-| `llm-wiki/.../policy-bundle/*.json` | policy wording and consumer logic | check against current public policy pages | Policy concepts | `okf/bundles/jvto/policies/` | manual only |
+| `llm-wiki/.../policy-bundle/_manifest.json` | schema version, `clean` | Build gate checks it first | permission to process policy files | local snapshot only | never a public concept |
+| `llm-wiki/.../policy-bundle/policy-bundle.json` | policy domain, notes, consumers, evidence text | Generate one Policy draft per record (wikilinks flattened, internal paths dropped) | Policy Markdown | `okf/bundles/jvto/policies/` | `generated_pending_review` |
 | `llm-wiki/.../trust-bundle/claims.json` | claim/evidence candidate graph | verify each public proof source | Trust Claim / Credential concepts | `okf/bundles/jvto/trust/` | manual only |
 | `llm-wiki/wiki/destinations/*.md` | aliases, content coverage, source leads | verify official/public sources | Destination concepts | `okf/bundles/jvto/destinations/` | manual only |
 | `itinerary-core/.../manifest.json` | data maturity and gaps | decide whether a public topic is mature enough | curation checklist | local snapshot only | never public directly |

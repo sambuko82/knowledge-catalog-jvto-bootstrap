@@ -4,14 +4,30 @@ bundle:
   visibility: public
   okf_version: "0.1"
   canonical_public_base_url: https://javavolcano-touroperator.com
-  allowed_statuses_for_release: [reviewed, published]
+  # Every concept must carry these fields (validate_okf.py JVTO-06).
+  required_fields: [type, title, description, tags, timestamp, id, status]
+  # The full lifecycle vocabulary (validate_okf.py JVTO-07 rejects anything else).
+  known_statuses:
+    - draft                      # manually started, not releasable
+    - generated_pending_review   # script-generated candidate, not releasable
+    - needs_review               # stale/conflicting/unsupported, not releasable
+    - reviewed                   # human-verified against citations
+    - verified                   # verified-curation skill: all material claims verified
+    - qualified                  # verified-curation skill: included with narrower wording
+    - published                  # reviewed and intentionally released
+    - deprecated                 # retained history, not active
+  # Only these statuses may appear in a release (validate_okf.py --release JVTO-03).
+  allowed_statuses_for_release: [reviewed, verified, qualified, published]
 
 source_rules:
   package_readiness:
     require_clean_manifest: true
     require_schema_prefix: package-readiness/v1
     output_status: generated_pending_review
-  policy_bundle: {auto_publish: false}
+  policy_bundle:
+    require_clean_manifest: true
+    require_schema_prefix: policy-bundle/v1
+    output_status: generated_pending_review
   trust_bundle: {auto_publish: false}
   itinerary_core: {auto_publish: false}
 
