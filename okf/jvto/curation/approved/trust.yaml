@@ -1,4 +1,4 @@
-# Verified-curation records for Trust Claim concepts.
+# Verified-curation records for Trust Claim and Credential concepts.
 records:
   - id: trust/claims/police-led
     type: Trust Claim
@@ -32,3 +32,130 @@ records:
     citations:
       - https://javavolcano-touroperator.com/verify-jvto/police-safety
       - https://javavolcano-touroperator.com/verify-jvto/legal
+
+  - id: trust/credentials/legal-registration
+    type: Credential
+    title: Legal Registration (NIB)
+    description: JVTO operates as PT Java Volcano Rendezvous under Indonesian business number (NIB) 1102230032918, publicly verifiable on the OSS portal.
+    resource: https://javavolcano-touroperator.com/verify-jvto/legal
+    tags: [trust, credential, legal, registration, nib]
+    timestamp: "2026-06-23T00:00:00+07:00"
+    status: reviewed
+    visibility: public
+    last_verified: "2026-06-23"
+    body: |
+      # Credential
+
+      JVTO's operating company is **PT Java Volcano Rendezvous**, registered under
+      Indonesian business number **NIB 1102230032918**. The registration is public
+      and can be checked on Indonesia's national OSS business portal.
+
+      JVTO lists its registration and tourism licensing on its public verification
+      page, where the identifiers can be cross-checked.
+
+      # Related Concepts
+
+      - [Verifiable Licenses](/trust/credentials/verifiable-licenses.md)
+    citations:
+      - https://javavolcano-touroperator.com/verify-jvto/legal
+      - https://oss.go.id
+
+  - id: trust/credentials/verifiable-licenses
+    type: Credential
+    title: Verifiable Licenses
+    description: JVTO's tourism and safety credentials — business registration, BBKSDA park clearance, ISIC provider status, and the founder's Tourist Police role — are publicly checkable.
+    resource: https://javavolcano-touroperator.com/verify-jvto/legal
+    tags: [trust, credential, licenses, verification]
+    timestamp: "2026-06-23T00:00:00+07:00"
+    status: reviewed
+    visibility: public
+    last_verified: "2026-06-23"
+    body: |
+      # Credential
+
+      JVTO publishes its credentials so they can be independently verified, including:
+
+      - business registration (NIB 1102230032918) and tourism registration (TDUP);
+      - conservation-authority (BBKSDA) clearance to operate at Bromo and Ijen;
+      - official ISIC provider status (provider ID 259268);
+      - the founder's serving Tourist Police role.
+
+      The public verification page lists these with their checkable sources.
+
+      # Related Concepts
+
+      - [Legal Registration (NIB)](/trust/credentials/legal-registration.md)
+      - [Police-led operations](/trust/claims/police-led.md)
+    citations:
+      - https://javavolcano-touroperator.com/verify-jvto/legal
+
+  - id: trust/claims/medical-screening
+    type: Trust Claim
+    title: Ijen Medical Screening Included
+    description: For Ijen crater hikes, JVTO coordinates a health screening with a licensed doctor when conservation-authority rules require it, included in the tour.
+    resource: https://javavolcano-touroperator.com/travel-guide/ijen-health-screening
+    tags: [trust, safety, medical-screening, ijen]
+    timestamp: "2026-06-23T00:00:00+07:00"
+    status: reviewed
+    visibility: public
+    last_verified: "2026-06-23"
+    body: |
+      # Claim
+
+      When BBKSDA regulations require it, JVTO arranges a short health screening
+      with a licensed doctor for guests hiking the Ijen crater, coordinated as part
+      of the tour. A verified certificate is needed for crater access.
+
+      # Related Concepts
+
+      - [Ijen Health Screening](/policies/ijen-health-screening.md)
+      - [Kawah Ijen](/destinations/kawah-ijen.md)
+    citations:
+      - https://javavolcano-touroperator.com/travel-guide/ijen-health-screening
+
+  - id: trust/claims/private-format
+    type: Trust Claim
+    title: 100% Private Tours
+    description: Every JVTO tour is fully private — a dedicated vehicle, driver, and guide, with no shared groups.
+    resource: https://javavolcano-touroperator.com/why-jvto/the-jvto-difference
+    tags: [trust, private, format, differentiator]
+    timestamp: "2026-06-23T00:00:00+07:00"
+    status: reviewed
+    visibility: public
+    last_verified: "2026-06-23"
+    body: |
+      # Claim
+
+      Every JVTO tour is 100% private: a dedicated vehicle, driver, and guide for
+      your group only, with no shared groups or strangers. Timing and safety
+      decisions stay consistent for your party.
+
+      # Related Concepts
+
+      - [All tours](/tours/index.md)
+    citations:
+      - https://javavolcano-touroperator.com/why-jvto/the-jvto-difference
+
+  - id: trust/claims/no-hidden-costs
+    type: Trust Claim
+    title: No Hidden Costs
+    description: JVTO tours are all-inclusive of transport, crew, entrance fees, water, and stated meals, with no on-the-day surprise charges.
+    resource: https://javavolcano-touroperator.com/policy/inclusions-exclusions
+    tags: [trust, all-inclusive, pricing, transparency]
+    timestamp: "2026-06-23T00:00:00+07:00"
+    status: reviewed
+    visibility: public
+    last_verified: "2026-06-23"
+    body: |
+      # Claim
+
+      JVTO tours are all-inclusive: private transport, crew, all entrance fees and
+      permits, drinking water, and the meals stated in the itinerary are covered,
+      with no on-the-day haggling or surprise local fees. The full inclusions and
+      exclusions are published.
+
+      # Related Concepts
+
+      - [What's Included](/policies/inclusions-exclusions.md)
+    citations:
+      - https://javavolcano-touroperator.com/policy/inclusions-exclusions

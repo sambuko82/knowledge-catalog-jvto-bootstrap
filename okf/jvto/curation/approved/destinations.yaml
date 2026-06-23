@@ -34,3 +34,129 @@ records:
     citations:
       - https://javavolcano-touroperator.com/destinations/ijen-crater
       - https://bbksdajatim.org
+
+  - id: destinations/mount-bromo
+    type: Destination
+    title: Mount Bromo
+    description: Active East Java volcano in the Tengger caldera "Sea of Sand", famous for its pre-dawn sunrise panorama reached by 4WD jeep.
+    resource: https://javavolcano-touroperator.com/destinations/mount-bromo
+    tags: [destination, east-java, volcano, bromo, sunrise]
+    timestamp: "2026-06-23T00:00:00+07:00"
+    status: reviewed
+    visibility: public
+    last_verified: "2026-06-23"
+    body: |
+      # Overview
+
+      Mount Bromo (summit roughly 2,329 m) sits inside the Tengger caldera in East
+      Java, surrounded by a vast volcanic plain known as the "Sea of Sand". It is
+      best known for the pre-dawn sunrise panorama over the caldera from elevated
+      viewpoints, followed by a crossing of the sand sea to the smoking crater.
+
+      # Visiting
+
+      - A typical visit departs around 03:00 for sunrise; a 4WD jeep crosses the
+        sand sea, then a short walk (or optional horse ride) reaches the crater rim.
+      - The area is managed by the national-park / BBKSDA authority.
+      - Volcanic activity can occasionally restrict crater access; check the current
+        status before travel.
+
+      # Related Concepts
+
+      - [All tours](/tours/index.md)
+    citations:
+      - https://javavolcano-touroperator.com/destinations/mount-bromo
+      - https://bbksdajatim.org
+
+  - id: destinations/tumpak-sewu
+    type: Destination
+    title: Tumpak Sewu Waterfall
+    description: A wide multi-tiered "curtain" waterfall in Lumajang, East Java, often called "Java's Niagara", with an easy rim viewpoint and an optional steep canyon descent.
+    resource: https://javavolcano-touroperator.com/destinations/tumpak-sewu-waterfall
+    tags: [destination, east-java, waterfall, tumpak-sewu]
+    timestamp: "2026-06-23T00:00:00+07:00"
+    status: reviewed
+    visibility: public
+    last_verified: "2026-06-23"
+    body: |
+      # Overview
+
+      Tumpak Sewu is a wide, multi-tiered "curtain" waterfall (roughly 120 m high)
+      in Lumajang Regency, East Java, sometimes called "Java's Niagara" for the
+      many streams falling across a curved cliff into a canyon.
+
+      # Visiting
+
+      - A rim viewpoint is reached by a short, easy walk from parking.
+      - An optional descent into the canyon is steep (about 300 steps, with ropes
+        in places) over wet, slippery terrain; guides assess fitness and brief the
+        route before starting, and the decision to descend stays with the guest.
+      - Helmets for the canyon section are provided by the local site management,
+        not by JVTO.
+
+      # Related Concepts
+
+      - [All tours](/tours/index.md)
+    citations:
+      - https://javavolcano-touroperator.com/destinations/tumpak-sewu-waterfall
+
+  - id: destinations/madakaripura
+    type: Destination
+    title: Madakaripura Waterfall
+    description: Java's tallest waterfall, in a narrow Probolinggo canyon near Bromo, reached by a short gorge walk where visitors get wet from the spray.
+    resource: https://javavolcano-touroperator.com/destinations/madakaripura-waterfall
+    tags: [destination, east-java, waterfall, madakaripura]
+    timestamp: "2026-06-23T00:00:00+07:00"
+    status: reviewed
+    visibility: public
+    last_verified: "2026-06-23"
+    body: |
+      # Overview
+
+      Madakaripura is Java's tallest waterfall, set in a narrow canyon in
+      Probolinggo Regency, East Java (a main drop of roughly 100 m). It is linked
+      historically to Gajah Mada, the 14th-century Majapahit prime minister, and
+      its proximity to Bromo makes it a natural same-day pairing.
+
+      # Visiting
+
+      - Reached by a gorge walk of roughly 1.5 km over wet, slippery ground;
+        visitors get wet from the spray, so a raincoat is recommended.
+      - JVTO guides accompany guests through the canyon; helmets at the entrance are
+        provided by the local site management, not by JVTO.
+
+      # Related Concepts
+
+      - [All tours](/tours/index.md)
+    citations:
+      - https://javavolcano-touroperator.com/destinations/madakaripura-waterfall
+
+  - id: destinations/papuma-beach
+    type: Destination
+    title: Papuma Beach
+    description: A white-sand beach with offshore rock formations and a headland viewpoint in Jember, East Java — the one coastal stop on JVTO's volcano circuits.
+    resource: https://javavolcano-touroperator.com/destinations/papuma-beach
+    tags: [destination, east-java, beach, papuma]
+    timestamp: "2026-06-23T00:00:00+07:00"
+    status: reviewed
+    visibility: public
+    last_verified: "2026-06-23"
+    body: |
+      # Overview
+
+      Papuma Beach (Tanjung Papuma) is a white-sand beach with dramatic offshore
+      rock formations and a rocky cape headland in Jember Regency, East Java. It is
+      the only coastal destination on JVTO's circuits, used as a change of pace
+      between volcano and waterfall days on longer itineraries.
+
+      # Visiting
+
+      - A short, easy walk up the headland gives elevated views over the rocks and
+        coastline; no special permits or health screening are required.
+      - Conditions are calmest in the dry season.
+
+      # Related Concepts
+
+      - [All tours](/tours/index.md)
+    citations:
+      - https://javavolcano-touroperator.com/destinations/papuma-beach

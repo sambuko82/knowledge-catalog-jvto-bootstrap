@@ -1,15 +1,15 @@
 ---
 type: Tour Package
-title: 3D2N Ijen, Bromo & Madakaripura from Surabaya
-description: A 3-day, 2-night private tour from Surabaya covering Kawah Ijen, a Mount
-  Bromo sunrise, and Madakaripura Waterfall.
+title: 3 Day Ijen, Bromo & Madakaripura Waterfall Discovery from Surabaya
+description: 'A 3D2N private tour from Surabaya: 3 Day Ijen, Bromo & Madakaripura
+  Waterfall Discovery from Surabaya.'
 resource: https://javavolcano-touroperator.com/tours/from-surabaya/ijen-bromo-madakaripura-3d2n
 tags:
-- tour-package
-- origin-surabaya
-- ijen
 - bromo
+- ijen
 - madakaripura
+- origin-surabaya
+- tour-package
 timestamp: '2026-06-23T00:00:00+07:00'
 status: reviewed
 visibility: public
@@ -19,21 +19,18 @@ id: tours/from-surabaya/ijen-bromo-madakaripura-3d2n
 
 # Overview
 
-A 3-day / 2-night fully private tour starting and ending in Surabaya,
-combining Kawah Ijen, a Mount Bromo sunrise, and Madakaripura Waterfall.
-Like every JVTO tour it is 100% private — a dedicated vehicle, driver, and
-guide, with no shared groups.
+A 3D2N fully private tour from Surabaya. Like every JVTO tour it is 100% private — a dedicated vehicle, driver, and guide, with no shared groups.
 
 # Itinerary Outline
 
-1. Surabaya to Bondowoso for Ijen staging
-2. Ijen climb and transfer toward the Bromo side
-3. Bromo sunrise, Madakaripura, and return to Surabaya
+1. Surabaya to Bondowoso for Ijen Staging
+2. Ijen Climb and Transfer Toward the Bromo Side
+3. Bromo Sunrise, Madakaripura, and Return to Surabaya
 
 # Related Concepts
 
-- [Kawah Ijen](/destinations/kawah-ijen.md)
-- [Cancellation & Lifetime Travel Credit](/policies/cancellation-travel-credit.md)
+- [Destinations](/destinations/index.md)
+- [Policies](/policies/index.md)
 
 # Citations
 

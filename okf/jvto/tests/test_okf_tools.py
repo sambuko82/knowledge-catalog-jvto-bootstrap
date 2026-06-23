@@ -24,6 +24,8 @@ class OkfToolsTest(unittest.TestCase):
             (bundle_root / "policies").mkdir(parents=True)
             (bundle_root / "policies" / "index.md").write_text("# Policies\n", encoding="utf-8")
             build_root = root / "build"
+            empty_curation = root / "curation_empty"
+            empty_curation.mkdir()
 
             def write_json(name: str, payload) -> None:
                 (package_dir / name).write_text(json.dumps(payload), encoding="utf-8")
@@ -39,6 +41,7 @@ class OkfToolsTest(unittest.TestCase):
                 "JVTO_OKF_SNAPSHOT_ROOT": str(snapshot_root),
                 "JVTO_OKF_BUNDLE_ROOT": str(bundle_root),
                 "JVTO_OKF_BUILD_ROOT": str(build_root),
+                "JVTO_OKF_CURATION_ROOT": str(empty_curation),  # isolate: test only the generated draft
             })
             result = subprocess.run([sys.executable, "scripts/build_bundle.py", "--all"], cwd=TOOL_ROOT, env=env, capture_output=True, text=True)
             self.assertEqual(result.returncode, 0, result.stderr)
