@@ -1,0 +1,41 @@
+---
+type: Policy
+title: Cancellation & Lifetime Travel Credit
+description: How JVTO handles guest cancellations — 100% Lifetime Travel Credit when
+  cancelling 48 hours or more before the tour, instead of cash refunds.
+resource: https://javavolcano-touroperator.com/why-jvto/lifetime-travel-credit
+tags:
+- policy
+- cancellation
+- travel-credit
+- booking
+timestamp: '2026-06-23T00:00:00+07:00'
+status: reviewed
+visibility: public
+last_verified: '2026-06-23'
+id: policies/cancellation-travel-credit
+---
+
+# Overview
+
+JVTO does not issue cash refunds for guest-initiated cancellations; it issues
+Lifetime Travel Credit instead.
+
+# The Rule
+
+- **48 hours or more before Day 1:** 100% of the eligible booking value
+  becomes Lifetime Travel Credit — no expiry date, and transferable to a
+  named person with written confirmation.
+- **Less than 48 hours before Day 1:** the booking value is forfeited; no
+  travel credit or cash refund is issued.
+
+Travel Credit can be applied to any JVTO package on any future date.
+
+# Related Concepts
+
+- [3D2N Ijen, Bromo & Madakaripura tour](/tours/from-surabaya/ijen-bromo-madakaripura-3d2n.md)
+
+# Citations
+
+- https://javavolcano-touroperator.com/why-jvto/lifetime-travel-credit
+- https://javavolcano-touroperator.com/policy/booking-payment-cancellation
