@@ -1,0 +1,20 @@
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+
+# Local upstream inputs and local reports.
+okf/jvto/sources/snapshots/*
+!okf/jvto/sources/snapshots/README.md
+!okf/jvto/sources/snapshots/.gitkeep
+okf/jvto/build/*
+!okf/jvto/build/.gitkeep
+
+# Never commit potentially sensitive source exports.
+*.sql
+*.xlsx
+*.csv
+*.pdf
+*.zip
+*.key
+.env

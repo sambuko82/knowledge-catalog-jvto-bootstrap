@@ -1,0 +1,48 @@
+# Only these allow-listed files may be fetched. This is a curation boundary,
+# not an attempt to mirror upstream repositories.
+version: 1
+snapshot_root: sources/snapshots
+
+upstreams:
+  llm_wiki:
+    repo: sambuko82/llm-wiki
+    ref: master
+    role: curation_source_only
+    public_bundle_role: package and policy/trust candidate source
+    forbidden_prefixes: [raw/, .git/, node_modules/, secrets/]
+    files:
+      # Automatically usable only after the Package Readiness manifest reports clean=true.
+      - {path: output/products/package-readiness/_manifest.json, mode: package_automation, required: true}
+      - {path: output/products/package-readiness/package-registry.json, mode: package_automation, required: true}
+      - {path: output/products/package-readiness/package-pricing.json, mode: package_automation, required: true}
+      - {path: output/products/package-readiness/package-itineraries.json, mode: package_automation, required: true}
+      - {path: output/products/package-readiness/package-operational-days.json, mode: package_automation, required: false}
+      - {path: output/products/package-readiness/booking-compatibility.json, mode: package_automation, required: true}
+      - {path: output/products/package-readiness/gap-report.json, mode: validation_context, required: true}
+
+      # Candidate-only: never automatically public.
+      - {path: output/website/policy-bundle/_manifest.json, mode: manual_curation, required: false}
+      - {path: output/website/policy-bundle/policy-bundle.json, mode: manual_curation, required: false}
+      - {path: output/website/trust-bundle/_manifest.json, mode: manual_curation, required: false}
+      - {path: output/website/trust-bundle/claims.json, mode: manual_curation, required: false}
+      - {path: wiki/destinations/kawah-ijen.md, mode: manual_curation, required: false}
+      - {path: wiki/destinations/mount-bromo.md, mode: manual_curation, required: false}
+      - {path: wiki/destinations/tumpak-sewu.md, mode: manual_curation, required: false}
+      - {path: wiki/destinations/madakaripura.md, mode: manual_curation, required: false}
+      - {path: wiki/destinations/papuma-beach.md, mode: manual_curation, required: false}
+      - {path: wiki/website/faq-master.md, mode: manual_curation, required: false}
+      - {path: wiki/website/operational-facts.md, mode: manual_curation, required: false}
+
+  itinerary_core:
+    repo: sambuko82/jvto-itinerary-core
+    ref: main
+    role: internal_operational_context_only
+    public_bundle_role: never auto-publish; supports route and itinerary fact review
+    forbidden_prefixes: [input/, seed/, .git/, node_modules/, secrets/]
+    files:
+      - {path: generated/itinerary-intelligence/manifest.json, mode: operational_context, required: true}
+      - {path: generated/itinerary-intelligence/04-route-leg-index.json, mode: operational_context, required: false}
+      - {path: generated/itinerary-intelligence/06-destination-activity-profiles.json, mode: operational_context, required: false}
+      - {path: generated/itinerary-intelligence/07-operational-events.json, mode: operational_context, required: false}
+      - {path: generated/itinerary-intelligence/11-package-route-map.json, mode: operational_context, required: false}
+      - {path: generated/itinerary-intelligence/12-recommendation-rules.json, mode: operational_context, required: false}

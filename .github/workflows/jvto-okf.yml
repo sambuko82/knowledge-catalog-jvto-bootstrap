@@ -1,0 +1,27 @@
+name: JVTO OKF Validation
+
+on:
+  pull_request:
+    paths:
+      - 'okf/bundles/jvto/**'
+      - 'okf/jvto/**'
+  push:
+    branches: [main]
+    paths:
+      - 'okf/bundles/jvto/**'
+      - 'okf/jvto/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: okf/jvto
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -e .[dev]
+      - run: python -m unittest discover -s tests -v
+      - run: python scripts/validate_okf.py --strict-links

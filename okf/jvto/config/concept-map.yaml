@@ -1,0 +1,37 @@
+version: 1
+concept_families:
+  organization:
+    output_root: organization.md
+    source_mode: manual_public_curation
+    upstream_candidates: [llm_wiki:wiki/overview.md]
+    public_verification_required: true
+  destinations:
+    output_root: destinations/
+    source_mode: manual_public_curation
+    upstream_candidates: [llm_wiki:wiki/destinations/*.md, itinerary_core:generated/itinerary-intelligence/06-destination-activity-profiles.json]
+    public_verification_required: true
+  tours:
+    output_root: tours/
+    source_mode: controlled_automation
+    upstream_candidates: [llm_wiki:output/products/package-readiness/*.json]
+    public_verification_required: true
+  policies:
+    output_root: policies/
+    source_mode: manual_public_curation
+    upstream_candidates: [llm_wiki:output/website/policy-bundle/policy-bundle.json]
+    public_verification_required: true
+  travel_guides:
+    output_root: travel-guides/
+    source_mode: manual_public_curation
+    upstream_candidates: [llm_wiki:wiki/website/faq-master.md, itinerary_core:generated/itinerary-intelligence/07-operational-events.json]
+    public_verification_required: true
+  trust:
+    output_root: trust/
+    source_mode: manual_public_curation
+    upstream_candidates: [llm_wiki:output/website/trust-bundle/claims.json]
+    public_verification_required: true
+  reviews:
+    output_root: reviews/
+    source_mode: manual_public_curation
+    upstream_candidates: [llm_wiki:wiki/reviews/*.md]
+    public_verification_required: true

@@ -1,0 +1,38 @@
+version: 1
+bundle:
+  id: jvto
+  visibility: public
+  okf_version: "0.1"
+  canonical_public_base_url: https://javavolcano-touroperator.com
+  allowed_statuses_for_release: [reviewed, published]
+
+source_rules:
+  package_readiness:
+    require_clean_manifest: true
+    require_schema_prefix: package-readiness/v1
+    output_status: generated_pending_review
+  policy_bundle: {auto_publish: false}
+  trust_bundle: {auto_publish: false}
+  itinerary_core: {auto_publish: false}
+
+forbidden_public_terms:
+  - raw customer
+  - customer email
+  - customer phone
+  - passport number
+  - payment reference
+  - vendor rate
+  - crew rate
+  - profit margin
+  - api key
+  - private key
+
+required_citation_types:
+  - Organization
+  - Destination
+  - Tour Package
+  - Travel Guide
+  - Policy
+  - Trust Claim
+  - Credential
+  - Review Platform

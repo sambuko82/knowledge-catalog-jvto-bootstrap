@@ -1,0 +1,23 @@
+# Copy selected records into ../approved/<domain>.yaml after verifying every fact
+# against each cited public source. Only status: reviewed or status: published is exported.
+records:
+  - id: destinations/kawah-ijen
+    type: Destination
+    title: Kawah Ijen
+    description: Replace with a one-sentence, verified public summary.
+    resource: https://javavolcano-touroperator.com/destinations/ijen-crater
+    tags: [east-java, volcano, hiking]
+    timestamp: "2026-06-23T00:00:00+07:00"
+    status: reviewed
+    visibility: public
+    last_verified: "2026-06-23"
+    body: |
+      # Overview
+
+      Replace this body only after checking the public JVTO page and the relevant authority source.
+
+      # Related Concepts
+
+      - [Tour Packages](/tours/index.md)
+    citations:
+      - https://javavolcano-touroperator.com/destinations/ijen-crater
