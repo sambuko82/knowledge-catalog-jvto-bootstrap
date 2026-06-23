@@ -11,6 +11,7 @@ concepts.
 * [Policies](policies/index.md) - JVTO policies concepts.
 * [Reviews](reviews/index.md) - JVTO reviews concepts.
 * [Tours](tours/index.md) - JVTO tours concepts.
+* [Travel Guides](travel-guides/index.md) - JVTO travel guides concepts.
 * [Trust](trust/index.md) - JVTO trust concepts.
 
 ## Concepts
