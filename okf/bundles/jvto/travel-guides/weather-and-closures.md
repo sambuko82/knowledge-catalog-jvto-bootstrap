@@ -22,8 +22,10 @@ id: travel-guides/weather-and-closures
 Bromo and Ijen are active volcanoes, and the waterfalls are rain-sensitive
 canyon environments. When volcanic alert levels rise, park authorities may
 restrict or close access, and JVTO follows those instructions without
-exception. If a closure affects a booking, JVTO activates its Plan-B —
-alternative viewpoints, rescheduled timing, or replacement destinations.
+exception. If a closure affects a booking, JVTO offers reasonable
+alternatives where feasible — a different viewpoint, adjusted timing, or a
+replacement destination — and where a key part of the itinerary cannot run
+at all, Travel Credit applies to the unused portion under the booking terms.
 
 The annual Tengger "Kasada" ceremony at Bromo falls on a lunar-calendar date
 that varies each year and can restrict crater access during that window.
@@ -36,3 +38,4 @@ that varies each year and can restrict crater access during that window.
 # Citations
 
 - https://javavolcano-touroperator.com/travel-guide/weather-and-closures
+- https://javavolcano-touroperator.com/policy/booking-payment-cancellation
