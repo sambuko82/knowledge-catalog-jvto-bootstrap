@@ -583,6 +583,42 @@ class OkfToolsTest(unittest.TestCase):
             self.assertIn("organization.md", first)
 
 
+    def test_package_only_build_links_resolve_without_scaffold(self) -> None:
+        # No committed scaffold and no Policy Bundle snapshot: a package-only build's
+        # drafts must only link to sections that this build creates (tours/), so
+        # validate --strict-links stays clean.
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            snapshot_root = root / "snapshots"
+            package_dir = snapshot_root / "llm_wiki" / "output" / "products" / "package-readiness"
+            package_dir.mkdir(parents=True)
+            bundle_root = root / "bundle"
+            bundle_root.mkdir()  # empty bundle: no policies/ or tours/ scaffold
+
+            def write_json(name: str, payload) -> None:
+                (package_dir / name).write_text(json.dumps(payload), encoding="utf-8")
+
+            write_json("_manifest.json", {"schema_version": "package-readiness/v1.3", "clean": True, "generated_at": "2026-06-23T00:00:00Z"})
+            write_json("package-registry.json", [{"package_id": "bromo-1d1n", "slug": "bromo-1d1n", "origin": "surabaya", "title": "1 Day Bromo", "duration": "1D1N", "public_url": "/tours/from-surabaya/bromo-1d1n"}])
+            write_json("package-pricing.json", [{"package_id": "bromo-1d1n", "currency": "IDR"}])
+            write_json("package-itineraries.json", [{"package_id": "bromo-1d1n", "days": [{"title": "Bromo sunrise"}]}])
+            write_json("booking-compatibility.json", [{"package_id": "bromo-1d1n", "instant_book": True}])
+
+            empty_curation = root / "curation_empty"
+            empty_curation.mkdir()
+            env = os.environ.copy()
+            env.update({
+                "JVTO_OKF_SNAPSHOT_ROOT": str(snapshot_root),
+                "JVTO_OKF_BUNDLE_ROOT": str(bundle_root),
+                "JVTO_OKF_BUILD_ROOT": str(root / "build"),
+                "JVTO_OKF_CURATION_ROOT": str(empty_curation),
+            })
+            build = subprocess.run([sys.executable, "scripts/build_bundle.py", "--packages", "--indexes"], cwd=TOOL_ROOT, env=env, capture_output=True, text=True)
+            self.assertEqual(build.returncode, 0, build.stderr)
+            self.assertFalse((bundle_root / "policies").exists())  # no policy scaffold created
+            validation = subprocess.run([sys.executable, "scripts/validate_okf.py", "--strict-links"], cwd=TOOL_ROOT, env=env, capture_output=True, text=True)
+            self.assertEqual(validation.returncode, 0, validation.stderr)
+
     def test_curated_record_missing_timestamp_fails(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
