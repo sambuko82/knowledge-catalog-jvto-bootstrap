@@ -1,4 +1,5 @@
 # Verified-curation records for Review Platform concepts.
+# Ratings are dated snapshots — check each live profile for the current figure.
 records:
   - id: reviews/trustpilot
     type: Review Platform
@@ -27,4 +28,62 @@ records:
       - [Police-led operations](/trust/claims/police-led.md)
     citations:
       - https://www.trustpilot.com/review/javavolcano-touroperator.com
+      - https://javavolcano-touroperator.com/why-jvto/reviews
+
+  - id: reviews/google-maps
+    type: Review Platform
+    title: JVTO on Google Maps
+    description: JVTO's public Google Maps / Google Business profile, where travelers leave independent reviews.
+    resource: https://www.google.com/maps?cid=1266403973589689021
+    tags: [reviews, google, social-proof, reputation]
+    timestamp: "2026-06-23T00:00:00+07:00"
+    status: reviewed
+    visibility: public
+    last_verified: "2026-05-26"
+    body: |
+      # Overview
+
+      JVTO has a public Google Maps / Google Business profile, where travelers can
+      read and leave independent reviews.
+
+      # Rating (as of 2026-05-26)
+
+      As of 26 May 2026 the profile showed a rating of about 4.9 out of 5 from
+      around 123 reviews. Ratings change over time — check the live profile for the
+      current figure.
+
+      # Related Concepts
+
+      - [JVTO on Trustpilot](/reviews/trustpilot.md)
+    citations:
+      - https://www.google.com/maps?cid=1266403973589689021
+      - https://javavolcano-touroperator.com/why-jvto/reviews
+
+  - id: reviews/tripadvisor
+    type: Review Platform
+    title: JVTO on Tripadvisor
+    description: JVTO's public Tripadvisor profile, where travelers leave independent reviews.
+    resource: https://www.tripadvisor.com/Attraction_Review-g297715-d19983165-Reviews-Java_Volcano_Tour_Operator-Surabaya_East_Java_Java.html
+    tags: [reviews, tripadvisor, social-proof, reputation]
+    timestamp: "2026-06-23T00:00:00+07:00"
+    status: reviewed
+    visibility: public
+    last_verified: "2026-05-26"
+    body: |
+      # Overview
+
+      JVTO has a public Tripadvisor profile, where travelers can read and leave
+      independent reviews.
+
+      # Rating (as of 2026-05-26)
+
+      As of 26 May 2026 the profile showed a rating of about 4.95 out of 5 from
+      around 21 reviews. Ratings change over time — check the live profile for the
+      current figure.
+
+      # Related Concepts
+
+      - [JVTO on Trustpilot](/reviews/trustpilot.md)
+    citations:
+      - https://www.tripadvisor.com/Attraction_Review-g297715-d19983165-Reviews-Java_Volcano_Tour_Operator-Surabaya_East_Java_Java.html
       - https://javavolcano-touroperator.com/why-jvto/reviews
