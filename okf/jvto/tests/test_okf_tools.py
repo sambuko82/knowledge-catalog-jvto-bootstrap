@@ -583,5 +583,41 @@ class OkfToolsTest(unittest.TestCase):
             self.assertIn("organization.md", first)
 
 
+    def test_curated_record_missing_timestamp_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            curation = root / "approved"
+            curation.mkdir()
+            (curation / "x.yaml").write_text(
+                textwrap.dedent(
+                    """\
+                    records:
+                      - id: references/x
+                        type: Reference
+                        title: No Timestamp
+                        description: Missing timestamp on purpose.
+                        tags: [reference]
+                        status: reviewed
+                        visibility: public
+                        body: |
+                          # Body
+                    """
+                ),
+                encoding="utf-8",
+            )
+            bundle = root / "bundle"
+            bundle.mkdir()
+            env = os.environ.copy()
+            env.update({
+                "JVTO_OKF_CURATION_ROOT": str(curation),
+                "JVTO_OKF_BUNDLE_ROOT": str(bundle),
+                "JVTO_OKF_BUILD_ROOT": str(root / "build"),
+            })
+            result = subprocess.run([sys.executable, "scripts/build_bundle.py", "--curated"], cwd=TOOL_ROOT, env=env, capture_output=True, text=True)
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("timestamp", result.stderr + result.stdout)
+            self.assertFalse((bundle / "references" / "x.md").exists())
+
+
 if __name__ == "__main__":
     unittest.main()

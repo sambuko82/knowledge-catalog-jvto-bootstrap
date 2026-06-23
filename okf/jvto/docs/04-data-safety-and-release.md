@@ -26,8 +26,13 @@
 | `generated_pending_review` | script-generated candidate | No |
 | `needs_review` | stale, conflicting, or unsupported | No |
 | `reviewed` | human verified against citations | Yes |
+| `verified` | all material claims verified against public evidence | Yes |
+| `qualified` | released with narrower wording where evidence is limited | Yes |
 | `published` | reviewed and intentionally released | Yes |
 | `deprecated` | retained history, not active | No |
+
+These are the canonical statuses; the machine-checked source of truth is
+`config/publication-rules.yaml` (`known_statuses` and `allowed_statuses_for_release`).
 
 ## Sensitive claims
 
