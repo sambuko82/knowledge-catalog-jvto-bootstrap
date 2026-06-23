@@ -22,7 +22,9 @@ knowledge-catalog/
 1. Read `okf/jvto/docs/00-goal-and-boundaries.md`.
 2. Read `okf/jvto/docs/01-source-to-output-map.md`.
 3. Create a virtual environment in `okf/jvto/` and install dependencies.
-4. Run `python scripts/fetch_snapshots.py`.
+4. Run `python scripts/fetch_snapshots.py` (remote). If an upstream is private
+   or you are offline, use local clones instead:
+   `JVTO_OKF_LOCAL_LLM_WIKI=/path/to/llm-wiki JVTO_OKF_LOCAL_ITINERARY_CORE=/path/to/jvto-itinerary-core python scripts/fetch_snapshots.py --local`.
 5. Run `python scripts/build_bundle.py`.
 6. Review generated package concepts. They are intentionally marked `generated_pending_review`.
 7. Add verified, public-safe concepts using `curation/approved/*.yaml`.

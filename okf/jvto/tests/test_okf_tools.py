@@ -1,10 +1,12 @@
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 import subprocess
 import sys
 import tempfile
+import textwrap
 import unittest
 from pathlib import Path
 
@@ -48,6 +50,179 @@ class OkfToolsTest(unittest.TestCase):
 
             validation = subprocess.run([sys.executable, "scripts/validate_okf.py", "--strict-links"], cwd=TOOL_ROOT, env=env, capture_output=True, text=True)
             self.assertEqual(validation.returncode, 0, validation.stderr)
+
+    def test_local_fetch_copies_allowed_and_blocks_forbidden(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            clone = root / "fake_llm_wiki"
+            allowed_rel = "output/products/package-readiness/_manifest.json"
+            allowed_body = '{"schema_version": "package-readiness/v1.3", "clean": true}'
+            allowed_file = clone / allowed_rel
+            allowed_file.parent.mkdir(parents=True)
+            allowed_file.write_text(allowed_body, encoding="utf-8")
+            forbidden_file = clone / "raw" / "FINANCE" / "rates.json"
+            forbidden_file.parent.mkdir(parents=True)
+            forbidden_file.write_text('{"secret": true}', encoding="utf-8")
+
+            config = root / "upstreams.yaml"
+            config.write_text(
+                textwrap.dedent(
+                    """\
+                    version: 1
+                    upstreams:
+                      llm_wiki:
+                        repo: sambuko82/llm-wiki
+                        ref: master
+                        forbidden_prefixes: [raw/]
+                        files:
+                          - {path: output/products/package-readiness/_manifest.json, required: true}
+                          - {path: raw/FINANCE/rates.json, required: false}
+                    """
+                ),
+                encoding="utf-8",
+            )
+
+            snapshot_root = root / "snapshots"
+            env = os.environ.copy()
+            env.update({
+                "JVTO_OKF_SNAPSHOT_ROOT": str(snapshot_root),
+                "JVTO_OKF_LOCAL_LLM_WIKI": str(clone),
+            })
+            result = subprocess.run(
+                [sys.executable, "scripts/fetch_snapshots.py", "--local", "--config", str(config)],
+                cwd=TOOL_ROOT, env=env, capture_output=True, text=True,
+            )
+            # A forbidden entry in the allow-list is a hard error by design.
+            self.assertEqual(result.returncode, 2, result.stderr)
+
+            snap = snapshot_root / "llm_wiki" / allowed_rel
+            self.assertTrue(snap.exists())
+            self.assertEqual(snap.read_text(encoding="utf-8"), allowed_body)
+            # The forbidden file must never be copied into the snapshot.
+            self.assertFalse((snapshot_root / "llm_wiki" / "raw" / "FINANCE" / "rates.json").exists())
+
+            manifest = json.loads((snapshot_root / "_snapshot_manifest.json").read_text(encoding="utf-8"))
+            self.assertEqual(manifest["mode"], "local")
+            records = {r["path"]: r for r in manifest["sources"]["llm_wiki"]["files"]}
+            self.assertEqual(records[allowed_rel]["status"], "fetched")
+            self.assertEqual(records[allowed_rel]["sha256"], hashlib.sha256(allowed_body.encode()).hexdigest())
+            self.assertEqual(records["raw/FINANCE/rates.json"]["status"], "blocked")
+
+    def test_local_fetch_rejects_symlink_into_forbidden_area(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            clone = root / "clone"
+            secret = clone / "raw" / "FINANCE" / "rates.json"
+            secret.parent.mkdir(parents=True)
+            secret.write_text("SECRET-COGS", encoding="utf-8")
+            # An innocent-looking allow-listed path that is actually a symlink
+            # pointing into the forbidden raw/ area.
+            allowed = clone / "output" / "products" / "package-readiness" / "_manifest.json"
+            allowed.parent.mkdir(parents=True)
+            allowed.symlink_to(secret)
+
+            config = root / "upstreams.yaml"
+            config.write_text(
+                textwrap.dedent(
+                    """\
+                    version: 1
+                    upstreams:
+                      llm_wiki:
+                        repo: sambuko82/llm-wiki
+                        ref: master
+                        forbidden_prefixes: [raw/]
+                        files:
+                          - {path: output/products/package-readiness/_manifest.json, required: true}
+                    """
+                ),
+                encoding="utf-8",
+            )
+
+            snapshot_root = root / "snapshots"
+            env = os.environ.copy()
+            env.update({
+                "JVTO_OKF_SNAPSHOT_ROOT": str(snapshot_root),
+                "JVTO_OKF_LOCAL_LLM_WIKI": str(clone),
+            })
+            result = subprocess.run(
+                [sys.executable, "scripts/fetch_snapshots.py", "--local", "--config", str(config)],
+                cwd=TOOL_ROOT, env=env, capture_output=True, text=True,
+            )
+            self.assertEqual(result.returncode, 2, result.stderr)
+            # The secret target's bytes must never reach the snapshot.
+            snap = snapshot_root / "llm_wiki" / "output" / "products" / "package-readiness" / "_manifest.json"
+            self.assertFalse(snap.exists())
+            manifest = json.loads((snapshot_root / "_snapshot_manifest.json").read_text(encoding="utf-8"))
+            records = {r["path"]: r for r in manifest["sources"]["llm_wiki"]["files"]}
+            self.assertEqual(records["output/products/package-readiness/_manifest.json"]["status"], "blocked")
+
+    def test_local_fetch_happy_path_exits_zero(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            clone = root / "fake_core"
+            rel = "generated/itinerary-intelligence/manifest.json"
+            f = clone / rel
+            f.parent.mkdir(parents=True)
+            f.write_text('{"ok": true}', encoding="utf-8")
+
+            config = root / "upstreams.yaml"
+            config.write_text(
+                textwrap.dedent(
+                    """\
+                    version: 1
+                    upstreams:
+                      itinerary_core:
+                        repo: sambuko82/jvto-itinerary-core
+                        ref: main
+                        forbidden_prefixes: [input/, seed/]
+                        files:
+                          - {path: generated/itinerary-intelligence/manifest.json, required: true}
+                    """
+                ),
+                encoding="utf-8",
+            )
+
+            snapshot_root = root / "snapshots"
+            env = os.environ.copy()
+            env.update({
+                "JVTO_OKF_SNAPSHOT_ROOT": str(snapshot_root),
+                "JVTO_OKF_LOCAL_ITINERARY_CORE": str(clone),
+            })
+            result = subprocess.run(
+                [sys.executable, "scripts/fetch_snapshots.py", "--local", "--config", str(config)],
+                cwd=TOOL_ROOT, env=env, capture_output=True, text=True,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertTrue((snapshot_root / "itinerary_core" / rel).exists())
+
+    def test_local_fetch_missing_root_is_blocking_when_required(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            config = root / "upstreams.yaml"
+            config.write_text(
+                textwrap.dedent(
+                    """\
+                    version: 1
+                    upstreams:
+                      llm_wiki:
+                        repo: sambuko82/llm-wiki
+                        ref: master
+                        files:
+                          - {path: output/products/package-readiness/_manifest.json, required: true}
+                    """
+                ),
+                encoding="utf-8",
+            )
+            snapshot_root = root / "snapshots"
+            env = os.environ.copy()
+            env.update({"JVTO_OKF_SNAPSHOT_ROOT": str(snapshot_root)})
+            # No JVTO_OKF_LOCAL_LLM_WIKI set -> unresolved root -> blocking.
+            env.pop("JVTO_OKF_LOCAL_LLM_WIKI", None)
+            result = subprocess.run(
+                [sys.executable, "scripts/fetch_snapshots.py", "--local", "--config", str(config)],
+                cwd=TOOL_ROOT, env=env, capture_output=True, text=True,
+            )
+            self.assertEqual(result.returncode, 2, result.stdout + result.stderr)
 
 
 if __name__ == "__main__":

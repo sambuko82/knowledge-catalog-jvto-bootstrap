@@ -1,5 +1,16 @@
 # Only these allow-listed files may be fetched. This is a curation boundary,
 # not an attempt to mirror upstream repositories.
+#
+# Two fetch modes (see scripts/fetch_snapshots.py):
+#   remote (default): downloads via raw.githubusercontent.com (upstream must be
+#                     reachable anonymously).
+#   local  (--local): copies from a local clone on disk. Use this when an
+#                     upstream must stay private (e.g. llm-wiki holds non-public
+#                     finance/raw data) or when offline. Point each upstream at
+#                     its clone with the env var JVTO_OKF_LOCAL_<KEY_UPPER>
+#                     (e.g. JVTO_OKF_LOCAL_LLM_WIKI=/path/to/llm-wiki), or set an
+#                     optional `local_path` below. Keep machine-specific absolute
+#                     paths in the env var, not in this committed file.
 version: 1
 snapshot_root: sources/snapshots
 
@@ -9,6 +20,7 @@ upstreams:
     ref: master
     role: curation_source_only
     public_bundle_role: package and policy/trust candidate source
+    # local_path: ../../../../llm-wiki   # optional; prefer JVTO_OKF_LOCAL_LLM_WIKI
     forbidden_prefixes: [raw/, .git/, node_modules/, secrets/]
     files:
       # Automatically usable only after the Package Readiness manifest reports clean=true.
@@ -38,6 +50,7 @@ upstreams:
     ref: main
     role: internal_operational_context_only
     public_bundle_role: never auto-publish; supports route and itinerary fact review
+    # local_path: ../../../../jvto-itinerary-core   # optional; prefer JVTO_OKF_LOCAL_ITINERARY_CORE
     forbidden_prefixes: [input/, seed/, .git/, node_modules/, secrets/]
     files:
       - {path: generated/itinerary-intelligence/manifest.json, mode: operational_context, required: true}

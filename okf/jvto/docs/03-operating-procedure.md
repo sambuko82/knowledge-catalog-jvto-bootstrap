@@ -12,11 +12,29 @@ pip install -e .[dev]
 
 ## 1. Refresh snapshots
 
+Remote mode (default) downloads only the paths allow-listed in
+`config/upstreams.yaml` over `raw.githubusercontent.com`. It writes a local
+manifest containing source URL, ref, fetch time, byte size, SHA-256, and fetch
+errors.
+
 ```bash
 python scripts/fetch_snapshots.py
 ```
 
-The fetcher downloads only the paths allow-listed in `config/upstreams.yaml`. It writes a local manifest containing source URL, ref, fetch time, byte size, SHA-256, and fetch errors.
+Use **local mode** when an upstream must stay private (for example `llm-wiki`,
+which holds non-public `raw/FINANCE/` data) or when working offline. It copies
+the same allow-listed paths from local clones instead of downloading them, and
+records each clone's HEAD commit for provenance. Point each upstream at its
+clone with `JVTO_OKF_LOCAL_<KEY_UPPER>`:
+
+```bash
+export JVTO_OKF_LOCAL_LLM_WIKI=/path/to/llm-wiki
+export JVTO_OKF_LOCAL_ITINERARY_CORE=/path/to/jvto-itinerary-core
+python scripts/fetch_snapshots.py --local
+```
+
+Both modes enforce the same allow-list and `forbidden_prefixes` guard and write
+the same snapshot layout, so the build and validate steps are identical.
 
 ## 2. Generate package candidates
 
