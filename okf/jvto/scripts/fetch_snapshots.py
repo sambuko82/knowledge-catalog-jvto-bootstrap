@@ -41,8 +41,28 @@ def fetch(url: str, timeout: int) -> bytes:
         return response.read()
 
 
-def read_local(base: Path, path: str) -> bytes:
-    return (base / path).read_bytes()
+class LocalBoundaryError(Exception):
+    """A local read would escape the clone root or resolve under a forbidden prefix."""
+
+
+def read_local(base: Path, path: str, forbidden: tuple[str, ...]) -> bytes:
+    """Read an allow-listed file from a local clone, refusing symlink escapes.
+
+    The allow-listed ``path`` already passed the forbidden-prefix check, but on
+    disk it (or a parent directory) could be a symlink pointing at private data
+    such as ``raw/FINANCE/`` or somewhere outside the clone entirely. Resolve the
+    real target and require it to stay inside the clone and outside every
+    forbidden prefix before reading a single byte.
+    """
+    base_resolved = base.resolve()
+    real = (base_resolved / path).resolve()
+    try:
+        rel = real.relative_to(base_resolved).as_posix()
+    except ValueError:
+        raise LocalBoundaryError(f"resolves outside the clone (symlink?): {path} -> {real}")
+    if forbidden and rel.startswith(forbidden):
+        raise LocalBoundaryError(f"resolves under a forbidden prefix: {path} -> {rel}")
+    return real.read_bytes()
 
 
 def local_root_for(name: str, source: dict, config_dir: Path) -> Path | None:
@@ -135,7 +155,7 @@ def main() -> int:
             try:
                 if args.local:
                     origin = str(local_root / path)
-                    data = read_local(local_root, path)  # type: ignore[arg-type]
+                    data = read_local(local_root, path, forbidden)  # type: ignore[arg-type]
                 else:
                     origin = raw_url(str(source["repo"]), str(source["ref"]), path)
                     data = fetch(origin, args.timeout)
@@ -151,6 +171,11 @@ def main() -> int:
                     "sha256": sha256_bytes(data),
                 })
                 print(f"fetched {name}:{path}")
+            except LocalBoundaryError as exc:
+                message = f"{name}:{path}: {exc}"
+                records.append({"path": path, "status": "blocked", "error": message})
+                errors.append(message)
+                print(message, file=sys.stderr)
             except urllib.error.HTTPError as exc:
                 message = f"{name}:{path}: HTTP {exc.code}"
                 records.append({"path": path, "status": "error", "required": required, "error": message})

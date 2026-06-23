@@ -108,6 +108,54 @@ class OkfToolsTest(unittest.TestCase):
             self.assertEqual(records[allowed_rel]["sha256"], hashlib.sha256(allowed_body.encode()).hexdigest())
             self.assertEqual(records["raw/FINANCE/rates.json"]["status"], "blocked")
 
+    def test_local_fetch_rejects_symlink_into_forbidden_area(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            clone = root / "clone"
+            secret = clone / "raw" / "FINANCE" / "rates.json"
+            secret.parent.mkdir(parents=True)
+            secret.write_text("SECRET-COGS", encoding="utf-8")
+            # An innocent-looking allow-listed path that is actually a symlink
+            # pointing into the forbidden raw/ area.
+            allowed = clone / "output" / "products" / "package-readiness" / "_manifest.json"
+            allowed.parent.mkdir(parents=True)
+            allowed.symlink_to(secret)
+
+            config = root / "upstreams.yaml"
+            config.write_text(
+                textwrap.dedent(
+                    """\
+                    version: 1
+                    upstreams:
+                      llm_wiki:
+                        repo: sambuko82/llm-wiki
+                        ref: master
+                        forbidden_prefixes: [raw/]
+                        files:
+                          - {path: output/products/package-readiness/_manifest.json, required: true}
+                    """
+                ),
+                encoding="utf-8",
+            )
+
+            snapshot_root = root / "snapshots"
+            env = os.environ.copy()
+            env.update({
+                "JVTO_OKF_SNAPSHOT_ROOT": str(snapshot_root),
+                "JVTO_OKF_LOCAL_LLM_WIKI": str(clone),
+            })
+            result = subprocess.run(
+                [sys.executable, "scripts/fetch_snapshots.py", "--local", "--config", str(config)],
+                cwd=TOOL_ROOT, env=env, capture_output=True, text=True,
+            )
+            self.assertEqual(result.returncode, 2, result.stderr)
+            # The secret target's bytes must never reach the snapshot.
+            snap = snapshot_root / "llm_wiki" / "output" / "products" / "package-readiness" / "_manifest.json"
+            self.assertFalse(snap.exists())
+            manifest = json.loads((snapshot_root / "_snapshot_manifest.json").read_text(encoding="utf-8"))
+            records = {r["path"]: r for r in manifest["sources"]["llm_wiki"]["files"]}
+            self.assertEqual(records["output/products/package-readiness/_manifest.json"]["status"], "blocked")
+
     def test_local_fetch_happy_path_exits_zero(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
