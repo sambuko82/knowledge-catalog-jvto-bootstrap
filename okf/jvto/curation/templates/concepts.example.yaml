@@ -1,5 +1,6 @@
 # Copy selected records into ../approved/<domain>.yaml after verifying every fact
-# against each cited public source. Only status: reviewed or status: published is exported.
+# against each cited public source. Only release-eligible statuses are exported:
+# reviewed, verified, qualified, or published. Every record must include its own timestamp.
 records:
   - id: destinations/kawah-ijen
     type: Destination

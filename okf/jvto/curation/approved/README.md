@@ -1,3 +1,10 @@
-This directory intentionally contains no records. Add one or more `*.yaml` files using `../templates/concepts.example.yaml` after reviewing facts against public sources.
+This directory holds human-reviewed curation records. Add `*.yaml` files using
+`../templates/concepts.example.yaml` after verifying every fact against the cited
+public sources.
 
-Records marked `draft`, `needs_review`, or `generated_pending_review` are ignored by the curated export step.
+Only records with a release-eligible status are exported by the curated build step:
+`reviewed`, `verified`, `qualified`, or `published`. Records marked `draft`,
+`needs_review`, `generated_pending_review`, or `deprecated` are ignored. Every record
+must carry its own `timestamp` — the build will not generate one.
+
+Current records: `organization.yaml` (the Organization bundle entrypoint).

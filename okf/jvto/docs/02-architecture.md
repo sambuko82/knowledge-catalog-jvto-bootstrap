@@ -23,11 +23,11 @@ knowledge-catalog/
    └─ local only; no public publishing
 
 2. Generate candidates
-   └─ only Tour Package records are automatically drafted when the upstream
-      Package Readiness manifest is clean
+   └─ Tour Package and Policy records are automatically drafted (as
+      generated_pending_review) when their upstream manifest reports clean
 
 3. Curate manually
-   └─ destinations, policies, guides, trust, reviews, organization
+   └─ destinations, guides, trust, reviews, organization
       require public source verification
 
 4. Validate
@@ -43,7 +43,7 @@ knowledge-catalog/
 |---|---|---|
 | Upstream repos | provide candidate data | No |
 | Snapshot fetcher | records reproducible local source state | No |
-| Candidate builder | writes package drafts | No |
+| Candidate builder | writes package and policy drafts | No |
 | Human curator | checks current public sources | Yes |
 | Validator | blocks invalid release | No |
 | Knowledge Catalog / agents | consume concepts | No |

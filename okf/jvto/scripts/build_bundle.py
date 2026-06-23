@@ -165,7 +165,6 @@ def build_packages() -> list[str]:
                 "# Related Concepts",
                 "",
                 "- [All tours](/tours/index.md)",
-                "- [Policies](/policies/index.md)",
                 "",
                 "# Citations",
                 "",
@@ -261,7 +260,6 @@ def build_policies() -> list[str]:
                 "# Related Concepts",
                 "",
                 "- [All policies](/policies/index.md)",
-                "- [Tours](/tours/index.md)",
                 "",
                 "# Citations",
                 "",
@@ -282,13 +280,17 @@ def build_curated() -> list[str]:
             if not isinstance(record, dict) or str(record.get("status")) not in RELEASE_CURATION_STATUSES:
                 continue
             cid = safe_concept_id(str(record.get("id", "")))
+            if not str(record.get("timestamp", "")).strip():
+                raise RuntimeError(
+                    f"curation record '{cid}' in {file.name} is missing a required 'timestamp'; "
+                    f"add an explicit ISO date so repeated builds stay idempotent."
+                )
             body = str(record.get("body", "")).strip()
             citations = record.get("citations", [])
             if citations and "# Citations" not in body:
                 body += "\n\n# Citations\n\n" + "\n".join(f"- {citation}" for citation in citations)
             metadata = {key: value for key, value in record.items() if key not in {"id", "body", "citations"}}
             metadata["id"] = cid
-            metadata.setdefault("timestamp", utc_now())
             metadata.setdefault("visibility", "public")
             write_concept(cid, metadata, body)
             built.append(cid)
@@ -311,9 +313,10 @@ def build_indexes() -> None:
         lines = [heading, ""]
         if is_root:
             lines.extend([
-                "Public, self-contained Open Knowledge Format bundle for JVTO. Start here, then",
-                "open a subdirectory index below; each concept declares its own `type`, `status`,",
-                "`tags`, `timestamp`, and citations so an agent can navigate progressively.",
+                "Public, self-contained Open Knowledge Format bundle for JVTO. Each concept",
+                "declares its own `type`, `status`, `tags`, `timestamp`, and citations so an",
+                "agent can navigate progressively. Sections appear here only once they hold",
+                "concepts.",
                 "",
             ])
         children = [child for child in sorted(folder.iterdir()) if child.is_dir()]

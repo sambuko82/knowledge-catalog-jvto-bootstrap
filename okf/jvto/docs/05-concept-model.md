@@ -5,7 +5,7 @@
 | Organization | `Organization` | Identifies JVTO and bundle entrypoint | manual public official pages |
 | Destination | `Destination` | Visitor context for a physical place | official/public pages |
 | Tour | `Tour Package` | One purchasable public route | controlled automation + review |
-| Policy | `Policy` | Customer-facing rule | current public policy page |
+| Policy | `Policy` | Customer-facing rule | controlled automation + review |
 | Guide | `Travel Guide` | Traveler preparation or planning | public source citations |
 | Claim | `Trust Claim` | Bounded, verifiable assertion | public evidence only |
 | Credential | `Credential` | Public verification path, not raw documents | authority page |
