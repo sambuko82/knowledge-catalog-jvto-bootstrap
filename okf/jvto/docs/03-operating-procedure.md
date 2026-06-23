@@ -79,8 +79,9 @@ python scripts/validate_okf.py --strict-links
 
 This checks frontmatter parsing, required fields (`type`, `title`, `description`,
 `tags`, `timestamp`, `id`, `status`), a known status value, unique concept ids,
-citation presence for material types, forbidden/sensitive terms, and internal
-link resolution.
+a citations section with a public URL for material types, verification metadata
+for `verified`/`qualified` concepts, forbidden/sensitive terms, and internal
+links that resolve and stay inside the bundle.
 
 ## 6. Validate release candidate
 

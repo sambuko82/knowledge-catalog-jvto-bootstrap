@@ -8,8 +8,10 @@ Rules:
   JVTO-07 status is a known lifecycle value
   JVTO-03 (release) status is release-eligible
   JVTO-08 concept id is unique across the bundle
-  JVTO-04 required-citation types carry a "# Citations" section
+  JVTO-04 required-citation types carry a non-empty "# Citations" section with a public URL
+  JVTO-09 verified/qualified concepts carry verification metadata (last_verified or verified_at)
   JVTO-05 no forbidden/sensitive terms
+  JVTO-10 internal Markdown links stay inside the bundle (no escape)
   OKF-03  internal Markdown links resolve
 """
 from __future__ import annotations
@@ -22,13 +24,16 @@ from pathlib import Path
 from common import BUNDLE_ROOT, BUILD_ROOT, RESERVED_FILENAMES, parse_frontmatter, read_yaml, utc_now, write_json
 
 LINK = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
+URL = re.compile(r"https?://[^\s)]+")
+NEXT_HEADING = re.compile(r"\n#\s")
 DEFAULT_REQUIRED_FIELDS = ["type", "title", "description", "tags", "timestamp", "id", "status"]
+VERIFICATION_FIELDS = ("last_verified", "verified_at")
 
 
 def internal_target(source: Path, link: str) -> Path:
     if link.startswith("/"):
         return BUNDLE_ROOT / link.lstrip("/")
-    return (source.parent / link).resolve()
+    return source.parent / link
 
 
 def field_missing(meta: dict, field: str) -> bool:
@@ -40,6 +45,16 @@ def field_missing(meta: dict, field: str) -> bool:
     if isinstance(value, str):
         return not value.strip()
     return False
+
+
+def citations_block(body: str) -> str | None:
+    """Return the text of the '# Citations' section, or None if it is absent."""
+    idx = body.find("# Citations")
+    if idx == -1:
+        return None
+    after = body[idx + len("# Citations"):]
+    nxt = NEXT_HEADING.search(after)
+    return after[: nxt.start()] if nxt else after
 
 
 def main() -> int:
@@ -54,6 +69,7 @@ def main() -> int:
     required_fields = bundle_rules.get("required_fields", DEFAULT_REQUIRED_FIELDS)
     forbidden = [str(item).lower() for item in rules.get("forbidden_public_terms", [])]
     citation_types = set(rules.get("required_citation_types", []))
+    bundle_resolved = BUNDLE_ROOT.resolve()
     errors: list[dict[str, str]] = []
     warnings: list[dict[str, str]] = []
     seen_ids: dict[str, str] = {}
@@ -81,6 +97,8 @@ def main() -> int:
             errors.append({"rule": "JVTO-07", "path": relative, "message": f"Unknown status: {status!r}."})
         if args.release and status not in allowed:
             errors.append({"rule": "JVTO-03", "path": relative, "message": f"Release requires status in {sorted(allowed)}."})
+        if status in {"verified", "qualified"} and all(field_missing(meta, f) for f in VERIFICATION_FIELDS):
+            errors.append({"rule": "JVTO-09", "path": relative, "message": f"Status {status!r} requires verification metadata ({' or '.join(VERIFICATION_FIELDS)})."})
 
         concept_id = str(meta.get("id", "")).strip()
         if concept_id:
@@ -89,8 +107,10 @@ def main() -> int:
             else:
                 seen_ids[concept_id] = relative
 
-        if meta.get("type") in citation_types and "# Citations" not in body:
-            errors.append({"rule": "JVTO-04", "path": relative, "message": "Missing # Citations section."})
+        if meta.get("type") in citation_types:
+            block = citations_block(body)
+            if not block or not URL.search(block):
+                errors.append({"rule": "JVTO-04", "path": relative, "message": "Citations section is missing or has no public URL."})
 
         lower = text.lower()
         for term in forbidden:
@@ -100,7 +120,11 @@ def main() -> int:
         for link in LINK.findall(body):
             if link.startswith(("https://", "http://", "mailto:", "#")):
                 continue
-            if not internal_target(path.resolve(), link).exists():
+            resolved = internal_target(path, link).resolve()
+            if not resolved.is_relative_to(bundle_resolved):
+                errors.append({"rule": "JVTO-10", "path": relative, "message": f"Internal link escapes the bundle: {link}"})
+                continue
+            if not resolved.exists():
                 issue = {"rule": "OKF-03", "path": relative, "message": f"Broken internal link: {link}"}
                 (errors if args.strict_links else warnings).append(issue)
 

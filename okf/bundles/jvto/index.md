@@ -16,7 +16,7 @@ open a subdirectory index below; each concept declares its own `type`, `status`,
 
 ## Concepts
 
-* [Java Volcano Tour Operator (JVTO)](organization.md) - Private, police-led volcano tour operator in East Java specializing in Kawah Ijen, Mount Bromo, Tumpak Sewu, and Madakaripura.
+* [Java Volcano Tour Operator (JVTO)](organization.md) - Private, police-led volcano tour operator based in East Java, running tours to Kawah Ijen, Mount Bromo, Tumpak Sewu, and Madakaripura.
 
 ## Reading Rules
 

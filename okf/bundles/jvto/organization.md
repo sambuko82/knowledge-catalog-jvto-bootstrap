@@ -1,8 +1,8 @@
 ---
 type: Organization
 title: Java Volcano Tour Operator (JVTO)
-description: Private, police-led volcano tour operator in East Java specializing in
-  Kawah Ijen, Mount Bromo, Tumpak Sewu, and Madakaripura.
+description: Private, police-led volcano tour operator based in East Java, running
+  tours to Kawah Ijen, Mount Bromo, Tumpak Sewu, and Madakaripura.
 resource: https://javavolcano-touroperator.com
 tags:
 - organization
@@ -11,28 +11,23 @@ tags:
 - tour-operator
 - volcano
 timestamp: '2026-06-23T00:00:00+07:00'
-status: verified
+status: reviewed
 visibility: public
 last_verified: '2026-06-23'
-verified_at: '2026-06-23T00:00:00+07:00'
-source_status: verified
 id: organization
 ---
 
 # Overview
 
-Java Volcano Tour Operator (JVTO), legally **PT Java Volcano Rendezvous**, is a
-private tour operator based in Bondowoso, East Java, Indonesia. It runs 100%
-private tours — dedicated vehicle, driver, and guide — to Kawah Ijen, Mount
-Bromo, Tumpak Sewu, and Madakaripura. The company was founded by an active
-Tourist Police officer.
+Java Volcano Tour Operator (JVTO) is a private tour operator based in East
+Java, Indonesia. It offers private guided trips to the region's main
+volcanic destinations and presents itself as police-led — founded by a
+serving Tourist Police officer.
 
-# Key Facts
+# What It Offers
 
-- **Legal entity:** PT Java Volcano Rendezvous
-- **Business identifier (NIB):** 1102230032918
-- **Office:** Jl. Khairil Anwar No.102A, Bondowoso, East Java 68214
-- **Products:** Private Kawah Ijen, Mount Bromo, Tumpak Sewu, and Madakaripura tours
+- Private tours to **Kawah Ijen**, **Mount Bromo**, **Tumpak Sewu**, and **Madakaripura**
+- A private format with a dedicated vehicle, driver, and guide per booking
 
 # Related Concepts
 

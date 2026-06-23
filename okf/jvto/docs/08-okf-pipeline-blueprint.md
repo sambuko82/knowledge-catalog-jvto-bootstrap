@@ -32,7 +32,7 @@ itinerary ┤─ fetch_snapshots ─► snapshots ──► build_policies() ─
 | Extract: tours | `build_bundle.py` `build_packages()` | `tours/from-{surabaya,bali}/<slug>.md` | `generated_pending_review` |
 | Extract: policies | `build_bundle.py` `build_policies()` | `policies/<policy_id>.md` | `generated_pending_review` |
 | Curate | `curation/approved/*.yaml` → `build_curated()` | any concept type | `reviewed` / `verified` / `qualified` / `published` |
-| Index + log | `build_bundle.py` `build_indexes()` / `append_log()` | every `index.md`, `log.md` | n/a |
+| Index | `build_bundle.py` `build_indexes()` (release-eligible concepts only) | every `index.md` | n/a |
 | Validate | `scripts/validate_okf.py` | `build/validation-report.json` | gate |
 
 ## Gates (what blocks bad data)
@@ -45,9 +45,11 @@ itinerary ┤─ fetch_snapshots ─► snapshots ──► build_policies() ─
   human curation produces release-eligible statuses.
 - **Validation gate** — `validate_okf.py` enforces, per concept:
   frontmatter parse (OKF-01), required fields (JVTO-06), public visibility
-  (JVTO-02), known status (JVTO-07), unique id (JVTO-08), citations for material
-  types (JVTO-04), no forbidden terms (JVTO-05), resolvable internal links
-  (OKF-03), and — with `--release` — a release-eligible status (JVTO-03).
+  (JVTO-02), known status (JVTO-07), unique id (JVTO-08), a non-empty citations
+  section with a public URL for material types (JVTO-04), verification metadata
+  for `verified`/`qualified` concepts (JVTO-09), no forbidden terms (JVTO-05),
+  internal links that resolve (OKF-03) and stay inside the bundle (JVTO-10),
+  and — with `--release` — a release-eligible status (JVTO-03).
 
 ## Required frontmatter (every concept)
 

@@ -14,7 +14,6 @@ from __future__ import annotations
 
 import argparse
 import re
-from datetime import date
 from pathlib import Path
 from typing import Any
 
@@ -84,6 +83,8 @@ def build_packages() -> list[str]:
         raise RuntimeError("Package Readiness manifest is not clean; candidate generation blocked.")
     if not schema.startswith("package-readiness/v1"):
         raise RuntimeError(f"Unsupported Package Readiness schema: {schema}")
+    # Derive the concept timestamp from the source so repeated builds are idempotent.
+    package_timestamp = str(manifest.get("generated_at") or utc_now())
 
     registry = read_json(snapshot(f"{base}/package-registry.json"))
     itineraries = {str(x.get("package_id")): x for x in read_json(snapshot(f"{base}/package-itineraries.json"))}
@@ -129,7 +130,7 @@ def build_packages() -> list[str]:
             "description": f"Generated public candidate for {row.get('title') or slug}; must be reviewed against the live package page.",
             "resource": resource,
             "tags": tags_for_package(row),
-            "timestamp": utc_now(),
+            "timestamp": package_timestamp,
             "id": cid,
             "status": "generated_pending_review",
             "visibility": "public",
@@ -235,7 +236,7 @@ def build_policies() -> list[str]:
             "description": notes or f"{domain} policy for JVTO customers.",
             "resource": f"{PUBLIC_BASE}/policies",
             "tags": tags,
-            "timestamp": utc_now(),
+            "timestamp": str(generated_at or utc_now()),
             "id": cid,
             "status": "generated_pending_review",
             "visibility": "public",
@@ -325,7 +326,9 @@ def build_indexes() -> None:
             if child.name in {"index.md", "log.md"}:
                 continue
             meta = read_meta(child)
-            if meta:
+            # Only release-eligible concepts are presented as published knowledge.
+            # Drafts/pending-review concepts are excluded from the public index.
+            if meta and meta.get("status") in RELEASE_CURATION_STATUSES:
                 concepts.append((child, meta))
         if concepts:
             lines.extend(["## Concepts", ""])
@@ -346,18 +349,6 @@ def build_indexes() -> None:
         (folder / "index.md").write_text("\n".join(lines), encoding="utf-8")
 
 
-def append_log(packages: list[str], policies: list[str], curated: list[str]) -> None:
-    log_path = BUNDLE_ROOT / "log.md"
-    entry = (
-        f"\n## [{date.today().isoformat()}] build\n"
-        f"* Generated drafts: {len(packages)} package, {len(policies)} policy "
-        f"(`generated_pending_review`).\n"
-        f"* Curated public concepts: {len(curated)}.\n"
-    )
-    with log_path.open("a", encoding="utf-8") as handle:
-        handle.write(entry)
-
-
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--packages", action="store_true")
@@ -372,7 +363,6 @@ def main() -> int:
     curated = build_curated() if args.curated or args.all or default else []
     if args.indexes or args.all or default:
         build_indexes()
-    append_log(packages, policies, curated)
     write_json(
         BUILD_ROOT / "build-report.json",
         {
