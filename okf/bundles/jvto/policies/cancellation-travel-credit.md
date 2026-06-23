@@ -1,9 +1,9 @@
 ---
 type: Policy
 title: Cancellation & Lifetime Travel Credit
-description: How JVTO handles guest cancellations — 100% Lifetime Travel Credit when
-  cancelling 48 hours or more before the tour, instead of cash refunds.
-resource: https://javavolcano-touroperator.com/why-jvto/lifetime-travel-credit
+description: How JVTO handles guest-initiated cancellations — Travel Credit instead
+  of cash refunds, on a 48-hour cut-off.
+resource: https://javavolcano-touroperator.com/policy/booking-payment-cancellation
 tags:
 - policy
 - cancellation
@@ -18,18 +18,22 @@ id: policies/cancellation-travel-credit
 
 # Overview
 
-JVTO does not issue cash refunds for guest-initiated cancellations; it issues
-Lifetime Travel Credit instead.
+For guest-initiated cancellations JVTO uses Travel Credit rather than cash
+refunds. The binding terms are in the published Booking, Payment &
+Cancellation policy; this is a summary — see that page for exact details.
 
 # The Rule
 
-- **48 hours or more before Day 1:** 100% of the eligible booking value
-  becomes Lifetime Travel Credit — no expiry date, and transferable to a
-  named person with written confirmation.
-- **Less than 48 hours before Day 1:** the booking value is forfeited; no
-  travel credit or cash refund is issued.
+- **48 hours or more before Day 1:** payments already made are not refunded
+  in cash, but 100% of what you have paid converts to JVTO Lifetime Travel
+  Credit (no expiry, transferable). One free reschedule may also be
+  requested in this window.
+- **Less than 48 hours before Day 1:** the booking may be forfeited up to
+  100%, and Travel Credit or cash refunds are generally not provided.
 
-Travel Credit can be applied to any JVTO package on any future date.
+Cash refunds are not available for guest-initiated cancellations. Travel
+Credit can be applied to any JVTO package on a future date. Bookings
+normally start with a 20% deposit.
 
 # Related Concepts
 
@@ -37,5 +41,5 @@ Travel Credit can be applied to any JVTO package on any future date.
 
 # Citations
 
-- https://javavolcano-touroperator.com/why-jvto/lifetime-travel-credit
 - https://javavolcano-touroperator.com/policy/booking-payment-cancellation
+- https://javavolcano-touroperator.com/why-jvto/lifetime-travel-credit
