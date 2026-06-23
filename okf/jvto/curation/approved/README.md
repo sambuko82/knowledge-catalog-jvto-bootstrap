@@ -7,4 +7,6 @@ Only records with a release-eligible status are exported by the curated build st
 `needs_review`, `generated_pending_review`, or `deprecated` are ignored. Every record
 must carry its own `timestamp` — the build will not generate one.
 
-Current records: `organization.yaml` (the Organization bundle entrypoint).
+Records are grouped by domain in `<domain>.yaml` files — currently
+`organization.yaml`, `destinations.yaml`, `packages.yaml`, `policies.yaml`,
+`trust.yaml`, and `reviews.yaml`.
