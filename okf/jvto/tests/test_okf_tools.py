@@ -657,6 +657,66 @@ class OkfToolsTest(unittest.TestCase):
             self.assertIn("timestamp", result.stderr + result.stdout)
             self.assertFalse((bundle / "references" / "x.md").exists())
 
+    def test_partner_and_reference_require_citation_url(self) -> None:
+        # Issue #7 guardrail: Partner and Reference are citation-required types,
+        # so a release must reject one whose "# Citations" section carries no
+        # public URL, and accept it once a real URL is present.
+        for concept_type, slug in (("Partner", "partners/p"), ("Reference", "references/r")):
+            with self.subTest(type=concept_type):
+                folder = slug.split("/")[0]
+                frontmatter = f"""\
+                    type: {concept_type}
+                    title: Citation Guardrail
+                    description: A {concept_type} concept used to exercise JVTO-04.
+                    tags: [{folder}]
+                    timestamp: "2026-06-23T00:00:00Z"
+                    id: {slug}
+                    status: reviewed
+                    visibility: public
+                    """
+
+                # No public URL in Citations -> release must fail with JVTO-04.
+                with tempfile.TemporaryDirectory() as temp:
+                    root = Path(temp)
+                    self._write_concept(
+                        root / "bundle" / folder / "c.md",
+                        frontmatter,
+                        """\
+                        # Overview
+                        Body.
+
+                        # Citations
+
+                        - see our website
+                        """,
+                    )
+                    env = os.environ.copy()
+                    env.update({"JVTO_OKF_BUNDLE_ROOT": str(root / "bundle"), "JVTO_OKF_BUILD_ROOT": str(root / "build")})
+                    fail = subprocess.run([sys.executable, "scripts/validate_okf.py", "--release", "--strict-links"], cwd=TOOL_ROOT, env=env, capture_output=True, text=True)
+                    self.assertEqual(fail.returncode, 2, fail.stdout)
+                    self.assertIn("JVTO-04", fail.stderr)
+                    self.assertIn("Citations section is missing or has no public URL", fail.stderr)
+
+                # With a public URL present, the same concept passes release.
+                with tempfile.TemporaryDirectory() as temp:
+                    root = Path(temp)
+                    self._write_concept(
+                        root / "bundle" / folder / "c.md",
+                        frontmatter,
+                        """\
+                        # Overview
+                        Body.
+
+                        # Citations
+
+                        - https://javavolcano-touroperator.com
+                        """,
+                    )
+                    env = os.environ.copy()
+                    env.update({"JVTO_OKF_BUNDLE_ROOT": str(root / "bundle"), "JVTO_OKF_BUILD_ROOT": str(root / "build")})
+                    ok = subprocess.run([sys.executable, "scripts/validate_okf.py", "--release", "--strict-links"], cwd=TOOL_ROOT, env=env, capture_output=True, text=True)
+                    self.assertEqual(ok.returncode, 0, ok.stderr)
+
 
 if __name__ == "__main__":
     unittest.main()

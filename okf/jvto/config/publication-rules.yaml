@@ -52,3 +52,7 @@ required_citation_types:
   - Trust Claim
   - Credential
   - Review Platform
+  # Not yet used in the bundle, but guardrailed up front: any future Partner or
+  # Reference concept must cite a public URL (validate_okf.py JVTO-04).
+  - Partner
+  - Reference
