@@ -1,0 +1,107 @@
+# Verified-curation records for Partner concepts.
+# Wording is deliberately hedged: a governing authority is not a "commercial partner",
+# and self-reported memberships stay first-party until independently confirmed.
+records:
+  - id: trust/partners/bbksda-jatim
+    type: Partner
+    title: BBKSDA Jawa Timur (Ijen Conservation Authority)
+    description: The East Java conservation authority that governs Kawah Ijen access, ticketing, and guide standards; JVTO operates its Ijen tours under its rules.
+    resource: https://bbksdajatim.org
+    tags: [partner, authority, conservation, ijen, bbksda]
+    timestamp: "2026-06-25T00:00:00+07:00"
+    status: reviewed
+    visibility: public
+    last_verified: "2026-06-25"
+    body: |
+      # Overview
+
+      Balai Besar KSDA Jawa Timur (BBKSDA Jawa Timur) is the East Java conservation
+      authority that manages the Kawah Ijen nature-tourism area, including its
+      official online "Ijen Blue Fire" e-ticketing and cashless (QRIS) system and
+      guide-training programmes.
+
+      # Relationship to JVTO
+
+      As with any operator working in the area, JVTO's Ijen tours are subject to
+      BBKSDA Jawa Timur's access, ticketing, and visitor rules. BBKSDA is the
+      governing conservation authority for Ijen, not a commercial partner of JVTO.
+      JVTO states on its own website that it holds "BBKSDA operator clearance" for
+      Bromo and Ijen; that specific clearance is a first-party claim and is not
+      independently listed on BBKSDA's public site.
+
+      # Related Concepts
+
+      - [Kawah Ijen](/destinations/kawah-ijen.md)
+      - [Ijen health screening](/policies/ijen-health-screening.md)
+    citations:
+      - https://bbksdajatim.org
+      - https://bbksdajatim.org/bbksda-jatim-luncurkan-tiket-online-ijen-blue-fire/
+      - https://javavolcano-touroperator.com
+
+  - id: trust/partners/hpwki
+    type: Partner
+    title: HPWKI (Ijen Special-Tourism Association)
+    description: An association of special-interest tourism actors and guides operating around Kawah Ijen; JVTO states it holds membership.
+    resource: https://javavolcano-touroperator.com
+    tags: [partner, association, ijen, guides, hpwki]
+    timestamp: "2026-06-25T00:00:00+07:00"
+    status: reviewed
+    visibility: public
+    last_verified: "2026-06-25"
+    body: |
+      # Overview
+
+      HPWKI (Himpunan Pelaku Wisata Khusus Ijen) is an association of
+      special-interest tourism actors and guides operating in the Kawah Ijen area.
+      Its role as an Ijen guide association is independently corroborated by the
+      East Java Conservation Authority (BBKSDA Jawa Timur), which ran guide training
+      for HPWKI members in May 2024.
+
+      # Relationship to JVTO
+
+      JVTO states on its own website that it holds membership in HPWKI and lists the
+      association registration AHU-0001072.AH.01.07.TAHUN 2024. The membership and
+      that registration number are self-reported by JVTO and have not been
+      independently confirmed via the AHU registry.
+
+      # Related Concepts
+
+      - [Kawah Ijen](/destinations/kawah-ijen.md)
+      - [Verifiable Licenses](/trust/credentials/verifiable-licenses.md)
+    citations:
+      - https://javavolcano-touroperator.com
+      - https://bbksdajatim.org/pelatihan-pemandu-kawah-ijen/
+
+  - id: trust/partners/isic
+    type: Partner
+    title: ISIC (Student Discount Provider)
+    description: JVTO is listed on the ISIC/Totum discount directory as a participating provider (id 259268) offering student-card discounts.
+    resource: https://isic.totum.com/discounts?providerId=259268
+    tags: [partner, isic, student, discount]
+    timestamp: "2026-06-25T00:00:00+07:00"
+    status: reviewed
+    visibility: public
+    last_verified: "2026-06-25"
+    body: |
+      # Overview
+
+      Java Volcano Tour Operator is listed on the ISIC / Totum discount directory as
+      a participating discount provider (provider id 259268), where ISIC
+      student/youth/teacher cardholders can redeem an operator-set discount applied
+      at JVTO checkout.
+
+      # Relationship to JVTO
+
+      JVTO describes itself as collaborating with ISIC to offer student-friendly
+      pricing on selected tours. Availability of specific student packages can vary
+      (the JVTO student page may show no packages at a given time). No discount
+      percentage is asserted here; confirm current terms on the ISIC/Totum listing
+      and at booking.
+
+      # Related Concepts
+
+      - [ISIC Student Policy](/policies/isic-student.md)
+      - [Verifiable Licenses](/trust/credentials/verifiable-licenses.md)
+    citations:
+      - https://isic.totum.com/discounts?providerId=259268
+      - https://javavolcano-touroperator.com

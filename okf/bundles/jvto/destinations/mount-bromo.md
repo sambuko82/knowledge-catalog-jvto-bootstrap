@@ -11,17 +11,19 @@ tags:
 - bromo
 - sunrise
 timestamp: '2026-06-23T00:00:00+07:00'
-status: reviewed
+status: verified
 visibility: public
-last_verified: '2026-06-23'
+last_verified: '2026-06-25'
 id: destinations/mount-bromo
 ---
 
 # Overview
 
 Mount Bromo (summit roughly 2,329 m) sits inside the Tengger caldera in East
-Java, surrounded by a vast volcanic plain known as the "Sea of Sand". It is
-best known for the pre-dawn sunrise panorama over the caldera from elevated
+Java, surrounded by a vast volcanic plain known as the "Sea of Sand". The
+Smithsonian Institution's Global Volcanism Program records Bromo as the
+youngest and only currently active cone of the Tengger Caldera. It is best
+known for the pre-dawn sunrise panorama over the caldera from elevated
 viewpoints, followed by a crossing of the sand sea to the smoking crater.
 
 # Visiting
@@ -40,3 +42,5 @@ viewpoints, followed by a crossing of the sand sea to the smoking crater.
 
 - https://javavolcano-touroperator.com/destinations/mount-bromo
 - https://bbksdajatim.org
+- https://volcano.si.edu/volcano.cfm?vn=263310
+- https://en.wikipedia.org/wiki/Bromo_Tengger_Semeru_National_Park

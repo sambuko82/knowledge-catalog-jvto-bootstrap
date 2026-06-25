@@ -12,19 +12,24 @@ tags:
 - hiking
 - blue-fire
 timestamp: '2026-06-23T00:00:00+07:00'
-status: reviewed
+status: qualified
 visibility: public
-last_verified: '2026-06-23'
+last_verified: '2026-06-25'
 id: destinations/kawah-ijen
 ---
 
 # Overview
 
 Kawah Ijen is an active volcano on the Banyuwangi–Bondowoso border of East
-Java, Indonesia (summit roughly 2,386 m). Its crater holds one of the
-world's largest highly acidic lakes, and the same vents produce the "blue
-fire" — burning sulfuric gas visible before dawn under suitable conditions
-(not guaranteed). An active sulfur-mining operation works inside the crater.
+Java, Indonesia. Its crater rim — the viewpoint reached on the night hike —
+sits at roughly 2,386 m, while the wider Ijen volcanic complex summit is
+higher (about 2,769–2,799 m, depending on the source); the rim figure is
+sometimes mislabelled as the summit. The crater holds one of the world's
+largest highly acidic lakes, and the same vents produce the "blue fire" —
+burning sulfuric gas visible before dawn under suitable conditions (not
+guaranteed). An active sulfur-mining operation works inside the crater. The
+volcano is intermittently active and access can be restricted when the
+official alert level rises.
 
 # Visiting
 
@@ -43,3 +48,5 @@ fire" — burning sulfuric gas visible before dawn under suitable conditions
 
 - https://javavolcano-touroperator.com/destinations/ijen-crater
 - https://bbksdajatim.org
+- https://volcano.si.edu/volcano.cfm?vn=263350
+- https://en.wikipedia.org/wiki/Ijen

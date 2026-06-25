@@ -7,17 +7,22 @@ records:
     resource: https://javavolcano-touroperator.com/destinations/ijen-crater
     tags: [destination, east-java, volcano, ijen, hiking, blue-fire]
     timestamp: "2026-06-23T00:00:00+07:00"
-    status: reviewed
+    status: qualified
     visibility: public
-    last_verified: "2026-06-23"
+    last_verified: "2026-06-25"
     body: |
       # Overview
 
       Kawah Ijen is an active volcano on the Banyuwangi–Bondowoso border of East
-      Java, Indonesia (summit roughly 2,386 m). Its crater holds one of the
-      world's largest highly acidic lakes, and the same vents produce the "blue
-      fire" — burning sulfuric gas visible before dawn under suitable conditions
-      (not guaranteed). An active sulfur-mining operation works inside the crater.
+      Java, Indonesia. Its crater rim — the viewpoint reached on the night hike —
+      sits at roughly 2,386 m, while the wider Ijen volcanic complex summit is
+      higher (about 2,769–2,799 m, depending on the source); the rim figure is
+      sometimes mislabelled as the summit. The crater holds one of the world's
+      largest highly acidic lakes, and the same vents produce the "blue fire" —
+      burning sulfuric gas visible before dawn under suitable conditions (not
+      guaranteed). An active sulfur-mining operation works inside the crater. The
+      volcano is intermittently active and access can be restricted when the
+      official alert level rises.
 
       # Visiting
 
@@ -34,6 +39,8 @@ records:
     citations:
       - https://javavolcano-touroperator.com/destinations/ijen-crater
       - https://bbksdajatim.org
+      - https://volcano.si.edu/volcano.cfm?vn=263350
+      - https://en.wikipedia.org/wiki/Ijen
 
   - id: destinations/mount-bromo
     type: Destination
@@ -42,15 +49,17 @@ records:
     resource: https://javavolcano-touroperator.com/destinations/mount-bromo
     tags: [destination, east-java, volcano, bromo, sunrise]
     timestamp: "2026-06-23T00:00:00+07:00"
-    status: reviewed
+    status: verified
     visibility: public
-    last_verified: "2026-06-23"
+    last_verified: "2026-06-25"
     body: |
       # Overview
 
       Mount Bromo (summit roughly 2,329 m) sits inside the Tengger caldera in East
-      Java, surrounded by a vast volcanic plain known as the "Sea of Sand". It is
-      best known for the pre-dawn sunrise panorama over the caldera from elevated
+      Java, surrounded by a vast volcanic plain known as the "Sea of Sand". The
+      Smithsonian Institution's Global Volcanism Program records Bromo as the
+      youngest and only currently active cone of the Tengger Caldera. It is best
+      known for the pre-dawn sunrise panorama over the caldera from elevated
       viewpoints, followed by a crossing of the sand sea to the smoking crater.
 
       # Visiting
@@ -67,23 +76,26 @@ records:
     citations:
       - https://javavolcano-touroperator.com/destinations/mount-bromo
       - https://bbksdajatim.org
+      - https://volcano.si.edu/volcano.cfm?vn=263310
+      - https://en.wikipedia.org/wiki/Bromo_Tengger_Semeru_National_Park
 
   - id: destinations/tumpak-sewu
     type: Destination
     title: Tumpak Sewu Waterfall
-    description: A wide multi-tiered "curtain" waterfall in Lumajang, East Java, often called "Java's Niagara", with an easy rim viewpoint and an optional steep canyon descent.
+    description: A wide, semicircular "curtain" waterfall in Lumajang, East Java, often called "Java's Niagara", with an easy rim viewpoint and an optional steep canyon descent.
     resource: https://javavolcano-touroperator.com/destinations/tumpak-sewu-waterfall
     tags: [destination, east-java, waterfall, tumpak-sewu]
     timestamp: "2026-06-23T00:00:00+07:00"
     status: reviewed
     visibility: public
-    last_verified: "2026-06-23"
+    last_verified: "2026-06-25"
     body: |
       # Overview
 
-      Tumpak Sewu is a wide, multi-tiered "curtain" waterfall (roughly 120 m high)
-      in Lumajang Regency, East Java, sometimes called "Java's Niagara" for the
-      many streams falling across a curved cliff into a canyon.
+      Tumpak Sewu is a wide, semicircular "curtain" waterfall (a single drop of
+      roughly 120 m across a curved amphitheatre cliff) in Lumajang Regency, East
+      Java, sometimes called "Java's Niagara" for the many parallel streams falling
+      into the canyon below.
 
       # Visiting
 
@@ -99,6 +111,7 @@ records:
       - [All tours](/tours/index.md)
     citations:
       - https://javavolcano-touroperator.com/destinations/tumpak-sewu-waterfall
+      - https://www.journeyera.com/tumpak-sewu-waterfall/
 
   - id: destinations/madakaripura
     type: Destination
@@ -107,16 +120,17 @@ records:
     resource: https://javavolcano-touroperator.com/destinations/madakaripura-waterfall
     tags: [destination, east-java, waterfall, madakaripura]
     timestamp: "2026-06-23T00:00:00+07:00"
-    status: reviewed
+    status: verified
     visibility: public
-    last_verified: "2026-06-23"
+    last_verified: "2026-06-25"
     body: |
       # Overview
 
-      Madakaripura is Java's tallest waterfall, set in a narrow canyon in
-      Probolinggo Regency, East Java (a main drop of roughly 100 m). It is linked
-      historically to Gajah Mada, the 14th-century Majapahit prime minister, and
-      its proximity to Bromo makes it a natural same-day pairing.
+      Madakaripura is, per the Probolinggo Regency tourism office, the tallest
+      waterfall on the island of Java (and second tallest in Indonesia), set in a
+      narrow canyon in Probolinggo Regency, East Java, with a main drop of roughly
+      200 m. It is linked historically to Gajah Mada, the 14th-century Majapahit
+      prime minister, and its proximity to Bromo makes it a natural same-day pairing.
 
       # Visiting
 
@@ -130,6 +144,7 @@ records:
       - [All tours](/tours/index.md)
     citations:
       - https://javavolcano-touroperator.com/destinations/madakaripura-waterfall
+      - https://pariwisata.probolinggokab.go.id/detail/destination/beautiful-madakaripura-waterfall
 
   - id: destinations/papuma-beach
     type: Destination

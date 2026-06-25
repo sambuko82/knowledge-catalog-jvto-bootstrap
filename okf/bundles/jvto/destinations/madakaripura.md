@@ -10,18 +10,19 @@ tags:
 - waterfall
 - madakaripura
 timestamp: '2026-06-23T00:00:00+07:00'
-status: reviewed
+status: verified
 visibility: public
-last_verified: '2026-06-23'
+last_verified: '2026-06-25'
 id: destinations/madakaripura
 ---
 
 # Overview
 
-Madakaripura is Java's tallest waterfall, set in a narrow canyon in
-Probolinggo Regency, East Java (a main drop of roughly 100 m). It is linked
-historically to Gajah Mada, the 14th-century Majapahit prime minister, and
-its proximity to Bromo makes it a natural same-day pairing.
+Madakaripura is, per the Probolinggo Regency tourism office, the tallest
+waterfall on the island of Java (and second tallest in Indonesia), set in a
+narrow canyon in Probolinggo Regency, East Java, with a main drop of roughly
+200 m. It is linked historically to Gajah Mada, the 14th-century Majapahit
+prime minister, and its proximity to Bromo makes it a natural same-day pairing.
 
 # Visiting
 
@@ -37,3 +38,4 @@ its proximity to Bromo makes it a natural same-day pairing.
 # Citations
 
 - https://javavolcano-touroperator.com/destinations/madakaripura-waterfall
+- https://pariwisata.probolinggokab.go.id/detail/destination/beautiful-madakaripura-waterfall
