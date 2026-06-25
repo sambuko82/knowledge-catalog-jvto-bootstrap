@@ -11,6 +11,7 @@ Rules:
   JVTO-04 required-citation types carry a non-empty "# Citations" section with a public URL
   JVTO-09 verified/qualified concepts carry verification metadata (last_verified or verified_at)
   JVTO-05 no forbidden/sensitive terms
+  JVTO-11 no known-stale review counts (config: stale_review_claims)
   JVTO-10 internal Markdown links stay inside the bundle (no escape)
   OKF-03  internal Markdown links resolve
 """
@@ -69,6 +70,7 @@ def main() -> int:
     required_fields = bundle_rules.get("required_fields", DEFAULT_REQUIRED_FIELDS)
     forbidden = [str(item).lower() for item in rules.get("forbidden_public_terms", [])]
     citation_types = set(rules.get("required_citation_types", []))
+    stale_review_claims = [c for c in rules.get("stale_review_claims", []) if isinstance(c, dict)]
     bundle_resolved = BUNDLE_ROOT.resolve()
     errors: list[dict[str, str]] = []
     warnings: list[dict[str, str]] = []
@@ -116,6 +118,23 @@ def main() -> int:
         for term in forbidden:
             if term in lower:
                 errors.append({"rule": "JVTO-05", "path": relative, "message": f"Forbidden term: {term}"})
+
+        for claim in stale_review_claims:
+            platform = str(claim.get("platform", "")).strip().lower()
+            count = str(claim.get("count", "")).strip()
+            if not platform or not count:
+                continue
+            esc_count, esc_platform = re.escape(count), re.escape(platform)
+            window = (
+                rf"\b{esc_count}\b[^\n]{{0,40}}\b{esc_platform}\b"
+                rf"|\b{esc_platform}\b[^\n]{{0,40}}\b{esc_count}\b"
+            )
+            if re.search(window, lower):
+                errors.append({
+                    "rule": "JVTO-11",
+                    "path": relative,
+                    "message": f"Known-stale review value '{count}' near '{platform}'; refresh to the canonical count.",
+                })
 
         for link in LINK.findall(body):
             if link.startswith(("https://", "http://", "mailto:", "#")):

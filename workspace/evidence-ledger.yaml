@@ -1,0 +1,177 @@
+# JVTO OKF Evidence Ledger (corrected against real main 6e1a73c). NOT public.
+# Generated 2026-06-25 with live + adversarial verification (18 verifiers).
+# evidence_class: primary_public|official_first_party|independent_public|supporting_context|
+#                 internal_only|sensitive|stale|conflicting|unreachable|insufficient
+version: 2
+generated_at: "2026-06-25"
+baseline: { main_commit: "6e1a73c", published_concepts: 46, note: "supersedes v1 (built on stale a25fbd1)" }
+
+entries:
+  # ---- NET-NEW (empty families) ----
+  - id: N1
+    concept: references/official-website
+    family: Reference
+    evidence_class: primary_public
+    publication_safety: public
+    confidence: medium
+    recommended_action: recommend_new_reference
+    proposed_status: reviewed
+    human_decision_required: false
+    note: 'first-party domain; hedge "presents itself as"; no registry ties URL to entity'
+  - id: N2
+    concept: references/google-maps-business-listing
+    family: Reference
+    evidence_class: primary_public
+    publication_safety: public
+    confidence: medium
+    recommended_action: recommend_new_reference
+    proposed_status: reviewed
+    human_decision_required: false
+    note: "pointer only; assert NO count (92 vs 123 contested)"
+  - id: N3
+    concept: trust/partners/bbksda-jatim
+    family: Partner
+    evidence_class: independent_public
+    publication_safety: public
+    confidence: high
+    recommended_action: recommend_new_partner
+    proposed_status: reviewed
+    human_decision_required: false
+    note: "frame as GOVERNING AUTHORITY not commercial partner; BBKSDA site does not name JVTO"
+  - id: N4
+    concept: trust/partners/hpwki
+    family: Partner
+    evidence_class: independent_public
+    publication_safety: public
+    confidence: medium
+    recommended_action: recommend_new_partner
+    proposed_status: reviewed
+    human_decision_required: false
+    note: "assoc. corroborated by BBKSDA training (May 2024); JVTO membership + AHU number self-reported"
+  - id: N5
+    concept: trust/partners/isic
+    family: Partner
+    evidence_class: independent_public
+    publication_safety: public
+    confidence: medium
+    recommended_action: recommend_new_partner
+    proposed_status: reviewed
+    human_decision_required: false
+    note: "ISIC/Totum directory provider 259268; no discount % asserted; student page currently empty"
+
+  # ---- EXISTING CONCEPTS: fix / strengthen ----
+  - id: X1
+    concept: destinations/kawah-ijen
+    family: Destination
+    evidence_class: conflicting
+    publication_safety: public
+    confidence: high
+    recommended_action: recommend_update_existing_concept
+    proposed_status: qualified
+    human_decision_required: false
+    note: '2,386 m mislabeled "summit" (= crater rim); summit ~2,769-2,799 m; hedge "active" (PVMBG L1)'
+  - id: X2
+    concept: destinations/mount-bromo
+    family: Destination
+    evidence_class: independent_public
+    publication_safety: public
+    confidence: high
+    recommended_action: recommend_update_existing_concept
+    proposed_status: verified
+    human_decision_required: false
+    note: "Smithsonian GVP vn 263310 (Tengger Caldera active cone, 2,329 m)"
+  - id: X3
+    concept: destinations/madakaripura
+    family: Destination
+    evidence_class: official_first_party
+    publication_safety: public
+    confidence: high
+    recommended_action: recommend_update_existing_concept
+    proposed_status: verified
+    human_decision_required: false
+    note: "Probolinggo Regency tourism office states it IS the tallest waterfall in Java (~200 m)"
+  - id: X4
+    concept: destinations/tumpak-sewu
+    family: Destination
+    evidence_class: independent_public
+    publication_safety: public
+    confidence: medium
+    recommended_action: recommend_update_existing_concept
+    proposed_status: reviewed
+    human_decision_required: false
+    note: '"multi-tier" -> "semicircular curtain (~120 m)"; add journeyera/worldrivers cites'
+  - id: X5
+    concept: trust/credentials/verifiable-licenses
+    family: Credential
+    evidence_class: supporting_context
+    publication_safety: public
+    confidence: medium
+    recommended_action: recommend_update_existing_concept
+    proposed_status: reviewed
+    human_decision_required: true
+    note: '"BBKSDA clearance to operate" overstated (not on BBKSDA site); soften to "states it holds"'
+
+  # ---- VALIDATOR ----
+  - id: V1
+    concept: validate_okf.py
+    family: validator
+    evidence_class: report_only
+    recommended_action: recommend_validator_change
+    secondary_action: recommend_test_change
+    human_decision_required: false
+    note: "JVTO-11 stale review-count guard (92/47) + 2 tests; defensive vs live-homepage 92 drift"
+
+  # ---- DEFER / DO NOT PUBLISH (adversarially refuted) ----
+  - id: D1
+    concept: references/satusehat-practitioner-registry
+    family: Reference
+    evidence_class: unreachable
+    secondary_class: sensitive
+    publication_safety: blocked
+    confidence: high
+    recommended_action: do_not_publish
+    human_decision_required: true
+    note: 'URL login-gated ("public profile not yet available"); name/SIP/expiry not public; PII risk; first single-pass fetch fabricated a record'
+  - id: D2
+    concept: trust/credentials/legal-entity-decree
+    family: Credential
+    evidence_class: insufficient
+    publication_safety: public
+    confidence: high
+    recommended_action: do_not_publish
+    human_decision_required: true
+    note: "AHU-0023020.AH.01.02.TAHUN 2023 not on public site; only HPWKI assoc. AHU is public"
+  - id: D3
+    concept: trust/credentials/business-registration (new)
+    family: Credential
+    evidence_class: supporting_context
+    publication_safety: public
+    confidence: high
+    recommended_action: report_only
+    human_decision_required: false
+    note: "duplicates existing legal-registration; would wrongly attach NIB digits to TDUP"
+  - id: D4
+    concept: reviews/* counts
+    family: Review Platform
+    evidence_class: stale
+    publication_safety: public
+    confidence: high
+    recommended_action: recommend_source_refresh
+    human_decision_required: true
+    note: "bundle already correct (123/51); LIVE HOMEPAGE shows stale Google 92 -> owner fixes site"
+  - id: D5
+    concept: facebook reviews
+    family: Review Platform
+    evidence_class: independent_public
+    publication_safety: public_but_unstable
+    confidence: medium
+    recommended_action: recommend_new_concept
+    human_decision_required: true
+    note: "98%/41 unmodeled; low priority; timestamp required"
+  - id: D6
+    concept: internal cost/rate/crew/margin
+    family: internal
+    evidence_class: internal_only
+    publication_safety: blocked
+    recommended_action: do_not_publish
+    human_decision_required: false

@@ -585,6 +585,72 @@ class OkfToolsTest(unittest.TestCase):
             self.assertEqual(first, second)
             self.assertIn("organization.md", first)
 
+    def test_stale_review_count_is_blocked(self) -> None:
+        # JVTO-11: a concept that pairs a retired review count (e.g. 92 Google,
+        # 47 Trustpilot) with its platform name must fail validation so a stale
+        # figure can never re-enter the public bundle.
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._write_concept(
+                root / "bundle" / "reviews" / "stale.md",
+                """\
+                type: Review Platform
+                title: Stale Reviews
+                description: Reviews concept that cites a retired Google Maps count.
+                tags: [reviews]
+                timestamp: "2026-06-23T00:00:00Z"
+                id: reviews/stale
+                status: reviewed
+                visibility: public
+                """,
+                """\
+                # Overview
+                Rated 4.9 from 92 reviews on Google Maps.
+
+                # Citations
+
+                - https://javavolcano-touroperator.com
+                """,
+            )
+            env = os.environ.copy()
+            env.update({"JVTO_OKF_BUNDLE_ROOT": str(root / "bundle"), "JVTO_OKF_BUILD_ROOT": str(root / "build")})
+            result = subprocess.run([sys.executable, "scripts/validate_okf.py"], cwd=TOOL_ROOT, env=env, capture_output=True, text=True)
+            self.assertEqual(result.returncode, 2, result.stdout)
+            self.assertIn("JVTO-11", result.stderr)
+            self.assertIn("92", result.stderr)
+
+    def test_current_review_count_passes(self) -> None:
+        # A current (non-retired) count near the platform name is fine: JVTO-11
+        # must not be a blanket ban on the platform name or the number.
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._write_concept(
+                root / "bundle" / "reviews" / "ok.md",
+                """\
+                type: Review Platform
+                title: Current Reviews
+                description: Reviews concept that cites a current Google Maps count.
+                tags: [reviews]
+                timestamp: "2026-06-23T00:00:00Z"
+                id: reviews/ok
+                status: reviewed
+                visibility: public
+                last_verified: "2026-06-25"
+                """,
+                """\
+                # Overview
+                Rated 4.9 from 123 reviews on Google Maps.
+
+                # Citations
+
+                - https://www.google.com/maps?cid=1266403973589689021
+                """,
+            )
+            env = os.environ.copy()
+            env.update({"JVTO_OKF_BUNDLE_ROOT": str(root / "bundle"), "JVTO_OKF_BUILD_ROOT": str(root / "build")})
+            result = subprocess.run([sys.executable, "scripts/validate_okf.py"], cwd=TOOL_ROOT, env=env, capture_output=True, text=True)
+            self.assertEqual(result.returncode, 0, result.stderr)
+
 
     def test_package_only_build_links_resolve_without_scaffold(self) -> None:
         # No committed scaffold and no Policy Bundle snapshot: a package-only build's

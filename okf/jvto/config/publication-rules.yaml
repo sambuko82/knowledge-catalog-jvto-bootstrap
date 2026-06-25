@@ -56,3 +56,12 @@ required_citation_types:
   # Reference concept must cite a public URL (validate_okf.py JVTO-04).
   - Partner
   - Reference
+
+# JVTO-11: review counts the knowledge SSOT has explicitly retired as stale. A concept
+# that places one of these counts within ~40 characters of its platform name is rejected,
+# so a known-stale figure (e.g. the value still shown on the live homepage) can never
+# re-enter the public bundle. Current canonical counts live in the upstream wiki
+# trust-signals; add retired values here as they are superseded.
+stale_review_claims:
+  - {platform: google, count: 92}      # superseded by the API-verified canonical (123)
+  - {platform: trustpilot, count: 47}  # superseded by the current canonical (51)
