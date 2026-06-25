@@ -31,10 +31,17 @@ volcano travel.
   Indonesian business number (NIB) 1102230032918, verifiable on the national
   OSS portal.
 
+The environmental-patrol report below is historical press context only; it is
+not evidence of sulfur or gas monitoring, medical screening, or crater-risk
+control.
+
 # Related Concepts
 
 - [Kawah Ijen](/destinations/kawah-ijen.md)
 - [Trustpilot reviews](/reviews/trustpilot.md)
+- [Detik.com Tourist Police Report (2021)](/references/detik-tourist-police-bondowoso-2021.md)
+- [Radar Jember — Polpar & Ijen Geopark (2021)](/references/radar-jember-polpar-ijen-geopark-2021.md)
+- [Radar Jember — Ijen Environmental Patrol (2021)](/references/radar-jember-ijen-environmental-patrol-2021.md)
 
 # Citations
 

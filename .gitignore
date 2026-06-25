@@ -19,3 +19,5 @@ okf/jvto/build/*
 *.zip
 *.key
 .env
+.gstack/
+.superpowers/

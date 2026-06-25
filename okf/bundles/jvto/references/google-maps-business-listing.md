@@ -22,7 +22,7 @@ JVTO maintains a Google Maps business listing, reachable via its Google Maps
 Customer ID (CID): https://www.google.com/maps?cid=1266403973589689021. This
 is a listing pointer only.
 
-# Note on Evidence
+# Claim Boundary
 
 No rating or review count is asserted here. Publicly observable counts drift
 and have been inconsistent across surfaces, so the current figure should be

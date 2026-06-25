@@ -2,6 +2,6 @@
 
 ## Concepts
 
-* [BBKSDA Jawa Timur (Ijen Conservation Authority)](bbksda-jatim.md) - The East Java conservation authority that governs Kawah Ijen access, ticketing, and guide standards; JVTO operates its Ijen tours under its rules.
-* [HPWKI (Ijen Special-Tourism Association)](hpwki.md) - An association of special-interest tourism actors and guides operating around Kawah Ijen; JVTO states it holds membership.
-* [ISIC (Student Discount Provider)](isic.md) - JVTO is listed on the ISIC/Totum discount directory as a participating provider (id 259268) offering student-card discounts.
+* [Dr. Ahmad Irwandanu (Ijen Screening Coordination)](dr-ahmad-irwandanu.md) - JVTO publicly identifies Dr. Ahmad Irwandanu as the doctor for applicable Ijen pre-hike health-screening coordination.
+* [Himpunan Pelaku Wisata Khusus Ijen (HPWKI)](hpwki.md) - JVTO publicly presents HPWKI as a local volcanic-tourism industry and competence context.
+* [INDECON Spotlight Networks](indecon.md) - JVTO is featured in INDECON's public Spotlight Networks directory.

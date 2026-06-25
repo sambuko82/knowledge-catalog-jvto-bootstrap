@@ -19,16 +19,18 @@ id: policies/ijen-health-screening
 
 # Overview
 
-When the East Java conservation authority (BBKSDA) requires it, crater
-access at Kawah Ijen depends on a short health screening. For affected
-tours JVTO coordinates this screening with licensed medical staff, and a
-verified certificate is needed at the crater gate.
+JVTO states that its Ijen night-hike packages include a pre-hike health
+screening. Where current park rules require it, local authorities or
+providers may require or verify screening completion before crater entry,
+depending on the access rules in effect at the time of travel. For affected
+tours JVTO coordinates this screening with licensed medical staff.
 
 Where a guest is advised not to hike, the group can continue while that
 person sits out. See the travel-guide page for the current requirement.
 
 # Related Concepts
 
+- [Dr. Ahmad Irwandanu](/trust/partners/dr-ahmad-irwandanu.md)
 - [Kawah Ijen](/destinations/kawah-ijen.md)
 
 # Citations

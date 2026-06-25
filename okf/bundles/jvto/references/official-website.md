@@ -24,7 +24,7 @@ Tourist Police-led volcano tour operator based in East Java, Indonesia. It is
 the operator's primary public domain, where JVTO publishes its tour packages,
 policies, and contact details directly.
 
-# Note on Evidence
+# Claim Boundary
 
 This is a first-party source: it documents what JVTO states about itself. No
 government or registrar record was located that independently ties this domain

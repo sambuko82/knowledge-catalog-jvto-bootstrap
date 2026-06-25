@@ -18,12 +18,14 @@ id: trust/claims/medical-screening
 
 # Claim
 
-When BBKSDA regulations require it, JVTO arranges a short health screening
-with a licensed doctor for guests hiking the Ijen crater, coordinated as part
-of the tour. A verified certificate is needed for crater access.
+JVTO states that its Ijen night-hike packages include a pre-hike health
+screening. Where current park rules require it, local authorities or providers
+may require or verify screening completion before crater entry, depending on
+the access rules in effect at the time of travel.
 
 # Related Concepts
 
+- [Dr. Ahmad Irwandanu](/trust/partners/dr-ahmad-irwandanu.md)
 - [Ijen Health Screening](/policies/ijen-health-screening.md)
 - [Kawah Ijen](/destinations/kawah-ijen.md)
 

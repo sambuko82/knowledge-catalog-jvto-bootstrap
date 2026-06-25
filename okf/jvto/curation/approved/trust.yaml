@@ -25,10 +25,17 @@ records:
         Indonesian business number (NIB) 1102230032918, verifiable on the national
         OSS portal.
 
+      The environmental-patrol report below is historical press context only; it is
+      not evidence of sulfur or gas monitoring, medical screening, or crater-risk
+      control.
+
       # Related Concepts
 
       - [Kawah Ijen](/destinations/kawah-ijen.md)
       - [Trustpilot reviews](/reviews/trustpilot.md)
+      - [Detik.com Tourist Police Report (2021)](/references/detik-tourist-police-bondowoso-2021.md)
+      - [Radar Jember — Polpar & Ijen Geopark (2021)](/references/radar-jember-polpar-ijen-geopark-2021.md)
+      - [Radar Jember — Ijen Environmental Patrol (2021)](/references/radar-jember-ijen-environmental-patrol-2021.md)
     citations:
       - https://javavolcano-touroperator.com/verify-jvto/police-safety
       - https://javavolcano-touroperator.com/verify-jvto/legal
@@ -55,39 +62,10 @@ records:
 
       # Related Concepts
 
-      - [Verifiable Licenses](/trust/credentials/verifiable-licenses.md)
+      - [Police-Led Operations](/trust/claims/police-led.md)
     citations:
       - https://javavolcano-touroperator.com/verify-jvto/legal
       - https://oss.go.id
-
-  - id: trust/credentials/verifiable-licenses
-    type: Credential
-    title: Verifiable Licenses
-    description: JVTO's tourism and safety credentials — business registration, BBKSDA park clearance, ISIC provider status, and the founder's Tourist Police role — are publicly checkable.
-    resource: https://javavolcano-touroperator.com/verify-jvto/legal
-    tags: [trust, credential, licenses, verification]
-    timestamp: "2026-06-23T00:00:00+07:00"
-    status: reviewed
-    visibility: public
-    last_verified: "2026-06-23"
-    body: |
-      # Credential
-
-      JVTO publishes its credentials so they can be independently verified, including:
-
-      - business registration (NIB 1102230032918) and tourism registration (TDUP);
-      - conservation-authority (BBKSDA) clearance to operate at Bromo and Ijen;
-      - official ISIC provider status (provider ID 259268);
-      - the founder's serving Tourist Police role.
-
-      The public verification page lists these with their checkable sources.
-
-      # Related Concepts
-
-      - [Legal Registration (NIB)](/trust/credentials/legal-registration.md)
-      - [Police-led operations](/trust/claims/police-led.md)
-    citations:
-      - https://javavolcano-touroperator.com/verify-jvto/legal
 
   - id: trust/claims/medical-screening
     type: Trust Claim
@@ -102,12 +80,14 @@ records:
     body: |
       # Claim
 
-      When BBKSDA regulations require it, JVTO arranges a short health screening
-      with a licensed doctor for guests hiking the Ijen crater, coordinated as part
-      of the tour. A verified certificate is needed for crater access.
+      JVTO states that its Ijen night-hike packages include a pre-hike health
+      screening. Where current park rules require it, local authorities or providers
+      may require or verify screening completion before crater entry, depending on
+      the access rules in effect at the time of travel.
 
       # Related Concepts
 
+      - [Dr. Ahmad Irwandanu](/trust/partners/dr-ahmad-irwandanu.md)
       - [Ijen Health Screening](/policies/ijen-health-screening.md)
       - [Kawah Ijen](/destinations/kawah-ijen.md)
     citations:

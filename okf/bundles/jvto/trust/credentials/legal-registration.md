@@ -28,7 +28,7 @@ page, where the identifiers can be cross-checked.
 
 # Related Concepts
 
-- [Verifiable Licenses](/trust/credentials/verifiable-licenses.md)
+- [Police-Led Operations](/trust/claims/police-led.md)
 
 # Citations
 

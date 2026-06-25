@@ -1,107 +1,111 @@
 # Verified-curation records for Partner concepts.
-# Wording is deliberately hedged: a governing authority is not a "commercial partner",
-# and self-reported memberships stay first-party until independently confirmed.
+# Wording is deliberately hedged. Every record carries a "# Claim Boundary" section
+# stating exactly what the evidence supports and what it does not.
+# Statuses set from live verification on 2026-06-25 (see workspace verification report).
 records:
-  - id: trust/partners/bbksda-jatim
+  - id: trust/partners/indecon
     type: Partner
-    title: BBKSDA Jawa Timur (Ijen Conservation Authority)
-    description: The East Java conservation authority that governs Kawah Ijen access, ticketing, and guide standards; JVTO operates its Ijen tours under its rules.
-    resource: https://bbksdajatim.org
-    tags: [partner, authority, conservation, ijen, bbksda]
+    title: INDECON Spotlight Networks
+    description: JVTO is featured in INDECON's public Spotlight Networks directory.
+    resource: https://www.indecon.id/spotlight-networks/java-volcano-tour-operator/
+    tags: [partner, indecon, ecotourism, network-listing]
     timestamp: "2026-06-25T00:00:00+07:00"
-    status: reviewed
+    status: verified
     visibility: public
     last_verified: "2026-06-25"
+    relationship_type: public_network_listing
     body: |
       # Overview
 
-      Balai Besar KSDA Jawa Timur (BBKSDA Jawa Timur) is the East Java conservation
-      authority that manages the Kawah Ijen nature-tourism area, including its
-      official online "Ijen Blue Fire" e-ticketing and cashless (QRIS) system and
-      guide-training programmes.
+      INDECON (Indonesian Ecotourism Network) publicly features Java Volcano Tour
+      Operator in its Spotlight Networks directory. The listing page renders publicly
+      and identifies JVTO by name (verified 2026-06-25).
 
-      # Relationship to JVTO
+      # Claim Boundary
 
-      As with any operator working in the area, JVTO's Ijen tours are subject to
-      BBKSDA Jawa Timur's access, ticketing, and visitor rules. BBKSDA is the
-      governing conservation authority for Ijen, not a commercial partner of JVTO.
-      JVTO states on its own website that it holds "BBKSDA operator clearance" for
-      Bromo and Ijen; that specific clearance is a first-party claim and is not
-      independently listed on BBKSDA's public site.
+      This concept records a public INDECON network feature only. It does not prove
+      certification, audit approval, an exclusive partnership, or a guarantee of any
+      JVTO practice.
 
       # Related Concepts
 
-      - [Kawah Ijen](/destinations/kawah-ijen.md)
-      - [Ijen health screening](/policies/ijen-health-screening.md)
+      - [Organization](/organization.md)
     citations:
-      - https://bbksdajatim.org
-      - https://bbksdajatim.org/bbksda-jatim-luncurkan-tiket-online-ijen-blue-fire/
-      - https://javavolcano-touroperator.com
+      - https://www.indecon.id/spotlight-networks/java-volcano-tour-operator/
 
   - id: trust/partners/hpwki
     type: Partner
-    title: HPWKI (Ijen Special-Tourism Association)
-    description: An association of special-interest tourism actors and guides operating around Kawah Ijen; JVTO states it holds membership.
-    resource: https://javavolcano-touroperator.com
-    tags: [partner, association, ijen, guides, hpwki]
+    title: Himpunan Pelaku Wisata Khusus Ijen (HPWKI)
+    description: JVTO publicly presents HPWKI as a local volcanic-tourism industry and competence context.
+    resource: https://javavolcano-touroperator.com/why-jvto/community-standards
+    tags: [partner, hpwki, ijen, local-guides, volcanic-tourism, guide-competence]
     timestamp: "2026-06-25T00:00:00+07:00"
     status: reviewed
     visibility: public
     last_verified: "2026-06-25"
+    relationship_type: association-membership-context
     body: |
-      # Overview
+      # Relationship
 
-      HPWKI (Himpunan Pelaku Wisata Khusus Ijen) is an association of
-      special-interest tourism actors and guides operating in the Kawah Ijen area.
-      Its role as an Ijen guide association is independently corroborated by the
-      East Java Conservation Authority (BBKSDA Jawa Timur), which ran guide training
-      for HPWKI members in May 2024.
+      JVTO publicly presents HPWKI (Himpunan Pelaku Wisata Khusus Ijen) as a partner
+      and as local industry context for volcanic-tourism competence around Ijen. A
+      public JVTO-hosted approval artifact is retained as supporting first-party
+      documentation.
 
-      # Relationship to JVTO
+      BBKSDA Jawa Timur separately documented training conducted with HPWKI for Ijen
+      guides in May 2024, covering conservation, guide responsibilities, Search and
+      Rescue, and emergency first aid.
 
-      JVTO states on its own website that it holds membership in HPWKI and lists the
-      association registration AHU-0001072.AH.01.07.TAHUN 2024. The membership and
-      that registration number are self-reported by JVTO and have not been
-      independently confirmed via the AHU registry.
+      # Claim Boundary
+
+      This concept records JVTO's publicly presented HPWKI relationship and the
+      broader professional-training context of HPWKI. The membership and the cited
+      association registration number are self-reported by JVTO and not independently
+      confirmed via the AHU registry. It does not establish that BBKSDA directly
+      certified JVTO, that every JVTO guide attended the training, or that all JVTO
+      operations are approved by BBKSDA.
 
       # Related Concepts
 
+      - [BBKSDA Ijen Guide Training 2024](/references/bbksda-ijen-guide-training-2024.md)
       - [Kawah Ijen](/destinations/kawah-ijen.md)
-      - [Verifiable Licenses](/trust/credentials/verifiable-licenses.md)
     citations:
-      - https://javavolcano-touroperator.com
+      - https://javavolcano-touroperator.com/why-jvto/community-standards
+      - https://javavolcano-touroperator.com/legal/HPWKI-approval-preview.png
+      - https://ahu.go.id/sabh/perkumpulan/qrcode/?kode=NjAyNDAxMjczNTEwMTM2MV8wXzA3IEZlYnJ1YXJpIDIwMjRfMjcgSmFudWFyeSAyMDI0
       - https://bbksdajatim.org/pelatihan-pemandu-kawah-ijen/
 
-  - id: trust/partners/isic
+  - id: trust/partners/dr-ahmad-irwandanu
     type: Partner
-    title: ISIC (Student Discount Provider)
-    description: JVTO is listed on the ISIC/Totum discount directory as a participating provider (id 259268) offering student-card discounts.
-    resource: https://isic.totum.com/discounts?providerId=259268
-    tags: [partner, isic, student, discount]
+    title: Dr. Ahmad Irwandanu (Ijen Screening Coordination)
+    description: JVTO publicly identifies Dr. Ahmad Irwandanu as the doctor for applicable Ijen pre-hike health-screening coordination.
+    resource: https://javavolcano-touroperator.com/why-jvto/the-jvto-difference
+    tags: [partner, medical, ijen, health-screening, coordination]
     timestamp: "2026-06-25T00:00:00+07:00"
     status: reviewed
     visibility: public
     last_verified: "2026-06-25"
+    relationship_type: ijen-health-screening-coordination
     body: |
-      # Overview
+      # Relationship
 
-      Java Volcano Tour Operator is listed on the ISIC / Totum discount directory as
-      a participating discount provider (provider id 259268), where ISIC
-      student/youth/teacher cardholders can redeem an operator-set discount applied
-      at JVTO checkout.
+      On its own public pages, JVTO identifies Dr. Ahmad Irwandanu as the doctor
+      associated with its Ijen pre-hike health-screening coordination, where such
+      screening applies.
 
-      # Relationship to JVTO
+      # Claim Boundary
 
-      JVTO describes itself as collaborating with ISIC to offer student-friendly
-      pricing on selected tours. Availability of specific student packages can vary
-      (the JVTO student page may show no packages at a given time). No discount
-      percentage is asserted here; confirm current terms on the ISIC/Totum listing
-      and at booking.
+      This concept records an operating relationship for applicable Ijen screening
+      coordination, as stated on JVTO's own pages. It does not confirm the doctor's
+      current license validity, expiry date, private-practice details, or a universal
+      screening requirement. A public Credential concept will be created only if and
+      when a directly public official registry record supports the exact
+      professional-status claim.
 
       # Related Concepts
 
-      - [ISIC Student Policy](/policies/isic-student.md)
-      - [Verifiable Licenses](/trust/credentials/verifiable-licenses.md)
+      - [Ijen Health Screening](/policies/ijen-health-screening.md)
+      - [Kawah Ijen](/destinations/kawah-ijen.md)
     citations:
-      - https://isic.totum.com/discounts?providerId=259268
-      - https://javavolcano-touroperator.com
+      - https://javavolcano-touroperator.com/why-jvto/the-jvto-difference
+      - https://javavolcano-touroperator.com/travel-guide/ijen-health-screening
