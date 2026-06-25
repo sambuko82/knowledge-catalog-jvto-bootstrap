@@ -1,8 +1,8 @@
 ---
 type: Policy
 title: ISIC Student Pricing
-description: JVTO is an official ISIC provider offering student pricing on selected
-  packages to verified ISIC cardholders.
+description: JVTO states it offers ISIC student pricing on selected packages (provider
+  id 259268); the public ISIC listing was not independently confirmed to display JVTO.
 resource: https://javavolcano-touroperator.com/isic/student-package
 tags:
 - policy
@@ -10,17 +10,20 @@ tags:
 - student
 - pricing
 timestamp: '2026-06-23T00:00:00+07:00'
-status: reviewed
+status: qualified
 visibility: public
-last_verified: '2026-06-23'
+last_verified: '2026-06-25'
 id: policies/isic-student
 ---
 
 # Overview
 
-JVTO is an official ISIC (International Student Identity Card) provider —
-provider ID 259268, listed publicly on the ISIC website. Verified ISIC
-cardholders can receive student pricing on selected packages.
+JVTO states that it offers ISIC (International Student Identity Card) student
+pricing on selected packages, referencing ISIC provider id 259268. As of the
+last check the public ISIC provider listing did not visibly display JVTO's name
+(the directory page is region/JS-gated), so the provider status is shown here
+as stated by JVTO rather than independently confirmed. Verified ISIC cardholders
+should confirm current terms at booking.
 
 # Related Concepts
 
