@@ -1,0 +1,382 @@
+# JVTO OKF Evidence Ledger — machine-readable claim/source index.
+# Generated 2026-06-25 by cross-repo audit. NOT a public artifact.
+# evidence_class: primary_public|official_first_party|independent_public|supporting_context|
+#                 internal_only|sensitive|stale|conflicting|unreachable|insufficient
+# action: report_only|recommend_evidence_research|recommend_source_refresh|recommend_new_reference|
+#         recommend_new_partner|recommend_new_concept|recommend_update_existing_concept|
+#         recommend_taxonomy_change|recommend_validator_change|recommend_test_change|do_not_publish
+version: 1
+generated_at: "2026-06-25"
+run:
+  live_verification: true
+  repos:
+    - {name: knowledge-catalog-jvto-bootstrap, path: "d:/knowledge-catalog-jvto-bootstrap"}
+    - {name: llm-wiki, path: "e:/Users/JAVA VOLCANO/llm-wiki"}
+    - {name: jvto-itinerary-core, path: "d:/jvto-itinerary-core"}
+
+entries:
+  - id: E1
+    claim: "Medical-screening doctor SIP valid 2025-12-11..2031-01-13; practises RS Bhayangkara Bondowoso"
+    source_repo: live_web
+    source: "https://satusehat.kemkes.go.id/sdmk/nakes/QN00001073380217"
+    family: Credential
+    evidence_class: official_first_party
+    publication_safety: public
+    confidence: high
+    live_verified: true
+    recommended_action: recommend_new_concept
+    proposed_status: verified
+    human_decision_required: false
+
+  - id: E2
+    claim: "Business registration NIB / TDUP 1102230032918"
+    source_repo: bootstrap+live_web
+    source: "homepage; OSS/TDUP issuer (oss.go.id lookup pending)"
+    family: Credential
+    evidence_class: official_first_party
+    publication_safety: public
+    confidence: medium
+    live_verified: partial
+    recommended_action: recommend_new_concept
+    proposed_status: reviewed
+    human_decision_required: false
+
+  - id: E3
+    claim: "Legal entity decree AHU-0023020.AH.01.02.TAHUN 2023"
+    source_repo: llm_wiki+live_web
+    source: "homepage; ahu.go.id portal (pending)"
+    family: Credential
+    evidence_class: official_first_party
+    publication_safety: public
+    confidence: medium
+    live_verified: pending
+    recommended_action: recommend_new_concept
+    proposed_status: reviewed
+    human_decision_required: false
+
+  - id: E4
+    claim: "HPWKI association membership AHU-0001072.AH.01.07.TAHUN 2024"
+    source_repo: llm_wiki+live_web
+    source: "homepage (live shows ID); ahu.go.id"
+    family: Partner
+    evidence_class: official_first_party
+    publication_safety: public
+    confidence: medium
+    live_verified: partial
+    recommended_action: recommend_new_partner
+    proposed_status: reviewed
+    human_decision_required: false
+
+  - id: E5
+    claim: "BBKSDA Jatim is the governing conservation authority for Ijen (ticketing, guide oversight)"
+    source_repo: itinerary_core+live_web
+    source: "bbksdajatim.org; tiket.bbksdajatim.org"
+    family: Partner
+    evidence_class: independent_public
+    publication_safety: public
+    confidence: high
+    live_verified: pending
+    recommended_action: recommend_new_partner
+    proposed_status: reviewed
+    human_decision_required: false
+
+  - id: E6
+    claim: "ISIC discount-provider relationship (provider 259268)"
+    source_repo: llm_wiki+live_web
+    source: "isic.org; homepage"
+    family: Partner
+    evidence_class: independent_public
+    publication_safety: public
+    confidence: medium
+    live_verified: pending
+    recommended_action: recommend_new_partner
+    proposed_status: reviewed
+    human_decision_required: false
+
+  - id: E7
+    claim: "Founder is a serving Tourist Police officer (police-led positioning)"
+    source_repo: llm_wiki+live_web
+    source: "homepage; corroborated by E1 (doctor at police hospital)"
+    family: Trust Claim
+    evidence_class: primary_public
+    corroboration: independent_public
+    publication_safety: public
+    confidence: medium
+    live_verified: partial
+    recommended_action: recommend_new_concept
+    proposed_status: reviewed
+    wording_guard: 'use "presents itself as / described as" until press URLs (E21) captured'
+    human_decision_required: false
+
+  - id: E8
+    claim: "Private-tours-only model (dedicated vehicle/driver/guide per booking)"
+    source_repo: live_web
+    source: "homepage"
+    family: Trust Claim
+    evidence_class: primary_public
+    publication_safety: public
+    confidence: medium
+    live_verified: true
+    recommended_action: recommend_new_concept
+    proposed_status: reviewed
+    human_decision_required: false
+
+  - id: E9
+    claim: "All-inclusive pricing (no hidden costs)"
+    source_repo: live_web
+    source: "homepage /policy/booking-payment-cancellation"
+    family: Trust Claim
+    evidence_class: primary_public
+    publication_safety: public
+    confidence: medium
+    live_verified: true
+    recommended_action: recommend_new_concept
+    proposed_status: reviewed
+    human_decision_required: false
+
+  - id: E10
+    claim: "Kawah Ijen: pre-dawn blue-fire hike, sulfuric crater lake"
+    source_repo: live_web+itinerary_core
+    source: "homepage; BBKSDA"
+    family: Destination
+    evidence_class: primary_public
+    publication_safety: public
+    confidence: medium
+    live_verified: true
+    recommended_action: recommend_new_concept
+    proposed_status: reviewed
+    wording_guard: "elevation conflicting (summit ~2769m vs rim ~2386m) — qualify, do not assert single number"
+    human_decision_required: false
+
+  - id: E11
+    claim: "Mount Bromo: sunrise via 4WD jeep, within Bromo Tengger Semeru NP"
+    source_repo: live_web+itinerary_core
+    source: "homepage; park authority"
+    family: Destination
+    evidence_class: primary_public
+    publication_safety: public
+    confidence: medium
+    live_verified: true
+    recommended_action: recommend_new_concept
+    proposed_status: reviewed
+    human_decision_required: false
+
+  - id: E12
+    claim: "Tumpak Sewu: multi-tier curtain waterfall, guided canyon descent"
+    source_repo: live_web+itinerary_core
+    source: "homepage; itinerary-core destination profile"
+    family: Destination
+    evidence_class: primary_public
+    publication_safety: public
+    confidence: medium
+    live_verified: true
+    recommended_action: recommend_new_concept
+    proposed_status: reviewed
+    human_decision_required: false
+
+  - id: E13
+    claim: "Madakaripura: canyon waterfall, described as among the tallest in Java"
+    source_repo: live_web
+    source: "homepage"
+    family: Destination
+    evidence_class: primary_public
+    publication_safety: public
+    confidence: low_medium
+    live_verified: true
+    recommended_action: recommend_new_concept
+    proposed_status: reviewed
+    wording_guard: 'use "described as among the tallest" not a bare superlative'
+    human_decision_required: false
+
+  - id: E14
+    claim: "Cancellation: 48h cutoff; lifetime Travel Credit instead of cash refund"
+    source_repo: live_web+llm_wiki
+    source: "homepage /policy/booking-payment-cancellation"
+    family: Policy
+    evidence_class: primary_public
+    publication_safety: public
+    confidence: medium
+    live_verified: true
+    recommended_action: recommend_new_concept
+    proposed_status: reviewed
+    human_decision_required: false
+
+  - id: E15
+    claim: "Ijen health screening required where current park rules require it"
+    source_repo: live_web+itinerary_core
+    source: "homepage /travel-guide/ijen-health-screening; BBKSDA"
+    family: Policy
+    evidence_class: primary_public
+    publication_safety: public
+    confidence: medium
+    live_verified: true
+    recommended_action: recommend_new_concept
+    proposed_status: qualified
+    wording_guard: "conditional wording (skill checklist item 6) — not an absolute medical claim"
+    human_decision_required: false
+
+  - id: E16
+    claim: "Official website is the canonical first-party source"
+    source_repo: live_web
+    source: "https://javavolcano-touroperator.com"
+    family: Reference
+    evidence_class: primary_public
+    publication_safety: public
+    confidence: high
+    live_verified: true
+    recommended_action: recommend_new_reference
+    proposed_status: reviewed
+    human_decision_required: false
+
+  - id: E17
+    claim: "Satusehat practitioner registry record (govt health authority)"
+    source_repo: live_web
+    source: "https://satusehat.kemkes.go.id/sdmk/nakes/QN00001073380217"
+    family: Reference
+    evidence_class: official_first_party
+    publication_safety: public
+    confidence: high
+    live_verified: true
+    recommended_action: recommend_new_reference
+    proposed_status: verified
+    human_decision_required: false
+
+  - id: E18
+    claim: "Google Maps business listing pointer (CID 1266403973589689021) — listing only, no count"
+    source_repo: llm_wiki+live_web
+    source: "https://www.google.com/maps?cid=1266403973589689021"
+    family: Reference
+    evidence_class: primary_public
+    publication_safety: public
+    confidence: medium
+    live_verified: pending
+    recommended_action: recommend_new_reference
+    proposed_status: reviewed
+    human_decision_required: false
+
+  # ---- DEFERRED / EXCLUDED ----
+  - id: E19
+    claim: "Review counts/ratings across platforms"
+    source_repo: llm_wiki+bootstrap+live_web
+    source: "raw SSOT(47/92); trust-signals.md(51/123); homepage(51/92); platforms bot-blocked"
+    family: Review Platform
+    evidence_class: conflicting
+    secondary_class: stale
+    publication_safety: public_but_unstable
+    confidence: low
+    live_verified: blocked_403
+    recommended_action: do_not_publish
+    follow_up: recommend_source_refresh
+    human_decision_required: true
+    note: "C-01. Reconcile live Google count via /browse before any Review concept."
+
+  - id: E20
+    claim: "Tour Package concepts"
+    source_repo: llm_wiki+itinerary_core
+    source: "SSOT 15; homepage 16; itinerary-core 7-8"
+    family: Tour Package
+    evidence_class: conflicting
+    publication_safety: public
+    confidence: low
+    live_verified: partial
+    recommended_action: do_not_publish
+    follow_up: recommend_evidence_research
+    human_decision_required: true
+    note: "C-02. Pin canonical package set + slugs before publishing tours (Phase 4)."
+
+  - id: E21
+    claim: "Press coverage of founder's police role"
+    source_repo: llm_wiki
+    source: "Detik 2021-03-14 (guessed URL 404); Radar Jember 2021-03-24/05-27; BBKSDA 2024-05-24"
+    family: Reference
+    evidence_class: independent_public
+    secondary_class: insufficient
+    publication_safety: public
+    confidence: medium
+    live_verified: not_found_404
+    recommended_action: recommend_evidence_research
+    human_decision_required: true
+    note: "Capture exact canonical URLs, then publish as press References to de-circularize E7."
+
+  - id: E22
+    claim: "INDECON membership; Ditpamobvit as partner"
+    source_repo: llm_wiki+live_web
+    source: "homepage; indecon.id"
+    family: Partner
+    evidence_class: supporting_context
+    publication_safety: public
+    confidence: low
+    live_verified: pending
+    recommended_action: report_only
+    human_decision_required: true
+
+  - id: E23
+    claim: "Facebook reviews (98% recommend / 41 reviews)"
+    source_repo: live_web
+    source: "https://www.facebook.com/javavolcanotours/"
+    family: Review Platform
+    evidence_class: independent_public
+    publication_safety: public_but_unstable
+    confidence: medium
+    live_verified: snippet
+    recommended_action: recommend_new_concept
+    human_decision_required: true
+    note: "Unmodeled review surface; timestamp required; bundle with E19 reconciliation."
+
+  - id: E24
+    claim: "Entrance fees (Bromo 255k PP36/2024; Ijen 100k/150k BBKSDA; QRIS-only 2025-01-31)"
+    source_repo: itinerary_core
+    source: "12-recommendation-rules.json; bromo.html (Kemenparekraf)"
+    family: Policy
+    evidence_class: official_first_party
+    publication_safety: public_but_dynamic
+    confidence: high
+    live_verified: false
+    recommended_action: report_only
+    human_decision_required: true
+    note: "Publishable but dynamic; keep out of v1; if used timestamp + cite regulation; 220k/320k are stale."
+
+  - id: E25
+    claim: "Internal cost/rate/crew/margin data"
+    source_repo: itinerary_core+llm_wiki
+    source: "10-cost-components.json (customer_visible=false); raw/FINANCE/"
+    family: internal
+    evidence_class: internal_only
+    publication_safety: blocked
+    confidence: high
+    live_verified: na
+    recommended_action: do_not_publish
+    human_decision_required: false
+    note: "Hard safety boundary — rates/margins/crew pay never public."
+
+  # ---- TOOLING / TAXONOMY ----
+  - id: V1
+    claim: "Validator lacks stale review-count denylist (92/47 pass today)"
+    source_repo: bootstrap
+    source: "okf/jvto/scripts/validate_okf.py"
+    family: validator
+    evidence_class: report_only
+    recommended_action: recommend_validator_change
+    secondary_action: recommend_test_change
+    human_decision_required: false
+    note: "Implemented this audit as JVTO-11 + unit test."
+
+  - id: V2
+    claim: "Partner/Reference types not in required_citation_types"
+    source_repo: bootstrap
+    source: "okf/jvto/config/publication-rules.yaml"
+    family: taxonomy
+    evidence_class: report_only
+    recommended_action: recommend_taxonomy_change
+    secondary_action: recommend_validator_change
+    human_decision_required: true
+    note: "Partner asserts a real relationship but is not required to cite."
+
+  - id: V3
+    claim: "trust/ family collapses claims+credentials+partners with one upstream candidate"
+    source_repo: bootstrap
+    source: "okf/jvto/config/concept-map.yaml"
+    family: taxonomy
+    evidence_class: report_only
+    recommended_action: recommend_taxonomy_change
+    human_decision_required: true

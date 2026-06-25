@@ -52,3 +52,12 @@ required_citation_types:
   - Trust Claim
   - Credential
   - Review Platform
+
+# JVTO-11: review counts the knowledge SSOT has explicitly retired as stale. A concept
+# that places one of these counts within ~40 characters of its platform name is rejected,
+# so a known-stale figure can never re-enter the public bundle. Source of truth for the
+# current canonical counts is the upstream wiki trust-signals; add retired values here as
+# they are superseded.
+stale_review_claims:
+  - {platform: google, count: 92}      # superseded by the API-verified canonical count
+  - {platform: trustpilot, count: 47}  # superseded; current canonical is higher
