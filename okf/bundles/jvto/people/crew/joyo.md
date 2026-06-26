@@ -23,6 +23,10 @@ review_mentions:
   google: 4
   trustpilot: 15
   tripadvisor: 0
+review_themes:
+- experienced
+- safe-driving
+- positive-energy
 source_refs:
 - source_id: SRC-CREW-REGISTRY
   repo: sambuko82/llm-wiki

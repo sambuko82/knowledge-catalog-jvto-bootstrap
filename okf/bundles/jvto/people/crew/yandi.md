@@ -24,6 +24,10 @@ review_mentions:
   google: 9
   trustpilot: 7
   tripadvisor: 0
+review_themes:
+- reliability
+- pre-day-briefings
+- attentiveness
 source_refs:
 - source_id: SRC-CREW-REGISTRY
   repo: sambuko82/llm-wiki

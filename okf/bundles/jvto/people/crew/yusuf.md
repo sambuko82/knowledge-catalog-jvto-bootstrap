@@ -22,6 +22,10 @@ review_mentions:
   google: 7
   trustpilot: 0
   tripadvisor: 0
+review_themes:
+- punctuality
+- smooth-driving
+- professionalism
 source_refs:
 - source_id: SRC-CREW-REGISTRY
   repo: sambuko82/llm-wiki

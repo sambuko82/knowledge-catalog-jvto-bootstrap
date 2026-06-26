@@ -25,6 +25,11 @@ review_mentions:
   google: 8
   trustpilot: 3
   tripadvisor: 1
+review_themes:
+- photography
+- astrophotography
+- professionalism
+- english-fluency
 source_refs:
 - source_id: SRC-CREW-REGISTRY
   repo: sambuko82/llm-wiki

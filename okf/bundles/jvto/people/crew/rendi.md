@@ -26,6 +26,11 @@ review_mentions:
   google: 14
   trustpilot: 7
   tripadvisor: 1
+review_themes:
+- crater-safety
+- photography
+- professionalism
+- advance-briefings
 source_refs:
 - source_id: SRC-CREW-REGISTRY
   repo: sambuko82/llm-wiki

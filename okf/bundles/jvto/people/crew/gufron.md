@@ -25,6 +25,11 @@ review_mentions:
   google: 16
   trustpilot: 3
   tripadvisor: 1
+review_themes:
+- hike-safety
+- photography
+- geology
+- encouragement
 source_refs:
 - source_id: SRC-CREW-REGISTRY
   repo: sambuko82/llm-wiki

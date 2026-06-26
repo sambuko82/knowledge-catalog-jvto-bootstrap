@@ -22,6 +22,10 @@ review_mentions:
   google: 2
   trustpilot: 1
   tripadvisor: 0
+review_themes:
+- caring
+- cultural-sharing
+- recommendations
 source_refs:
 - source_id: SRC-CREW-REGISTRY
   repo: sambuko82/llm-wiki

@@ -25,6 +25,11 @@ review_mentions:
   google: 9
   trustpilot: 13
   tripadvisor: 1
+review_themes:
+- ijen-expertise
+- safety-first
+- equipment-readiness
+- logistics
 source_refs:
 - source_id: SRC-CREW-REGISTRY
   repo: sambuko82/llm-wiki
