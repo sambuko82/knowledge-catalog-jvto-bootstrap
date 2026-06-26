@@ -3,7 +3,6 @@ bundle:
   id: jvto
   visibility: public
   okf_version: "0.1"
-  canonical_public_base_url: https://javavolcano-touroperator.com
   # Every concept must carry these fields (validate_okf.py JVTO-06).
   required_fields: [type, title, description, tags, timestamp, id, status]
   # The full lifecycle vocabulary (validate_okf.py JVTO-07 rejects anything else).

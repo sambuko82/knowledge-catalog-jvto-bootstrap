@@ -33,7 +33,6 @@ from common import (
     write_yaml_frontmatter,
 )
 
-PUBLIC_BASE = "https://javavolcano-touroperator.com"
 RELEASE_CURATION_STATUSES = {"reviewed", "verified", "qualified", "published"}
 WIKILINK = re.compile(r"\[\[([^\]|]+)(?:\|([^\]]+))?\]\]")
 
@@ -101,8 +100,6 @@ def build_packages() -> list[str]:
             continue
 
         cid = safe_concept_id(f"tours/from-{origin}/{slug}")
-        public_path = str(row.get("public_url") or "").strip()
-        resource = f"{PUBLIC_BASE}{public_path}" if public_path.startswith("/") else public_path
         itinerary = itineraries.get(package_id, {})
         titles = [
             str(day.get("title")).strip()
