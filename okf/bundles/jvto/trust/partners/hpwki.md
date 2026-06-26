@@ -55,3 +55,4 @@ attended the training, or that all JVTO operations are approved by BBKSDA.
 
 - https://ahu.go.id/sabh/perkumpulan/qrcode/?kode=NjAyNDAxMjczNTEwMTM2MV8wXzA3IEZlYnJ1YXJpIDIwMjRfMjcgSmFudWFyeSAyMDI0
 - https://bbksdajatim.org/pelatihan-pemandu-kawah-ijen/
+- https://javavolcano-touroperator.com/legal/HPWKI-approval-preview.png

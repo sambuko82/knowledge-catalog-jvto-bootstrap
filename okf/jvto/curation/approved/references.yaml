@@ -50,6 +50,7 @@ records:
     '
   citations:
   - https://bbksdajatim.org/pelatihan-pemandu-kawah-ijen/
+  - https://javavolcano-touroperator.com/press/screenshot-bbksda-pelatihan-pemandu-kawah-ijen.png
   source_refs:
   - source_id: SRC-PRESS-COVERAGE
     repo: sambuko82/llm-wiki
@@ -182,6 +183,8 @@ records:
   citations:
   - https://www.amazon.de/-/en/Stefan-Loose-Reisef%C3%BChrer-Indonesien-Reiseatlas/dp/3770167651
   - https://javavolcano-touroperator.com/history/stefan-loose-ijen-bondowoso-page.png
+  - https://javavolcano-touroperator.com/history/stefan_loose_crop_enh.jpg
+  - https://javavolcano-touroperator.com/history/guest-visit-ijen-bondowoso-homestay-stefan-loose-inspired.jpg
   source_refs:
   - source_id: SRC-PRESS-COVERAGE
     repo: sambuko82/llm-wiki
@@ -238,6 +241,7 @@ records:
     '
   citations:
   - https://news.detik.com/berita-jawa-timur/d-5492690/suka-duka-polisi-pariwisata-bondowoso-tegakkan-prokes-sambil-lawan-dingin
+  - https://javavolcano-touroperator.com/press/screencapture-news-detik-berita-jawa-timur-d-5492690-suka-duka-polisi-pariwisata-bondowoso-tegakkan-prokes-sambil-lawan-dingin-2026-01-14-02_48_41.png
   source_refs:
   - source_id: SRC-PRESS-COVERAGE
     repo: sambuko82/llm-wiki
@@ -288,6 +292,7 @@ records:
     '
   citations:
   - https://radarjember.jawapos.com/bondowoso/791102263/polpar-dibentuk-untuk-mendukung-ijen-geopark
+  - https://javavolcano-touroperator.com/press/screenshot-radarjember.jawapos.com-polpar-dibentuk-untuk-mendukung-ijen-geopark.png
   source_refs:
   - source_id: SRC-PRESS-COVERAGE
     repo: sambuko82/llm-wiki

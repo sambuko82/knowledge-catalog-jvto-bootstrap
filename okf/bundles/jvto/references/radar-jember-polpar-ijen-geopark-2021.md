@@ -43,3 +43,4 @@ It does not establish a current role or a JVTO endorsement.
 # Citations
 
 - https://radarjember.jawapos.com/bondowoso/791102263/polpar-dibentuk-untuk-mendukung-ijen-geopark
+- https://javavolcano-touroperator.com/press/screenshot-radarjember.jawapos.com-polpar-dibentuk-untuk-mendukung-ijen-geopark.png

@@ -47,3 +47,4 @@ JVTO employee attended, or that every JVTO guide completed the training.
 # Citations
 
 - https://bbksdajatim.org/pelatihan-pemandu-kawah-ijen/
+- https://javavolcano-touroperator.com/press/screenshot-bbksda-pelatihan-pemandu-kawah-ijen.png
