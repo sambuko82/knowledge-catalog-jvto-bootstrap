@@ -19,7 +19,7 @@ activity:
     finish mid-morning.
   effort: moderate
   access_requirements:
-  - national-park / BBKSDA ticket
+  - TNBTS (Bromo Tengger Semeru National Park) ticket
   - 4WD jeep for the sand sea
 source_refs:
 - source_id: SRC-DEST
