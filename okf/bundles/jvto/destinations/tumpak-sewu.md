@@ -4,7 +4,6 @@ title: Tumpak Sewu Waterfall
 description: A wide multi-tiered "curtain" waterfall in Lumajang, East Java, often
   called "Java's Niagara", with an easy rim viewpoint and an optional steep canyon
   descent.
-resource: https://javavolcano-touroperator.com/destinations/tumpak-sewu-waterfall
 tags:
 - destination
 - east-java
@@ -14,6 +13,12 @@ timestamp: '2026-06-23T00:00:00+07:00'
 status: reviewed
 visibility: public
 last_verified: '2026-06-23'
+source_refs:
+- source_id: SRC-DEST
+  repo: sambuko82/llm-wiki
+  path: wiki/destinations/tumpak-sewu.md
+  source_class: operational_direct
+  captured_at: '2026-05-26'
 id: destinations/tumpak-sewu
 ---
 
@@ -35,7 +40,3 @@ many streams falling across a curved cliff into a canyon.
 # Related Concepts
 
 - [All tours](/tours/index.md)
-
-# Citations
-
-- https://javavolcano-touroperator.com/destinations/tumpak-sewu-waterfall

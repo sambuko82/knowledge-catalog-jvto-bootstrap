@@ -3,7 +3,6 @@ type: Travel Guide
 title: Best Time to Visit East Java
 description: When to go — the dry season gives the clearest conditions for East Java's
   volcanoes and waterfalls; the wet season brings cloud and muddier access.
-resource: https://javavolcano-touroperator.com/travel-guide/best-time-to-visit
 tags:
 - travel-guide
 - planning
@@ -13,6 +12,12 @@ timestamp: '2026-06-23T00:00:00+07:00'
 status: reviewed
 visibility: public
 last_verified: '2026-06-23'
+source_refs:
+- source_id: SRC-OPS-FACTS
+  repo: sambuko82/llm-wiki
+  path: wiki/website/operational-facts.md
+  source_class: operational_direct
+  captured_at: '2026-05-26'
 id: travel-guides/best-time-to-visit
 ---
 
@@ -28,7 +33,3 @@ for month-by-month detail.
 
 - [Destinations](/destinations/index.md)
 - [Weather, Volcanic Activity & Closures](/travel-guides/weather-and-closures.md)
-
-# Citations
-
-- https://javavolcano-touroperator.com/travel-guide/best-time-to-visit

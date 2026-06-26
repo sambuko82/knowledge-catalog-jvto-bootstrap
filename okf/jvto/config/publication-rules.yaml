@@ -95,3 +95,10 @@ source_ref_required_fields:
 stale_review_claims:
   - {platform: google, count: 92}      # superseded by the API-verified canonical (123)
   - {platform: trustpilot, count: 47}  # superseded by the current canonical (51/56)
+
+# JVTO-18: the JVTO website is not a valid source/citation/resource. Concepts anchor on
+# source_refs (wiki/itinerary-core) + external primary URLs instead. Matched by URL host,
+# so an external URL whose path merely contains the brand (e.g. a Trustpilot review URL)
+# is not affected.
+forbidden_citation_domains:
+  - javavolcano-touroperator.com

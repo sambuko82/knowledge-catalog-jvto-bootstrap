@@ -3,7 +3,6 @@ type: Person
 title: Fauzi — JVTO Guide
 description: JVTO guide, HPWKI KTA-credentialed (KTA-G-2024-010), named in guest reviews
   on Google and Trustpilot.
-resource: https://javavolcano-touroperator.com/why-jvto/our-team
 tags:
 - person
 - crew
@@ -55,7 +54,3 @@ Named in 6 guest reviews (Google 5 · Trustpilot 1):
 - [HPWKI](/trust/partners/hpwki.md)
 - [BBKSDA Ijen Guide Training 2024](/references/bbksda-ijen-guide-training-2024.md)
 - [JVTO on Trustpilot](/reviews/trustpilot.md)
-
-# Citations
-
-- https://javavolcano-touroperator.com/why-jvto/our-team

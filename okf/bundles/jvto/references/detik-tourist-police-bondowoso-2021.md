@@ -16,6 +16,12 @@ status: verified
 visibility: public
 last_verified: '2026-06-26'
 reference_kind: press-report
+source_refs:
+- source_id: SRC-PRESS-COVERAGE
+  repo: sambuko82/llm-wiki
+  path: wiki/credentials/press-coverage.md
+  source_class: operational_direct
+  captured_at: '2026-05-26'
 id: references/detik-tourist-police-bondowoso-2021
 ---
 

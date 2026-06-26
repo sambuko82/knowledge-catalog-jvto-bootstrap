@@ -59,4 +59,3 @@ Google reviews name JVTO crew individually — most-mentioned: Gufron (16), Fred
 # Citations
 
 - https://www.google.com/maps?cid=1266403973589689021
-- https://javavolcano-touroperator.com/why-jvto/reviews

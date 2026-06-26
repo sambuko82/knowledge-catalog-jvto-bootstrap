@@ -24,6 +24,7 @@ repos:
       - wiki/destinations/
       - wiki/credentials/
       - wiki/sources/
+      - wiki/website/                       # content-production wiki source (brand voice, faq, operational-facts) — distinct from generated output/website/
       - output/products/package-readiness/
     deny:
       - output/website/                    # presentation layer — never a source

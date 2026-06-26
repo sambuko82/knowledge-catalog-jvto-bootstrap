@@ -20,6 +20,8 @@ Rules:
   JVTO-15 a Tour Package identity (package_key) must originate once
   JVTO-16 Review Platform observations, when present, carry current rating/count/as_of/source
   JVTO-17 concept type is a known concept type (config: known_concept_types)
+  JVTO-04 (relaxed) required-citation types carry a non-website public URL OR a source_refs anchor
+  JVTO-18 the JVTO website host is not allowed as a citation/resource (config: forbidden_citation_domains)
 """
 from __future__ import annotations
 
@@ -88,6 +90,18 @@ def main() -> int:
         for name, spec in (scope.get("repos", {}) or {}).items()
     }
     derived_classes = set((scope.get("rules", {}) or {}).get("derived_source_classes", []))
+    # R4: the JVTO website is not a valid source/citation/resource (matched by host, so an
+    # external URL that merely contains the brand in its path — e.g. a trustpilot review URL —
+    # is NOT flagged).
+    forbidden_domains = [str(d).strip().lower() for d in rules.get("forbidden_citation_domains", []) if str(d).strip()]
+    website_re = re.compile(
+        r"https?://(?:[a-z0-9-]+\.)*(?:" + "|".join(re.escape(d) for d in forbidden_domains) + r")(?:[/:?]|$)",
+        re.I,
+    ) if forbidden_domains else None
+
+    def is_website(value: str) -> bool:
+        return bool(website_re.search(str(value))) if website_re else False
+
     bundle_resolved = BUNDLE_ROOT.resolve()
     errors: list[dict[str, str]] = []
     warnings: list[dict[str, str]] = []
@@ -129,8 +143,20 @@ def main() -> int:
 
         if meta.get("type") in citation_types:
             block = citations_block(body)
-            if not block or not URL.search(block):
-                errors.append({"rule": "JVTO-04", "path": relative, "message": "Citations section is missing or has no public URL."})
+            urls = URL.findall(block) if block else []
+            non_website_urls = [u for u in urls if not is_website(u)]
+            has_source_refs = isinstance(meta.get("source_refs"), list) and len(meta.get("source_refs")) > 0
+            if not non_website_urls and not has_source_refs:
+                errors.append({"rule": "JVTO-04", "path": relative, "message": "Required-citation type needs a non-website public-URL citation or a source_refs anchor."})
+
+        # JVTO-18: the JVTO website is not a valid citation/resource source.
+        if website_re:
+            if is_website(meta.get("resource", "")):
+                errors.append({"rule": "JVTO-18", "path": relative, "message": f"JVTO website not allowed as resource: {meta.get('resource')}"})
+            cblock = citations_block(body)
+            for u in (URL.findall(cblock) if cblock else []):
+                if is_website(u):
+                    errors.append({"rule": "JVTO-18", "path": relative, "message": f"JVTO website not allowed as citation: {u}"})
 
         lower = text.lower()
         for term in forbidden:

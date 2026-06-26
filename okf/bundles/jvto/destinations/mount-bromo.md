@@ -3,7 +3,6 @@ type: Destination
 title: Mount Bromo
 description: Active East Java volcano in the Tengger caldera "Sea of Sand", famous
   for its pre-dawn sunrise panorama reached by 4WD jeep.
-resource: https://javavolcano-touroperator.com/destinations/mount-bromo
 tags:
 - destination
 - east-java
@@ -14,6 +13,17 @@ timestamp: '2026-06-23T00:00:00+07:00'
 status: reviewed
 visibility: public
 last_verified: '2026-06-23'
+source_refs:
+- source_id: SRC-DEST
+  repo: sambuko82/llm-wiki
+  path: wiki/destinations/mount-bromo.md
+  source_class: operational_direct
+  captured_at: '2026-05-26'
+- source_id: SRC-BBKSDA
+  repo: sambuko82/llm-wiki
+  path: wiki/destinations/mount-bromo.md
+  source_class: public_authority
+  captured_at: '2026-05-26'
 id: destinations/mount-bromo
 ---
 
@@ -38,5 +48,4 @@ viewpoints, followed by a crossing of the sand sea to the smoking crater.
 
 # Citations
 
-- https://javavolcano-touroperator.com/destinations/mount-bromo
 - https://bbksdajatim.org

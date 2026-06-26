@@ -1,592 +1,1005 @@
-# Verified-curation records for Person concepts (R3 extraction).
-# People only — founder, doctor, and the 14-member field crew. Public-safe attributes
-# only (role, KTA credential state, languages, strengths, guest-review mentions). Pay,
-# rates, assignment volume, personal social accounts, and DB self-quotes are NOT
-# published — they stay source-resident. Every record anchors on `source_refs`.
 records:
-  # ---------------------------------------------------------------- Founder + doctor
-  - id: people/agung-sambuko
-    type: Person
-    title: Agung "Mr. Sam" Sambuko — Founder
-    description: JVTO's founder, a serving officer of the Indonesian Tourist Police, around whom the company's police-led safety model is built.
-    resource: https://javavolcano-touroperator.com/verify-jvto/police-safety
-    tags: [person, founder, police-led, tourist-police]
-    timestamp: "2026-06-26T00:00:00+07:00"
-    status: reviewed
-    visibility: public
-    roles: [founder]
-    source_refs:
-      - {source_id: SRC-WIKI-AGUNG, repo: sambuko82/llm-wiki, path: wiki/people/agung-sambuko.md, source_class: operational_direct, captured_at: "2026-05-26"}
-      - {source_id: SRC-SSOT, repo: sambuko82/llm-wiki, path: raw/JVTO_FINAL_CLEAN_SSOT.json, source_class: direct_external_export, captured_at: "2026-05"}
-    body: |
-      # Person
-
-      Agung Sambuko ("Mr. Sam") founded JVTO and is a serving officer of the Indonesian
-      Tourist Police. JVTO's "police-led" safety model and crew-accountability chain are
-      built around his role; independent press named "Bripka Agung Sambuko" in
-      tourist-police duties in 2021.
-
-      # Related Concepts
-
-      - [Police-Led Operations](/trust/claims/police-led.md)
-      - [Detik.com Tourist Police Report (2021)](/references/detik-tourist-police-bondowoso-2021.md)
-      - [Java Volcano Tour Operator (JVTO)](/organization.md)
-    citations:
-      - https://javavolcano-touroperator.com/verify-jvto/police-safety
-
-  - id: people/dr-ahmad-irwandanu
-    type: Person
-    title: Dr. Ahmad Irwandanu
-    description: The doctor JVTO identifies for its applicable Ijen pre-hike health-screening coordination.
-    resource: https://javavolcano-touroperator.com/why-jvto/the-jvto-difference
-    tags: [person, doctor, ijen, health-screening, medical]
-    timestamp: "2026-06-26T00:00:00+07:00"
-    status: reviewed
-    visibility: public
-    roles: [doctor]
-    relationship_type: ijen_health_screening_coordination
-    source_refs:
-      - {source_id: SRC-WIKI-DRAHMAD, repo: sambuko82/llm-wiki, path: wiki/people/dr-ahmad-irwandanu.md, source_class: operational_direct, captured_at: "2026-05-26"}
-    body: |
-      # Person
-
-      JVTO identifies Dr. Ahmad Irwandanu as the doctor associated with its applicable
-      Ijen pre-hike health-screening coordination. JVTO states that Ijen night-hike
-      packages include a pre-hike health screening as part of the route logistics.
-
-      # Claim Boundary
-
-      This records an operating relationship for applicable Ijen screening coordination
-      only. It does not confirm current medical-license validity, expiry date,
-      private-practice details, or a universal screening requirement. Whether screening
-      is required or verified before crater access depends on current local authority or
-      provider rules.
-
-      # Related Concepts
-
-      - [Ijen Medical Screening Included](/trust/claims/medical-screening.md)
-      - [Ijen Health Screening](/policies/ijen-health-screening.md)
-      - [Kawah Ijen](/destinations/kawah-ijen.md)
-    citations:
-      - https://javavolcano-touroperator.com/why-jvto/the-jvto-difference
-      - https://javavolcano-touroperator.com/travel-guide/ijen-health-screening
-
-  # ---------------------------------------------------------------- Guides (7)
-  - id: people/crew/anjas
-    type: Person
-    title: Anjas — JVTO Guide
-    description: JVTO mountain guide, HPWKI KTA-credentialed (KTA-G-2024-006), named in guest reviews across three platforms.
-    resource: https://javavolcano-touroperator.com/why-jvto/our-team
-    tags: [person, crew, guide, ijen, hpwki-kta]
-    timestamp: "2026-06-26T00:00:00+07:00"
-    status: reviewed
-    visibility: public
-    roles: [guide]
-    crew_status: active
-    credential_state: confirmed
-    kta: KTA-G-2024-006
-    languages: [English, Indonesian]
-    review_mentions: {total: 12, google: 8, trustpilot: 3, tripadvisor: 1}
-    source_refs:
-      - {source_id: SRC-CREW-REGISTRY, repo: sambuko82/llm-wiki, path: wiki/people/crew-registry.md, source_class: operational_direct, captured_at: "2026-05-26"}
-      - {source_id: SRC-DB-EXPORT, repo: sambuko82/llm-wiki, path: raw/db_export_raw.json, source_class: direct_external_export, captured_at: "2026-05", locator: crew_members}
-    body: |
-      # Person
-
-      Anjas is a JVTO mountain guide, HPWKI KTA-credentialed (KTA-G-2024-006). Strengths:
-      volcanic and astrophotography, volcanic-terrain navigation, and East Java cultural
-      heritage.
-
-      # Review Mentions
-
-      Named in 12 guest reviews (Google 8 · Trustpilot 3 · TripAdvisor 1):
-      - "Stunningly beautiful nature and super well coordinated by our tour guide Anjas." — Milo Parrott, Google 2026-05
-      - "I don't think there is a better tour guide anywhere than Anjas." — John Joyce, Trustpilot 2025-12
-
-      # Related Concepts
-
-      - [HPWKI](/trust/partners/hpwki.md)
-      - [BBKSDA Ijen Guide Training 2024](/references/bbksda-ijen-guide-training-2024.md)
-      - [JVTO on Trustpilot](/reviews/trustpilot.md)
-    citations:
-      - https://javavolcano-touroperator.com/why-jvto/our-team
-      - https://javavolcano-touroperator.com/uploads/1771428583288-513992233-kta_anjas.jpg
-
-  - id: people/crew/taufik
-    type: Person
-    title: Taufik — JVTO Guide
-    description: JVTO guide, HPWKI KTA-credentialed (KTA-G-2024-007), named in guest reviews across three platforms.
-    resource: https://javavolcano-touroperator.com/why-jvto/our-team
-    tags: [person, crew, guide, ijen, hpwki-kta]
-    timestamp: "2026-06-26T00:00:00+07:00"
-    status: reviewed
-    visibility: public
-    roles: [guide]
-    crew_status: active
-    credential_state: confirmed
-    kta: KTA-G-2024-007
-    languages: [English, Indonesian]
-    review_mentions: {total: 8, google: 4, trustpilot: 3, tripadvisor: 1}
-    source_refs:
-      - {source_id: SRC-CREW-REGISTRY, repo: sambuko82/llm-wiki, path: wiki/people/crew-registry.md, source_class: operational_direct, captured_at: "2026-05-26"}
-      - {source_id: SRC-DB-EXPORT, repo: sambuko82/llm-wiki, path: raw/db_export_raw.json, source_class: direct_external_export, captured_at: "2026-05", locator: crew_members}
-    body: |
-      # Person
-
-      Taufik is a JVTO guide, HPWKI KTA-credentialed (KTA-G-2024-007). Strengths:
-      logistics, safety-first briefings, punctuality, and guest photography.
-
-      # Review Mentions
-
-      Named in 8 guest reviews (Google 4 · Trustpilot 3 · TripAdvisor 1):
-      - "Taufik ensure all briefing is always done prior to all trips." — Kevin Foo, Trustpilot 2026-03
-
-      # Related Concepts
-
-      - [HPWKI](/trust/partners/hpwki.md)
-      - [BBKSDA Ijen Guide Training 2024](/references/bbksda-ijen-guide-training-2024.md)
-      - [JVTO on Trustpilot](/reviews/trustpilot.md)
-    citations:
-      - https://javavolcano-touroperator.com/why-jvto/our-team
-      - https://javavolcano-touroperator.com/uploads/1771428704448-911506028-kta_taufik.jpg
-
-  - id: people/crew/rendi
-    type: Person
-    title: Rendi — JVTO Guide
-    description: JVTO guide, HPWKI KTA-credentialed (KTA-G-2024-002), with expedition-safety and crater-rescue strengths; named in guest reviews across three platforms.
-    resource: https://javavolcano-touroperator.com/why-jvto/our-team
-    tags: [person, crew, guide, ijen, hpwki-kta, safety]
-    timestamp: "2026-06-26T00:00:00+07:00"
-    status: reviewed
-    visibility: public
-    roles: [guide]
-    crew_status: active
-    credential_state: confirmed
-    kta: KTA-G-2024-002
-    languages: [English, Indonesian]
-    review_mentions: {total: 22, google: 14, trustpilot: 7, tripadvisor: 1}
-    source_refs:
-      - {source_id: SRC-CREW-REGISTRY, repo: sambuko82/llm-wiki, path: wiki/people/crew-registry.md, source_class: operational_direct, captured_at: "2026-05-26"}
-      - {source_id: SRC-DB-EXPORT, repo: sambuko82/llm-wiki, path: raw/db_export_raw.json, source_class: direct_external_export, captured_at: "2026-05", locator: crew_members}
-    body: |
-      # Person
-
-      Rendi is a JVTO guide, HPWKI KTA-credentialed (KTA-G-2024-002). Strengths:
-      expedition safety, mountain rescue, first aid, and Ijen crater safety procedures.
-
-      # Review Mentions
-
-      Named in 22 guest reviews (Google 14 · Trustpilot 7 · TripAdvisor 1):
-      - "When we went down the steep crater, he held our hands to prevent us from falling." — Wing Shan Lui, Trustpilot 2025-08
-      - "Rendi were the best, super professionals and thoughtful, took care of every detail." — samia amrani, Google 2025-10
-
-      # Related Concepts
-
-      - [HPWKI](/trust/partners/hpwki.md)
-      - [BBKSDA Ijen Guide Training 2024](/references/bbksda-ijen-guide-training-2024.md)
-      - [JVTO on Trustpilot](/reviews/trustpilot.md)
-    citations:
-      - https://javavolcano-touroperator.com/why-jvto/our-team
-      - https://javavolcano-touroperator.com/uploads/1771428760524-516116110-kta_rendi.jpg
-
-  - id: people/crew/kiki
-    type: Person
-    title: Kiki — JVTO Guide
-    description: JVTO guide, HPWKI KTA-credentialed (KTA-G-2024-008), named in guest reviews on Google and Trustpilot.
-    resource: https://javavolcano-touroperator.com/why-jvto/our-team
-    tags: [person, crew, guide, ijen, hpwki-kta]
-    timestamp: "2026-06-26T00:00:00+07:00"
-    status: reviewed
-    visibility: public
-    roles: [guide]
-    crew_status: active
-    credential_state: confirmed
-    kta: KTA-G-2024-008
-    languages: [English, Indonesian]
-    review_mentions: {total: 17, google: 12, trustpilot: 5, tripadvisor: 0}
-    source_refs:
-      - {source_id: SRC-CREW-REGISTRY, repo: sambuko82/llm-wiki, path: wiki/people/crew-registry.md, source_class: operational_direct, captured_at: "2026-05-26"}
-      - {source_id: SRC-DB-EXPORT, repo: sambuko82/llm-wiki, path: raw/db_export_raw.json, source_class: direct_external_export, captured_at: "2026-05", locator: crew_members}
-    body: |
-      # Person
-
-      Kiki is a JVTO guide, HPWKI KTA-credentialed (KTA-G-2024-008). Strengths: guest
-      photography, logistics, and safety-first delivery.
-
-      # Review Mentions
-
-      Named in 17 guest reviews (Google 12 · Trustpilot 5):
-      - "Kiki is an amazing photographer — every shot turned out beautifully!" — waraporn arssanawitaya, Google 2026-04
-
-      # Related Concepts
-
-      - [HPWKI](/trust/partners/hpwki.md)
-      - [BBKSDA Ijen Guide Training 2024](/references/bbksda-ijen-guide-training-2024.md)
-      - [JVTO on Trustpilot](/reviews/trustpilot.md)
-    citations:
-      - https://javavolcano-touroperator.com/why-jvto/our-team
-      - https://javavolcano-touroperator.com/uploads/1771428489070-55145932-kta_kiki.jpg
-
-  - id: people/crew/gufron
-    type: Person
-    title: Gufron — JVTO Guide
-    description: JVTO guide, HPWKI KTA-credentialed (KTA-G-2024-001), with geology and volcano-photography strengths; named in guest reviews across three platforms.
-    resource: https://javavolcano-touroperator.com/why-jvto/our-team
-    tags: [person, crew, guide, ijen, hpwki-kta]
-    timestamp: "2026-06-26T00:00:00+07:00"
-    status: reviewed
-    visibility: public
-    roles: [guide]
-    crew_status: active
-    credential_state: confirmed
-    kta: KTA-G-2024-001
-    languages: [English, Indonesian]
-    review_mentions: {total: 20, google: 16, trustpilot: 3, tripadvisor: 1}
-    source_refs:
-      - {source_id: SRC-CREW-REGISTRY, repo: sambuko82/llm-wiki, path: wiki/people/crew-registry.md, source_class: operational_direct, captured_at: "2026-05-26"}
-      - {source_id: SRC-DB-EXPORT, repo: sambuko82/llm-wiki, path: raw/db_export_raw.json, source_class: direct_external_export, captured_at: "2026-05", locator: crew_members}
-    body: |
-      # Person
-
-      Gufron is a JVTO guide, HPWKI KTA-credentialed (KTA-G-2024-001). Strengths: volcano
-      photography, geology, volcanic-terrain navigation, and Ijen crater safety procedures.
-
-      # Review Mentions
-
-      Named in 20 guest reviews (Google 16 · Trustpilot 3 · TripAdvisor 1):
-      - "Gufron was friendly and accommodating, making sure no one fell behind during the hikes." — Mark, Google 2026-04
-
-      # Related Concepts
-
-      - [HPWKI](/trust/partners/hpwki.md)
-      - [BBKSDA Ijen Guide Training 2024](/references/bbksda-ijen-guide-training-2024.md)
-      - [JVTO on Trustpilot](/reviews/trustpilot.md)
-    citations:
-      - https://javavolcano-touroperator.com/why-jvto/our-team
-      - https://javavolcano-touroperator.com/uploads/1771428741674-842615436-kta_gufron.jpg
-
-  - id: people/crew/fauzi
-    type: Person
-    title: Fauzi — JVTO Guide
-    description: JVTO guide, HPWKI KTA-credentialed (KTA-G-2024-010), named in guest reviews on Google and Trustpilot.
-    resource: https://javavolcano-touroperator.com/why-jvto/our-team
-    tags: [person, crew, guide, ijen, hpwki-kta]
-    timestamp: "2026-06-26T00:00:00+07:00"
-    status: reviewed
-    visibility: public
-    roles: [guide]
-    crew_status: active
-    credential_state: confirmed
-    kta: KTA-G-2024-010
-    languages: [Indonesian]
-    review_mentions: {total: 6, google: 5, trustpilot: 1, tripadvisor: 0}
-    source_refs:
-      - {source_id: SRC-CREW-REGISTRY, repo: sambuko82/llm-wiki, path: wiki/people/crew-registry.md, source_class: operational_direct, captured_at: "2026-05-26"}
-      - {source_id: SRC-DB-EXPORT, repo: sambuko82/llm-wiki, path: raw/db_export_raw.json, source_class: direct_external_export, captured_at: "2026-05", locator: crew_members}
-    body: |
-      # Person
-
-      Fauzi is a JVTO guide, HPWKI KTA-credentialed (KTA-G-2024-010). Strengths: guest
-      photography, logistics, and safety-first delivery.
-
-      # Review Mentions
-
-      Named in 6 guest reviews (Google 5 · Trustpilot 1):
-      - "Fauzi is a remarkable guide: always attentive, constantly searching for the best spots to avoid the crowds." — marie becquet, Google 2026-05
-
-      # Related Concepts
-
-      - [HPWKI](/trust/partners/hpwki.md)
-      - [BBKSDA Ijen Guide Training 2024](/references/bbksda-ijen-guide-training-2024.md)
-      - [JVTO on Trustpilot](/reviews/trustpilot.md)
-    citations:
-      - https://javavolcano-touroperator.com/why-jvto/our-team
-
-  - id: people/crew/boy
-    type: Person
-    title: Boy (Ahboy) — JVTO Guide
-    description: JVTO guide, HPWKI KTA-credentialed (KTA-G-2024-004), the most-reviewed guide; named in guest reviews across three platforms.
-    resource: https://javavolcano-touroperator.com/why-jvto/our-team
-    tags: [person, crew, guide, ijen, hpwki-kta]
-    timestamp: "2026-06-26T00:00:00+07:00"
-    status: reviewed
-    visibility: public
-    roles: [guide]
-    crew_status: active
-    credential_state: confirmed
-    kta: KTA-G-2024-004
-    languages: [English, Indonesian]
-    review_mentions: {total: 23, google: 9, trustpilot: 13, tripadvisor: 1}
-    source_refs:
-      - {source_id: SRC-CREW-REGISTRY, repo: sambuko82/llm-wiki, path: wiki/people/crew-registry.md, source_class: operational_direct, captured_at: "2026-05-26"}
-      - {source_id: SRC-DB-EXPORT, repo: sambuko82/llm-wiki, path: raw/db_export_raw.json, source_class: direct_external_export, captured_at: "2026-05", locator: crew_members}
-    body: |
-      # Person
-
-      Boy (also "Ahboy") is a JVTO guide, HPWKI KTA-credentialed (KTA-G-2024-004), and
-      the most-reviewed guide. Strengths: safety-first delivery, logistics, hospitality,
-      and punctuality.
-
-      # Review Mentions
-
-      Named in 23 guest reviews (Google 9 · Trustpilot 13 · TripAdvisor 1):
-      - "Ahboy was a phenomenal Ijen guide — knowledgeable, went out of his way for safety, logistics, equipment." — Jason Li, Trustpilot 2025-10
-
-      # Related Concepts
-
-      - [HPWKI](/trust/partners/hpwki.md)
-      - [BBKSDA Ijen Guide Training 2024](/references/bbksda-ijen-guide-training-2024.md)
-      - [JVTO on Trustpilot](/reviews/trustpilot.md)
-    citations:
-      - https://javavolcano-touroperator.com/why-jvto/our-team
-
-  # ---------------------------------------------------------------- Drivers (7)
-  - id: people/crew/yandi
-    type: Person
-    title: Yandi — JVTO Driver
-    description: JVTO driver, HPWKI KTA-credentialed (KTA-D-2024-003), named in guest reviews on Google and Trustpilot.
-    resource: https://javavolcano-touroperator.com/why-jvto/our-team
-    tags: [person, crew, driver, hpwki-kta]
-    timestamp: "2026-06-26T00:00:00+07:00"
-    status: reviewed
-    visibility: public
-    roles: [driver]
-    crew_status: active
-    credential_state: confirmed
-    kta: KTA-D-2024-003
-    languages: [English, Indonesian]
-    review_mentions: {total: 16, google: 9, trustpilot: 7, tripadvisor: 0}
-    source_refs:
-      - {source_id: SRC-CREW-REGISTRY, repo: sambuko82/llm-wiki, path: wiki/people/crew-registry.md, source_class: operational_direct, captured_at: "2026-05-26"}
-      - {source_id: SRC-DB-EXPORT, repo: sambuko82/llm-wiki, path: raw/db_export_raw.json, source_class: direct_external_export, captured_at: "2026-05", locator: crew_members}
-    body: |
-      # Person
-
-      Yandi is a JVTO driver, HPWKI KTA-credentialed (KTA-D-2024-003). Reviews note
-      reliability, friendliness, and clear pre-trip briefings.
-
-      # Review Mentions
-
-      Named in 16 guest reviews (Google 9 · Trustpilot 7):
-      - "Our driver Yandi was really reliable and friendly. He briefed us on what to expect." — Divya_Stri, Trustpilot 2025-09
-
-      # Related Concepts
-
-      - [HPWKI](/trust/partners/hpwki.md)
-      - [JVTO on Trustpilot](/reviews/trustpilot.md)
-    citations:
-      - https://javavolcano-touroperator.com/why-jvto/our-team
-
-  - id: people/crew/fredi
-    type: Person
-    title: Fredi — JVTO Driver
-    description: JVTO driver, HPWKI KTA-credentialed (KTA-D-2024-005), the most-reviewed driver; named across three platforms.
-    resource: https://javavolcano-touroperator.com/why-jvto/our-team
-    tags: [person, crew, driver, hpwki-kta]
-    timestamp: "2026-06-26T00:00:00+07:00"
-    status: reviewed
-    visibility: public
-    roles: [driver]
-    crew_status: active
-    credential_state: confirmed
-    kta: KTA-D-2024-005
-    languages: [English, Indonesian]
-    review_mentions: {total: 20, google: 15, trustpilot: 4, tripadvisor: 1}
-    source_refs:
-      - {source_id: SRC-CREW-REGISTRY, repo: sambuko82/llm-wiki, path: wiki/people/crew-registry.md, source_class: operational_direct, captured_at: "2026-05-26"}
-      - {source_id: SRC-DB-EXPORT, repo: sambuko82/llm-wiki, path: raw/db_export_raw.json, source_class: direct_external_export, captured_at: "2026-05", locator: crew_members}
-    body: |
-      # Person
-
-      Fredi is a JVTO driver, HPWKI KTA-credentialed (KTA-D-2024-005), and the
-      most-reviewed driver. Reviews note punctuality and safe driving across East Java.
-
-      # Review Mentions
-
-      Named in 20 guest reviews (Google 15 · Trustpilot 4 · TripAdvisor 1):
-      - "Always on time no matter what time of the day. Exceptional driving skills." — Pooja Prakash, Google
-
-      # Related Concepts
-
-      - [HPWKI](/trust/partners/hpwki.md)
-      - [JVTO on Trustpilot](/reviews/trustpilot.md)
-    citations:
-      - https://javavolcano-touroperator.com/why-jvto/our-team
-
-  - id: people/crew/holili
-    type: Person
-    title: Holili — JVTO Driver
-    description: JVTO driver, HPWKI KTA-credentialed (KTA-D-2024-009), named in guest reviews on Google and Trustpilot.
-    resource: https://javavolcano-touroperator.com/why-jvto/our-team
-    tags: [person, crew, driver, hpwki-kta]
-    timestamp: "2026-06-26T00:00:00+07:00"
-    status: reviewed
-    visibility: public
-    roles: [driver]
-    crew_status: active
-    credential_state: confirmed
-    kta: KTA-D-2024-009
-    languages: [Indonesian]
-    review_mentions: {total: 6, google: 4, trustpilot: 2, tripadvisor: 0}
-    source_refs:
-      - {source_id: SRC-CREW-REGISTRY, repo: sambuko82/llm-wiki, path: wiki/people/crew-registry.md, source_class: operational_direct, captured_at: "2026-05-26"}
-      - {source_id: SRC-DB-EXPORT, repo: sambuko82/llm-wiki, path: raw/db_export_raw.json, source_class: direct_external_export, captured_at: "2026-05", locator: crew_members}
-    body: |
-      # Person
-
-      Holili is a JVTO driver, HPWKI KTA-credentialed (KTA-D-2024-009). Reviews note
-      punctuality and a safe, smooth ride between stops.
-
-      # Review Mentions
-
-      Named in 6 guest reviews (Google 4 · Trustpilot 2):
-      - "Holili is an excellent driver, always punctual and smiling, who drove us safely to each stop." — marie becquet, Google 2026-05
-
-      # Related Concepts
-
-      - [HPWKI](/trust/partners/hpwki.md)
-      - [JVTO on Trustpilot](/reviews/trustpilot.md)
-    citations:
-      - https://javavolcano-touroperator.com/why-jvto/our-team
-
-  - id: people/crew/joyo
-    type: Person
-    title: Joyo — JVTO Driver
-    description: JVTO driver, HPWKI KTA-credentialed (KTA-D-2024-011), the most-reviewed driver on Trustpilot.
-    resource: https://javavolcano-touroperator.com/why-jvto/our-team
-    tags: [person, crew, driver, hpwki-kta]
-    timestamp: "2026-06-26T00:00:00+07:00"
-    status: reviewed
-    visibility: public
-    roles: [driver]
-    crew_status: active
-    credential_state: confirmed
-    kta: KTA-D-2024-011
-    languages: [Indonesian]
-    review_mentions: {total: 19, google: 4, trustpilot: 15, tripadvisor: 0}
-    source_refs:
-      - {source_id: SRC-CREW-REGISTRY, repo: sambuko82/llm-wiki, path: wiki/people/crew-registry.md, source_class: operational_direct, captured_at: "2026-05-26"}
-      - {source_id: SRC-DB-EXPORT, repo: sambuko82/llm-wiki, path: raw/db_export_raw.json, source_class: direct_external_export, captured_at: "2026-05", locator: crew_members}
-    body: |
-      # Person
-
-      Joyo is a JVTO driver, HPWKI KTA-credentialed (KTA-D-2024-011), and the
-      most-reviewed driver on Trustpilot. Reviews note experienced, careful driving.
-
-      # Review Mentions
-
-      Named in 19 guest reviews (Google 4 · Trustpilot 15):
-      - "Driver Joy is very experienced and ensures the car safety of the passengers." — Eileen Chua, Trustpilot 2025-05
-
-      # Related Concepts
-
-      - [HPWKI](/trust/partners/hpwki.md)
-      - [JVTO on Trustpilot](/reviews/trustpilot.md)
-    citations:
-      - https://javavolcano-touroperator.com/why-jvto/our-team
-
-  - id: people/crew/yusuf
-    type: Person
-    title: Yusuf — JVTO Driver
-    description: JVTO driver, active in the live roster with KTA pending; named in guest reviews on Google.
-    resource: https://javavolcano-touroperator.com/why-jvto/our-team
-    tags: [person, crew, driver, kta-pending]
-    timestamp: "2026-06-26T00:00:00+07:00"
-    status: reviewed
-    visibility: public
-    roles: [driver]
-    crew_status: active
-    credential_state: pending
-    languages: [Indonesian]
-    review_mentions: {total: 7, google: 7, trustpilot: 0, tripadvisor: 0}
-    source_refs:
-      - {source_id: SRC-CREW-REGISTRY, repo: sambuko82/llm-wiki, path: wiki/people/crew-registry.md, source_class: operational_direct, captured_at: "2026-05-26"}
-      - {source_id: SRC-DB-EXPORT, repo: sambuko82/llm-wiki, path: raw/db_export_raw.json, source_class: direct_external_export, captured_at: "2026-05", locator: crew_members}
-    body: |
-      # Person
-
-      Yusuf is a JVTO driver, confirmed active in the live roster (DB). His HPWKI KTA code
-      is pending recording. Reviews — all five-star and from 2026 — note professionalism
-      and punctuality.
-
-      # Review Mentions
-
-      Named in 7 guest reviews (Google 7):
-      - "Yusuf is the best driver I've ever met." — 歐湲, Google 2026-02
-
-      # Related Concepts
-
-      - [HPWKI](/trust/partners/hpwki.md)
-      - [JVTO on Trustpilot](/reviews/trustpilot.md)
-    citations:
-      - https://javavolcano-touroperator.com/why-jvto/our-team
-
-  - id: people/crew/dika
-    type: Person
-    title: Dika — JVTO Driver
-    description: JVTO driver, active in the live roster with KTA pending; named in guest reviews on Google and Trustpilot.
-    resource: https://javavolcano-touroperator.com/why-jvto/our-team
-    tags: [person, crew, driver, kta-pending]
-    timestamp: "2026-06-26T00:00:00+07:00"
-    status: reviewed
-    visibility: public
-    roles: [driver]
-    crew_status: active
-    credential_state: pending
-    languages: [Indonesian]
-    review_mentions: {total: 3, google: 2, trustpilot: 1, tripadvisor: 0}
-    source_refs:
-      - {source_id: SRC-CREW-REGISTRY, repo: sambuko82/llm-wiki, path: wiki/people/crew-registry.md, source_class: operational_direct, captured_at: "2026-05-26"}
-      - {source_id: SRC-DB-EXPORT, repo: sambuko82/llm-wiki, path: raw/db_export_raw.json, source_class: direct_external_export, captured_at: "2026-05", locator: crew_members}
-    body: |
-      # Person
-
-      Dika is a JVTO driver, confirmed active in the live roster (DB). His HPWKI KTA code
-      is pending recording. Reviews note a helpful, caring manner.
-
-      # Review Mentions
-
-      Named in 3 guest reviews (Google 2 · Trustpilot 1):
-      - "Dika was very helpful and caring, sharing things about Indonesia with us." — Wing Shan Lui, 2025-08
-
-      # Related Concepts
-
-      - [HPWKI](/trust/partners/hpwki.md)
-      - [JVTO on Trustpilot](/reviews/trustpilot.md)
-    citations:
-      - https://javavolcano-touroperator.com/why-jvto/our-team
-
-  - id: people/crew/pras
-    type: Person
-    title: Pras — JVTO Driver
-    description: JVTO driver, active in the live roster with KTA pending; named in guest reviews on Google.
-    resource: https://javavolcano-touroperator.com/why-jvto/our-team
-    tags: [person, crew, driver, kta-pending]
-    timestamp: "2026-06-26T00:00:00+07:00"
-    status: reviewed
-    visibility: public
-    roles: [driver]
-    crew_status: active
-    credential_state: pending
-    languages: [English, Indonesian]
-    review_mentions: {total: 6, google: 6, trustpilot: 0, tripadvisor: 0}
-    source_refs:
-      - {source_id: SRC-CREW-REGISTRY, repo: sambuko82/llm-wiki, path: wiki/people/crew-registry.md, source_class: operational_direct, captured_at: "2026-05-26"}
-      - {source_id: SRC-DB-EXPORT, repo: sambuko82/llm-wiki, path: raw/db_export_raw.json, source_class: direct_external_export, captured_at: "2026-05", locator: crew_members}
-    body: |
-      # Person
-
-      Pras is a JVTO driver, confirmed active in the live roster (DB). His HPWKI KTA code
-      is pending recording. Reviews note strong English and a careful, professional manner.
-
-      # Review Mentions
-
-      Named in 6 guest reviews (Google 6):
-      - "Our driver Pras and guide Rendi were the best, super professionals and thoughtful." — samia amrani, Google 2025-10
-
-      # Related Concepts
-
-      - [HPWKI](/trust/partners/hpwki.md)
-      - [JVTO on Trustpilot](/reviews/trustpilot.md)
-    citations:
-      - https://javavolcano-touroperator.com/why-jvto/our-team
+- id: people/agung-sambuko
+  type: Person
+  title: Agung "Mr. Sam" Sambuko — Founder
+  description: JVTO's founder, a serving officer of the Indonesian Tourist Police, around whom the company's
+    police-led safety model is built.
+  tags:
+  - person
+  - founder
+  - police-led
+  - tourist-police
+  timestamp: '2026-06-26T00:00:00+07:00'
+  status: reviewed
+  visibility: public
+  roles:
+  - founder
+  source_refs:
+  - source_id: SRC-WIKI-AGUNG
+    repo: sambuko82/llm-wiki
+    path: wiki/people/agung-sambuko.md
+    source_class: operational_direct
+    captured_at: '2026-05-26'
+  - source_id: SRC-SSOT
+    repo: sambuko82/llm-wiki
+    path: raw/JVTO_FINAL_CLEAN_SSOT.json
+    source_class: direct_external_export
+    captured_at: 2026-05
+  body: '# Person
+
+
+    Agung Sambuko ("Mr. Sam") founded JVTO and is a serving officer of the Indonesian
+
+    Tourist Police. JVTO''s "police-led" safety model and crew-accountability chain are
+
+    built around his role; independent press named "Bripka Agung Sambuko" in
+
+    tourist-police duties in 2021.
+
+
+    # Related Concepts
+
+
+    - [Police-Led Operations](/trust/claims/police-led.md)
+
+    - [Detik.com Tourist Police Report (2021)](/references/detik-tourist-police-bondowoso-2021.md)
+
+    - [Java Volcano Tour Operator (JVTO)](/organization.md)
+
+    '
+- id: people/dr-ahmad-irwandanu
+  type: Person
+  title: Dr. Ahmad Irwandanu
+  description: The doctor JVTO identifies for its applicable Ijen pre-hike health-screening coordination.
+  tags:
+  - person
+  - doctor
+  - ijen
+  - health-screening
+  - medical
+  timestamp: '2026-06-26T00:00:00+07:00'
+  status: reviewed
+  visibility: public
+  roles:
+  - doctor
+  relationship_type: ijen_health_screening_coordination
+  source_refs:
+  - source_id: SRC-WIKI-DRAHMAD
+    repo: sambuko82/llm-wiki
+    path: wiki/people/dr-ahmad-irwandanu.md
+    source_class: operational_direct
+    captured_at: '2026-05-26'
+  body: '# Person
+
+
+    JVTO identifies Dr. Ahmad Irwandanu as the doctor associated with its applicable
+
+    Ijen pre-hike health-screening coordination. JVTO states that Ijen night-hike
+
+    packages include a pre-hike health screening as part of the route logistics.
+
+
+    # Claim Boundary
+
+
+    This records an operating relationship for applicable Ijen screening coordination
+
+    only. It does not confirm current medical-license validity, expiry date,
+
+    private-practice details, or a universal screening requirement. Whether screening
+
+    is required or verified before crater access depends on current local authority or
+
+    provider rules.
+
+
+    # Related Concepts
+
+
+    - [Ijen Medical Screening Included](/trust/claims/medical-screening.md)
+
+    - [Ijen Health Screening](/policies/ijen-health-screening.md)
+
+    - [Kawah Ijen](/destinations/kawah-ijen.md)
+
+    '
+- id: people/crew/anjas
+  type: Person
+  title: Anjas — JVTO Guide
+  description: JVTO mountain guide, HPWKI KTA-credentialed (KTA-G-2024-006), named in guest reviews across
+    three platforms.
+  tags:
+  - person
+  - crew
+  - guide
+  - ijen
+  - hpwki-kta
+  timestamp: '2026-06-26T00:00:00+07:00'
+  status: reviewed
+  visibility: public
+  roles:
+  - guide
+  crew_status: active
+  credential_state: confirmed
+  kta: KTA-G-2024-006
+  languages:
+  - English
+  - Indonesian
+  review_mentions:
+    total: 12
+    google: 8
+    trustpilot: 3
+    tripadvisor: 1
+  source_refs:
+  - source_id: SRC-CREW-REGISTRY
+    repo: sambuko82/llm-wiki
+    path: wiki/people/crew-registry.md
+    source_class: operational_direct
+    captured_at: '2026-05-26'
+  - source_id: SRC-DB-EXPORT
+    repo: sambuko82/llm-wiki
+    path: raw/db_export_raw.json
+    source_class: direct_external_export
+    captured_at: 2026-05
+    locator: crew_members
+  body: '# Person
+
+
+    Anjas is a JVTO mountain guide, HPWKI KTA-credentialed (KTA-G-2024-006). Strengths:
+
+    volcanic and astrophotography, volcanic-terrain navigation, and East Java cultural
+
+    heritage.
+
+
+    # Review Mentions
+
+
+    Named in 12 guest reviews (Google 8 · Trustpilot 3 · TripAdvisor 1):
+
+    - "Stunningly beautiful nature and super well coordinated by our tour guide Anjas." — Milo Parrott,
+    Google 2026-05
+
+    - "I don''t think there is a better tour guide anywhere than Anjas." — John Joyce, Trustpilot 2025-12
+
+
+    # Related Concepts
+
+
+    - [HPWKI](/trust/partners/hpwki.md)
+
+    - [BBKSDA Ijen Guide Training 2024](/references/bbksda-ijen-guide-training-2024.md)
+
+    - [JVTO on Trustpilot](/reviews/trustpilot.md)
+
+    '
+- id: people/crew/taufik
+  type: Person
+  title: Taufik — JVTO Guide
+  description: JVTO guide, HPWKI KTA-credentialed (KTA-G-2024-007), named in guest reviews across three
+    platforms.
+  tags:
+  - person
+  - crew
+  - guide
+  - ijen
+  - hpwki-kta
+  timestamp: '2026-06-26T00:00:00+07:00'
+  status: reviewed
+  visibility: public
+  roles:
+  - guide
+  crew_status: active
+  credential_state: confirmed
+  kta: KTA-G-2024-007
+  languages:
+  - English
+  - Indonesian
+  review_mentions:
+    total: 8
+    google: 4
+    trustpilot: 3
+    tripadvisor: 1
+  source_refs:
+  - source_id: SRC-CREW-REGISTRY
+    repo: sambuko82/llm-wiki
+    path: wiki/people/crew-registry.md
+    source_class: operational_direct
+    captured_at: '2026-05-26'
+  - source_id: SRC-DB-EXPORT
+    repo: sambuko82/llm-wiki
+    path: raw/db_export_raw.json
+    source_class: direct_external_export
+    captured_at: 2026-05
+    locator: crew_members
+  body: '# Person
+
+
+    Taufik is a JVTO guide, HPWKI KTA-credentialed (KTA-G-2024-007). Strengths:
+
+    logistics, safety-first briefings, punctuality, and guest photography.
+
+
+    # Review Mentions
+
+
+    Named in 8 guest reviews (Google 4 · Trustpilot 3 · TripAdvisor 1):
+
+    - "Taufik ensure all briefing is always done prior to all trips." — Kevin Foo, Trustpilot 2026-03
+
+
+    # Related Concepts
+
+
+    - [HPWKI](/trust/partners/hpwki.md)
+
+    - [BBKSDA Ijen Guide Training 2024](/references/bbksda-ijen-guide-training-2024.md)
+
+    - [JVTO on Trustpilot](/reviews/trustpilot.md)
+
+    '
+- id: people/crew/rendi
+  type: Person
+  title: Rendi — JVTO Guide
+  description: JVTO guide, HPWKI KTA-credentialed (KTA-G-2024-002), with expedition-safety and crater-rescue
+    strengths; named in guest reviews across three platforms.
+  tags:
+  - person
+  - crew
+  - guide
+  - ijen
+  - hpwki-kta
+  - safety
+  timestamp: '2026-06-26T00:00:00+07:00'
+  status: reviewed
+  visibility: public
+  roles:
+  - guide
+  crew_status: active
+  credential_state: confirmed
+  kta: KTA-G-2024-002
+  languages:
+  - English
+  - Indonesian
+  review_mentions:
+    total: 22
+    google: 14
+    trustpilot: 7
+    tripadvisor: 1
+  source_refs:
+  - source_id: SRC-CREW-REGISTRY
+    repo: sambuko82/llm-wiki
+    path: wiki/people/crew-registry.md
+    source_class: operational_direct
+    captured_at: '2026-05-26'
+  - source_id: SRC-DB-EXPORT
+    repo: sambuko82/llm-wiki
+    path: raw/db_export_raw.json
+    source_class: direct_external_export
+    captured_at: 2026-05
+    locator: crew_members
+  body: '# Person
+
+
+    Rendi is a JVTO guide, HPWKI KTA-credentialed (KTA-G-2024-002). Strengths:
+
+    expedition safety, mountain rescue, first aid, and Ijen crater safety procedures.
+
+
+    # Review Mentions
+
+
+    Named in 22 guest reviews (Google 14 · Trustpilot 7 · TripAdvisor 1):
+
+    - "When we went down the steep crater, he held our hands to prevent us from falling." — Wing Shan
+    Lui, Trustpilot 2025-08
+
+    - "Rendi were the best, super professionals and thoughtful, took care of every detail." — samia amrani,
+    Google 2025-10
+
+
+    # Related Concepts
+
+
+    - [HPWKI](/trust/partners/hpwki.md)
+
+    - [BBKSDA Ijen Guide Training 2024](/references/bbksda-ijen-guide-training-2024.md)
+
+    - [JVTO on Trustpilot](/reviews/trustpilot.md)
+
+    '
+- id: people/crew/kiki
+  type: Person
+  title: Kiki — JVTO Guide
+  description: JVTO guide, HPWKI KTA-credentialed (KTA-G-2024-008), named in guest reviews on Google and
+    Trustpilot.
+  tags:
+  - person
+  - crew
+  - guide
+  - ijen
+  - hpwki-kta
+  timestamp: '2026-06-26T00:00:00+07:00'
+  status: reviewed
+  visibility: public
+  roles:
+  - guide
+  crew_status: active
+  credential_state: confirmed
+  kta: KTA-G-2024-008
+  languages:
+  - English
+  - Indonesian
+  review_mentions:
+    total: 17
+    google: 12
+    trustpilot: 5
+    tripadvisor: 0
+  source_refs:
+  - source_id: SRC-CREW-REGISTRY
+    repo: sambuko82/llm-wiki
+    path: wiki/people/crew-registry.md
+    source_class: operational_direct
+    captured_at: '2026-05-26'
+  - source_id: SRC-DB-EXPORT
+    repo: sambuko82/llm-wiki
+    path: raw/db_export_raw.json
+    source_class: direct_external_export
+    captured_at: 2026-05
+    locator: crew_members
+  body: '# Person
+
+
+    Kiki is a JVTO guide, HPWKI KTA-credentialed (KTA-G-2024-008). Strengths: guest
+
+    photography, logistics, and safety-first delivery.
+
+
+    # Review Mentions
+
+
+    Named in 17 guest reviews (Google 12 · Trustpilot 5):
+
+    - "Kiki is an amazing photographer — every shot turned out beautifully!" — waraporn arssanawitaya,
+    Google 2026-04
+
+
+    # Related Concepts
+
+
+    - [HPWKI](/trust/partners/hpwki.md)
+
+    - [BBKSDA Ijen Guide Training 2024](/references/bbksda-ijen-guide-training-2024.md)
+
+    - [JVTO on Trustpilot](/reviews/trustpilot.md)
+
+    '
+- id: people/crew/gufron
+  type: Person
+  title: Gufron — JVTO Guide
+  description: JVTO guide, HPWKI KTA-credentialed (KTA-G-2024-001), with geology and volcano-photography
+    strengths; named in guest reviews across three platforms.
+  tags:
+  - person
+  - crew
+  - guide
+  - ijen
+  - hpwki-kta
+  timestamp: '2026-06-26T00:00:00+07:00'
+  status: reviewed
+  visibility: public
+  roles:
+  - guide
+  crew_status: active
+  credential_state: confirmed
+  kta: KTA-G-2024-001
+  languages:
+  - English
+  - Indonesian
+  review_mentions:
+    total: 20
+    google: 16
+    trustpilot: 3
+    tripadvisor: 1
+  source_refs:
+  - source_id: SRC-CREW-REGISTRY
+    repo: sambuko82/llm-wiki
+    path: wiki/people/crew-registry.md
+    source_class: operational_direct
+    captured_at: '2026-05-26'
+  - source_id: SRC-DB-EXPORT
+    repo: sambuko82/llm-wiki
+    path: raw/db_export_raw.json
+    source_class: direct_external_export
+    captured_at: 2026-05
+    locator: crew_members
+  body: '# Person
+
+
+    Gufron is a JVTO guide, HPWKI KTA-credentialed (KTA-G-2024-001). Strengths: volcano
+
+    photography, geology, volcanic-terrain navigation, and Ijen crater safety procedures.
+
+
+    # Review Mentions
+
+
+    Named in 20 guest reviews (Google 16 · Trustpilot 3 · TripAdvisor 1):
+
+    - "Gufron was friendly and accommodating, making sure no one fell behind during the hikes." — Mark,
+    Google 2026-04
+
+
+    # Related Concepts
+
+
+    - [HPWKI](/trust/partners/hpwki.md)
+
+    - [BBKSDA Ijen Guide Training 2024](/references/bbksda-ijen-guide-training-2024.md)
+
+    - [JVTO on Trustpilot](/reviews/trustpilot.md)
+
+    '
+- id: people/crew/fauzi
+  type: Person
+  title: Fauzi — JVTO Guide
+  description: JVTO guide, HPWKI KTA-credentialed (KTA-G-2024-010), named in guest reviews on Google and
+    Trustpilot.
+  tags:
+  - person
+  - crew
+  - guide
+  - ijen
+  - hpwki-kta
+  timestamp: '2026-06-26T00:00:00+07:00'
+  status: reviewed
+  visibility: public
+  roles:
+  - guide
+  crew_status: active
+  credential_state: confirmed
+  kta: KTA-G-2024-010
+  languages:
+  - Indonesian
+  review_mentions:
+    total: 6
+    google: 5
+    trustpilot: 1
+    tripadvisor: 0
+  source_refs:
+  - source_id: SRC-CREW-REGISTRY
+    repo: sambuko82/llm-wiki
+    path: wiki/people/crew-registry.md
+    source_class: operational_direct
+    captured_at: '2026-05-26'
+  - source_id: SRC-DB-EXPORT
+    repo: sambuko82/llm-wiki
+    path: raw/db_export_raw.json
+    source_class: direct_external_export
+    captured_at: 2026-05
+    locator: crew_members
+  body: '# Person
+
+
+    Fauzi is a JVTO guide, HPWKI KTA-credentialed (KTA-G-2024-010). Strengths: guest
+
+    photography, logistics, and safety-first delivery.
+
+
+    # Review Mentions
+
+
+    Named in 6 guest reviews (Google 5 · Trustpilot 1):
+
+    - "Fauzi is a remarkable guide: always attentive, constantly searching for the best spots to avoid
+    the crowds." — marie becquet, Google 2026-05
+
+
+    # Related Concepts
+
+
+    - [HPWKI](/trust/partners/hpwki.md)
+
+    - [BBKSDA Ijen Guide Training 2024](/references/bbksda-ijen-guide-training-2024.md)
+
+    - [JVTO on Trustpilot](/reviews/trustpilot.md)
+
+    '
+- id: people/crew/boy
+  type: Person
+  title: Boy (Ahboy) — JVTO Guide
+  description: JVTO guide, HPWKI KTA-credentialed (KTA-G-2024-004), the most-reviewed guide; named in
+    guest reviews across three platforms.
+  tags:
+  - person
+  - crew
+  - guide
+  - ijen
+  - hpwki-kta
+  timestamp: '2026-06-26T00:00:00+07:00'
+  status: reviewed
+  visibility: public
+  roles:
+  - guide
+  crew_status: active
+  credential_state: confirmed
+  kta: KTA-G-2024-004
+  languages:
+  - English
+  - Indonesian
+  review_mentions:
+    total: 23
+    google: 9
+    trustpilot: 13
+    tripadvisor: 1
+  source_refs:
+  - source_id: SRC-CREW-REGISTRY
+    repo: sambuko82/llm-wiki
+    path: wiki/people/crew-registry.md
+    source_class: operational_direct
+    captured_at: '2026-05-26'
+  - source_id: SRC-DB-EXPORT
+    repo: sambuko82/llm-wiki
+    path: raw/db_export_raw.json
+    source_class: direct_external_export
+    captured_at: 2026-05
+    locator: crew_members
+  body: '# Person
+
+
+    Boy (also "Ahboy") is a JVTO guide, HPWKI KTA-credentialed (KTA-G-2024-004), and
+
+    the most-reviewed guide. Strengths: safety-first delivery, logistics, hospitality,
+
+    and punctuality.
+
+
+    # Review Mentions
+
+
+    Named in 23 guest reviews (Google 9 · Trustpilot 13 · TripAdvisor 1):
+
+    - "Ahboy was a phenomenal Ijen guide — knowledgeable, went out of his way for safety, logistics, equipment."
+    — Jason Li, Trustpilot 2025-10
+
+
+    # Related Concepts
+
+
+    - [HPWKI](/trust/partners/hpwki.md)
+
+    - [BBKSDA Ijen Guide Training 2024](/references/bbksda-ijen-guide-training-2024.md)
+
+    - [JVTO on Trustpilot](/reviews/trustpilot.md)
+
+    '
+- id: people/crew/yandi
+  type: Person
+  title: Yandi — JVTO Driver
+  description: JVTO driver, HPWKI KTA-credentialed (KTA-D-2024-003), named in guest reviews on Google
+    and Trustpilot.
+  tags:
+  - person
+  - crew
+  - driver
+  - hpwki-kta
+  timestamp: '2026-06-26T00:00:00+07:00'
+  status: reviewed
+  visibility: public
+  roles:
+  - driver
+  crew_status: active
+  credential_state: confirmed
+  kta: KTA-D-2024-003
+  languages:
+  - English
+  - Indonesian
+  review_mentions:
+    total: 16
+    google: 9
+    trustpilot: 7
+    tripadvisor: 0
+  source_refs:
+  - source_id: SRC-CREW-REGISTRY
+    repo: sambuko82/llm-wiki
+    path: wiki/people/crew-registry.md
+    source_class: operational_direct
+    captured_at: '2026-05-26'
+  - source_id: SRC-DB-EXPORT
+    repo: sambuko82/llm-wiki
+    path: raw/db_export_raw.json
+    source_class: direct_external_export
+    captured_at: 2026-05
+    locator: crew_members
+  body: '# Person
+
+
+    Yandi is a JVTO driver, HPWKI KTA-credentialed (KTA-D-2024-003). Reviews note
+
+    reliability, friendliness, and clear pre-trip briefings.
+
+
+    # Review Mentions
+
+
+    Named in 16 guest reviews (Google 9 · Trustpilot 7):
+
+    - "Our driver Yandi was really reliable and friendly. He briefed us on what to expect." — Divya_Stri,
+    Trustpilot 2025-09
+
+
+    # Related Concepts
+
+
+    - [HPWKI](/trust/partners/hpwki.md)
+
+    - [JVTO on Trustpilot](/reviews/trustpilot.md)
+
+    '
+- id: people/crew/fredi
+  type: Person
+  title: Fredi — JVTO Driver
+  description: JVTO driver, HPWKI KTA-credentialed (KTA-D-2024-005), the most-reviewed driver; named across
+    three platforms.
+  tags:
+  - person
+  - crew
+  - driver
+  - hpwki-kta
+  timestamp: '2026-06-26T00:00:00+07:00'
+  status: reviewed
+  visibility: public
+  roles:
+  - driver
+  crew_status: active
+  credential_state: confirmed
+  kta: KTA-D-2024-005
+  languages:
+  - English
+  - Indonesian
+  review_mentions:
+    total: 20
+    google: 15
+    trustpilot: 4
+    tripadvisor: 1
+  source_refs:
+  - source_id: SRC-CREW-REGISTRY
+    repo: sambuko82/llm-wiki
+    path: wiki/people/crew-registry.md
+    source_class: operational_direct
+    captured_at: '2026-05-26'
+  - source_id: SRC-DB-EXPORT
+    repo: sambuko82/llm-wiki
+    path: raw/db_export_raw.json
+    source_class: direct_external_export
+    captured_at: 2026-05
+    locator: crew_members
+  body: '# Person
+
+
+    Fredi is a JVTO driver, HPWKI KTA-credentialed (KTA-D-2024-005), and the
+
+    most-reviewed driver. Reviews note punctuality and safe driving across East Java.
+
+
+    # Review Mentions
+
+
+    Named in 20 guest reviews (Google 15 · Trustpilot 4 · TripAdvisor 1):
+
+    - "Always on time no matter what time of the day. Exceptional driving skills." — Pooja Prakash, Google
+
+
+    # Related Concepts
+
+
+    - [HPWKI](/trust/partners/hpwki.md)
+
+    - [JVTO on Trustpilot](/reviews/trustpilot.md)
+
+    '
+- id: people/crew/holili
+  type: Person
+  title: Holili — JVTO Driver
+  description: JVTO driver, HPWKI KTA-credentialed (KTA-D-2024-009), named in guest reviews on Google
+    and Trustpilot.
+  tags:
+  - person
+  - crew
+  - driver
+  - hpwki-kta
+  timestamp: '2026-06-26T00:00:00+07:00'
+  status: reviewed
+  visibility: public
+  roles:
+  - driver
+  crew_status: active
+  credential_state: confirmed
+  kta: KTA-D-2024-009
+  languages:
+  - Indonesian
+  review_mentions:
+    total: 6
+    google: 4
+    trustpilot: 2
+    tripadvisor: 0
+  source_refs:
+  - source_id: SRC-CREW-REGISTRY
+    repo: sambuko82/llm-wiki
+    path: wiki/people/crew-registry.md
+    source_class: operational_direct
+    captured_at: '2026-05-26'
+  - source_id: SRC-DB-EXPORT
+    repo: sambuko82/llm-wiki
+    path: raw/db_export_raw.json
+    source_class: direct_external_export
+    captured_at: 2026-05
+    locator: crew_members
+  body: '# Person
+
+
+    Holili is a JVTO driver, HPWKI KTA-credentialed (KTA-D-2024-009). Reviews note
+
+    punctuality and a safe, smooth ride between stops.
+
+
+    # Review Mentions
+
+
+    Named in 6 guest reviews (Google 4 · Trustpilot 2):
+
+    - "Holili is an excellent driver, always punctual and smiling, who drove us safely to each stop."
+    — marie becquet, Google 2026-05
+
+
+    # Related Concepts
+
+
+    - [HPWKI](/trust/partners/hpwki.md)
+
+    - [JVTO on Trustpilot](/reviews/trustpilot.md)
+
+    '
+- id: people/crew/joyo
+  type: Person
+  title: Joyo — JVTO Driver
+  description: JVTO driver, HPWKI KTA-credentialed (KTA-D-2024-011), the most-reviewed driver on Trustpilot.
+  tags:
+  - person
+  - crew
+  - driver
+  - hpwki-kta
+  timestamp: '2026-06-26T00:00:00+07:00'
+  status: reviewed
+  visibility: public
+  roles:
+  - driver
+  crew_status: active
+  credential_state: confirmed
+  kta: KTA-D-2024-011
+  languages:
+  - Indonesian
+  review_mentions:
+    total: 19
+    google: 4
+    trustpilot: 15
+    tripadvisor: 0
+  source_refs:
+  - source_id: SRC-CREW-REGISTRY
+    repo: sambuko82/llm-wiki
+    path: wiki/people/crew-registry.md
+    source_class: operational_direct
+    captured_at: '2026-05-26'
+  - source_id: SRC-DB-EXPORT
+    repo: sambuko82/llm-wiki
+    path: raw/db_export_raw.json
+    source_class: direct_external_export
+    captured_at: 2026-05
+    locator: crew_members
+  body: '# Person
+
+
+    Joyo is a JVTO driver, HPWKI KTA-credentialed (KTA-D-2024-011), and the
+
+    most-reviewed driver on Trustpilot. Reviews note experienced, careful driving.
+
+
+    # Review Mentions
+
+
+    Named in 19 guest reviews (Google 4 · Trustpilot 15):
+
+    - "Driver Joy is very experienced and ensures the car safety of the passengers." — Eileen Chua, Trustpilot
+    2025-05
+
+
+    # Related Concepts
+
+
+    - [HPWKI](/trust/partners/hpwki.md)
+
+    - [JVTO on Trustpilot](/reviews/trustpilot.md)
+
+    '
+- id: people/crew/yusuf
+  type: Person
+  title: Yusuf — JVTO Driver
+  description: JVTO driver, active in the live roster with KTA pending; named in guest reviews on Google.
+  tags:
+  - person
+  - crew
+  - driver
+  - kta-pending
+  timestamp: '2026-06-26T00:00:00+07:00'
+  status: reviewed
+  visibility: public
+  roles:
+  - driver
+  crew_status: active
+  credential_state: pending
+  languages:
+  - Indonesian
+  review_mentions:
+    total: 7
+    google: 7
+    trustpilot: 0
+    tripadvisor: 0
+  source_refs:
+  - source_id: SRC-CREW-REGISTRY
+    repo: sambuko82/llm-wiki
+    path: wiki/people/crew-registry.md
+    source_class: operational_direct
+    captured_at: '2026-05-26'
+  - source_id: SRC-DB-EXPORT
+    repo: sambuko82/llm-wiki
+    path: raw/db_export_raw.json
+    source_class: direct_external_export
+    captured_at: 2026-05
+    locator: crew_members
+  body: '# Person
+
+
+    Yusuf is a JVTO driver, confirmed active in the live roster (DB). His HPWKI KTA code
+
+    is pending recording. Reviews — all five-star and from 2026 — note professionalism
+
+    and punctuality.
+
+
+    # Review Mentions
+
+
+    Named in 7 guest reviews (Google 7):
+
+    - "Yusuf is the best driver I''ve ever met." — 歐湲, Google 2026-02
+
+
+    # Related Concepts
+
+
+    - [HPWKI](/trust/partners/hpwki.md)
+
+    - [JVTO on Trustpilot](/reviews/trustpilot.md)
+
+    '
+- id: people/crew/dika
+  type: Person
+  title: Dika — JVTO Driver
+  description: JVTO driver, active in the live roster with KTA pending; named in guest reviews on Google
+    and Trustpilot.
+  tags:
+  - person
+  - crew
+  - driver
+  - kta-pending
+  timestamp: '2026-06-26T00:00:00+07:00'
+  status: reviewed
+  visibility: public
+  roles:
+  - driver
+  crew_status: active
+  credential_state: pending
+  languages:
+  - Indonesian
+  review_mentions:
+    total: 3
+    google: 2
+    trustpilot: 1
+    tripadvisor: 0
+  source_refs:
+  - source_id: SRC-CREW-REGISTRY
+    repo: sambuko82/llm-wiki
+    path: wiki/people/crew-registry.md
+    source_class: operational_direct
+    captured_at: '2026-05-26'
+  - source_id: SRC-DB-EXPORT
+    repo: sambuko82/llm-wiki
+    path: raw/db_export_raw.json
+    source_class: direct_external_export
+    captured_at: 2026-05
+    locator: crew_members
+  body: '# Person
+
+
+    Dika is a JVTO driver, confirmed active in the live roster (DB). His HPWKI KTA code
+
+    is pending recording. Reviews note a helpful, caring manner.
+
+
+    # Review Mentions
+
+
+    Named in 3 guest reviews (Google 2 · Trustpilot 1):
+
+    - "Dika was very helpful and caring, sharing things about Indonesia with us." — Wing Shan Lui, 2025-08
+
+
+    # Related Concepts
+
+
+    - [HPWKI](/trust/partners/hpwki.md)
+
+    - [JVTO on Trustpilot](/reviews/trustpilot.md)
+
+    '
+- id: people/crew/pras
+  type: Person
+  title: Pras — JVTO Driver
+  description: JVTO driver, active in the live roster with KTA pending; named in guest reviews on Google.
+  tags:
+  - person
+  - crew
+  - driver
+  - kta-pending
+  timestamp: '2026-06-26T00:00:00+07:00'
+  status: reviewed
+  visibility: public
+  roles:
+  - driver
+  crew_status: active
+  credential_state: pending
+  languages:
+  - English
+  - Indonesian
+  review_mentions:
+    total: 6
+    google: 6
+    trustpilot: 0
+    tripadvisor: 0
+  source_refs:
+  - source_id: SRC-CREW-REGISTRY
+    repo: sambuko82/llm-wiki
+    path: wiki/people/crew-registry.md
+    source_class: operational_direct
+    captured_at: '2026-05-26'
+  - source_id: SRC-DB-EXPORT
+    repo: sambuko82/llm-wiki
+    path: raw/db_export_raw.json
+    source_class: direct_external_export
+    captured_at: 2026-05
+    locator: crew_members
+  body: '# Person
+
+
+    Pras is a JVTO driver, confirmed active in the live roster (DB). His HPWKI KTA code
+
+    is pending recording. Reviews note strong English and a careful, professional manner.
+
+
+    # Review Mentions
+
+
+    Named in 6 guest reviews (Google 6):
+
+    - "Our driver Pras and guide Rendi were the best, super professionals and thoughtful." — samia amrani,
+    Google 2025-10
+
+
+    # Related Concepts
+
+
+    - [HPWKI](/trust/partners/hpwki.md)
+
+    - [JVTO on Trustpilot](/reviews/trustpilot.md)
+
+    '

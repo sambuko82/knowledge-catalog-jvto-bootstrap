@@ -3,7 +3,6 @@ type: Person
 title: Pras — JVTO Driver
 description: JVTO driver, active in the live roster with KTA pending; named in guest
   reviews on Google.
-resource: https://javavolcano-touroperator.com/why-jvto/our-team
 tags:
 - person
 - crew
@@ -53,7 +52,3 @@ Named in 6 guest reviews (Google 6):
 
 - [HPWKI](/trust/partners/hpwki.md)
 - [JVTO on Trustpilot](/reviews/trustpilot.md)
-
-# Citations
-
-- https://javavolcano-touroperator.com/why-jvto/our-team

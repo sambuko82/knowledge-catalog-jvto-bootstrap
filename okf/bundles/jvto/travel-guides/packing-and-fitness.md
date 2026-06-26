@@ -4,7 +4,6 @@ title: Packing & Fitness
 description: What to bring and the fitness each destination needs — warm layers for
   cold pre-dawn starts, grippy footwear for volcanic and canyon terrain, and waterproofing
   where you get wet.
-resource: https://javavolcano-touroperator.com/travel-guide/packing-and-fitness
 tags:
 - travel-guide
 - packing
@@ -14,6 +13,12 @@ timestamp: '2026-06-23T00:00:00+07:00'
 status: reviewed
 visibility: public
 last_verified: '2026-06-23'
+source_refs:
+- source_id: SRC-OPS-FACTS
+  repo: sambuko82/llm-wiki
+  path: wiki/website/operational-facts.md
+  source_class: operational_direct
+  captured_at: '2026-05-26'
 id: travel-guides/packing-and-fitness
 ---
 
@@ -30,7 +35,3 @@ trekking poles on Ijen.
 
 - [Kawah Ijen](/destinations/kawah-ijen.md)
 - [Mount Bromo](/destinations/mount-bromo.md)
-
-# Citations
-
-- https://javavolcano-touroperator.com/travel-guide/packing-and-fitness

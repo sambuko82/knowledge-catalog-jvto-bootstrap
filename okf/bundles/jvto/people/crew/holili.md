@@ -3,7 +3,6 @@ type: Person
 title: Holili — JVTO Driver
 description: JVTO driver, HPWKI KTA-credentialed (KTA-D-2024-009), named in guest
   reviews on Google and Trustpilot.
-resource: https://javavolcano-touroperator.com/why-jvto/our-team
 tags:
 - person
 - crew
@@ -53,7 +52,3 @@ Named in 6 guest reviews (Google 4 · Trustpilot 2):
 
 - [HPWKI](/trust/partners/hpwki.md)
 - [JVTO on Trustpilot](/reviews/trustpilot.md)
-
-# Citations
-
-- https://javavolcano-touroperator.com/why-jvto/our-team

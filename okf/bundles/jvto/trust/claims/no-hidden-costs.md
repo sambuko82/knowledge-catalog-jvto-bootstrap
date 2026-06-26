@@ -3,7 +3,6 @@ type: Trust Claim
 title: No Hidden Costs
 description: JVTO tours are all-inclusive of transport, crew, entrance fees, water,
   and stated meals, with no on-the-day surprise charges.
-resource: https://javavolcano-touroperator.com/policy/inclusions-exclusions
 tags:
 - trust
 - all-inclusive
@@ -13,6 +12,12 @@ timestamp: '2026-06-23T00:00:00+07:00'
 status: reviewed
 visibility: public
 last_verified: '2026-06-23'
+source_refs:
+- source_id: SRC-TRUST-SIGNALS
+  repo: sambuko82/llm-wiki
+  path: wiki/credentials/trust-signals.md
+  source_class: operational_direct
+  captured_at: '2026-05-26'
 id: trust/claims/no-hidden-costs
 ---
 
@@ -26,7 +31,3 @@ exclusions are published.
 # Related Concepts
 
 - [What's Included](/policies/inclusions-exclusions.md)
-
-# Citations
-
-- https://javavolcano-touroperator.com/policy/inclusions-exclusions

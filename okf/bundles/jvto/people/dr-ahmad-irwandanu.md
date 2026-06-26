@@ -3,7 +3,6 @@ type: Person
 title: Dr. Ahmad Irwandanu
 description: The doctor JVTO identifies for its applicable Ijen pre-hike health-screening
   coordination.
-resource: https://javavolcano-touroperator.com/why-jvto/the-jvto-difference
 tags:
 - person
 - doctor
@@ -44,8 +43,3 @@ provider rules.
 - [Ijen Medical Screening Included](/trust/claims/medical-screening.md)
 - [Ijen Health Screening](/policies/ijen-health-screening.md)
 - [Kawah Ijen](/destinations/kawah-ijen.md)
-
-# Citations
-
-- https://javavolcano-touroperator.com/why-jvto/the-jvto-difference
-- https://javavolcano-touroperator.com/travel-guide/ijen-health-screening

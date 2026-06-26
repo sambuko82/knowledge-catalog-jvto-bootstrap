@@ -1,194 +1,334 @@
-# Verified-curation records for Reference concepts.
-# A Reference is a reusable authoritative/historical source. Each is bounded by an
-# explicit `# Claim Boundary`. Supporting artifacts (images, bibliographic locators)
-# live as extra `citations:` on the parent concept, never as separate concepts.
 records:
-  - id: references/bbksda-ijen-guide-training-2024
-    type: Reference
-    title: BBKSDA Jawa Timur — Pelatihan Pemandu Kawah Ijen (2024)
-    description: BBKSDA Jawa Timur documented guide training conducted with HPWKI in May 2024 at TWA Kawah Ijen.
-    resource: https://bbksdajatim.org/pelatihan-pemandu-kawah-ijen/
-    tags: [reference, bbksda, hpwki, ijen, guide-training, sar, ppgd]
-    timestamp: "2026-06-25T00:00:00+07:00"
-    status: verified
-    visibility: public
-    last_verified: "2026-06-26"
-    reference_kind: government-institutional-report
-    body: |
-      # Reference
+- id: references/bbksda-ijen-guide-training-2024
+  type: Reference
+  title: BBKSDA Jawa Timur — Pelatihan Pemandu Kawah Ijen (2024)
+  description: BBKSDA Jawa Timur documented guide training conducted with HPWKI in May 2024 at TWA Kawah
+    Ijen.
+  resource: https://bbksdajatim.org/pelatihan-pemandu-kawah-ijen/
+  tags:
+  - reference
+  - bbksda
+  - hpwki
+  - ijen
+  - guide-training
+  - sar
+  - ppgd
+  timestamp: '2026-06-25T00:00:00+07:00'
+  status: verified
+  visibility: public
+  last_verified: '2026-06-26'
+  reference_kind: government-institutional-report
+  body: '# Reference
 
-      BBKSDA Jawa Timur documented training for guides affiliated with HPWKI from
-      20 to 22 May 2024 at TWA Kawah Ijen. The report describes training on
-      conservation, local-guide responsibilities, Search and Rescue, and
-      Penanggulangan Penderita Gawat Darurat (emergency first aid).
 
-      # Claim Boundary
+    BBKSDA Jawa Timur documented training for guides affiliated with HPWKI from
 
-      This source supports HPWKI training context.
-      It does not establish that JVTO was directly certified by BBKSDA, that a specific
-      JVTO employee attended, or that every JVTO guide completed the training.
+    20 to 22 May 2024 at TWA Kawah Ijen. The report describes training on
 
-      # Related Concepts
+    conservation, local-guide responsibilities, Search and Rescue, and
 
-      - [HPWKI](/trust/partners/hpwki.md)
-      - [Kawah Ijen](/destinations/kawah-ijen.md)
-    citations:
-      - https://bbksdajatim.org/pelatihan-pemandu-kawah-ijen/
+    Penanggulangan Penderita Gawat Darurat (emergency first aid).
 
-  - id: references/booking-com-guest-review-award-2015
-    type: Reference
-    title: Booking.com Guest Review Award 2015
-    description: A historical Booking.com Guest Review Award artifact names "Ijen Bondowoso Home Stay" with a 9.4/10 score.
-    resource: https://javavolcano-touroperator.com/history/booking-2015-plaque.jpg
-    tags: [reference, booking-com, award-2015, history, ijen-bondowoso-homestay]
-    timestamp: "2026-06-25T00:00:00+07:00"
-    status: qualified
-    visibility: public
-    last_verified: "2026-06-26"
-    reference_kind: historical-award-artifact
-    body: |
-      # Reference
 
-      A historical Booking.com 2015 Guest Review Award artifact names the
-      "Ijen Bondowoso Home Stay" and displays a 9.4/10 score. The award shipment was
-      addressed to Agung at Jl. Khairil Anwar No.102, Bondowoso. JVTO's current office
-      uses No.102A on the same address line. This provides historical address context
-      only and does not establish legal succession.
+    # Claim Boundary
 
-      # Claim Boundary
 
-      This is a historical award artifact only.
-      It is not a current Booking.com rating, an active listing, or a current
-      partnership, and the shipping label is not standalone legal-continuity proof.
+    This source supports HPWKI training context.
 
-      # Related Concepts
+    It does not establish that JVTO was directly certified by BBKSDA, that a specific
 
-      - [Java Volcano Tour Operator (JVTO)](/organization.md)
-    citations:
-      - https://javavolcano-touroperator.com/history/booking-2015-plaque.jpg
-      - https://javavolcano-touroperator.com/history/booking-2015-shipping-label.jpg
+    JVTO employee attended, or that every JVTO guide completed the training.
 
-  - id: references/stefan-loose-indonesien-3770167651
-    type: Reference
-    title: Stefan Loose Reiseführer Indonesien (guidebook reference)
-    description: A historical Stefan Loose guidebook page identifies "Agung" in connection with the Ijen Bondowoso Homestay and tour arrangements.
-    resource: https://javavolcano-touroperator.com/history/stefan-loose-ijen-bondowoso-page.png
-    tags: [reference, stefan-loose, guidebook, history, ijen-bondowoso-homestay]
-    timestamp: "2026-06-25T00:00:00+07:00"
-    status: qualified
-    visibility: public
-    last_verified: "2026-06-26"
-    reference_kind: historical-guidebook-reference
-    body: |
-      # Reference
 
-      A historical page in the Stefan Loose Reiseführer Indonesien: mit Reiseatlas
-      (ISBN-13 9783770167654 · ISBN-10 3770167651, p. 287) identifies "Agung" in
-      connection with the Ijen Bondowoso Homestay and tour arrangements — an
-      independent German-language guidebook record.
+    # Related Concepts
 
-      # Claim Boundary
 
-      This is a historical guidebook reference only. It connects only to Agung, the
-      Ijen Bondowoso Homestay, and historical tour arrangements — not to Jl. Khairil
-      Anwar, the current JVTO office, or address continuity.
-      It is not a current endorsement, and it does not assert a publication year,
-      edition number, or publisher, nor does it prove legal succession to the present
-      company. The bibliographic locator does not confirm that the listing page was
-      fully readable or that publication metadata is verified.
+    - [HPWKI](/trust/partners/hpwki.md)
 
-      # Related Concepts
+    - [Kawah Ijen](/destinations/kawah-ijen.md)
 
-      - [Java Volcano Tour Operator (JVTO)](/organization.md)
-    citations:
-      - https://javavolcano-touroperator.com/history/stefan-loose-ijen-bondowoso-page.png
-      - https://javavolcano-touroperator.com/history/stefan_loose_crop_enh.jpg
-      - https://www.amazon.de/-/en/Stefan-Loose-Reisef%C3%BChrer-Indonesien-Reiseatlas/dp/3770167651
+    '
+  citations:
+  - https://bbksdajatim.org/pelatihan-pemandu-kawah-ijen/
+  source_refs:
+  - source_id: SRC-PRESS-COVERAGE
+    repo: sambuko82/llm-wiki
+    path: wiki/credentials/press-coverage.md
+    source_class: operational_direct
+    captured_at: '2026-05-26'
+- id: references/booking-com-guest-review-award-2015
+  type: Reference
+  title: Booking.com Guest Review Award 2015
+  description: A historical Booking.com Guest Review Award artifact names "Ijen Bondowoso Home Stay" with
+    a 9.4/10 score.
+  tags:
+  - reference
+  - booking-com
+  - award-2015
+  - history
+  - ijen-bondowoso-homestay
+  timestamp: '2026-06-25T00:00:00+07:00'
+  status: qualified
+  visibility: public
+  last_verified: '2026-06-26'
+  reference_kind: historical-award-artifact
+  body: '# Reference
 
-  - id: references/detik-tourist-police-bondowoso-2021
-    type: Reference
-    title: Detik.com — Suka Duka Polisi Pariwisata Bondowoso (2021)
-    description: A 2021 Detik.com report names "Bripka Agung Sambuko" in Tourist Police duties in the Bondowoso area.
-    resource: https://news.detik.com/berita-jawa-timur/d-5492690/suka-duka-polisi-pariwisata-bondowoso-tegakkan-prokes-sambil-lawan-dingin
-    tags: [reference, detik, press, tourist-police, bondowoso, "2021"]
-    timestamp: "2026-06-25T00:00:00+07:00"
-    status: verified
-    visibility: public
-    last_verified: "2026-06-26"
-    reference_kind: press-report
-    body: |
-      # Reference
 
-      A Detik.com report dated 14 March 2021 names "Bripka Agung Sambuko" as a Tourist
-      Police (Polisi Pariwisata) officer on duty in the Bondowoso area,
-      independent news coverage of the founder's serving police role.
+    A historical Booking.com 2015 Guest Review Award artifact names the
 
-      # Claim Boundary
+    "Ijen Bondowoso Home Stay" and displays a 9.4/10 score. The award shipment was
 
-      This is a historical press record.
-      It is not proof of the officer's employment status after the publication date.
+    addressed to Agung at Jl. Khairil Anwar No.102, Bondowoso. JVTO''s current office
 
-      # Related Concepts
+    uses No.102A on the same address line. This provides historical address context
 
-      - [Police-Led Operations](/trust/claims/police-led.md)
-    citations:
-      - https://news.detik.com/berita-jawa-timur/d-5492690/suka-duka-polisi-pariwisata-bondowoso-tegakkan-prokes-sambil-lawan-dingin
+    only and does not establish legal succession.
 
-  - id: references/radar-jember-polpar-ijen-geopark-2021
-    type: Reference
-    title: Radar Jember — Polpar Dibentuk untuk Mendukung Ijen Geopark (2021)
-    description: A 2021 Radar Jember report describes the formation of Tourist Police (Polpar) to support the Ijen Geopark.
-    resource: https://radarjember.jawapos.com/bondowoso/791102263/polpar-dibentuk-untuk-mendukung-ijen-geopark
-    tags: [reference, radar-jember, press, polpar, ijen-geopark, "2021"]
-    timestamp: "2026-06-25T00:00:00+07:00"
-    status: verified
-    visibility: public
-    last_verified: "2026-06-26"
-    reference_kind: press-report
-    body: |
-      # Reference
 
-      A 2021 Radar Jember report describes the formation of the Tourist Police (Polpar)
-      to support the Ijen Geopark in the Bondowoso area, regional press context for the
-      founder's police-tourism role.
+    # Claim Boundary
 
-      # Claim Boundary
 
-      This is a historical press record.
-      It does not establish a current role or a JVTO endorsement.
+    This is a historical award artifact only.
 
-      # Related Concepts
+    It is not a current Booking.com rating, an active listing, or a current
 
-      - [Police-Led Operations](/trust/claims/police-led.md)
-    citations:
-      - https://radarjember.jawapos.com/bondowoso/791102263/polpar-dibentuk-untuk-mendukung-ijen-geopark
+    partnership, and the shipping label is not standalone legal-continuity proof.
 
-  - id: references/radar-jember-ijen-environmental-patrol-2021
-    type: Reference
-    title: Radar Jember — Tourist Police Environmental Patrol (2021)
-    description: A 2021 Radar Jember report describes a Tourist Police / Disparpora environmental patrol related to agricultural waste and cleanliness in Bondowoso.
-    resource: https://radarjember.jawapos.com/bondowoso/791103903/tak-seharusnya-bau-menyengat-itu-ada
-    tags: [reference, radar-jember, press, environmental-patrol, bondowoso, "2021"]
-    timestamp: "2026-06-25T00:00:00+07:00"
-    status: verified
-    visibility: public
-    last_verified: "2026-06-26"
-    reference_kind: press-report
-    body: |
-      # Reference
 
-      A 2021 Radar Jember report describes a Tourist Police and Disparpora environmental
-      patrol related to agricultural waste, odor, and area cleanliness in the Bondowoso
-      district.
+    # Related Concepts
 
-      # Claim Boundary
 
-      This is a historical press record of an environmental-cleanliness patrol.
-      It is not evidence of sulfur monitoring, gas monitoring, medical screening, or
-      crater-risk control.
+    - [Java Volcano Tour Operator (JVTO)](/organization.md)
 
-      # Related Concepts
+    '
+  source_refs:
+  - source_id: SRC-PRESS-COVERAGE
+    repo: sambuko82/llm-wiki
+    path: wiki/credentials/press-coverage.md
+    source_class: operational_direct
+    captured_at: '2026-05-26'
+  - source_id: SRC-EVIDENCE-REGISTRY
+    repo: sambuko82/llm-wiki
+    path: raw/_manifest/evidence-registry.yml
+    source_class: direct_external_export
+    captured_at: 2026-05
+    locator: booking-2015
+- id: references/stefan-loose-indonesien-3770167651
+  type: Reference
+  title: Stefan Loose Reiseführer Indonesien (guidebook reference)
+  description: A historical Stefan Loose guidebook page identifies "Agung" in connection with the Ijen
+    Bondowoso Homestay and tour arrangements.
+  tags:
+  - reference
+  - stefan-loose
+  - guidebook
+  - history
+  - ijen-bondowoso-homestay
+  timestamp: '2026-06-25T00:00:00+07:00'
+  status: qualified
+  visibility: public
+  last_verified: '2026-06-26'
+  reference_kind: historical-guidebook-reference
+  body: '# Reference
 
-      - [Police-Led Operations](/trust/claims/police-led.md)
-    citations:
-      - https://radarjember.jawapos.com/bondowoso/791103903/tak-seharusnya-bau-menyengat-itu-ada
+
+    A historical page in the Stefan Loose Reiseführer Indonesien: mit Reiseatlas
+
+    (ISBN-13 9783770167654 · ISBN-10 3770167651, p. 287) identifies "Agung" in
+
+    connection with the Ijen Bondowoso Homestay and tour arrangements — an
+
+    independent German-language guidebook record.
+
+
+    # Claim Boundary
+
+
+    This is a historical guidebook reference only. It connects only to Agung, the
+
+    Ijen Bondowoso Homestay, and historical tour arrangements — not to Jl. Khairil
+
+    Anwar, the current JVTO office, or address continuity.
+
+    It is not a current endorsement, and it does not assert a publication year,
+
+    edition number, or publisher, nor does it prove legal succession to the present
+
+    company. The bibliographic locator does not confirm that the listing page was
+
+    fully readable or that publication metadata is verified.
+
+
+    # Related Concepts
+
+
+    - [Java Volcano Tour Operator (JVTO)](/organization.md)
+
+    '
+  citations:
+  - https://www.amazon.de/-/en/Stefan-Loose-Reisef%C3%BChrer-Indonesien-Reiseatlas/dp/3770167651
+  source_refs:
+  - source_id: SRC-PRESS-COVERAGE
+    repo: sambuko82/llm-wiki
+    path: wiki/credentials/press-coverage.md
+    source_class: operational_direct
+    captured_at: '2026-05-26'
+  - source_id: SRC-EVIDENCE-REGISTRY
+    repo: sambuko82/llm-wiki
+    path: raw/_manifest/evidence-registry.yml
+    source_class: direct_external_export
+    captured_at: 2026-05
+    locator: stefan-loose
+- id: references/detik-tourist-police-bondowoso-2021
+  type: Reference
+  title: Detik.com — Suka Duka Polisi Pariwisata Bondowoso (2021)
+  description: A 2021 Detik.com report names "Bripka Agung Sambuko" in Tourist Police duties in the Bondowoso
+    area.
+  resource: https://news.detik.com/berita-jawa-timur/d-5492690/suka-duka-polisi-pariwisata-bondowoso-tegakkan-prokes-sambil-lawan-dingin
+  tags:
+  - reference
+  - detik
+  - press
+  - tourist-police
+  - bondowoso
+  - '2021'
+  timestamp: '2026-06-25T00:00:00+07:00'
+  status: verified
+  visibility: public
+  last_verified: '2026-06-26'
+  reference_kind: press-report
+  body: '# Reference
+
+
+    A Detik.com report dated 14 March 2021 names "Bripka Agung Sambuko" as a Tourist
+
+    Police (Polisi Pariwisata) officer on duty in the Bondowoso area,
+
+    independent news coverage of the founder''s serving police role.
+
+
+    # Claim Boundary
+
+
+    This is a historical press record.
+
+    It is not proof of the officer''s employment status after the publication date.
+
+
+    # Related Concepts
+
+
+    - [Police-Led Operations](/trust/claims/police-led.md)
+
+    '
+  citations:
+  - https://news.detik.com/berita-jawa-timur/d-5492690/suka-duka-polisi-pariwisata-bondowoso-tegakkan-prokes-sambil-lawan-dingin
+  source_refs:
+  - source_id: SRC-PRESS-COVERAGE
+    repo: sambuko82/llm-wiki
+    path: wiki/credentials/press-coverage.md
+    source_class: operational_direct
+    captured_at: '2026-05-26'
+- id: references/radar-jember-polpar-ijen-geopark-2021
+  type: Reference
+  title: Radar Jember — Polpar Dibentuk untuk Mendukung Ijen Geopark (2021)
+  description: A 2021 Radar Jember report describes the formation of Tourist Police (Polpar) to support
+    the Ijen Geopark.
+  resource: https://radarjember.jawapos.com/bondowoso/791102263/polpar-dibentuk-untuk-mendukung-ijen-geopark
+  tags:
+  - reference
+  - radar-jember
+  - press
+  - polpar
+  - ijen-geopark
+  - '2021'
+  timestamp: '2026-06-25T00:00:00+07:00'
+  status: verified
+  visibility: public
+  last_verified: '2026-06-26'
+  reference_kind: press-report
+  body: '# Reference
+
+
+    A 2021 Radar Jember report describes the formation of the Tourist Police (Polpar)
+
+    to support the Ijen Geopark in the Bondowoso area, regional press context for the
+
+    founder''s police-tourism role.
+
+
+    # Claim Boundary
+
+
+    This is a historical press record.
+
+    It does not establish a current role or a JVTO endorsement.
+
+
+    # Related Concepts
+
+
+    - [Police-Led Operations](/trust/claims/police-led.md)
+
+    '
+  citations:
+  - https://radarjember.jawapos.com/bondowoso/791102263/polpar-dibentuk-untuk-mendukung-ijen-geopark
+  source_refs:
+  - source_id: SRC-PRESS-COVERAGE
+    repo: sambuko82/llm-wiki
+    path: wiki/credentials/press-coverage.md
+    source_class: operational_direct
+    captured_at: '2026-05-26'
+- id: references/radar-jember-ijen-environmental-patrol-2021
+  type: Reference
+  title: Radar Jember — Tourist Police Environmental Patrol (2021)
+  description: A 2021 Radar Jember report describes a Tourist Police / Disparpora environmental patrol
+    related to agricultural waste and cleanliness in Bondowoso.
+  resource: https://radarjember.jawapos.com/bondowoso/791103903/tak-seharusnya-bau-menyengat-itu-ada
+  tags:
+  - reference
+  - radar-jember
+  - press
+  - environmental-patrol
+  - bondowoso
+  - '2021'
+  timestamp: '2026-06-25T00:00:00+07:00'
+  status: verified
+  visibility: public
+  last_verified: '2026-06-26'
+  reference_kind: press-report
+  body: '# Reference
+
+
+    A 2021 Radar Jember report describes a Tourist Police and Disparpora environmental
+
+    patrol related to agricultural waste, odor, and area cleanliness in the Bondowoso
+
+    district.
+
+
+    # Claim Boundary
+
+
+    This is a historical press record of an environmental-cleanliness patrol.
+
+    It is not evidence of sulfur monitoring, gas monitoring, medical screening, or
+
+    crater-risk control.
+
+
+    # Related Concepts
+
+
+    - [Police-Led Operations](/trust/claims/police-led.md)
+
+    '
+  citations:
+  - https://radarjember.jawapos.com/bondowoso/791103903/tak-seharusnya-bau-menyengat-itu-ada
+  source_refs:
+  - source_id: SRC-PRESS-COVERAGE
+    repo: sambuko82/llm-wiki
+    path: wiki/credentials/press-coverage.md
+    source_class: operational_direct
+    captured_at: '2026-05-26'

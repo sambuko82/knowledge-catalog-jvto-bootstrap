@@ -3,7 +3,6 @@ type: Destination
 title: Madakaripura Waterfall
 description: Java's tallest waterfall, in a narrow Probolinggo canyon near Bromo,
   reached by a short gorge walk where visitors get wet from the spray.
-resource: https://javavolcano-touroperator.com/destinations/madakaripura-waterfall
 tags:
 - destination
 - east-java
@@ -13,6 +12,12 @@ timestamp: '2026-06-23T00:00:00+07:00'
 status: reviewed
 visibility: public
 last_verified: '2026-06-23'
+source_refs:
+- source_id: SRC-DEST
+  repo: sambuko82/llm-wiki
+  path: wiki/destinations/madakaripura.md
+  source_class: operational_direct
+  captured_at: '2026-05-26'
 id: destinations/madakaripura
 ---
 
@@ -33,7 +38,3 @@ its proximity to Bromo makes it a natural same-day pairing.
 # Related Concepts
 
 - [All tours](/tours/index.md)
-
-# Citations
-
-- https://javavolcano-touroperator.com/destinations/madakaripura-waterfall

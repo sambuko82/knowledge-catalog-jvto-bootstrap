@@ -1,74 +1,120 @@
-# Verified-curation records for Partner concepts.
-# Each Partner is bounded by an explicit `# Claim Boundary` section stating exactly
-# what the evidence supports and what it does not. Supporting artifacts (approval
-# images, registration records) live as extra `citations:` on the parent concept,
-# never as separate concepts.
 records:
-  - id: trust/partners/indecon
-    type: Partner
-    title: INDECON (Indonesia Ecotourism Network)
-    description: JVTO is featured in INDECON's public Spotlight Networks listing of the Indonesia Ecotourism Network.
-    resource: https://www.indecon.id/spotlight-networks/java-volcano-tour-operator/
-    tags: [partner, indecon, ecotourism, network-listing, community-based-tourism]
-    timestamp: "2026-06-25T00:00:00+07:00"
-    status: verified
-    visibility: public
-    last_verified: "2026-06-26"
-    relationship_type: public_network_listing
-    body: |
-      # Relationship
+- id: trust/partners/indecon
+  type: Partner
+  title: INDECON (Indonesia Ecotourism Network)
+  description: JVTO is featured in INDECON's public Spotlight Networks listing of the Indonesia Ecotourism
+    Network.
+  resource: https://www.indecon.id/spotlight-networks/java-volcano-tour-operator/
+  tags:
+  - partner
+  - indecon
+  - ecotourism
+  - network-listing
+  - community-based-tourism
+  timestamp: '2026-06-25T00:00:00+07:00'
+  status: verified
+  visibility: public
+  last_verified: '2026-06-26'
+  relationship_type: public_network_listing
+  body: '# Relationship
 
-      JVTO is featured in INDECON's Spotlight Networks, a public listing of the
-      Indonesia Ecotourism Network. JVTO presents this listing as supporting its
-      community-based tourism and local-employment practices.
 
-      # Claim Boundary
+    JVTO is featured in INDECON''s Spotlight Networks, a public listing of the
 
-      This concept records a public INDECON network feature only.
-      It does not establish certification, audit approval, exclusive partnership, or
-      a guarantee of all JVTO practices.
+    Indonesia Ecotourism Network. JVTO presents this listing as supporting its
 
-      # Related Concepts
+    community-based tourism and local-employment practices.
 
-      - [Java Volcano Tour Operator (JVTO)](/organization.md)
-    citations:
-      - https://www.indecon.id/spotlight-networks/java-volcano-tour-operator/
 
-  - id: trust/partners/hpwki
-    type: Partner
-    title: Himpunan Pelaku Wisata Khusus Ijen (HPWKI)
-    description: JVTO publicly presents HPWKI as a local volcanic-tourism industry and competence context around Ijen.
-    resource: https://javavolcano-touroperator.com/why-jvto/community-standards
-    tags: [partner, hpwki, ijen, local-guides, volcanic-tourism, guide-competence]
-    timestamp: "2026-06-25T00:00:00+07:00"
-    status: reviewed
-    visibility: public
-    last_verified: "2026-06-26"
-    relationship_type: public_partner_and_industry_context
-    body: |
-      # Relationship
+    # Claim Boundary
 
-      JVTO publicly presents HPWKI as a partner and as local industry context for
-      volcanic-tourism competence around Ijen. A public JVTO-hosted approval artifact
-      is retained as supporting first-party documentation.
 
-      BBKSDA Jawa Timur separately documented training conducted with HPWKI for Ijen
-      guides in May 2024. The training covered conservation, guide responsibilities,
-      Search and Rescue, and emergency first aid.
+    This concept records a public INDECON network feature only.
 
-      # Claim Boundary
+    It does not establish certification, audit approval, exclusive partnership, or
 
-      This concept records JVTO's publicly presented HPWKI relationship and the broader
-      professional-training context of HPWKI.
-      It does not establish that BBKSDA directly certified JVTO, that every JVTO guide
-      attended the training, or that all JVTO operations are approved by BBKSDA.
+    a guarantee of all JVTO practices.
 
-      # Related Concepts
 
-      - [BBKSDA Ijen Guide Training 2024](/references/bbksda-ijen-guide-training-2024.md)
-      - [Kawah Ijen](/destinations/kawah-ijen.md)
-    citations:
-      - https://javavolcano-touroperator.com/why-jvto/community-standards
-      - https://javavolcano-touroperator.com/legal/HPWKI-approval-preview.png
-      - https://ahu.go.id/sabh/perkumpulan/qrcode/?kode=NjAyNDAxMjczNTEwMTM2MV8wXzA3IEZlYnJ1YXJpIDIwMjRfMjcgSmFudWFyeSAyMDI0
-      - https://bbksdajatim.org/pelatihan-pemandu-kawah-ijen/
+    # Related Concepts
+
+
+    - [Java Volcano Tour Operator (JVTO)](/organization.md)
+
+    '
+  citations:
+  - https://www.indecon.id/spotlight-networks/java-volcano-tour-operator/
+  source_refs:
+  - source_id: SRC-TRUST-SIGNALS
+    repo: sambuko82/llm-wiki
+    path: wiki/credentials/trust-signals.md
+    source_class: operational_direct
+    captured_at: '2026-05-26'
+- id: trust/partners/hpwki
+  type: Partner
+  title: Himpunan Pelaku Wisata Khusus Ijen (HPWKI)
+  description: JVTO publicly presents HPWKI as a local volcanic-tourism industry and competence context
+    around Ijen.
+  tags:
+  - partner
+  - hpwki
+  - ijen
+  - local-guides
+  - volcanic-tourism
+  - guide-competence
+  timestamp: '2026-06-25T00:00:00+07:00'
+  status: reviewed
+  visibility: public
+  last_verified: '2026-06-26'
+  relationship_type: public_partner_and_industry_context
+  body: '# Relationship
+
+
+    JVTO publicly presents HPWKI as a partner and as local industry context for
+
+    volcanic-tourism competence around Ijen. A public JVTO-hosted approval artifact
+
+    is retained as supporting first-party documentation.
+
+
+    BBKSDA Jawa Timur separately documented training conducted with HPWKI for Ijen
+
+    guides in May 2024. The training covered conservation, guide responsibilities,
+
+    Search and Rescue, and emergency first aid.
+
+
+    # Claim Boundary
+
+
+    This concept records JVTO''s publicly presented HPWKI relationship and the broader
+
+    professional-training context of HPWKI.
+
+    It does not establish that BBKSDA directly certified JVTO, that every JVTO guide
+
+    attended the training, or that all JVTO operations are approved by BBKSDA.
+
+
+    # Related Concepts
+
+
+    - [BBKSDA Ijen Guide Training 2024](/references/bbksda-ijen-guide-training-2024.md)
+
+    - [Kawah Ijen](/destinations/kawah-ijen.md)
+
+    '
+  citations:
+  - https://ahu.go.id/sabh/perkumpulan/qrcode/?kode=NjAyNDAxMjczNTEwMTM2MV8wXzA3IEZlYnJ1YXJpIDIwMjRfMjcgSmFudWFyeSAyMDI0
+  - https://bbksdajatim.org/pelatihan-pemandu-kawah-ijen/
+  source_refs:
+  - source_id: SRC-TRUST-SIGNALS
+    repo: sambuko82/llm-wiki
+    path: wiki/credentials/trust-signals.md
+    source_class: operational_direct
+    captured_at: '2026-05-26'
+  - source_id: SRC-CREW-REGISTRY
+    repo: sambuko82/llm-wiki
+    path: wiki/people/crew-registry.md
+    source_class: operational_direct
+    captured_at: '2026-05-26'

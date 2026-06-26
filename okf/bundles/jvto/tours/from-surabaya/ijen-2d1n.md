@@ -3,7 +3,6 @@ type: Tour Package
 title: 2 Day Ijen Blue Fire Expedition from Surabaya
 description: 'A 2D1N private tour from Surabaya: 2 Day Ijen Blue Fire Expedition from
   Surabaya.'
-resource: https://javavolcano-touroperator.com/tours/from-surabaya/ijen-2d1n
 tags:
 - ijen
 - origin-surabaya
@@ -63,7 +62,3 @@ A 2D1N fully private tour from Surabaya. Like every JVTO tour it is 100% private
 
 - [Destinations](/destinations/index.md)
 - [Policies](/policies/index.md)
-
-# Citations
-
-- https://javavolcano-touroperator.com/tours/from-surabaya/ijen-2d1n

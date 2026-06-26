@@ -3,7 +3,6 @@ type: Partner
 title: Himpunan Pelaku Wisata Khusus Ijen (HPWKI)
 description: JVTO publicly presents HPWKI as a local volcanic-tourism industry and
   competence context around Ijen.
-resource: https://javavolcano-touroperator.com/why-jvto/community-standards
 tags:
 - partner
 - hpwki
@@ -16,6 +15,17 @@ status: reviewed
 visibility: public
 last_verified: '2026-06-26'
 relationship_type: public_partner_and_industry_context
+source_refs:
+- source_id: SRC-TRUST-SIGNALS
+  repo: sambuko82/llm-wiki
+  path: wiki/credentials/trust-signals.md
+  source_class: operational_direct
+  captured_at: '2026-05-26'
+- source_id: SRC-CREW-REGISTRY
+  repo: sambuko82/llm-wiki
+  path: wiki/people/crew-registry.md
+  source_class: operational_direct
+  captured_at: '2026-05-26'
 id: trust/partners/hpwki
 ---
 
@@ -43,7 +53,5 @@ attended the training, or that all JVTO operations are approved by BBKSDA.
 
 # Citations
 
-- https://javavolcano-touroperator.com/why-jvto/community-standards
-- https://javavolcano-touroperator.com/legal/HPWKI-approval-preview.png
 - https://ahu.go.id/sabh/perkumpulan/qrcode/?kode=NjAyNDAxMjczNTEwMTM2MV8wXzA3IEZlYnJ1YXJpIDIwMjRfMjcgSmFudWFyeSAyMDI0
 - https://bbksdajatim.org/pelatihan-pemandu-kawah-ijen/

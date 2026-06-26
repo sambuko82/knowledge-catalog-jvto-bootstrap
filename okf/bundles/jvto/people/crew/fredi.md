@@ -3,7 +3,6 @@ type: Person
 title: Fredi — JVTO Driver
 description: JVTO driver, HPWKI KTA-credentialed (KTA-D-2024-005), the most-reviewed
   driver; named across three platforms.
-resource: https://javavolcano-touroperator.com/why-jvto/our-team
 tags:
 - person
 - crew
@@ -54,7 +53,3 @@ Named in 20 guest reviews (Google 15 · Trustpilot 4 · TripAdvisor 1):
 
 - [HPWKI](/trust/partners/hpwki.md)
 - [JVTO on Trustpilot](/reviews/trustpilot.md)
-
-# Citations
-
-- https://javavolcano-touroperator.com/why-jvto/our-team

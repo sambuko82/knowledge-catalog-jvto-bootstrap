@@ -3,7 +3,6 @@ type: Person
 title: Yandi — JVTO Driver
 description: JVTO driver, HPWKI KTA-credentialed (KTA-D-2024-003), named in guest
   reviews on Google and Trustpilot.
-resource: https://javavolcano-touroperator.com/why-jvto/our-team
 tags:
 - person
 - crew
@@ -54,7 +53,3 @@ Named in 16 guest reviews (Google 9 · Trustpilot 7):
 
 - [HPWKI](/trust/partners/hpwki.md)
 - [JVTO on Trustpilot](/reviews/trustpilot.md)
-
-# Citations
-
-- https://javavolcano-touroperator.com/why-jvto/our-team

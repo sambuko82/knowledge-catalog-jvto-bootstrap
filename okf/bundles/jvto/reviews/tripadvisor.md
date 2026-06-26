@@ -62,4 +62,3 @@ Taufik, Gufron). See the per-person concepts under `/people/crew/`.
 # Citations
 
 - https://www.tripadvisor.com/Attraction_Review-g297715-d19983165-Reviews-Java_Volcano_Tour_Operator-Surabaya_East_Java_Java.html
-- https://javavolcano-touroperator.com/why-jvto/reviews

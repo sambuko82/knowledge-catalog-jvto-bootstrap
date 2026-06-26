@@ -3,7 +3,6 @@ type: Tour Package
 title: 3 Day Ijen, Bromo & Madakaripura Waterfall Discovery from Surabaya
 description: 'A 3D2N private tour from Surabaya: 3 Day Ijen, Bromo & Madakaripura
   Waterfall Discovery from Surabaya.'
-resource: https://javavolcano-touroperator.com/tours/from-surabaya/ijen-bromo-madakaripura-3d2n
 tags:
 - bromo
 - ijen
@@ -71,7 +70,3 @@ A 3D2N fully private tour from Surabaya. Like every JVTO tour it is 100% private
 
 - [Destinations](/destinations/index.md)
 - [Policies](/policies/index.md)
-
-# Citations
-
-- https://javavolcano-touroperator.com/tours/from-surabaya/ijen-bromo-madakaripura-3d2n

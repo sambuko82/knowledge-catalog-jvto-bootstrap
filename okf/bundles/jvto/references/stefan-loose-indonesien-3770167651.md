@@ -3,7 +3,6 @@ type: Reference
 title: Stefan Loose Reiseführer Indonesien (guidebook reference)
 description: A historical Stefan Loose guidebook page identifies "Agung" in connection
   with the Ijen Bondowoso Homestay and tour arrangements.
-resource: https://javavolcano-touroperator.com/history/stefan-loose-ijen-bondowoso-page.png
 tags:
 - reference
 - stefan-loose
@@ -15,6 +14,18 @@ status: qualified
 visibility: public
 last_verified: '2026-06-26'
 reference_kind: historical-guidebook-reference
+source_refs:
+- source_id: SRC-PRESS-COVERAGE
+  repo: sambuko82/llm-wiki
+  path: wiki/credentials/press-coverage.md
+  source_class: operational_direct
+  captured_at: '2026-05-26'
+- source_id: SRC-EVIDENCE-REGISTRY
+  repo: sambuko82/llm-wiki
+  path: raw/_manifest/evidence-registry.yml
+  source_class: direct_external_export
+  captured_at: 2026-05
+  locator: stefan-loose
 id: references/stefan-loose-indonesien-3770167651
 ---
 
@@ -41,6 +52,4 @@ fully readable or that publication metadata is verified.
 
 # Citations
 
-- https://javavolcano-touroperator.com/history/stefan-loose-ijen-bondowoso-page.png
-- https://javavolcano-touroperator.com/history/stefan_loose_crop_enh.jpg
 - https://www.amazon.de/-/en/Stefan-Loose-Reisef%C3%BChrer-Indonesien-Reiseatlas/dp/3770167651

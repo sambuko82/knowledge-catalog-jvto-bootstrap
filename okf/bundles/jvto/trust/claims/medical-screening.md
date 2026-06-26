@@ -3,7 +3,6 @@ type: Trust Claim
 title: Ijen Medical Screening Included
 description: For Ijen crater hikes, JVTO coordinates a health screening with a licensed
   doctor when conservation-authority rules require it, included in the tour.
-resource: https://javavolcano-touroperator.com/travel-guide/ijen-health-screening
 tags:
 - trust
 - safety
@@ -13,6 +12,12 @@ timestamp: '2026-06-23T00:00:00+07:00'
 status: reviewed
 visibility: public
 last_verified: '2026-06-23'
+source_refs:
+- source_id: SRC-TRUST-SIGNALS
+  repo: sambuko82/llm-wiki
+  path: wiki/credentials/trust-signals.md
+  source_class: operational_direct
+  captured_at: '2026-05-26'
 id: trust/claims/medical-screening
 ---
 
@@ -28,7 +33,3 @@ in effect at the time of travel.
 - [Dr. Ahmad Irwandanu](/people/dr-ahmad-irwandanu.md)
 - [Ijen Health Screening](/policies/ijen-health-screening.md)
 - [Kawah Ijen](/destinations/kawah-ijen.md)
-
-# Citations
-
-- https://javavolcano-touroperator.com/travel-guide/ijen-health-screening

@@ -15,6 +15,12 @@ status: verified
 visibility: public
 last_verified: '2026-06-26'
 relationship_type: public_network_listing
+source_refs:
+- source_id: SRC-TRUST-SIGNALS
+  repo: sambuko82/llm-wiki
+  path: wiki/credentials/trust-signals.md
+  source_class: operational_direct
+  captured_at: '2026-05-26'
 id: trust/partners/indecon
 ---
 

@@ -3,7 +3,6 @@ type: Tour Package
 title: 5 Day Ijen, Bromo, Madakaripura & Malang City Adventure from Surabaya
 description: 'A 5D4N private tour from Surabaya: 5 Day Ijen, Bromo, Madakaripura &
   Malang City Adventure from Surabaya.'
-resource: https://javavolcano-touroperator.com/tours/from-surabaya/ijen-bromo-madakaripura-malang-5d4n
 tags:
 - bromo
 - ijen
@@ -84,7 +83,3 @@ A 5D4N fully private tour from Surabaya. Like every JVTO tour it is 100% private
 
 - [Destinations](/destinations/index.md)
 - [Policies](/policies/index.md)
-
-# Citations
-
-- https://javavolcano-touroperator.com/tours/from-surabaya/ijen-bromo-madakaripura-malang-5d4n

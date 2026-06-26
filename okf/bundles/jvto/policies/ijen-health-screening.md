@@ -3,7 +3,6 @@ type: Policy
 title: Ijen Health Screening
 description: For Ijen crater hikes, JVTO coordinates a health screening with licensed
   medical staff when BBKSDA regulations require it.
-resource: https://javavolcano-touroperator.com/travel-guide/ijen-health-screening
 tags:
 - policy
 - ijen
@@ -14,6 +13,12 @@ timestamp: '2026-06-23T00:00:00+07:00'
 status: reviewed
 visibility: public
 last_verified: '2026-06-23'
+source_refs:
+- source_id: SRC-POLICY-PACK
+  repo: sambuko82/llm-wiki
+  path: wiki/sources/jvto-policy-pack-v6.md
+  source_class: operational_direct
+  captured_at: '2026-05-26'
 id: policies/ijen-health-screening
 ---
 
@@ -30,7 +35,3 @@ person sits out. See the travel-guide page for the current requirement.
 # Related Concepts
 
 - [Kawah Ijen](/destinations/kawah-ijen.md)
-
-# Citations
-
-- https://javavolcano-touroperator.com/travel-guide/ijen-health-screening

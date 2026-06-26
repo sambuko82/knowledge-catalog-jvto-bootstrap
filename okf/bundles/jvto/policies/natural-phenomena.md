@@ -3,7 +3,6 @@ type: Policy
 title: Natural Phenomena Are Not Guaranteed
 description: JVTO cannot guarantee weather-dependent sights such as sunrise or Ijen's
   blue fire; itineraries are planned to maximise the chance.
-resource: https://javavolcano-touroperator.com/travel-guide/faq
 tags:
 - policy
 - weather
@@ -14,6 +13,12 @@ timestamp: '2026-06-23T00:00:00+07:00'
 status: reviewed
 visibility: public
 last_verified: '2026-06-23'
+source_refs:
+- source_id: SRC-POLICY-PACK
+  repo: sambuko82/llm-wiki
+  path: wiki/sources/jvto-policy-pack-v6.md
+  source_class: operational_direct
+  captured_at: '2026-05-26'
 id: policies/natural-phenomena
 ---
 
@@ -27,7 +32,3 @@ good conditions, and may adjust timing or routing for safety.
 # Related Concepts
 
 - [Kawah Ijen](/destinations/kawah-ijen.md)
-
-# Citations
-
-- https://javavolcano-touroperator.com/travel-guide/faq

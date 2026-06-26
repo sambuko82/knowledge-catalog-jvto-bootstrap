@@ -3,7 +3,6 @@ type: Travel Guide
 title: Weather, Volcanic Activity & Closures
 description: What happens when conditions change — Bromo and Ijen are active volcanoes,
   and JVTO follows authority instructions and activates a Plan-B if access is restricted.
-resource: https://javavolcano-touroperator.com/travel-guide/weather-and-closures
 tags:
 - travel-guide
 - weather
@@ -14,6 +13,12 @@ timestamp: '2026-06-23T00:00:00+07:00'
 status: reviewed
 visibility: public
 last_verified: '2026-06-23'
+source_refs:
+- source_id: SRC-OPS-FACTS
+  repo: sambuko82/llm-wiki
+  path: wiki/website/operational-facts.md
+  source_class: operational_direct
+  captured_at: '2026-05-26'
 id: travel-guides/weather-and-closures
 ---
 
@@ -34,8 +39,3 @@ that varies each year and can restrict crater access during that window.
 
 - [Natural Phenomena Are Not Guaranteed](/policies/natural-phenomena.md)
 - [Mount Bromo](/destinations/mount-bromo.md)
-
-# Citations
-
-- https://javavolcano-touroperator.com/travel-guide/weather-and-closures
-- https://javavolcano-touroperator.com/policy/booking-payment-cancellation
