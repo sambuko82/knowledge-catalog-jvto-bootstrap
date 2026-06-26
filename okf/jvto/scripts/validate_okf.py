@@ -13,6 +13,13 @@ Rules:
   JVTO-05 no forbidden/sensitive terms
   JVTO-10 internal Markdown links stay inside the bundle (no escape)
   OKF-03  internal Markdown links resolve
+  JVTO-11 no known-stale review counts near their platform (config: stale_review_claims)
+  JVTO-12 provenance required (Person + records with observations/operational/commercial_context)
+  JVTO-13 source_refs path may not resolve under a denied source scope (config: source-scope.yaml)
+  JVTO-14 a generated/manual_seed/inferred record cannot be the sole evidence of a fact
+  JVTO-15 a Tour Package identity (package_key) must originate once
+  JVTO-16 Review Platform observations, when present, carry current rating/count/as_of/source
+  JVTO-17 concept type is a known concept type (config: known_concept_types)
 """
 from __future__ import annotations
 
@@ -69,10 +76,23 @@ def main() -> int:
     required_fields = bundle_rules.get("required_fields", DEFAULT_REQUIRED_FIELDS)
     forbidden = [str(item).lower() for item in rules.get("forbidden_public_terms", [])]
     citation_types = set(rules.get("required_citation_types", []))
+    # R3 config (JVTO-11..JVTO-17).
+    known_types = set(rules.get("known_concept_types", []))
+    source_ref_types = set(rules.get("source_ref_required_types", []))
+    source_ref_fields = list(rules.get("source_ref_required_fields", []))
+    stale_claims = rules.get("stale_review_claims", []) or []
+    scope_path = Path(__file__).resolve().parents[1] / "config" / "source-scope.yaml"
+    scope = read_yaml(scope_path) if scope_path.exists() else {}
+    deny_by_repo = {
+        str(name): [str(p) for p in (spec.get("deny", []) or [])]
+        for name, spec in (scope.get("repos", {}) or {}).items()
+    }
+    derived_classes = set((scope.get("rules", {}) or {}).get("derived_source_classes", []))
     bundle_resolved = BUNDLE_ROOT.resolve()
     errors: list[dict[str, str]] = []
     warnings: list[dict[str, str]] = []
     seen_ids: dict[str, str] = {}
+    seen_packages: dict[str, str] = {}
 
     for path in sorted(BUNDLE_ROOT.rglob("*.md")):
         if path.name in RESERVED_FILENAMES:
@@ -116,6 +136,62 @@ def main() -> int:
         for term in forbidden:
             if term in lower:
                 errors.append({"rule": "JVTO-05", "path": relative, "message": f"Forbidden term: {term}"})
+
+        ctype = meta.get("type")
+
+        # JVTO-17: type is a known concept type.
+        if known_types and ctype not in known_types:
+            errors.append({"rule": "JVTO-17", "path": relative, "message": f"Unknown concept type: {ctype!r}."})
+
+        # JVTO-11: no known-stale review count within ~40 chars of its platform name.
+        for claim in stale_claims:
+            platform = str(claim.get("platform", "")).lower().strip()
+            count = str(claim.get("count", "")).strip()
+            if not platform or not count:
+                continue
+            hit = any(
+                re.search(rf"\b{re.escape(count)}\b", lower[m.start(): m.end() + 40])
+                for m in re.finditer(re.escape(platform), lower)
+            )
+            if hit:
+                errors.append({"rule": "JVTO-11", "path": relative, "message": f"Stale review count {count} near '{platform}'."})
+
+        # JVTO-12: provenance required for Person + records carrying observation/operational/commercial fields.
+        source_refs = meta.get("source_refs")
+        needs_refs = ctype in source_ref_types or any(meta.get(f) for f in source_ref_fields)
+        if needs_refs and (not isinstance(source_refs, list) or not source_refs):
+            errors.append({"rule": "JVTO-12", "path": relative, "message": "Record requires a non-empty source_refs provenance list."})
+
+        # JVTO-13 / JVTO-14: provenance scope + derived-sole-evidence.
+        if isinstance(source_refs, list) and source_refs:
+            classes: set[str] = set()
+            for ref in source_refs:
+                if not isinstance(ref, dict):
+                    continue
+                classes.add(str(ref.get("source_class", "")))
+                ref_repo = str(ref.get("repo", "")).rstrip("/").split("/")[-1]
+                ref_path = str(ref.get("path", ""))
+                for repo_name, denied in deny_by_repo.items():
+                    if ref_repo == repo_name and any(ref_path.startswith(p) for p in denied):
+                        errors.append({"rule": "JVTO-13", "path": relative, "message": f"source_ref path under denied scope: {repo_name}:{ref_path}"})
+            if derived_classes and classes and classes.issubset(derived_classes) and meta.get("claim_basis") != "planning_assumption":
+                errors.append({"rule": "JVTO-14", "path": relative, "message": "Derived-only source_refs cannot be sole evidence (add a direct source or set claim_basis: planning_assumption)."})
+
+        # JVTO-15: a Tour Package identity (package_key) must originate once.
+        if ctype == "Tour Package":
+            pkey = str(meta.get("package_key", "")).strip()
+            if pkey:
+                if pkey in seen_packages:
+                    errors.append({"rule": "JVTO-15", "path": relative, "message": f"Duplicate Tour Package identity {pkey!r} (also in {seen_packages[pkey]})."})
+                else:
+                    seen_packages[pkey] = relative
+
+        # JVTO-16: Review Platform observations, when present, carry a complete current observation.
+        if ctype == "Review Platform" and meta.get("observations") is not None:
+            obs = meta.get("observations") or {}
+            current = obs.get("current") if isinstance(obs, dict) else None
+            if not isinstance(current, dict) or any(not str(current.get(k, "")).strip() for k in ("rating", "count", "as_of", "source")):
+                errors.append({"rule": "JVTO-16", "path": relative, "message": "Review Platform observations.current must carry rating, count, as_of, source."})
 
         for link in LINK.findall(body):
             if link.startswith(("https://", "http://", "mailto:", "#")):
