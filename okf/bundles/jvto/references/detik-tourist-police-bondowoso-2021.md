@@ -10,7 +10,7 @@ tags:
 - press
 - tourist-police
 - bondowoso
-- 2021
+- '2021'
 timestamp: '2026-06-25T00:00:00+07:00'
 status: reviewed
 visibility: public
