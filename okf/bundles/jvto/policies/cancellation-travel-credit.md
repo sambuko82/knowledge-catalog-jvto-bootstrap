@@ -3,7 +3,6 @@ type: Policy
 title: Cancellation & Lifetime Travel Credit
 description: How JVTO handles guest-initiated cancellations — Travel Credit instead
   of cash refunds, on a 48-hour cut-off.
-resource: https://javavolcano-touroperator.com/policy/booking-payment-cancellation
 tags:
 - policy
 - cancellation
@@ -13,6 +12,12 @@ timestamp: '2026-06-23T00:00:00+07:00'
 status: reviewed
 visibility: public
 last_verified: '2026-06-23'
+source_refs:
+- source_id: SRC-POLICY-PACK
+  repo: sambuko82/llm-wiki
+  path: wiki/sources/jvto-policy-pack-v6.md
+  source_class: operational_direct
+  captured_at: '2026-05-26'
 id: policies/cancellation-travel-credit
 ---
 
@@ -38,8 +43,3 @@ normally start with a 20% deposit.
 # Related Concepts
 
 - [3D2N Ijen, Bromo & Madakaripura tour](/tours/from-surabaya/ijen-bromo-madakaripura-3d2n.md)
-
-# Citations
-
-- https://javavolcano-touroperator.com/policy/booking-payment-cancellation
-- https://javavolcano-touroperator.com/why-jvto/lifetime-travel-credit

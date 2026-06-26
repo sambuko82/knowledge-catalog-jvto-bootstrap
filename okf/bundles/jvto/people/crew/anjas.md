@@ -3,7 +3,6 @@ type: Person
 title: Anjas — JVTO Guide
 description: JVTO mountain guide, HPWKI KTA-credentialed (KTA-G-2024-006), named in
   guest reviews across three platforms.
-resource: https://javavolcano-touroperator.com/why-jvto/our-team
 tags:
 - person
 - crew
@@ -58,8 +57,3 @@ Named in 12 guest reviews (Google 8 · Trustpilot 3 · TripAdvisor 1):
 - [HPWKI](/trust/partners/hpwki.md)
 - [BBKSDA Ijen Guide Training 2024](/references/bbksda-ijen-guide-training-2024.md)
 - [JVTO on Trustpilot](/reviews/trustpilot.md)
-
-# Citations
-
-- https://javavolcano-touroperator.com/why-jvto/our-team
-- https://javavolcano-touroperator.com/uploads/1771428583288-513992233-kta_anjas.jpg

@@ -3,7 +3,6 @@ type: Destination
 title: Kawah Ijen
 description: Active East Java volcano known for its turquoise acidic crater lake,
   pre-dawn "blue fire", and active sulfur mining, reached by a guided night hike.
-resource: https://javavolcano-touroperator.com/destinations/ijen-crater
 tags:
 - destination
 - east-java
@@ -15,6 +14,17 @@ timestamp: '2026-06-23T00:00:00+07:00'
 status: reviewed
 visibility: public
 last_verified: '2026-06-23'
+source_refs:
+- source_id: SRC-DEST
+  repo: sambuko82/llm-wiki
+  path: wiki/destinations/kawah-ijen.md
+  source_class: operational_direct
+  captured_at: '2026-05-26'
+- source_id: SRC-BBKSDA
+  repo: sambuko82/llm-wiki
+  path: wiki/destinations/kawah-ijen.md
+  source_class: public_authority
+  captured_at: '2026-05-26'
 id: destinations/kawah-ijen
 ---
 
@@ -44,5 +54,4 @@ fire" — burning sulfuric gas visible before dawn under suitable conditions
 
 # Citations
 
-- https://javavolcano-touroperator.com/destinations/ijen-crater
 - https://bbksdajatim.org

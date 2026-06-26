@@ -3,7 +3,6 @@ type: Person
 title: Agung "Mr. Sam" Sambuko — Founder
 description: JVTO's founder, a serving officer of the Indonesian Tourist Police, around
   whom the company's police-led safety model is built.
-resource: https://javavolcano-touroperator.com/verify-jvto/police-safety
 tags:
 - person
 - founder
@@ -40,7 +39,3 @@ tourist-police duties in 2021.
 - [Police-Led Operations](/trust/claims/police-led.md)
 - [Detik.com Tourist Police Report (2021)](/references/detik-tourist-police-bondowoso-2021.md)
 - [Java Volcano Tour Operator (JVTO)](/organization.md)
-
-# Citations
-
-- https://javavolcano-touroperator.com/verify-jvto/police-safety

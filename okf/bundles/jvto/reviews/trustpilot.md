@@ -62,4 +62,3 @@ Trustpilot reviews name JVTO crew individually — most-mentioned: Boy (13), Joy
 # Citations
 
 - https://www.trustpilot.com/review/javavolcano-touroperator.com
-- https://javavolcano-touroperator.com/why-jvto/reviews

@@ -3,7 +3,6 @@ type: Person
 title: Joyo — JVTO Driver
 description: JVTO driver, HPWKI KTA-credentialed (KTA-D-2024-011), the most-reviewed
   driver on Trustpilot.
-resource: https://javavolcano-touroperator.com/why-jvto/our-team
 tags:
 - person
 - crew
@@ -53,7 +52,3 @@ Named in 19 guest reviews (Google 4 · Trustpilot 15):
 
 - [HPWKI](/trust/partners/hpwki.md)
 - [JVTO on Trustpilot](/reviews/trustpilot.md)
-
-# Citations
-
-- https://javavolcano-touroperator.com/why-jvto/our-team

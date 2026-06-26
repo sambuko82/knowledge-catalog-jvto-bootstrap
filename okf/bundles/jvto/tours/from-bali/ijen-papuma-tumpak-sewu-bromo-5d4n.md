@@ -3,7 +3,6 @@ type: Tour Package
 title: 5 Day Ijen, Papuma Beach, Tumpak Sewu & Bromo Discovery from Bali to Surabaya
 description: 'A 5D4N private tour from Bali: 5 Day Ijen, Papuma Beach, Tumpak Sewu
   & Bromo Discovery from Bali to Surabaya.'
-resource: https://javavolcano-touroperator.com/tours/from-bali/ijen-papuma-tumpak-sewu-bromo-5d4n
 tags:
 - bromo
 - ijen
@@ -84,7 +83,3 @@ A 5D4N fully private tour from Bali. Like every JVTO tour it is 100% private —
 
 - [Destinations](/destinations/index.md)
 - [Policies](/policies/index.md)
-
-# Citations
-
-- https://javavolcano-touroperator.com/tours/from-bali/ijen-papuma-tumpak-sewu-bromo-5d4n

@@ -3,7 +3,6 @@ type: Tour Package
 title: 3 Day Bromo, Madakaripura & Ijen Overland from Surabaya to Bali
 description: 'A 3D2N private tour from Surabaya: 3 Day Bromo, Madakaripura & Ijen
   Overland from Surabaya to Bali.'
-resource: https://javavolcano-touroperator.com/tours/from-surabaya/bromo-madakaripura-ijen-3d2n
 tags:
 - bromo
 - ijen
@@ -70,7 +69,3 @@ A 3D2N fully private tour from Surabaya. Like every JVTO tour it is 100% private
 
 - [Destinations](/destinations/index.md)
 - [Policies](/policies/index.md)
-
-# Citations
-
-- https://javavolcano-touroperator.com/tours/from-surabaya/bromo-madakaripura-ijen-3d2n

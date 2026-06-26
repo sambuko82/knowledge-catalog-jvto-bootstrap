@@ -3,7 +3,6 @@ type: Tour Package
 title: 6 Day Ijen, Papuma Beach, Tumpak Sewu, Bromo & Malang City Discovery from Surabaya
 description: 'A 6D5N private tour from Surabaya: 6 Day Ijen, Papuma Beach, Tumpak
   Sewu, Bromo & Malang City Discovery from Surabaya.'
-resource: https://javavolcano-touroperator.com/tours/from-surabaya/ijen-papuma-tumpak-sewu-bromo-malang-6d5n
 tags:
 - bromo
 - ijen
@@ -91,7 +90,3 @@ A 6D5N fully private tour from Surabaya. Like every JVTO tour it is 100% private
 
 - [Destinations](/destinations/index.md)
 - [Policies](/policies/index.md)
-
-# Citations
-
-- https://javavolcano-touroperator.com/tours/from-surabaya/ijen-papuma-tumpak-sewu-bromo-malang-6d5n

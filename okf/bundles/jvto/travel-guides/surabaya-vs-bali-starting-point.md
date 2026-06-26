@@ -3,7 +3,6 @@ type: Travel Guide
 title: Starting from Surabaya vs Bali
 description: Choosing your origin — the destinations are the same volcanoes and waterfalls;
   the difference is logistics, transfer times, and (for Bali) a ferry crossing.
-resource: https://javavolcano-touroperator.com/travel-guide/surabaya-vs-bali-starting-point
 tags:
 - travel-guide
 - planning
@@ -14,6 +13,12 @@ timestamp: '2026-06-23T00:00:00+07:00'
 status: reviewed
 visibility: public
 last_verified: '2026-06-23'
+source_refs:
+- source_id: SRC-OPS-FACTS
+  repo: sambuko82/llm-wiki
+  path: wiki/website/operational-facts.md
+  source_class: operational_direct
+  captured_at: '2026-05-26'
 id: travel-guides/surabaya-vs-bali-starting-point
 ---
 
@@ -28,7 +33,3 @@ Choose the origin that fits your flights and timeline.
 # Related Concepts
 
 - [All tours](/tours/index.md)
-
-# Citations
-
-- https://javavolcano-touroperator.com/travel-guide/surabaya-vs-bali-starting-point

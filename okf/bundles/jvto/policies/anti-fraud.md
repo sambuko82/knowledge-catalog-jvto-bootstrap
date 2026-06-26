@@ -3,7 +3,6 @@ type: Policy
 title: Booking Safety & Anti-Fraud
 description: Use only JVTO's official channels; JVTO never asks for full card numbers,
   CVV, banking passwords, or OTP codes.
-resource: https://javavolcano-touroperator.com/travel-guide/booking-information
 tags:
 - policy
 - anti-fraud
@@ -13,6 +12,12 @@ timestamp: '2026-06-23T00:00:00+07:00'
 status: reviewed
 visibility: public
 last_verified: '2026-06-23'
+source_refs:
+- source_id: SRC-POLICY-PACK
+  repo: sambuko82/llm-wiki
+  path: wiki/sources/jvto-policy-pack-v6.md
+  source_class: operational_direct
+  captured_at: '2026-05-26'
 id: policies/anti-fraud
 ---
 
@@ -28,7 +33,3 @@ channel.
 # Related Concepts
 
 - [How to Book](/policies/booking-paths.md)
-
-# Citations
-
-- https://javavolcano-touroperator.com/travel-guide/booking-information

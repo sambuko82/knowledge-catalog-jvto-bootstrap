@@ -3,7 +3,6 @@ type: Person
 title: Dika — JVTO Driver
 description: JVTO driver, active in the live roster with KTA pending; named in guest
   reviews on Google and Trustpilot.
-resource: https://javavolcano-touroperator.com/why-jvto/our-team
 tags:
 - person
 - crew
@@ -52,7 +51,3 @@ Named in 3 guest reviews (Google 2 · Trustpilot 1):
 
 - [HPWKI](/trust/partners/hpwki.md)
 - [JVTO on Trustpilot](/reviews/trustpilot.md)
-
-# Citations
-
-- https://javavolcano-touroperator.com/why-jvto/our-team

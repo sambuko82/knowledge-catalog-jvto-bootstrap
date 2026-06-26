@@ -3,7 +3,6 @@ type: Person
 title: Taufik — JVTO Guide
 description: JVTO guide, HPWKI KTA-credentialed (KTA-G-2024-007), named in guest reviews
   across three platforms.
-resource: https://javavolcano-touroperator.com/why-jvto/our-team
 tags:
 - person
 - crew
@@ -56,8 +55,3 @@ Named in 8 guest reviews (Google 4 · Trustpilot 3 · TripAdvisor 1):
 - [HPWKI](/trust/partners/hpwki.md)
 - [BBKSDA Ijen Guide Training 2024](/references/bbksda-ijen-guide-training-2024.md)
 - [JVTO on Trustpilot](/reviews/trustpilot.md)
-
-# Citations
-
-- https://javavolcano-touroperator.com/why-jvto/our-team
-- https://javavolcano-touroperator.com/uploads/1771428704448-911506028-kta_taufik.jpg

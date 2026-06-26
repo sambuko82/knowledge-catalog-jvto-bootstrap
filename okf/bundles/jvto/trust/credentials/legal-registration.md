@@ -3,7 +3,6 @@ type: Credential
 title: Legal Registration (NIB)
 description: JVTO operates as PT Java Volcano Rendezvous under Indonesian business
   number (NIB) 1102230032918, publicly verifiable on the OSS portal.
-resource: https://javavolcano-touroperator.com/verify-jvto/legal
 tags:
 - trust
 - credential
@@ -14,6 +13,12 @@ timestamp: '2026-06-23T00:00:00+07:00'
 status: reviewed
 visibility: public
 last_verified: '2026-06-23'
+source_refs:
+- source_id: SRC-LEGAL-LICENSES
+  repo: sambuko82/llm-wiki
+  path: wiki/credentials/legal-licenses.md
+  source_class: operational_direct
+  captured_at: '2026-05-26'
 id: trust/credentials/legal-registration
 ---
 
@@ -33,5 +38,4 @@ page, where the identifiers can be cross-checked.
 
 # Citations
 
-- https://javavolcano-touroperator.com/verify-jvto/legal
 - https://oss.go.id

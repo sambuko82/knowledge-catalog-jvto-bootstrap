@@ -3,7 +3,6 @@ type: Person
 title: Boy (Ahboy) — JVTO Guide
 description: JVTO guide, HPWKI KTA-credentialed (KTA-G-2024-004), the most-reviewed
   guide; named in guest reviews across three platforms.
-resource: https://javavolcano-touroperator.com/why-jvto/our-team
 tags:
 - person
 - crew
@@ -57,7 +56,3 @@ Named in 23 guest reviews (Google 9 · Trustpilot 13 · TripAdvisor 1):
 - [HPWKI](/trust/partners/hpwki.md)
 - [BBKSDA Ijen Guide Training 2024](/references/bbksda-ijen-guide-training-2024.md)
 - [JVTO on Trustpilot](/reviews/trustpilot.md)
-
-# Citations
-
-- https://javavolcano-touroperator.com/why-jvto/our-team

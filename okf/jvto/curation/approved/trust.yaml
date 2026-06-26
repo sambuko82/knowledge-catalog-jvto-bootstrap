@@ -1,138 +1,198 @@
-# Verified-curation records for Trust Claim and Credential concepts.
 records:
-  - id: trust/claims/police-led
-    type: Trust Claim
-    title: Police-Led Operations
-    description: JVTO is founded and led by a serving member of the Indonesian Tourist Police, and publishes verifiable documentation of that role.
-    resource: https://javavolcano-touroperator.com/verify-jvto/police-safety
-    tags: [trust, police-led, safety, credentials, verification]
-    timestamp: "2026-06-23T00:00:00+07:00"
-    status: reviewed
-    visibility: public
-    last_verified: "2026-06-23"
-    body: |
-      # Claim
+- id: trust/claims/police-led
+  type: Trust Claim
+  title: Police-Led Operations
+  description: JVTO is founded and led by a serving member of the Indonesian Tourist Police, and publishes
+    verifiable documentation of that role.
+  tags:
+  - trust
+  - police-led
+  - safety
+  - credentials
+  - verification
+  timestamp: '2026-06-23T00:00:00+07:00'
+  status: reviewed
+  visibility: public
+  last_verified: '2026-06-23'
+  body: "# Claim\n\nJVTO's founder, Agung Sambuko, is a serving officer of the Indonesian\nTourist Police,\
+    \ and the company runs a safety-led, \"police-led\" approach to\nvolcano travel.\n\n# How It Is Shown\
+    \ Publicly\n\n- JVTO publishes its police-assignment documentation and an independent press\n  record\
+    \ on its public verification page.\n- The operating company, PT Java Volcano Rendezvous, is registered\
+    \ under\n  Indonesian business number (NIB) 1102230032918, verifiable on the national\n  OSS portal.\n\
+    \n# Related Concepts\n\n- [Kawah Ijen](/destinations/kawah-ijen.md)\n- [Trustpilot reviews](/reviews/trustpilot.md)\n\
+    - [Detik.com Tourist Police Report (2021)](/references/detik-tourist-police-bondowoso-2021.md)\n-\
+    \ [Radar Jember — Polpar for Ijen Geopark (2021)](/references/radar-jember-polpar-ijen-geopark-2021.md)\n\
+    - [Radar Jember — Environmental Patrol (2021)](/references/radar-jember-ijen-environmental-patrol-2021.md)\n"
+  source_refs:
+  - source_id: SRC-AGUNG
+    repo: sambuko82/llm-wiki
+    path: wiki/people/agung-sambuko.md
+    source_class: operational_direct
+    captured_at: '2026-05-26'
+  - source_id: SRC-TRUST-SIGNALS
+    repo: sambuko82/llm-wiki
+    path: wiki/credentials/trust-signals.md
+    source_class: operational_direct
+    captured_at: '2026-05-26'
+- id: trust/credentials/legal-registration
+  type: Credential
+  title: Legal Registration (NIB)
+  description: JVTO operates as PT Java Volcano Rendezvous under Indonesian business number (NIB) 1102230032918,
+    publicly verifiable on the OSS portal.
+  tags:
+  - trust
+  - credential
+  - legal
+  - registration
+  - nib
+  timestamp: '2026-06-23T00:00:00+07:00'
+  status: reviewed
+  visibility: public
+  last_verified: '2026-06-23'
+  body: '# Credential
 
-      JVTO's founder, Agung Sambuko, is a serving officer of the Indonesian
-      Tourist Police, and the company runs a safety-led, "police-led" approach to
-      volcano travel.
 
-      # How It Is Shown Publicly
+    JVTO''s operating company is **PT Java Volcano Rendezvous**, registered under
 
-      - JVTO publishes its police-assignment documentation and an independent press
-        record on its public verification page.
-      - The operating company, PT Java Volcano Rendezvous, is registered under
-        Indonesian business number (NIB) 1102230032918, verifiable on the national
-        OSS portal.
+    Indonesian business number **NIB 1102230032918**. The registration is public
 
-      # Related Concepts
+    and can be checked on Indonesia''s national OSS business portal.
 
-      - [Kawah Ijen](/destinations/kawah-ijen.md)
-      - [Trustpilot reviews](/reviews/trustpilot.md)
-      - [Detik.com Tourist Police Report (2021)](/references/detik-tourist-police-bondowoso-2021.md)
-      - [Radar Jember — Polpar for Ijen Geopark (2021)](/references/radar-jember-polpar-ijen-geopark-2021.md)
-      - [Radar Jember — Environmental Patrol (2021)](/references/radar-jember-ijen-environmental-patrol-2021.md)
-    citations:
-      - https://javavolcano-touroperator.com/verify-jvto/police-safety
-      - https://javavolcano-touroperator.com/verify-jvto/legal
 
-  - id: trust/credentials/legal-registration
-    type: Credential
-    title: Legal Registration (NIB)
-    description: JVTO operates as PT Java Volcano Rendezvous under Indonesian business number (NIB) 1102230032918, publicly verifiable on the OSS portal.
-    resource: https://javavolcano-touroperator.com/verify-jvto/legal
-    tags: [trust, credential, legal, registration, nib]
-    timestamp: "2026-06-23T00:00:00+07:00"
-    status: reviewed
-    visibility: public
-    last_verified: "2026-06-23"
-    body: |
-      # Credential
+    JVTO lists its registration and tourism licensing on its public verification
 
-      JVTO's operating company is **PT Java Volcano Rendezvous**, registered under
-      Indonesian business number **NIB 1102230032918**. The registration is public
-      and can be checked on Indonesia's national OSS business portal.
+    page, where the identifiers can be cross-checked.
 
-      JVTO lists its registration and tourism licensing on its public verification
-      page, where the identifiers can be cross-checked.
 
-      # Related Concepts
+    # Related Concepts
 
-      - [Police-Led Operations](/trust/claims/police-led.md)
-      - [Java Volcano Tour Operator (JVTO)](/organization.md)
-    citations:
-      - https://javavolcano-touroperator.com/verify-jvto/legal
-      - https://oss.go.id
 
-  - id: trust/claims/medical-screening
-    type: Trust Claim
-    title: Ijen Medical Screening Included
-    description: For Ijen crater hikes, JVTO coordinates a health screening with a licensed doctor when conservation-authority rules require it, included in the tour.
-    resource: https://javavolcano-touroperator.com/travel-guide/ijen-health-screening
-    tags: [trust, safety, medical-screening, ijen]
-    timestamp: "2026-06-23T00:00:00+07:00"
-    status: reviewed
-    visibility: public
-    last_verified: "2026-06-23"
-    body: |
-      # Claim
+    - [Police-Led Operations](/trust/claims/police-led.md)
 
-      JVTO states that Ijen night-hike packages include a pre-hike health screening,
-      coordinated as part of the tour. Local authorities or providers may require or
-      verify screening completion before crater access, depending on the access rules
-      in effect at the time of travel.
+    - [Java Volcano Tour Operator (JVTO)](/organization.md)
 
-      # Related Concepts
+    '
+  citations:
+  - https://oss.go.id
+  source_refs:
+  - source_id: SRC-LEGAL-LICENSES
+    repo: sambuko82/llm-wiki
+    path: wiki/credentials/legal-licenses.md
+    source_class: operational_direct
+    captured_at: '2026-05-26'
+- id: trust/claims/medical-screening
+  type: Trust Claim
+  title: Ijen Medical Screening Included
+  description: For Ijen crater hikes, JVTO coordinates a health screening with a licensed doctor when
+    conservation-authority rules require it, included in the tour.
+  tags:
+  - trust
+  - safety
+  - medical-screening
+  - ijen
+  timestamp: '2026-06-23T00:00:00+07:00'
+  status: reviewed
+  visibility: public
+  last_verified: '2026-06-23'
+  body: '# Claim
 
-      - [Dr. Ahmad Irwandanu](/people/dr-ahmad-irwandanu.md)
-      - [Ijen Health Screening](/policies/ijen-health-screening.md)
-      - [Kawah Ijen](/destinations/kawah-ijen.md)
-    citations:
-      - https://javavolcano-touroperator.com/travel-guide/ijen-health-screening
 
-  - id: trust/claims/private-format
-    type: Trust Claim
-    title: 100% Private Tours
-    description: Every JVTO tour is fully private — a dedicated vehicle, driver, and guide, with no shared groups.
-    resource: https://javavolcano-touroperator.com/why-jvto/the-jvto-difference
-    tags: [trust, private, format, differentiator]
-    timestamp: "2026-06-23T00:00:00+07:00"
-    status: reviewed
-    visibility: public
-    last_verified: "2026-06-23"
-    body: |
-      # Claim
+    JVTO states that Ijen night-hike packages include a pre-hike health screening,
 
-      Every JVTO tour is 100% private: a dedicated vehicle, driver, and guide for
-      your group only, with no shared groups or strangers. Timing and safety
-      decisions stay consistent for your party.
+    coordinated as part of the tour. Local authorities or providers may require or
 
-      # Related Concepts
+    verify screening completion before crater access, depending on the access rules
 
-      - [All tours](/tours/index.md)
-    citations:
-      - https://javavolcano-touroperator.com/why-jvto/the-jvto-difference
+    in effect at the time of travel.
 
-  - id: trust/claims/no-hidden-costs
-    type: Trust Claim
-    title: No Hidden Costs
-    description: JVTO tours are all-inclusive of transport, crew, entrance fees, water, and stated meals, with no on-the-day surprise charges.
-    resource: https://javavolcano-touroperator.com/policy/inclusions-exclusions
-    tags: [trust, all-inclusive, pricing, transparency]
-    timestamp: "2026-06-23T00:00:00+07:00"
-    status: reviewed
-    visibility: public
-    last_verified: "2026-06-23"
-    body: |
-      # Claim
 
-      JVTO tours are all-inclusive: private transport, crew, all entrance fees and
-      permits, drinking water, and the meals stated in the itinerary are covered,
-      with no on-the-day haggling or surprise local fees. The full inclusions and
-      exclusions are published.
+    # Related Concepts
 
-      # Related Concepts
 
-      - [What's Included](/policies/inclusions-exclusions.md)
-    citations:
-      - https://javavolcano-touroperator.com/policy/inclusions-exclusions
+    - [Dr. Ahmad Irwandanu](/people/dr-ahmad-irwandanu.md)
+
+    - [Ijen Health Screening](/policies/ijen-health-screening.md)
+
+    - [Kawah Ijen](/destinations/kawah-ijen.md)
+
+    '
+  source_refs:
+  - source_id: SRC-TRUST-SIGNALS
+    repo: sambuko82/llm-wiki
+    path: wiki/credentials/trust-signals.md
+    source_class: operational_direct
+    captured_at: '2026-05-26'
+- id: trust/claims/private-format
+  type: Trust Claim
+  title: 100% Private Tours
+  description: Every JVTO tour is fully private — a dedicated vehicle, driver, and guide, with no shared
+    groups.
+  tags:
+  - trust
+  - private
+  - format
+  - differentiator
+  timestamp: '2026-06-23T00:00:00+07:00'
+  status: reviewed
+  visibility: public
+  last_verified: '2026-06-23'
+  body: '# Claim
+
+
+    Every JVTO tour is 100% private: a dedicated vehicle, driver, and guide for
+
+    your group only, with no shared groups or strangers. Timing and safety
+
+    decisions stay consistent for your party.
+
+
+    # Related Concepts
+
+
+    - [All tours](/tours/index.md)
+
+    '
+  source_refs:
+  - source_id: SRC-TRUST-SIGNALS
+    repo: sambuko82/llm-wiki
+    path: wiki/credentials/trust-signals.md
+    source_class: operational_direct
+    captured_at: '2026-05-26'
+- id: trust/claims/no-hidden-costs
+  type: Trust Claim
+  title: No Hidden Costs
+  description: JVTO tours are all-inclusive of transport, crew, entrance fees, water, and stated meals,
+    with no on-the-day surprise charges.
+  tags:
+  - trust
+  - all-inclusive
+  - pricing
+  - transparency
+  timestamp: '2026-06-23T00:00:00+07:00'
+  status: reviewed
+  visibility: public
+  last_verified: '2026-06-23'
+  body: '# Claim
+
+
+    JVTO tours are all-inclusive: private transport, crew, all entrance fees and
+
+    permits, drinking water, and the meals stated in the itinerary are covered,
+
+    with no on-the-day haggling or surprise local fees. The full inclusions and
+
+    exclusions are published.
+
+
+    # Related Concepts
+
+
+    - [What''s Included](/policies/inclusions-exclusions.md)
+
+    '
+  source_refs:
+  - source_id: SRC-TRUST-SIGNALS
+    repo: sambuko82/llm-wiki
+    path: wiki/credentials/trust-signals.md
+    source_class: operational_direct
+    captured_at: '2026-05-26'

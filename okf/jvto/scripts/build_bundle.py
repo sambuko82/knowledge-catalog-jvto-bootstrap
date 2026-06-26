@@ -129,7 +129,6 @@ def build_packages() -> list[str]:
             "type": "Tour Package",
             "title": str(row.get("title") or slug),
             "description": f"Generated public candidate for {row.get('title') or slug}; must be reviewed against the live package page.",
-            "resource": resource,
             "tags": tags_for_package(row),
             "timestamp": package_timestamp,
             "id": cid,
@@ -139,6 +138,14 @@ def build_packages() -> list[str]:
             "source_snapshot": "llm_wiki/output/products/package-readiness",
             "source_manifest_schema": schema,
             "source_generated_at": manifest.get("generated_at"),
+            "source_refs": [{
+                "source_id": "SRC-PKG-READINESS",
+                "repo": "sambuko82/llm-wiki",
+                "path": "output/products/package-readiness/package-registry.json",
+                "source_class": "operational_direct",
+                "captured_at": manifest.get("generated_at"),
+                "locator": package_id,
+            }],
             "public_data_review_required": True,
         }
         body = "\n".join(
@@ -165,10 +172,6 @@ def build_packages() -> list[str]:
                 "# Related Concepts",
                 "",
                 "- [All tours](/tours/index.md)",
-                "",
-                "# Citations",
-                "",
-                f"- {resource or 'Add the official public package URL during review.'}",
             ]
         )
         write_concept(cid, metadata, body)
@@ -234,7 +237,6 @@ def build_policies() -> list[str]:
             "type": "Policy",
             "title": domain,
             "description": notes or f"{domain} policy for JVTO customers.",
-            "resource": f"{PUBLIC_BASE}/policies",
             "tags": tags,
             "timestamp": str(generated_at or utc_now()),
             "id": cid,
@@ -244,6 +246,14 @@ def build_policies() -> list[str]:
             "source_snapshot": "llm_wiki/output/website/policy-bundle",
             "source_manifest_schema": schema,
             "source_generated_at": generated_at,
+            "source_refs": [{
+                "source_id": "SRC-POLICY-PACK",
+                "repo": "sambuko82/llm-wiki",
+                "path": "wiki/sources/jvto-policy-pack-v6.md",
+                "source_class": "operational_direct",
+                "captured_at": str(generated_at or ""),
+                "locator": policy_id,
+            }],
             "public_data_review_required": True,
         }
         body = "\n".join(
@@ -260,10 +270,6 @@ def build_policies() -> list[str]:
                 "# Related Concepts",
                 "",
                 "- [All policies](/policies/index.md)",
-                "",
-                "# Citations",
-                "",
-                f"- {PUBLIC_BASE}/policies",
             ]
         )
         write_concept(cid, metadata, body)

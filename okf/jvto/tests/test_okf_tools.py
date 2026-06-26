@@ -49,7 +49,7 @@ class OkfToolsTest(unittest.TestCase):
             self.assertTrue(concept.exists())
             content = concept.read_text(encoding="utf-8")
             self.assertIn("generated_pending_review", content)
-            self.assertIn("# Citations", content)
+            self.assertIn("source_refs:", content)
 
             validation = subprocess.run([sys.executable, "scripts/validate_okf.py", "--strict-links"], cwd=TOOL_ROOT, env=env, capture_output=True, text=True)
             self.assertEqual(validation.returncode, 0, validation.stderr)
@@ -270,7 +270,7 @@ class OkfToolsTest(unittest.TestCase):
             content = concept.read_text(encoding="utf-8")
             self.assertIn("type: Policy", content)
             self.assertIn("generated_pending_review", content)
-            self.assertIn("# Citations", content)
+            self.assertIn("source_refs:", content)
             self.assertNotIn("[[", content)  # Obsidian wikilinks flattened
 
             validation = subprocess.run([sys.executable, "scripts/validate_okf.py", "--strict-links"], cwd=TOOL_ROOT, env=env, capture_output=True, text=True)
@@ -324,7 +324,7 @@ class OkfToolsTest(unittest.TestCase):
                           # Related Concepts
                           - [Tours](/tours/index.md)
                         citations:
-                          - https://javavolcano-touroperator.com
+                          - https://oss.go.id
                     """
                 ),
                 encoding="utf-8",
@@ -446,7 +446,7 @@ class OkfToolsTest(unittest.TestCase):
             env.update({"JVTO_OKF_BUNDLE_ROOT": str(root / "bundle"), "JVTO_OKF_BUILD_ROOT": str(root / "build")})
             result = subprocess.run([sys.executable, "scripts/validate_okf.py", "--release", "--strict-links"], cwd=TOOL_ROOT, env=env, capture_output=True, text=True)
             self.assertEqual(result.returncode, 2, result.stdout)
-            self.assertIn("Citations section is missing or has no public URL", result.stderr)
+            self.assertIn("JVTO-04", result.stderr)
 
     def test_verified_requires_verification_metadata(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
@@ -695,7 +695,7 @@ class OkfToolsTest(unittest.TestCase):
                     fail = subprocess.run([sys.executable, "scripts/validate_okf.py", "--release", "--strict-links"], cwd=TOOL_ROOT, env=env, capture_output=True, text=True)
                     self.assertEqual(fail.returncode, 2, fail.stdout)
                     self.assertIn("JVTO-04", fail.stderr)
-                    self.assertIn("Citations section is missing or has no public URL", fail.stderr)
+                    self.assertIn("JVTO-04", fail.stderr)
 
                 # With a public URL present, the same concept passes release.
                 with tempfile.TemporaryDirectory() as temp:
@@ -709,7 +709,7 @@ class OkfToolsTest(unittest.TestCase):
 
                         # Citations
 
-                        - https://javavolcano-touroperator.com
+                        - https://example.com
                         """,
                     )
                     env = os.environ.copy()
@@ -933,6 +933,114 @@ class OkfToolsTest(unittest.TestCase):
             result = self._validate(root, release=False)
             self.assertEqual(result.returncode, 2, result.stdout)
             self.assertIn("JVTO-17", result.stderr)
+
+
+    # ---- R4 website-ban rules (JVTO-04 relaxed, JVTO-18) ----
+
+    def test_jvto18_rejects_jvto_website(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._write_concept(
+                root / "bundle" / "policies" / "p.md",
+                """\
+                type: Policy
+                title: A Policy
+                description: Cites the banned JVTO website.
+                tags: [policy]
+                timestamp: "2026-06-26T00:00:00Z"
+                id: policies/p
+                status: reviewed
+                visibility: public
+                resource: https://javavolcano-touroperator.com/policy/x
+                """,
+                """\
+                # Overview
+                Body.
+
+                # Citations
+
+                - https://javavolcano-touroperator.com/policy/x
+                """,
+            )
+            result = self._validate(root, release=False)
+            self.assertEqual(result.returncode, 2, result.stdout)
+            self.assertIn("JVTO-18", result.stderr)
+
+    def test_jvto18_allows_external_url_with_brand_in_path(self) -> None:
+        # A Trustpilot review URL contains the brand in its PATH but its host is trustpilot.com.
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._write_concept(
+                root / "bundle" / "reviews" / "tp.md",
+                """\
+                type: Review Platform
+                title: JVTO on Trustpilot
+                description: External platform; brand appears only in the URL path.
+                tags: [reviews]
+                timestamp: "2026-06-26T00:00:00Z"
+                id: reviews/tp
+                status: reviewed
+                visibility: public
+                resource: https://www.trustpilot.com/review/javavolcano-touroperator.com
+                """,
+                """\
+                # Overview
+                Body.
+
+                # Citations
+
+                - https://www.trustpilot.com/review/javavolcano-touroperator.com
+                """,
+            )
+            result = self._validate(root, release=False)
+            self.assertEqual(result.returncode, 0, result.stderr)
+
+    def test_jvto04_passes_with_source_refs_and_no_citation(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._write_concept(
+                root / "bundle" / "policies" / "p.md",
+                """\
+                type: Policy
+                title: A Policy
+                description: No public-URL citation, anchored on source_refs instead.
+                tags: [policy]
+                timestamp: "2026-06-26T00:00:00Z"
+                id: policies/p
+                status: reviewed
+                visibility: public
+                source_refs:
+                  - source_id: SRC-POLICY
+                    repo: sambuko82/llm-wiki
+                    path: wiki/sources/jvto-policy-pack-v6.md
+                    source_class: operational_direct
+                    captured_at: "2026-05-26"
+                """,
+                "# Overview\nBody, no citations section.\n",
+            )
+            result = self._validate(root, release=True)
+            self.assertEqual(result.returncode, 0, result.stderr)
+
+    def test_jvto04_fails_without_citation_or_source_refs(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._write_concept(
+                root / "bundle" / "policies" / "p.md",
+                """\
+                type: Policy
+                title: A Policy
+                description: No citation and no source_refs anchor.
+                tags: [policy]
+                timestamp: "2026-06-26T00:00:00Z"
+                id: policies/p
+                status: reviewed
+                visibility: public
+                """,
+                "# Overview\nBody, no citations, no source_refs.\n",
+            )
+            result = self._validate(root, release=False)
+            self.assertEqual(result.returncode, 2, result.stdout)
+            self.assertIn("JVTO-04", result.stderr)
 
 
 if __name__ == "__main__":

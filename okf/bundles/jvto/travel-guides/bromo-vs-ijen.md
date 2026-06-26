@@ -3,7 +3,6 @@ type: Travel Guide
 title: Mount Bromo vs Kawah Ijen
 description: Which volcano suits you — Bromo is an easier sunrise caldera experience,
   Ijen is a more demanding pre-dawn hike for the blue fire and acidic crater lake.
-resource: https://javavolcano-touroperator.com/travel-guide/bromo-vs-ijen-comparison
 tags:
 - travel-guide
 - comparison
@@ -14,6 +13,12 @@ timestamp: '2026-06-23T00:00:00+07:00'
 status: reviewed
 visibility: public
 last_verified: '2026-06-23'
+source_refs:
+- source_id: SRC-OPS-FACTS
+  repo: sambuko82/llm-wiki
+  path: wiki/website/operational-facts.md
+  source_class: operational_direct
+  captured_at: '2026-05-26'
 id: travel-guides/bromo-vs-ijen
 ---
 
@@ -29,7 +34,3 @@ crater lake. Many travelers do both on a multi-day route.
 
 - [Mount Bromo](/destinations/mount-bromo.md)
 - [Kawah Ijen](/destinations/kawah-ijen.md)
-
-# Citations
-
-- https://javavolcano-touroperator.com/travel-guide/bromo-vs-ijen-comparison

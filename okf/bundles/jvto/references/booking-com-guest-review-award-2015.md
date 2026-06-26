@@ -3,7 +3,6 @@ type: Reference
 title: Booking.com Guest Review Award 2015
 description: A historical Booking.com Guest Review Award artifact names "Ijen Bondowoso
   Home Stay" with a 9.4/10 score.
-resource: https://javavolcano-touroperator.com/history/booking-2015-plaque.jpg
 tags:
 - reference
 - booking-com
@@ -15,6 +14,18 @@ status: qualified
 visibility: public
 last_verified: '2026-06-26'
 reference_kind: historical-award-artifact
+source_refs:
+- source_id: SRC-PRESS-COVERAGE
+  repo: sambuko82/llm-wiki
+  path: wiki/credentials/press-coverage.md
+  source_class: operational_direct
+  captured_at: '2026-05-26'
+- source_id: SRC-EVIDENCE-REGISTRY
+  repo: sambuko82/llm-wiki
+  path: raw/_manifest/evidence-registry.yml
+  source_class: direct_external_export
+  captured_at: 2026-05
+  locator: booking-2015
 id: references/booking-com-guest-review-award-2015
 ---
 
@@ -35,8 +46,3 @@ partnership, and the shipping label is not standalone legal-continuity proof.
 # Related Concepts
 
 - [Java Volcano Tour Operator (JVTO)](/organization.md)
-
-# Citations
-
-- https://javavolcano-touroperator.com/history/booking-2015-plaque.jpg
-- https://javavolcano-touroperator.com/history/booking-2015-shipping-label.jpg

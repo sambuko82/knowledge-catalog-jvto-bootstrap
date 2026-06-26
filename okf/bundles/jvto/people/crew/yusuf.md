@@ -3,7 +3,6 @@ type: Person
 title: Yusuf — JVTO Driver
 description: JVTO driver, active in the live roster with KTA pending; named in guest
   reviews on Google.
-resource: https://javavolcano-touroperator.com/why-jvto/our-team
 tags:
 - person
 - crew
@@ -53,7 +52,3 @@ Named in 7 guest reviews (Google 7):
 
 - [HPWKI](/trust/partners/hpwki.md)
 - [JVTO on Trustpilot](/reviews/trustpilot.md)
-
-# Citations
-
-- https://javavolcano-touroperator.com/why-jvto/our-team
