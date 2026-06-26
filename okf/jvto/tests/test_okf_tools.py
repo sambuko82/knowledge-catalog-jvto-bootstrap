@@ -852,6 +852,156 @@ class OkfToolsTest(unittest.TestCase):
             result = self._validate(root)
             self.assertEqual(result.returncode, 0, result.stderr)
 
+    # ---- JVTO-19 source_refs schema + JVTO-13 scope (close the placeholder-anchor bypass) ----
+
+    def _policy_with_refs(self, root: Path, refs_yaml: str) -> None:
+        # A required-citation Policy whose only citation is the website; the source_refs block decides
+        # whether it has a valid anchor. Used to prove a malformed ref cannot stand in for evidence.
+        self._write_concept(
+            root / "bundle" / "policies" / "p.md",
+            "type: Policy\n"
+            "title: A Policy\n"
+            "description: Website-only citation; anchor validity depends on source_refs.\n"
+            "tags: [policy]\n"
+            'timestamp: "2026-06-26T00:00:00Z"\n'
+            "id: policies/p\n"
+            "status: reviewed\n"
+            "visibility: public\n"
+            + refs_yaml,
+            "# Overview\nBody.\n\n# Citations\n\n- https://javavolcano-touroperator.com/policy/x\n",
+        )
+
+    def test_jvto19_placeholder_refs_do_not_anchor(self) -> None:
+        # A placeholder source_refs entry ({} or a bare string) must NOT satisfy the evidence basis,
+        # so a website-only concept still fails (JVTO-19 schema + JVTO-18 sole-evidence).
+        for label, refs_yaml in (
+            ("empty-dict", "source_refs:\n  - {}\n"),
+            ("bare-string", "source_refs:\n  - x\n"),
+        ):
+            with self.subTest(case=label), tempfile.TemporaryDirectory() as temp:
+                root = Path(temp)
+                self._policy_with_refs(root, refs_yaml)
+                result = self._validate(root, release=False)
+                self.assertEqual(result.returncode, 2, result.stdout)
+                self.assertIn("JVTO-19", result.stderr)
+                self.assertIn("JVTO-18", result.stderr)
+
+    def test_jvto19_ref_missing_fields_blocked(self) -> None:
+        # A dict ref missing required fields (here path + source_class + captured_at) fails JVTO-19.
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._policy_with_refs(
+                root,
+                "source_refs:\n  - source_id: SRC-X\n    repo: sambuko82/llm-wiki\n",
+            )
+            result = self._validate(root, release=False)
+            self.assertEqual(result.returncode, 2, result.stdout)
+            self.assertIn("JVTO-19", result.stderr)
+
+    def test_jvto19_valid_ref_anchors_website_only(self) -> None:
+        # The contrast case: a fully valid source_refs entry anchors the claim, so the same
+        # website-only concept passes and JVTO-18 does not fire.
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._policy_with_refs(
+                root,
+                "source_refs:\n"
+                "  - source_id: SRC-POLICY\n"
+                "    repo: sambuko82/llm-wiki\n"
+                "    path: wiki/sources/jvto-policy-pack-v6.md\n"
+                "    source_class: operational_direct\n"
+                '    captured_at: "2026-05-26"\n',
+            )
+            result = self._validate(root, release=False)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertNotIn("JVTO-18", result.stderr)
+            self.assertNotIn("JVTO-19", result.stderr)
+
+    def test_jvto13_unknown_repo_blocked(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._write_concept(
+                root / "bundle" / "people" / "p.md",
+                """\
+                type: Person
+                title: A Crew Person
+                description: Provenance points at an unknown repo.
+                tags: [person, crew]
+                timestamp: "2026-06-26T00:00:00Z"
+                id: people/crew-x
+                status: reviewed
+                visibility: public
+                source_refs:
+                  - source_id: SRC-X
+                    repo: sambuko82/some-unknown-repo
+                    path: wiki/people/crew-registry.md
+                    source_class: operational_direct
+                    captured_at: "2026-06-26"
+                """,
+                "# Overview\nx\n",
+            )
+            result = self._validate(root)
+            self.assertEqual(result.returncode, 2, result.stdout)
+            self.assertIn("JVTO-13", result.stderr)
+
+    def test_jvto13_path_outside_allow_blocked(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._write_concept(
+                root / "bundle" / "people" / "p.md",
+                """\
+                type: Person
+                title: A Crew Person
+                description: Provenance path is in a known repo but outside the allow scope.
+                tags: [person, crew]
+                timestamp: "2026-06-26T00:00:00Z"
+                id: people/crew-x
+                status: reviewed
+                visibility: public
+                source_refs:
+                  - source_id: SRC-X
+                    repo: sambuko82/llm-wiki
+                    path: wiki/secret/private-notes.md
+                    source_class: operational_direct
+                    captured_at: "2026-06-26"
+                """,
+                "# Overview\nx\n",
+            )
+            result = self._validate(root)
+            self.assertEqual(result.returncode, 2, result.stdout)
+            self.assertIn("JVTO-13", result.stderr)
+
+    def test_jvto13_itinerary_core_scope_enforced(self) -> None:
+        # Regression for the repo-key reconciliation: scope is now actually enforced for
+        # jvto-itinerary-core refs. A contracts/ path passes; an input/jvto-web/ path is denied.
+        valid = """\
+            type: Person
+            title: A Crew Person
+            description: itinerary-core contracts provenance (in allow scope).
+            tags: [person, crew]
+            timestamp: "2026-06-26T00:00:00Z"
+            id: people/crew-x
+            status: reviewed
+            visibility: public
+            source_refs:
+              - source_id: SRC-CONTRACT
+                repo: sambuko82/jvto-itinerary-core
+                path: contracts/sample-contract.json
+                source_class: operational_direct
+                captured_at: "2026-06-26"
+            """
+        denied = valid.replace("contracts/sample-contract.json", "input/jvto-web/leak.md")
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._write_concept(root / "bundle" / "people" / "p.md", valid, "# Overview\nx\n")
+            self.assertEqual(self._validate(root).returncode, 0)
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._write_concept(root / "bundle" / "people" / "p.md", denied, "# Overview\nx\n")
+            result = self._validate(root)
+            self.assertEqual(result.returncode, 2, result.stdout)
+            self.assertIn("JVTO-13", result.stderr)
+
     def test_stale_review_count_blocked(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)

@@ -48,7 +48,7 @@ State exactly what the evidence supports and what it does not support.
 
 ## Website Role
 - Authority runs one way: source knowledge + original evidence → the canonical OKF graph → the website.
-- The JVTO website (`javavolcano-touroperator.com`) is a **secondary** presentation and corroboration layer. It may appear as supplementary context, but it is **never the sole evidence** for a claim — a concept that cites the website must also carry a `source_refs` anchor or a non-website external primary URL (enforced by `validate_okf.py` JVTO-18).
+- The JVTO website (`javavolcano-touroperator.com`) is a **secondary** presentation and corroboration layer. It may appear as supplementary context, but it is **never the sole evidence** for a claim — a concept that cites the website must also carry a `source_refs` anchor or a non-secondary external reference URL (enforced by `validate_okf.py` JVTO-18). The validator only distinguishes secondary vs non-secondary URLs; authority, relevance, and freshness are confirmed by a separate source-health review.
 - A website gap (absent, outdated, or contradictory) is **never** a reason to delete or downgrade a fact supported upstream. Record it as a **publication propagation recommendation** in the loop report instead.
 
 ## Required Validation

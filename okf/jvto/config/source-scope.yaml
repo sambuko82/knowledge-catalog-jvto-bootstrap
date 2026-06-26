@@ -31,7 +31,7 @@ repos:
     deny:
       - output/website/                    # presentation layer — never a source
       - raw/backoffice/csv/                # customer PII
-  itinerary-core:
+  jvto-itinerary-core:
     allow:
       - input/llm-wiki/package-readiness/
       - input/new-backoffice/exports/
@@ -54,5 +54,7 @@ rules:
   # fact. Such a record must either carry one non-derived source_ref, or be explicitly
   # marked `claim_basis: planning_assumption`.
   derived_source_classes: [generated, manual_seed, inferred]
-  # A direct source_ref must retain at least these locator fields.
-  direct_locator_fields: [repo, path]
+  # Every source_refs entry must be a mapping carrying non-empty source_id, repo, path,
+  # source_class (in the vocabulary above), and captured_at; repo must be a known scope repo and
+  # path must fall under that repo's allow list (and not its deny list). Enforced by validate_okf.py
+  # (JVTO-19 schema + JVTO-13 scope); a malformed/placeholder entry cannot anchor a claim.

@@ -36,7 +36,7 @@ public authority pages ┘
 Authority flows in one direction — source knowledge and original evidence → the canonical OKF graph → the website (for presentation and future propagation):
 
 1. **Canonical upstream knowledge** in `llm-wiki` / `jvto-itinerary-core` (the `source_refs` anchors) is the primary discovery basis.
-2. **External primary sources** (direct platform, authority, partner, media, and registry URLs) support and refresh claims — for dynamic facts a direct observation is stronger than any copy.
+2. **External reference sources** (direct platform, authority, partner, media, and registry URLs) support and refresh claims — for dynamic facts a direct observation is stronger than any copy. (The validator only tells a non-secondary URL from a website-host one; authority, relevance, and freshness come from a separate source-health review.)
 3. The **JVTO website** (`javavolcano-touroperator.com`) is a *secondary* presentation and corroboration layer: useful for public context, hosted assets, cross-checking, and finding propagation gaps.
 4. The website may **never override, erase, downgrade, or invalidate** a fact that is supported upstream merely because it is absent, incomplete, stale, or contradictory there. It may appear as supplementary context but is never the sole evidence for a claim (validator rule JVTO-18). Where the website lags the graph, that is a *publication propagation recommendation*, not an evidence failure.
 
