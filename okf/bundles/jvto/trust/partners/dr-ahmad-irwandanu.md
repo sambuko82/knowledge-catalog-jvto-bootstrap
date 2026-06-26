@@ -15,7 +15,7 @@ timestamp: '2026-06-25T00:00:00+07:00'
 status: reviewed
 visibility: public
 last_verified: '2026-06-26'
-relationship_type: ijen-health-screening-coordination
+relationship_type: ijen_health_screening_coordination
 id: trust/partners/dr-ahmad-irwandanu
 ---
 

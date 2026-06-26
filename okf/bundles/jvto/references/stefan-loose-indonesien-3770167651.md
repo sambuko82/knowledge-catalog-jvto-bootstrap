@@ -27,7 +27,9 @@ independent German-language guidebook record.
 
 # Claim Boundary
 
-This is a historical guidebook reference only.
+This is a historical guidebook reference only. It connects only to Agung, the
+Ijen Bondowoso Homestay, and historical tour arrangements — not to Jl. Khairil
+Anwar, the current JVTO office, or address continuity.
 It is not a current endorsement, and it does not assert a publication year,
 edition number, or publisher, nor does it prove legal succession to the present
 company. The bibliographic locator does not confirm that the listing page was

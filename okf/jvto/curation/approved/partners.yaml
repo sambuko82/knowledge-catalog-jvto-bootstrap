@@ -11,7 +11,7 @@ records:
     resource: https://www.indecon.id/spotlight-networks/java-volcano-tour-operator/
     tags: [partner, indecon, ecotourism, network-listing, community-based-tourism]
     timestamp: "2026-06-25T00:00:00+07:00"
-    status: reviewed
+    status: verified
     visibility: public
     last_verified: "2026-06-26"
     relationship_type: public_network_listing
@@ -44,7 +44,7 @@ records:
     status: reviewed
     visibility: public
     last_verified: "2026-06-26"
-    relationship_type: association-membership-context
+    relationship_type: public_partner_and_industry_context
     body: |
       # Relationship
 
@@ -83,7 +83,7 @@ records:
     status: reviewed
     visibility: public
     last_verified: "2026-06-26"
-    relationship_type: ijen-health-screening-coordination
+    relationship_type: ijen_health_screening_coordination
     body: |
       # Relationship
 

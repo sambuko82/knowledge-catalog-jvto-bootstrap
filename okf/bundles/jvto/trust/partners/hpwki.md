@@ -15,7 +15,7 @@ timestamp: '2026-06-25T00:00:00+07:00'
 status: reviewed
 visibility: public
 last_verified: '2026-06-26'
-relationship_type: association-membership-context
+relationship_type: public_partner_and_industry_context
 id: trust/partners/hpwki
 ---
 

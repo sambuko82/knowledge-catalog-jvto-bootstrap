@@ -12,7 +12,7 @@ tags:
 - ijen-geopark
 - '2021'
 timestamp: '2026-06-25T00:00:00+07:00'
-status: reviewed
+status: verified
 visibility: public
 last_verified: '2026-06-26'
 reference_kind: press-report

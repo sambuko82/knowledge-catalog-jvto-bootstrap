@@ -10,7 +10,7 @@ records:
     resource: https://bbksdajatim.org/pelatihan-pemandu-kawah-ijen/
     tags: [reference, bbksda, hpwki, ijen, guide-training, sar, ppgd]
     timestamp: "2026-06-25T00:00:00+07:00"
-    status: reviewed
+    status: verified
     visibility: public
     last_verified: "2026-06-26"
     reference_kind: government-institutional-report
@@ -51,8 +51,9 @@ records:
 
       A historical Booking.com 2015 Guest Review Award artifact names the
       "Ijen Bondowoso Home Stay" and displays a 9.4/10 score. The award shipment was
-      addressed to "Agung, Jl. Khairil Anwar No.102, Bondowoso", linking the historical
-      guesthouse to the present JVTO address.
+      addressed to Agung at Jl. Khairil Anwar No.102, Bondowoso. JVTO's current office
+      uses No.102A on the same address line. This provides historical address context
+      only and does not establish legal succession.
 
       # Claim Boundary
 
@@ -88,7 +89,9 @@ records:
 
       # Claim Boundary
 
-      This is a historical guidebook reference only.
+      This is a historical guidebook reference only. It connects only to Agung, the
+      Ijen Bondowoso Homestay, and historical tour arrangements — not to Jl. Khairil
+      Anwar, the current JVTO office, or address continuity.
       It is not a current endorsement, and it does not assert a publication year,
       edition number, or publisher, nor does it prove legal succession to the present
       company. The bibliographic locator does not confirm that the listing page was
@@ -105,11 +108,11 @@ records:
   - id: references/detik-tourist-police-bondowoso-2021
     type: Reference
     title: Detik.com — Suka Duka Polisi Pariwisata Bondowoso (2021)
-    description: A 2021 Detik.com report names "Bripka Agung Sambuko" in Tourist Police duties in the Bondowoso / Ijen area.
+    description: A 2021 Detik.com report names "Bripka Agung Sambuko" in Tourist Police duties in the Bondowoso area.
     resource: https://news.detik.com/berita-jawa-timur/d-5492690/suka-duka-polisi-pariwisata-bondowoso-tegakkan-prokes-sambil-lawan-dingin
     tags: [reference, detik, press, tourist-police, bondowoso, "2021"]
     timestamp: "2026-06-25T00:00:00+07:00"
-    status: reviewed
+    status: verified
     visibility: public
     last_verified: "2026-06-26"
     reference_kind: press-report
@@ -117,7 +120,7 @@ records:
       # Reference
 
       A Detik.com report dated 14 March 2021 names "Bripka Agung Sambuko" as a Tourist
-      Police (Polisi Pariwisata) officer on duty in the Bondowoso / Ijen area,
+      Police (Polisi Pariwisata) officer on duty in the Bondowoso area,
       independent news coverage of the founder's serving police role.
 
       # Claim Boundary
@@ -138,7 +141,7 @@ records:
     resource: https://radarjember.jawapos.com/bondowoso/791102263/polpar-dibentuk-untuk-mendukung-ijen-geopark
     tags: [reference, radar-jember, press, polpar, ijen-geopark, "2021"]
     timestamp: "2026-06-25T00:00:00+07:00"
-    status: reviewed
+    status: verified
     visibility: public
     last_verified: "2026-06-26"
     reference_kind: press-report
@@ -167,7 +170,7 @@ records:
     resource: https://radarjember.jawapos.com/bondowoso/791103903/tak-seharusnya-bau-menyengat-itu-ada
     tags: [reference, radar-jember, press, environmental-patrol, bondowoso, "2021"]
     timestamp: "2026-06-25T00:00:00+07:00"
-    status: reviewed
+    status: verified
     visibility: public
     last_verified: "2026-06-26"
     reference_kind: press-report

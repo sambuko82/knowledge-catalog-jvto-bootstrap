@@ -22,8 +22,9 @@ id: references/booking-com-guest-review-award-2015
 
 A historical Booking.com 2015 Guest Review Award artifact names the
 "Ijen Bondowoso Home Stay" and displays a 9.4/10 score. The award shipment was
-addressed to "Agung, Jl. Khairil Anwar No.102, Bondowoso", linking the historical
-guesthouse to the present JVTO address.
+addressed to Agung at Jl. Khairil Anwar No.102, Bondowoso. JVTO's current office
+uses No.102A on the same address line. This provides historical address context
+only and does not establish legal succession.
 
 # Claim Boundary
 

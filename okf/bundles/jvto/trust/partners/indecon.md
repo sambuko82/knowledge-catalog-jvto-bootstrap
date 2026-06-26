@@ -11,7 +11,7 @@ tags:
 - network-listing
 - community-based-tourism
 timestamp: '2026-06-25T00:00:00+07:00'
-status: reviewed
+status: verified
 visibility: public
 last_verified: '2026-06-26'
 relationship_type: public_network_listing
