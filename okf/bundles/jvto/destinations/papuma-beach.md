@@ -11,7 +11,13 @@ tags:
 timestamp: '2026-06-23T00:00:00+07:00'
 status: reviewed
 visibility: public
-last_verified: '2026-06-23'
+last_verified: '2026-06-26'
+activity:
+  typical_schedule: Flexible daytime stop; a short headland walk for the viewpoints,
+    used as a change of pace between volcano and waterfall days.
+  effort: easy
+  access_requirements:
+  - none (no permits or health screening required)
 source_refs:
 - source_id: SRC-DEST
   repo: sambuko82/llm-wiki

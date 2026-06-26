@@ -31,6 +31,13 @@ and can be checked on Indonesia's national OSS business portal.
 JVTO lists its registration and tourism licensing on its public verification
 page, where the identifiers can be cross-checked.
 
+# Company Registry and Classification
+
+The operating company is registered with the Indonesian Ministry of Law and
+Human Rights (AHU) as **AHU-0023020**, checkable on the AHU company-search
+portal. Its business activity is classified under KBLI codes **79121** (Travel
+Agency), **79911** (Tour Operator), and **62019** (IT services).
+
 # Related Concepts
 
 - [Police-Led Operations](/trust/claims/police-led.md)
@@ -39,3 +46,4 @@ page, where the identifiers can be cross-checked.
 # Citations
 
 - https://oss.go.id
+- https://ahu.go.id/pencarian/perseroan

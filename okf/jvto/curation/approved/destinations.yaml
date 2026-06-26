@@ -14,7 +14,15 @@ records:
   timestamp: '2026-06-23T00:00:00+07:00'
   status: reviewed
   visibility: public
-  last_verified: '2026-06-23'
+  last_verified: '2026-06-26'
+  activity:
+    typical_schedule: Hotel departure around midnight; the crater rim is reached near dawn for the
+      blue fire and sunrise; finish mid-morning.
+    effort: hard
+    access_requirements:
+    - BBKSDA health screening and certificate when their regulations are in effect
+    - gas mask and trekking poles (provided by JVTO)
+    - licensed local guide
   body: "# Overview\n\nKawah Ijen is an active volcano on the Banyuwangi–Bondowoso border of East\nJava,\
     \ Indonesia (summit roughly 2,386 m). Its crater holds one of the\nworld's largest highly acidic lakes,\
     \ and the same vents produce the \"blue\nfire\" — burning sulfuric gas visible before dawn under suitable\
@@ -53,7 +61,14 @@ records:
   timestamp: '2026-06-23T00:00:00+07:00'
   status: reviewed
   visibility: public
-  last_verified: '2026-06-23'
+  last_verified: '2026-06-26'
+  activity:
+    typical_schedule: Pre-dawn departure (around 03:00) by 4WD jeep for the sunrise viewpoint, then
+      a crossing of the sand sea and a short ascent to the crater rim; finish mid-morning.
+    effort: moderate
+    access_requirements:
+    - national-park / BBKSDA ticket
+    - 4WD jeep for the sand sea
   body: "# Overview\n\nMount Bromo (summit roughly 2,329 m) sits inside the Tengger caldera in East\n\
     Java, surrounded by a vast volcanic plain known as the \"Sea of Sand\". It is\nbest known for the\
     \ pre-dawn sunrise panorama over the caldera from elevated\nviewpoints, followed by a crossing of\
@@ -88,7 +103,15 @@ records:
   timestamp: '2026-06-23T00:00:00+07:00'
   status: reviewed
   visibility: public
-  last_verified: '2026-06-23'
+  last_verified: '2026-06-26'
+  activity:
+    typical_schedule: Morning visit; an easy rim viewpoint, then an optional steep canyon descent;
+      finish around midday.
+    effort: hard
+    access_requirements:
+    - local guide
+    - optional steep canyon descent with ropes (the guide assesses fitness; the descent decision
+      stays with the guest)
   body: "# Overview\n\nTumpak Sewu is a wide, multi-tiered \"curtain\" waterfall (roughly 120 m high)\n\
     in Lumajang Regency, East Java, sometimes called \"Java's Niagara\" for the\nmany streams falling\
     \ across a curved cliff into a canyon.\n\n# Visiting\n\n- A rim viewpoint is reached by a short, easy\
@@ -115,7 +138,14 @@ records:
   timestamp: '2026-06-23T00:00:00+07:00'
   status: reviewed
   visibility: public
-  last_verified: '2026-06-23'
+  last_verified: '2026-06-26'
+  activity:
+    typical_schedule: Late-morning visit, often paired same-day with Bromo; a roughly 1.5 km gorge
+      walk to the falls.
+    effort: moderate
+    access_requirements:
+    - local guide
+    - raincoat recommended (spray on the gorge walk)
   body: "# Overview\n\nMadakaripura is Java's tallest waterfall, set in a narrow canyon in\nProbolinggo\
     \ Regency, East Java (a main drop of roughly 100 m). It is linked\nhistorically to Gajah Mada, the\
     \ 14th-century Majapahit prime minister, and\nits proximity to Bromo makes it a natural same-day pairing.\n\
@@ -142,7 +172,13 @@ records:
   timestamp: '2026-06-23T00:00:00+07:00'
   status: reviewed
   visibility: public
-  last_verified: '2026-06-23'
+  last_verified: '2026-06-26'
+  activity:
+    typical_schedule: Flexible daytime stop; a short headland walk for the viewpoints, used as a
+      change of pace between volcano and waterfall days.
+    effort: easy
+    access_requirements:
+    - none (no permits or health screening required)
   body: "# Overview\n\nPapuma Beach (Tanjung Papuma) is a white-sand beach with dramatic offshore\nrock\
     \ formations and a rocky cape headland in Jember Regency, East Java. It is\nthe only coastal destination\
     \ on JVTO's circuits, used as a change of pace\nbetween volcano and waterfall days on longer itineraries.\n\

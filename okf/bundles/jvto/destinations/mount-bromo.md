@@ -12,7 +12,15 @@ tags:
 timestamp: '2026-06-23T00:00:00+07:00'
 status: reviewed
 visibility: public
-last_verified: '2026-06-23'
+last_verified: '2026-06-26'
+activity:
+  typical_schedule: Pre-dawn departure (around 03:00) by 4WD jeep for the sunrise
+    viewpoint, then a crossing of the sand sea and a short ascent to the crater rim;
+    finish mid-morning.
+  effort: moderate
+  access_requirements:
+  - national-park / BBKSDA ticket
+  - 4WD jeep for the sand sea
 source_refs:
 - source_id: SRC-DEST
   repo: sambuko82/llm-wiki

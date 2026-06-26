@@ -12,7 +12,15 @@ tags:
 timestamp: '2026-06-23T00:00:00+07:00'
 status: reviewed
 visibility: public
-last_verified: '2026-06-23'
+last_verified: '2026-06-26'
+activity:
+  typical_schedule: Morning visit; an easy rim viewpoint, then an optional steep canyon
+    descent; finish around midday.
+  effort: hard
+  access_requirements:
+  - local guide
+  - optional steep canyon descent with ropes (the guide assesses fitness; the descent
+    decision stays with the guest)
 source_refs:
 - source_id: SRC-DEST
   repo: sambuko82/llm-wiki
