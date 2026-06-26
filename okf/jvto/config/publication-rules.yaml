@@ -56,3 +56,42 @@ required_citation_types:
   # Reference concept must cite a public URL (validate_okf.py JVTO-04).
   - Partner
   - Reference
+
+# ---------------------------------------------------------------------------
+# R3 canonical-source-extraction config (validate_okf.py JVTO-11 .. JVTO-16).
+# ---------------------------------------------------------------------------
+
+# `Person` (founder, doctor, crew) is the only new concept type. It anchors on source
+# provenance (`source_refs`), not a public-URL citation, so it is NOT in
+# required_citation_types — it is governed by source_ref_required_types below.
+known_concept_types:
+  - Organization
+  - Destination
+  - Tour Package
+  - Travel Guide
+  - Policy
+  - Trust Claim
+  - Credential
+  - Partner
+  - Reference
+  - Review Platform
+  - Person
+
+# Concept types that must carry a non-empty `source_refs` provenance list (JVTO-12).
+source_ref_required_types:
+  - Person
+
+# Frontmatter keys whose presence on ANY concept also requires `source_refs` (JVTO-12),
+# regardless of type — dynamic observations, embedded operations, and commercial signals.
+source_ref_required_fields:
+  - observations
+  - operational
+  - commercial_context
+
+# JVTO-11: review counts the knowledge SSOT has retired as stale. A concept that places
+# one of these counts within ~40 characters of its platform name is rejected, so a
+# known-stale figure (e.g. one still shown on the live website) can never re-enter the
+# bundle. (Salvaged from the closed audit PR; current canonical counts live upstream.)
+stale_review_claims:
+  - {platform: google, count: 92}      # superseded by the API-verified canonical (123)
+  - {platform: trustpilot, count: 47}  # superseded by the current canonical (51/56)

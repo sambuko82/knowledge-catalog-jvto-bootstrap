@@ -12,6 +12,17 @@
 | Partner | `Partner` | Relevant public institutional relationship | partner page |
 | Review | `Review Platform` | Public aggregate reputation | public profile and date |
 | Reference | `Reference` | Reusable authoritative source | manual |
+| Person | `Person` | A named individual (founder, doctor, crew) | source registry (`source_refs`), not a public URL |
+
+`Person` is the only R3 extraction type. It anchors on source provenance (`source_refs`)
+rather than a public-URL citation, and carries public-safe attributes only (`roles`,
+`crew_status`, `credential_state`, KTA identifier, languages, review mentions). Pay, rates,
+assignment volume, private contacts, and internal notes are never published — they stay
+source-resident, signalled by `commercial_context` where relevant.
+
+Evidence and operations get **no** new type: review snapshots and external-source captures
+live as `source_refs` + `observations` metadata on the entity that uses them, and package
+operations are embedded fields on the existing `Tour Package` concept.
 
 ## Recommended frontmatter
 

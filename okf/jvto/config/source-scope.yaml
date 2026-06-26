@@ -1,0 +1,56 @@
+version: 1
+
+# Canonical source-extraction scope for the R3 evidence graph.
+#
+# Defines which paths in each upstream repo may be used as a SOURCE / provenance anchor
+# for OKF concepts, plus the provenance rules every R3 record obeys. This governs
+# `source_refs` (pointers carried in concept frontmatter) and is read by validate_okf.py
+# for the denied-source-path check. It is distinct from `upstreams.yaml` +
+# fetch_snapshots.py, which govern CONTENT fetching (a stricter allow-list).
+#
+# Principle: the public website is never a source, comparator, validator, or
+# downgrade-reason. Data is not rejected merely because it is absent from the website.
+
+repos:
+  llm-wiki:
+    allow:
+      - raw/_manifest/
+      - "raw/google review"               # public Google review API exports (page 1-3 json)
+      - raw/db_export_raw.json             # cross-platform review/crew DB export (public-safe fields only)
+      - raw/JVTO_FINAL_CLEAN_SSOT.json     # consolidated SSOT (crew/package identity)
+      - wiki/people/
+      - wiki/reviews/
+      - wiki/products/
+      - wiki/destinations/
+      - wiki/credentials/
+      - wiki/sources/
+      - output/products/package-readiness/
+    deny:
+      - output/website/                    # presentation layer — never a source
+      - raw/backoffice/csv/                # customer PII
+  itinerary-core:
+    allow:
+      - input/llm-wiki/package-readiness/
+      - input/new-backoffice/exports/
+      - contracts/
+      - generated/itinerary-intelligence/
+    deny:
+      - input/jvto-web/                    # presentation layer — never a source
+
+rules:
+  # source_class vocabulary for source_refs entries.
+  source_classes:
+    - direct_external_export   # a captured external API/scrape/DB export (reviews, registry)
+    - operational_direct       # a direct backoffice record
+    - operational_aggregate    # an aggregated/redacted backoffice pattern
+    - public_authority         # a public authority / registry page
+    - manual_seed              # a manually seeded planning value
+    - inferred                 # an inferred/derived value
+    - generated                # a generated-intelligence output
+  # A generated / manual_seed / inferred record cannot be the SOLE evidence of a canonical
+  # fact. Such a record must either carry one non-derived source_ref, or be explicitly
+  # marked `claim_basis: planning_assumption`.
+  derived_source_classes: [generated, manual_seed, inferred]
+  # A direct source_ref must retain at least these locator fields.
+  direct_locator_fields: [repo, path]
+  website_is_not_a_source: true

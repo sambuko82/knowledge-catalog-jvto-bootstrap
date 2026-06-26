@@ -718,5 +718,222 @@ class OkfToolsTest(unittest.TestCase):
                     self.assertEqual(ok.returncode, 0, ok.stderr)
 
 
+    # ---- R3 canonical-source-extraction rules (JVTO-11 .. JVTO-17) ----
+
+    def _validate(self, root: Path, release: bool = True):
+        env = os.environ.copy()
+        env.update({"JVTO_OKF_BUNDLE_ROOT": str(root / "bundle"), "JVTO_OKF_BUILD_ROOT": str(root / "build")})
+        cmd = [sys.executable, "scripts/validate_okf.py", "--strict-links"]
+        if release:
+            cmd.append("--release")
+        return subprocess.run(cmd, cwd=TOOL_ROOT, env=env, capture_output=True, text=True)
+
+    def test_person_requires_source_refs(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._write_concept(
+                root / "bundle" / "people" / "p.md",
+                """\
+                type: Person
+                title: A Crew Person
+                description: A guide with no provenance.
+                tags: [person, crew]
+                timestamp: "2026-06-26T00:00:00Z"
+                id: people/crew-x
+                status: reviewed
+                visibility: public
+                roles: [guide]
+                """,
+                "# Overview\nA crew member.\n",
+            )
+            result = self._validate(root)
+            self.assertEqual(result.returncode, 2, result.stdout)
+            self.assertIn("JVTO-12", result.stderr)
+
+    def test_person_with_source_refs_passes(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._write_concept(
+                root / "bundle" / "people" / "p.md",
+                """\
+                type: Person
+                title: A Crew Person
+                description: A guide with provenance.
+                tags: [person, crew]
+                timestamp: "2026-06-26T00:00:00Z"
+                id: people/crew-x
+                status: reviewed
+                visibility: public
+                roles: [guide]
+                crew_status: active
+                credential_state: confirmed
+                source_refs:
+                  - source_id: SRC-CREW-REGISTRY
+                    repo: sambuko82/llm-wiki
+                    path: wiki/people/crew-registry.md
+                    source_class: direct_external_export
+                    captured_at: "2026-06-26"
+                """,
+                "# Overview\nA crew member.\n",
+            )
+            result = self._validate(root)
+            self.assertEqual(result.returncode, 0, result.stderr)
+
+    def test_denied_source_path_blocked(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._write_concept(
+                root / "bundle" / "people" / "p.md",
+                """\
+                type: Person
+                title: A Crew Person
+                description: Provenance points at the denied website layer.
+                tags: [person, crew]
+                timestamp: "2026-06-26T00:00:00Z"
+                id: people/crew-x
+                status: reviewed
+                visibility: public
+                source_refs:
+                  - source_id: SRC-WEB
+                    repo: sambuko82/llm-wiki
+                    path: output/website/pages/our-team.md
+                    source_class: direct_external_export
+                    captured_at: "2026-06-26"
+                """,
+                "# Overview\nA crew member.\n",
+            )
+            result = self._validate(root)
+            self.assertEqual(result.returncode, 2, result.stdout)
+            self.assertIn("JVTO-13", result.stderr)
+
+    def test_derived_only_source_blocked_unless_assumption(self) -> None:
+        blocked = """\
+            type: Person
+            title: A Crew Person
+            description: Only manual_seed provenance.
+            tags: [person, crew]
+            timestamp: "2026-06-26T00:00:00Z"
+            id: people/crew-x
+            status: reviewed
+            visibility: public
+            source_refs:
+              - source_id: SRC-SEED
+                repo: sambuko82/jvto-itinerary-core
+                path: generated/itinerary-intelligence/manifest.json
+                source_class: manual_seed
+                captured_at: "2026-06-26"
+            """
+        allowed = """\
+            type: Person
+            title: A Crew Person
+            description: manual_seed provenance marked as planning assumption.
+            tags: [person, crew]
+            timestamp: "2026-06-26T00:00:00Z"
+            id: people/crew-x
+            status: reviewed
+            visibility: public
+            claim_basis: planning_assumption
+            source_refs:
+              - source_id: SRC-SEED
+                repo: sambuko82/jvto-itinerary-core
+                path: generated/itinerary-intelligence/manifest.json
+                source_class: manual_seed
+                captured_at: "2026-06-26"
+            """
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._write_concept(root / "bundle" / "people" / "p.md", blocked, "# Overview\nx\n")
+            result = self._validate(root)
+            self.assertEqual(result.returncode, 2, result.stdout)
+            self.assertIn("JVTO-14", result.stderr)
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._write_concept(root / "bundle" / "people" / "p.md", allowed, "# Overview\nx\n")
+            result = self._validate(root)
+            self.assertEqual(result.returncode, 0, result.stderr)
+
+    def test_stale_review_count_blocked(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._write_concept(
+                root / "bundle" / "reviews" / "tp.md",
+                """\
+                type: Review Platform
+                title: Trustpilot
+                description: Reputation snapshot.
+                tags: [review]
+                timestamp: "2026-06-26T00:00:00Z"
+                id: reviews/trustpilot
+                status: reviewed
+                visibility: public
+                """,
+                """\
+                # Overview
+                Trustpilot shows 47 reviews.
+
+                # Citations
+
+                - https://www.trustpilot.com/review/javavolcano-touroperator.com
+                """,
+            )
+            result = self._validate(root)
+            self.assertEqual(result.returncode, 2, result.stdout)
+            self.assertIn("JVTO-11", result.stderr)
+
+    def test_review_platform_incomplete_observation_blocked(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._write_concept(
+                root / "bundle" / "reviews" / "g.md",
+                """\
+                type: Review Platform
+                title: Google Maps
+                description: Reputation snapshot with malformed observation.
+                tags: [review]
+                timestamp: "2026-06-26T00:00:00Z"
+                id: reviews/google-maps
+                status: reviewed
+                visibility: public
+                observations:
+                  current:
+                    rating: "4.9"
+                    count: 123
+                    as_of: "2026-05-26"
+                """,
+                """\
+                # Overview
+                Google rating.
+
+                # Citations
+
+                - https://www.google.com/maps
+                """,
+            )
+            result = self._validate(root)
+            self.assertEqual(result.returncode, 2, result.stdout)
+            self.assertIn("JVTO-16", result.stderr)
+
+    def test_unknown_concept_type_blocked(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._write_concept(
+                root / "bundle" / "misc" / "x.md",
+                """\
+                type: Frobnicator
+                title: Bogus
+                description: Not a known concept type.
+                tags: [misc]
+                timestamp: "2026-06-26T00:00:00Z"
+                id: misc/x
+                status: reviewed
+                visibility: public
+                """,
+                "# Body\n",
+            )
+            result = self._validate(root, release=False)
+            self.assertEqual(result.returncode, 2, result.stdout)
+            self.assertIn("JVTO-17", result.stderr)
+
+
 if __name__ == "__main__":
     unittest.main()
