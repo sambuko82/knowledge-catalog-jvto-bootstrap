@@ -1,0 +1,109 @@
+# Verified-curation records for Partner concepts.
+# Each Partner is bounded by an explicit `# Claim Boundary` section stating exactly
+# what the evidence supports and what it does not. Supporting artifacts (approval
+# images, registration records) live as extra `citations:` on the parent concept,
+# never as separate concepts.
+records:
+  - id: trust/partners/indecon
+    type: Partner
+    title: INDECON (Indonesia Ecotourism Network)
+    description: JVTO is featured in INDECON's public Spotlight Networks listing of the Indonesia Ecotourism Network.
+    resource: https://www.indecon.id/spotlight-networks/java-volcano-tour-operator/
+    tags: [partner, indecon, ecotourism, network-listing, community-based-tourism]
+    timestamp: "2026-06-25T00:00:00+07:00"
+    status: reviewed
+    visibility: public
+    last_verified: "2026-06-26"
+    relationship_type: public_network_listing
+    body: |
+      # Relationship
+
+      JVTO is featured in INDECON's Spotlight Networks, a public listing of the
+      Indonesia Ecotourism Network. JVTO presents this listing as supporting its
+      community-based tourism and local-employment practices.
+
+      # Claim Boundary
+
+      This concept records a public INDECON network feature only.
+      It does not establish certification, audit approval, exclusive partnership, or
+      a guarantee of all JVTO practices.
+
+      # Related Concepts
+
+      - [Java Volcano Tour Operator (JVTO)](/organization.md)
+    citations:
+      - https://www.indecon.id/spotlight-networks/java-volcano-tour-operator/
+
+  - id: trust/partners/hpwki
+    type: Partner
+    title: Himpunan Pelaku Wisata Khusus Ijen (HPWKI)
+    description: JVTO publicly presents HPWKI as a local volcanic-tourism industry and competence context around Ijen.
+    resource: https://javavolcano-touroperator.com/why-jvto/community-standards
+    tags: [partner, hpwki, ijen, local-guides, volcanic-tourism, guide-competence]
+    timestamp: "2026-06-25T00:00:00+07:00"
+    status: reviewed
+    visibility: public
+    last_verified: "2026-06-26"
+    relationship_type: association-membership-context
+    body: |
+      # Relationship
+
+      JVTO publicly presents HPWKI as a partner and as local industry context for
+      volcanic-tourism competence around Ijen. A public JVTO-hosted approval artifact
+      is retained as supporting first-party documentation.
+
+      BBKSDA Jawa Timur separately documented training conducted with HPWKI for Ijen
+      guides in May 2024. The training covered conservation, guide responsibilities,
+      Search and Rescue, and emergency first aid.
+
+      # Claim Boundary
+
+      This concept records JVTO's publicly presented HPWKI relationship and the broader
+      professional-training context of HPWKI.
+      It does not establish that BBKSDA directly certified JVTO, that every JVTO guide
+      attended the training, or that all JVTO operations are approved by BBKSDA.
+
+      # Related Concepts
+
+      - [BBKSDA Ijen Guide Training 2024](/references/bbksda-ijen-guide-training-2024.md)
+      - [Kawah Ijen](/destinations/kawah-ijen.md)
+    citations:
+      - https://javavolcano-touroperator.com/why-jvto/community-standards
+      - https://javavolcano-touroperator.com/legal/HPWKI-approval-preview.png
+      - https://ahu.go.id/sabh/perkumpulan/qrcode/?kode=NjAyNDAxMjczNTEwMTM2MV8wXzA3IEZlYnJ1YXJpIDIwMjRfMjcgSmFudWFyeSAyMDI0
+      - https://bbksdajatim.org/pelatihan-pemandu-kawah-ijen/
+
+  - id: trust/partners/dr-ahmad-irwandanu
+    type: Partner
+    title: Dr. Ahmad Irwandanu (Ijen Screening Coordination)
+    description: JVTO identifies Dr. Ahmad Irwandanu as the doctor associated with its applicable Ijen pre-hike health-screening coordination.
+    resource: https://javavolcano-touroperator.com/why-jvto/the-jvto-difference
+    tags: [partner, doctor, ijen, health-screening, medical, coordination]
+    timestamp: "2026-06-25T00:00:00+07:00"
+    status: reviewed
+    visibility: public
+    last_verified: "2026-06-26"
+    relationship_type: ijen-health-screening-coordination
+    body: |
+      # Relationship
+
+      JVTO identifies Dr. Ahmad Irwandanu as the doctor associated with its applicable
+      Ijen pre-hike health-screening coordination. JVTO states that Ijen night-hike
+      packages include a pre-hike health screening as part of the route logistics.
+
+      # Claim Boundary
+
+      This concept records an operating relationship for applicable Ijen screening
+      coordination only.
+      It does not confirm current medical-license validity, expiry date, private-practice
+      details, or a universal screening requirement. Whether screening is required or
+      verified before crater access depends on current local authority or provider rules.
+
+      # Related Concepts
+
+      - [Ijen Medical Screening Included](/trust/claims/medical-screening.md)
+      - [Ijen Health Screening](/policies/ijen-health-screening.md)
+      - [Kawah Ijen](/destinations/kawah-ijen.md)
+    citations:
+      - https://javavolcano-touroperator.com/why-jvto/the-jvto-difference
+      - https://javavolcano-touroperator.com/travel-guide/ijen-health-screening
