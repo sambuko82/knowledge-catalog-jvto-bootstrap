@@ -9,6 +9,7 @@ concepts.
 
 * [Destinations](destinations/index.md) - JVTO destinations concepts.
 * [Policies](policies/index.md) - JVTO policies concepts.
+* [References](references/index.md) - JVTO references concepts.
 * [Reviews](reviews/index.md) - JVTO reviews concepts.
 * [Tours](tours/index.md) - JVTO tours concepts.
 * [Travel Guides](travel-guides/index.md) - JVTO travel guides concepts.

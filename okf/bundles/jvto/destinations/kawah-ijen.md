@@ -38,6 +38,9 @@ fire" — burning sulfuric gas visible before dawn under suitable conditions
 # Related Concepts
 
 - [3D2N Ijen, Bromo & Madakaripura tour](/tours/from-surabaya/ijen-bromo-madakaripura-3d2n.md)
+- [HPWKI](/trust/partners/hpwki.md)
+- [BBKSDA Ijen Guide Training 2024](/references/bbksda-ijen-guide-training-2024.md)
+- [Ijen Health Screening](/policies/ijen-health-screening.md)
 
 # Citations
 

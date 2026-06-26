@@ -35,6 +35,9 @@ volcano travel.
 
 - [Kawah Ijen](/destinations/kawah-ijen.md)
 - [Trustpilot reviews](/reviews/trustpilot.md)
+- [Detik.com Tourist Police Report (2021)](/references/detik-tourist-police-bondowoso-2021.md)
+- [Radar Jember — Polpar for Ijen Geopark (2021)](/references/radar-jember-polpar-ijen-geopark-2021.md)
+- [Radar Jember — Environmental Patrol (2021)](/references/radar-jember-ijen-environmental-patrol-2021.md)
 
 # Citations
 

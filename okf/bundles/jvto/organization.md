@@ -29,6 +29,15 @@ serving Tourist Police officer.
 - Private tours to **Kawah Ijen**, **Mount Bromo**, **Tumpak Sewu**, and **Madakaripura**
 - A private format with a dedicated vehicle, driver, and guide per booking
 
+# Evidence Links
+
+- [INDECON](/trust/partners/indecon.md)
+- [HPWKI](/trust/partners/hpwki.md)
+- [Dr. Ahmad Irwandanu](/trust/partners/dr-ahmad-irwandanu.md)
+- [Booking.com Guest Review Award 2015](/references/booking-com-guest-review-award-2015.md)
+- [Stefan Loose Guidebook Reference](/references/stefan-loose-indonesien-3770167651.md)
+- [Detik.com Tourist Police Report](/references/detik-tourist-police-bondowoso-2021.md)
+
 # Citations
 
 - https://javavolcano-touroperator.com
