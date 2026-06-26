@@ -96,12 +96,25 @@ records:
     partnership, and the shipping label is not standalone legal-continuity proof.
 
 
+    # Evidence
+
+
+    The award plaque and the award-shipment label are the original artifacts; their
+
+    SHA-hashed entries are held in the evidence registry (locator `booking-2015`), and
+
+    the hosted images are linked below as supplementary visual context.
+
+
     # Related Concepts
 
 
     - [Java Volcano Tour Operator (JVTO)](/organization.md)
 
     '
+  citations:
+  - https://javavolcano-touroperator.com/history/booking-2015-plaque.jpg
+  - https://javavolcano-touroperator.com/history/booking-2015-shipping-label.jpg
   source_refs:
   - source_id: SRC-PRESS-COVERAGE
     repo: sambuko82/llm-wiki
@@ -168,6 +181,7 @@ records:
     '
   citations:
   - https://www.amazon.de/-/en/Stefan-Loose-Reisef%C3%BChrer-Indonesien-Reiseatlas/dp/3770167651
+  - https://javavolcano-touroperator.com/history/stefan-loose-ijen-bondowoso-page.png
   source_refs:
   - source_id: SRC-PRESS-COVERAGE
     repo: sambuko82/llm-wiki
