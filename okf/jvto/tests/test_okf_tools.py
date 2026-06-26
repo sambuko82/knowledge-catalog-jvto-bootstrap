@@ -852,6 +852,156 @@ class OkfToolsTest(unittest.TestCase):
             result = self._validate(root)
             self.assertEqual(result.returncode, 0, result.stderr)
 
+    # ---- JVTO-19 source_refs schema + JVTO-13 scope (close the placeholder-anchor bypass) ----
+
+    def _policy_with_refs(self, root: Path, refs_yaml: str) -> None:
+        # A required-citation Policy whose only citation is the website; the source_refs block decides
+        # whether it has a valid anchor. Used to prove a malformed ref cannot stand in for evidence.
+        self._write_concept(
+            root / "bundle" / "policies" / "p.md",
+            "type: Policy\n"
+            "title: A Policy\n"
+            "description: Website-only citation; anchor validity depends on source_refs.\n"
+            "tags: [policy]\n"
+            'timestamp: "2026-06-26T00:00:00Z"\n'
+            "id: policies/p\n"
+            "status: reviewed\n"
+            "visibility: public\n"
+            + refs_yaml,
+            "# Overview\nBody.\n\n# Citations\n\n- https://javavolcano-touroperator.com/policy/x\n",
+        )
+
+    def test_jvto19_placeholder_refs_do_not_anchor(self) -> None:
+        # A placeholder source_refs entry ({} or a bare string) must NOT satisfy the evidence basis,
+        # so a website-only concept still fails (JVTO-19 schema + JVTO-18 sole-evidence).
+        for label, refs_yaml in (
+            ("empty-dict", "source_refs:\n  - {}\n"),
+            ("bare-string", "source_refs:\n  - x\n"),
+        ):
+            with self.subTest(case=label), tempfile.TemporaryDirectory() as temp:
+                root = Path(temp)
+                self._policy_with_refs(root, refs_yaml)
+                result = self._validate(root, release=False)
+                self.assertEqual(result.returncode, 2, result.stdout)
+                self.assertIn("JVTO-19", result.stderr)
+                self.assertIn("JVTO-18", result.stderr)
+
+    def test_jvto19_ref_missing_fields_blocked(self) -> None:
+        # A dict ref missing required fields (here path + source_class + captured_at) fails JVTO-19.
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._policy_with_refs(
+                root,
+                "source_refs:\n  - source_id: SRC-X\n    repo: sambuko82/llm-wiki\n",
+            )
+            result = self._validate(root, release=False)
+            self.assertEqual(result.returncode, 2, result.stdout)
+            self.assertIn("JVTO-19", result.stderr)
+
+    def test_jvto19_valid_ref_anchors_website_only(self) -> None:
+        # The contrast case: a fully valid source_refs entry anchors the claim, so the same
+        # website-only concept passes and JVTO-18 does not fire.
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._policy_with_refs(
+                root,
+                "source_refs:\n"
+                "  - source_id: SRC-POLICY\n"
+                "    repo: sambuko82/llm-wiki\n"
+                "    path: wiki/sources/jvto-policy-pack-v6.md\n"
+                "    source_class: operational_direct\n"
+                '    captured_at: "2026-05-26"\n',
+            )
+            result = self._validate(root, release=False)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertNotIn("JVTO-18", result.stderr)
+            self.assertNotIn("JVTO-19", result.stderr)
+
+    def test_jvto13_unknown_repo_blocked(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._write_concept(
+                root / "bundle" / "people" / "p.md",
+                """\
+                type: Person
+                title: A Crew Person
+                description: Provenance points at an unknown repo.
+                tags: [person, crew]
+                timestamp: "2026-06-26T00:00:00Z"
+                id: people/crew-x
+                status: reviewed
+                visibility: public
+                source_refs:
+                  - source_id: SRC-X
+                    repo: sambuko82/some-unknown-repo
+                    path: wiki/people/crew-registry.md
+                    source_class: operational_direct
+                    captured_at: "2026-06-26"
+                """,
+                "# Overview\nx\n",
+            )
+            result = self._validate(root)
+            self.assertEqual(result.returncode, 2, result.stdout)
+            self.assertIn("JVTO-13", result.stderr)
+
+    def test_jvto13_path_outside_allow_blocked(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._write_concept(
+                root / "bundle" / "people" / "p.md",
+                """\
+                type: Person
+                title: A Crew Person
+                description: Provenance path is in a known repo but outside the allow scope.
+                tags: [person, crew]
+                timestamp: "2026-06-26T00:00:00Z"
+                id: people/crew-x
+                status: reviewed
+                visibility: public
+                source_refs:
+                  - source_id: SRC-X
+                    repo: sambuko82/llm-wiki
+                    path: wiki/secret/private-notes.md
+                    source_class: operational_direct
+                    captured_at: "2026-06-26"
+                """,
+                "# Overview\nx\n",
+            )
+            result = self._validate(root)
+            self.assertEqual(result.returncode, 2, result.stdout)
+            self.assertIn("JVTO-13", result.stderr)
+
+    def test_jvto13_itinerary_core_scope_enforced(self) -> None:
+        # Regression for the repo-key reconciliation: scope is now actually enforced for
+        # jvto-itinerary-core refs. A contracts/ path passes; an input/jvto-web/ path is denied.
+        valid = """\
+            type: Person
+            title: A Crew Person
+            description: itinerary-core contracts provenance (in allow scope).
+            tags: [person, crew]
+            timestamp: "2026-06-26T00:00:00Z"
+            id: people/crew-x
+            status: reviewed
+            visibility: public
+            source_refs:
+              - source_id: SRC-CONTRACT
+                repo: sambuko82/jvto-itinerary-core
+                path: contracts/sample-contract.json
+                source_class: operational_direct
+                captured_at: "2026-06-26"
+            """
+        denied = valid.replace("contracts/sample-contract.json", "input/jvto-web/leak.md")
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._write_concept(root / "bundle" / "people" / "p.md", valid, "# Overview\nx\n")
+            self.assertEqual(self._validate(root).returncode, 0)
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._write_concept(root / "bundle" / "people" / "p.md", denied, "# Overview\nx\n")
+            result = self._validate(root)
+            self.assertEqual(result.returncode, 2, result.stdout)
+            self.assertIn("JVTO-13", result.stderr)
+
     def test_stale_review_count_blocked(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
@@ -935,9 +1085,17 @@ class OkfToolsTest(unittest.TestCase):
             self.assertIn("JVTO-17", result.stderr)
 
 
-    # ---- R4 website-ban rules (JVTO-04 relaxed, JVTO-18) ----
+    # ---- R4 authority-hierarchy rule (JVTO-04 relaxed, JVTO-18 sole-evidence) ----
+    # The JVTO website is a secondary presentation/corroboration layer: allowed as supplementary
+    # context, never as the sole evidence for a claim, and never a reason to delete/downgrade a
+    # fact that is supported upstream.
 
-    def test_jvto18_rejects_jvto_website(self) -> None:
+    def test_jvto18_website_only_is_blocked(self) -> None:
+        # (a) The website cannot establish a material claim by itself: a concept whose only evidence
+        # is the website host (no source_refs, no non-website external URL) fails JVTO-18.
+        # Note: JVTO-18 cannot fire in isolation for any current type — a required-citation type
+        # co-triggers JVTO-04 and a Person co-triggers JVTO-12 — so the assertIn("JVTO-18") below
+        # is the load-bearing assertion that proves JVTO-18's distinct contribution.
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
             self._write_concept(
@@ -945,7 +1103,7 @@ class OkfToolsTest(unittest.TestCase):
                 """\
                 type: Policy
                 title: A Policy
-                description: Cites the banned JVTO website.
+                description: Website is the only evidence.
                 tags: [policy]
                 timestamp: "2026-06-26T00:00:00Z"
                 id: policies/p
@@ -965,6 +1123,72 @@ class OkfToolsTest(unittest.TestCase):
             result = self._validate(root, release=False)
             self.assertEqual(result.returncode, 2, result.stdout)
             self.assertIn("JVTO-18", result.stderr)
+            # The JVTO-18 error is about this concept being the sole evidence, on its own path.
+            self.assertRegex(result.stderr, r"JVTO-18 policies/p\.md: .*sole evidence")
+
+    def test_jvto18_upstream_supported_survives_website_only(self) -> None:
+        # (b) An upstream-supported claim stays valid even when the website is the only external URL.
+        # source_refs is the stronger basis; the website is merely supplementary -> passes.
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._write_concept(
+                root / "bundle" / "policies" / "p.md",
+                """\
+                type: Policy
+                title: A Policy
+                description: Upstream-anchored; website is supplementary context only.
+                tags: [policy]
+                timestamp: "2026-06-26T00:00:00Z"
+                id: policies/p
+                status: reviewed
+                visibility: public
+                resource: https://javavolcano-touroperator.com/policy/x
+                source_refs:
+                  - source_id: SRC-POLICY
+                    repo: sambuko82/llm-wiki
+                    path: wiki/sources/jvto-policy-pack-v6.md
+                    source_class: operational_direct
+                    captured_at: "2026-05-26"
+                """,
+                """\
+                # Overview
+                Body.
+                """,
+            )
+            result = self._validate(root, release=False)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            # Make the intent explicit: JVTO-18 specifically does not fire when source_refs anchors it.
+            self.assertNotIn("JVTO-18", result.stderr)
+
+    def test_jvto18_website_allowed_as_supplementary_with_stronger_basis(self) -> None:
+        # (c) The website may appear as supplementary context when the record also carries a stronger
+        # source basis (here a non-website external citation). Both URLs present -> passes.
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._write_concept(
+                root / "bundle" / "travel-guides" / "g.md",
+                """\
+                type: Travel Guide
+                title: A Guide
+                description: Authority citation plus a supplementary website link.
+                tags: [travel-guides]
+                timestamp: "2026-06-26T00:00:00Z"
+                id: travel-guides/g
+                status: reviewed
+                visibility: public
+                """,
+                """\
+                # Overview
+                Body.
+
+                # Citations
+
+                - https://bbksdajatim.org
+                - https://javavolcano-touroperator.com/guide/x
+                """,
+            )
+            result = self._validate(root, release=False)
+            self.assertEqual(result.returncode, 0, result.stderr)
 
     def test_jvto18_allows_external_url_with_brand_in_path(self) -> None:
         # A Trustpilot review URL contains the brand in its PATH but its host is trustpilot.com.
@@ -994,6 +1218,76 @@ class OkfToolsTest(unittest.TestCase):
             )
             result = self._validate(root, release=False)
             self.assertEqual(result.returncode, 0, result.stderr)
+
+    def test_jvto18_relative_resource_is_not_a_basis(self) -> None:
+        # The relative-resource guard: a bundle-relative resource (/tours/...) is not an external
+        # URL, so it cannot rescue a website-only concept — JVTO-18 still fires.
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._write_concept(
+                root / "bundle" / "policies" / "p.md",
+                """\
+                type: Policy
+                title: A Policy
+                description: A relative resource is not external evidence.
+                tags: [policy]
+                timestamp: "2026-06-26T00:00:00Z"
+                id: policies/p
+                status: reviewed
+                visibility: public
+                resource: /tours/from-surabaya/x
+                """,
+                """\
+                # Overview
+                Body.
+
+                # Citations
+
+                - https://javavolcano-touroperator.com/policy/x
+                """,
+            )
+            result = self._validate(root, release=False)
+            self.assertEqual(result.returncode, 2, result.stdout)
+            self.assertIn("JVTO-18", result.stderr)
+
+    def test_jvto04_accepts_nonwebsite_resource_anchor(self) -> None:
+        # JVTO-04 and JVTO-18 share one definition of a stronger basis: a non-website external URL
+        # in the `resource` field counts, even when the only citation is a supplementary website link
+        # and there are no source_refs. (Locks JVTO-04<->JVTO-18 consistency on `resource`.)
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._write_concept(
+                root / "bundle" / "policies" / "p.md",
+                """\
+                type: Policy
+                title: A Policy
+                description: External primary URL lives in resource; website is supplementary.
+                tags: [policy]
+                timestamp: "2026-06-26T00:00:00Z"
+                id: policies/p
+                status: reviewed
+                visibility: public
+                resource: https://bbksdajatim.org
+                """,
+                """\
+                # Overview
+                Body.
+
+                # Citations
+
+                - https://javavolcano-touroperator.com/policy/x
+                """,
+            )
+            result = self._validate(root, release=False)
+            self.assertEqual(result.returncode, 0, result.stderr)
+
+    def test_secondary_presentation_domains_configured(self) -> None:
+        # Guard the silent no-op: JVTO-18 is gated on a non-empty secondary_presentation_domains
+        # list, so an emptied/renamed key would disable the rule with no signal.
+        text = (TOOL_ROOT / "config" / "publication-rules.yaml").read_text(encoding="utf-8")
+        self.assertIn("secondary_presentation_domains:", text)
+        key_idx = text.index("secondary_presentation_domains:")
+        self.assertIn("javavolcano-touroperator.com", text[key_idx:])
 
     def test_jvto04_passes_with_source_refs_and_no_citation(self) -> None:
         with tempfile.TemporaryDirectory() as temp:

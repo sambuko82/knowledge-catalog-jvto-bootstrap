@@ -1,12 +1,19 @@
 # Copy selected records into ../approved/<domain>.yaml after verifying every fact
 # against each cited public source. Only release-eligible statuses are exported:
 # reviewed, verified, qualified, or published. Every record must include its own timestamp.
+#
+# Anchor every concept on `source_refs` (a wiki/itinerary-core source page) plus, where one
+# exists, a non-secondary external reference URL in `citations`. The JVTO website
+# (javavolcano-touroperator.com) is a SECONDARY presentation/corroboration layer: it may appear
+# as supplementary context (a `resource` or an extra citation) but never as the only evidence for
+# a claim, and its absence or staleness is never a reason to delete or downgrade a fact that is
+# supported upstream (validate_okf.py JVTO-18). Record website gaps as publication propagation
+# recommendations, not as evidence failures.
 records:
   - id: destinations/kawah-ijen
     type: Destination
     title: Kawah Ijen
     description: Replace with a one-sentence, verified public summary.
-    resource: https://javavolcano-touroperator.com/destinations/ijen-crater
     tags: [east-java, volcano, hiking]
     timestamp: "2026-06-23T00:00:00+07:00"
     status: reviewed
@@ -15,10 +22,16 @@ records:
     body: |
       # Overview
 
-      Replace this body only after checking the public JVTO page and the relevant authority source.
+      Replace this body only after checking the cited source page and the relevant authority source.
 
       # Related Concepts
 
       - [Tour Packages](/tours/index.md)
     citations:
-      - https://javavolcano-touroperator.com/destinations/ijen-crater
+      - https://bbksdajatim.org
+    source_refs:
+      - source_id: SRC-DEST
+        repo: sambuko82/llm-wiki
+        path: wiki/destinations/kawah-ijen.md
+        source_class: operational_direct
+        captured_at: "2026-05-26"

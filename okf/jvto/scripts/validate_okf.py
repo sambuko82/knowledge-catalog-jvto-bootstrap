@@ -15,13 +15,16 @@ Rules:
   OKF-03  internal Markdown links resolve
   JVTO-11 no known-stale review counts near their platform (config: stale_review_claims)
   JVTO-12 provenance required (Person + records with observations/operational/commercial_context)
-  JVTO-13 source_refs path may not resolve under a denied source scope (config: source-scope.yaml)
+  JVTO-13 source_refs repo/path must be a known scope repo and resolve under its allow scope (config: source-scope.yaml)
+  JVTO-19 each source_refs entry must be a mapping with non-empty source_id/repo/path/source_class/captured_at and a known source_class
   JVTO-14 a generated/manual_seed/inferred record cannot be the sole evidence of a fact
   JVTO-15 a Tour Package identity (package_key) must originate once
   JVTO-16 Review Platform observations, when present, carry current rating/count/as_of/source
   JVTO-17 concept type is a known concept type (config: known_concept_types)
-  JVTO-04 (relaxed) required-citation types carry a non-website public URL OR a source_refs anchor
-  JVTO-18 the JVTO website host is not allowed as a citation/resource (config: forbidden_citation_domains)
+  JVTO-04 (relaxed) required-citation types carry a non-secondary public URL (citation or resource) OR a source_refs anchor
+  JVTO-18 the JVTO website (a secondary presentation layer) may not be the SOLE evidence for a claim;
+          a source_refs anchor or a non-website external citation/resource must also be present
+          (config: secondary_presentation_domains)
 """
 from __future__ import annotations
 
@@ -89,17 +92,49 @@ def main() -> int:
         str(name): [str(p) for p in (spec.get("deny", []) or [])]
         for name, spec in (scope.get("repos", {}) or {}).items()
     }
+    allow_by_repo = {
+        str(name): [str(p) for p in (spec.get("allow", []) or [])]
+        for name, spec in (scope.get("repos", {}) or {}).items()
+    }
+    known_repos = {str(name) for name in (scope.get("repos", {}) or {}).keys()}
+    source_classes = {str(c) for c in (scope.get("rules", {}) or {}).get("source_classes", [])}
     derived_classes = set((scope.get("rules", {}) or {}).get("derived_source_classes", []))
-    # R4: the JVTO website is not a valid source/citation/resource (matched by host, so an
-    # external URL that merely contains the brand in its path — e.g. a trustpilot review URL —
-    # is NOT flagged).
-    forbidden_domains = [str(d).strip().lower() for d in rules.get("forbidden_citation_domains", []) if str(d).strip()]
-    website_re = re.compile(
-        r"https?://(?:[a-z0-9-]+\.)*(?:" + "|".join(re.escape(d) for d in forbidden_domains) + r")(?:[/:?]|$)",
-        re.I,
-    ) if forbidden_domains else None
+    required_ref_fields = ("source_id", "repo", "path", "source_class", "captured_at")
 
-    def is_website(value: str) -> bool:
+    def source_ref_problems(ref) -> list[tuple[str, str]]:
+        """Return (rule, message) problems for one source_refs entry; empty list means valid.
+        Closes the bypass where a placeholder ref (e.g. {} or "x") satisfied the evidence basis."""
+        if not isinstance(ref, dict):
+            return [("JVTO-19", f"source_refs entry must be a mapping, got {type(ref).__name__}.")]
+        problems: list[tuple[str, str]] = []
+        for field in required_ref_fields:
+            if not str(ref.get(field, "")).strip():
+                problems.append(("JVTO-19", f"source_refs entry missing required field: {field}."))
+        sclass = str(ref.get("source_class", "")).strip()
+        if sclass and source_classes and sclass not in source_classes:
+            problems.append(("JVTO-19", f"source_refs entry has unknown source_class: {sclass!r}."))
+        ref_repo = str(ref.get("repo", "")).rstrip("/").split("/")[-1]
+        ref_path = str(ref.get("path", "")).strip()
+        if ref_repo and known_repos and ref_repo not in known_repos:
+            problems.append(("JVTO-13", f"source_ref repo not in source scope: {ref_repo}."))
+        elif ref_repo and ref_path:
+            if any(ref_path.startswith(p) for p in deny_by_repo.get(ref_repo, [])):
+                problems.append(("JVTO-13", f"source_ref path under denied scope: {ref_repo}:{ref_path}"))
+            else:
+                allowed = allow_by_repo.get(ref_repo, [])
+                if allowed and not any(ref_path.startswith(p) for p in allowed):
+                    problems.append(("JVTO-13", f"source_ref path outside allow scope: {ref_repo}:{ref_path}"))
+        return problems
+    # R4: the JVTO website is a secondary presentation/corroboration layer, never the sole evidence
+    # for a claim (matched by host, so an external URL that merely contains the brand in its path —
+    # e.g. a trustpilot review URL — is NOT a secondary-domain match).
+    secondary_domains = [str(d).strip().lower() for d in rules.get("secondary_presentation_domains", []) if str(d).strip()]
+    website_re = re.compile(
+        r"https?://(?:[a-z0-9-]+\.)*(?:" + "|".join(re.escape(d) for d in secondary_domains) + r")(?:[/:?]|$)",
+        re.I,
+    ) if secondary_domains else None
+
+    def is_secondary(value: str) -> bool:
         return bool(website_re.search(str(value))) if website_re else False
 
     bundle_resolved = BUNDLE_ROOT.resolve()
@@ -141,22 +176,31 @@ def main() -> int:
             else:
                 seen_ids[concept_id] = relative
 
-        if meta.get("type") in citation_types:
-            block = citations_block(body)
-            urls = URL.findall(block) if block else []
-            non_website_urls = [u for u in urls if not is_website(u)]
-            has_source_refs = isinstance(meta.get("source_refs"), list) and len(meta.get("source_refs")) > 0
-            if not non_website_urls and not has_source_refs:
-                errors.append({"rule": "JVTO-04", "path": relative, "message": "Required-citation type needs a non-website public-URL citation or a source_refs anchor."})
+        # Evidence basis shared by JVTO-04 and JVTO-18 so the two rules can never diverge on what
+        # counts as a non-website (stronger) basis. A non-secondary external URL may live in the
+        # rendered "# Citations" block OR in the `resource` frontmatter field; a relative resource
+        # (e.g. /tours/...) yields no http(s) URL and so is correctly not counted as evidence.
+        cblock = citations_block(body)
+        citation_urls = URL.findall(cblock) if cblock else []
+        resource_val = str(meta.get("resource", "")).strip()
+        resource_urls = URL.findall(resource_val)
+        non_secondary_urls = [u for u in (citation_urls + resource_urls) if not is_secondary(u)]
+        refs = meta.get("source_refs")
+        has_valid_source_refs = isinstance(refs, list) and any(not source_ref_problems(r) for r in refs)
+        has_stronger_basis = has_valid_source_refs or bool(non_secondary_urls)
 
-        # JVTO-18: the JVTO website is not a valid citation/resource source.
+        # JVTO-04: required-citation types must carry a non-website public URL (citation or resource)
+        # or a source_refs anchor.
+        if meta.get("type") in citation_types and not has_stronger_basis:
+            errors.append({"rule": "JVTO-04", "path": relative, "message": "Required-citation type needs a non-website public-URL citation or a source_refs anchor."})
+
+        # JVTO-18: the JVTO website is a secondary presentation/corroboration layer. It may appear as
+        # supplementary context, but it may not be the SOLE evidence for a claim — a concept that
+        # references the website must also carry a source_refs anchor or a non-website external URL.
         if website_re:
-            if is_website(meta.get("resource", "")):
-                errors.append({"rule": "JVTO-18", "path": relative, "message": f"JVTO website not allowed as resource: {meta.get('resource')}"})
-            cblock = citations_block(body)
-            for u in (URL.findall(cblock) if cblock else []):
-                if is_website(u):
-                    errors.append({"rule": "JVTO-18", "path": relative, "message": f"JVTO website not allowed as citation: {u}"})
+            has_secondary = is_secondary(resource_val) or any(is_secondary(u) for u in citation_urls)
+            if has_secondary and not has_stronger_basis:
+                errors.append({"rule": "JVTO-18", "path": relative, "message": "JVTO website may not be the sole evidence for a claim; add a source_refs anchor or a non-website external citation/resource."})
 
         lower = text.lower()
         for term in forbidden:
@@ -188,18 +232,15 @@ def main() -> int:
         if needs_refs and (not isinstance(source_refs, list) or not source_refs):
             errors.append({"rule": "JVTO-12", "path": relative, "message": "Record requires a non-empty source_refs provenance list."})
 
-        # JVTO-13 / JVTO-14: provenance scope + derived-sole-evidence.
+        # JVTO-19 (schema) + JVTO-13 (scope): every source_refs entry must be a well-formed, in-scope
+        # provenance record. JVTO-14: a derived-only set cannot be the sole evidence of a fact.
         if isinstance(source_refs, list) and source_refs:
             classes: set[str] = set()
             for ref in source_refs:
-                if not isinstance(ref, dict):
-                    continue
-                classes.add(str(ref.get("source_class", "")))
-                ref_repo = str(ref.get("repo", "")).rstrip("/").split("/")[-1]
-                ref_path = str(ref.get("path", ""))
-                for repo_name, denied in deny_by_repo.items():
-                    if ref_repo == repo_name and any(ref_path.startswith(p) for p in denied):
-                        errors.append({"rule": "JVTO-13", "path": relative, "message": f"source_ref path under denied scope: {repo_name}:{ref_path}"})
+                for rule, message in source_ref_problems(ref):
+                    errors.append({"rule": rule, "path": relative, "message": message})
+                if isinstance(ref, dict):
+                    classes.add(str(ref.get("source_class", "")))
             if derived_classes and classes and classes.issubset(derived_classes) and meta.get("claim_basis") != "planning_assumption":
                 errors.append({"rule": "JVTO-14", "path": relative, "message": "Derived-only source_refs cannot be sole evidence (add a direct source or set claim_basis: planning_assumption)."})
 

@@ -24,5 +24,9 @@ jobs:
           python-version: '3.12'
       - run: pip install -e .[dev]
       - run: python -m unittest discover -s tests -v
+      # Rebuild the bundle from curation and fail if the committed bundle has drifted, so
+      # "70 concepts, no bundle diff" is a CI guard rather than a locally-reported result.
+      - run: python scripts/build_bundle.py --curated --indexes
+      - run: git -C "$GITHUB_WORKSPACE" diff --exit-code -- okf/bundles/jvto
       - run: python scripts/validate_okf.py --strict-links
       - run: python scripts/validate_okf.py --release --strict-links

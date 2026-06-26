@@ -70,3 +70,8 @@ Never copy raw private files, customer data, operational costs, vendor rates,
 margins, credential scans, secrets, or internal-only content into the bundle.
 Snapshots and build reports are git-ignored; the bundle holds only durable,
 publicly verifiable knowledge.
+
+The JVTO website is a secondary presentation layer, not an authority: it may be
+supplementary context but never the sole evidence for a claim (JVTO-18), and a
+website gap never deletes or downgrades a fact supported upstream — see
+`04-data-safety-and-release.md`.

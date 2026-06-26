@@ -106,3 +106,5 @@ python -m reference_agent visualize \
 ## Update rule
 
 When a public fact changes: update the underlying public page if appropriate, update the relevant concept, update `timestamp` and `last_verified`, add a `log.md` entry, validate, then commit.
+
+A website mismatch alone is never grounds to remove or downgrade a concept that is supported upstream. If the website is absent, outdated, or contradictory, keep the upstream-supported fact and record the gap as a publication propagation recommendation (see `04-data-safety-and-release.md`).

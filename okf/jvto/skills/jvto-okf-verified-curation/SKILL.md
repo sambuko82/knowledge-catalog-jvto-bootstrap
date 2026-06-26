@@ -202,6 +202,14 @@ Use this structure:
 
 - ...
 
+## Publication Propagation Recommendations
+
+- Canonical facts absent from the website: ...
+- Canonical facts outdated or inconsistently represented there: ...
+- Upstream-discovered data to recommend for later website publication: ...
+
+(The website is a secondary layer; a website gap is a propagation recommendation, never a reason to delete or downgrade a fact supported upstream. No website change is made in the OKF PR unless explicitly assigned. Write "none this loop" when there is nothing to recommend.)
+
 ## Safety Check
 
 - PII: pass/fail
@@ -265,6 +273,7 @@ Return the following together:
 2. **Verification report** — claim ledger and release decision.
 3. **Concise verification summary** — verified claims, qualified claims, exclusions, and human decisions needed.
 4. **Index/log changes** — exact entries required in the relevant `index.md` and `log.md`.
+5. **Publication propagation recommendations** — canonical facts absent/outdated/inconsistent on the website and upstream-discovered data to recommend for later website publication ("none this loop" when empty). A downstream list only — never a reason to delete or downgrade an upstream-supported fact.
 
 Never return only a polished answer without the verification result.
 
