@@ -4,8 +4,11 @@
 #
 # Anchor every concept on `source_refs` (a wiki/itinerary-core source page) plus, where one
 # exists, an external primary URL in `citations`. The JVTO website
-# (javavolcano-touroperator.com) is not a valid source, citation, or resource and is rejected
-# by validate_okf.py JVTO-18 — never cite it here.
+# (javavolcano-touroperator.com) is a SECONDARY presentation/corroboration layer: it may appear
+# as supplementary context (a `resource` or an extra citation) but never as the only evidence for
+# a claim, and its absence or staleness is never a reason to delete or downgrade a fact that is
+# supported upstream (validate_okf.py JVTO-18). Record website gaps as publication propagation
+# recommendations, not as evidence failures.
 records:
   - id: destinations/kawah-ijen
     type: Destination

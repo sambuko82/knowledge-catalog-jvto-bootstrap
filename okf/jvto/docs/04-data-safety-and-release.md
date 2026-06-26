@@ -37,3 +37,24 @@ These are the canonical statuses; the machine-checked source of truth is
 ## Sensitive claims
 
 Legal, medical, safety, credential, review-rating, or operational claims need an authoritative public citation and current verification date. Where facts conflict, do not publish a clean assertion.
+
+## Authority hierarchy and the website's role
+
+Evidence authority runs in one direction — source knowledge and original evidence → the canonical OKF graph → the website:
+
+1. **Canonical upstream knowledge** in `llm-wiki` / `jvto-itinerary-core` (`source_refs`) is the primary basis.
+2. **External primary sources** (platform, authority, partner, media, registry URLs) support and refresh claims; for dynamic facts a direct observation outranks any copy.
+3. The **JVTO website** is a *secondary* presentation and corroboration layer.
+4. The website may **never** override, erase, downgrade, or invalidate a fact supported upstream because it is absent, incomplete, stale, or contradictory there.
+
+Rule **JVTO-18** enforces the checkable half: the website may appear as supplementary context, but a concept that references the website must also carry a `source_refs` anchor or a non-website external primary URL — the website is never the sole evidence for a claim. The non-deletion half (a website gap is not grounds to remove or downgrade an upstream-supported fact) is governance: record the gap as a propagation recommendation instead.
+
+## Publication propagation recommendations
+
+Every convergence loop's final report includes a compact **publication propagation recommendations** section listing:
+
+- canonical facts that are absent from the website;
+- canonical facts that are outdated or inconsistently represented there;
+- valuable data discovered upstream that should later be recommended for website publication.
+
+This is a downstream recommendation list only — not a new concept, folder, pipeline, or truth layer. No website change is made in the OKF PR unless explicitly assigned.

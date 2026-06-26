@@ -95,9 +95,14 @@ stale_review_claims:
   - {platform: google, count: 92}      # superseded by the API-verified canonical (123)
   - {platform: trustpilot, count: 47}  # superseded by the current canonical (51/56)
 
-# JVTO-18: the JVTO website is not a valid source/citation/resource. Concepts anchor on
-# source_refs (wiki/itinerary-core) + external primary URLs instead. Matched by URL host,
-# so an external URL whose path merely contains the brand (e.g. a Trustpilot review URL)
-# is not affected.
-forbidden_citation_domains:
+# JVTO-18 (authority hierarchy): the JVTO website is a SECONDARY presentation and corroboration
+# layer, never the final authority. It may appear as supplementary context (a `resource` or an
+# extra citation), but it may NOT be the sole evidence for a material claim: a concept that cites
+# the website must also carry a `source_refs` anchor (llm-wiki / itinerary-core) or a non-website
+# external primary URL. Matched by URL host, so an external URL whose path merely contains the
+# brand (e.g. a Trustpilot review URL) is NOT secondary.
+# Governance (not machine-checked): website absence, mismatch, or staleness must never trigger
+# deletion, downgrade, or invalidation of a fact that is already supported upstream — record such a
+# gap as a publication propagation recommendation instead.
+secondary_presentation_domains:
   - javavolcano-touroperator.com

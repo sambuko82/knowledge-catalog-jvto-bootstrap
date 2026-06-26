@@ -935,9 +935,14 @@ class OkfToolsTest(unittest.TestCase):
             self.assertIn("JVTO-17", result.stderr)
 
 
-    # ---- R4 website-ban rules (JVTO-04 relaxed, JVTO-18) ----
+    # ---- R4 authority-hierarchy rule (JVTO-04 relaxed, JVTO-18 sole-evidence) ----
+    # The JVTO website is a secondary presentation/corroboration layer: allowed as supplementary
+    # context, never as the sole evidence for a claim, and never a reason to delete/downgrade a
+    # fact that is supported upstream.
 
-    def test_jvto18_rejects_jvto_website(self) -> None:
+    def test_jvto18_website_only_is_blocked(self) -> None:
+        # (a) The website cannot establish a material claim by itself: a concept whose only evidence
+        # is the website host (no source_refs, no non-website external URL) fails JVTO-18.
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
             self._write_concept(
@@ -945,7 +950,7 @@ class OkfToolsTest(unittest.TestCase):
                 """\
                 type: Policy
                 title: A Policy
-                description: Cites the banned JVTO website.
+                description: Website is the only evidence.
                 tags: [policy]
                 timestamp: "2026-06-26T00:00:00Z"
                 id: policies/p
@@ -965,6 +970,68 @@ class OkfToolsTest(unittest.TestCase):
             result = self._validate(root, release=False)
             self.assertEqual(result.returncode, 2, result.stdout)
             self.assertIn("JVTO-18", result.stderr)
+
+    def test_jvto18_upstream_supported_survives_website_only(self) -> None:
+        # (b) An upstream-supported claim stays valid even when the website is the only external URL.
+        # source_refs is the stronger basis; the website is merely supplementary -> passes.
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._write_concept(
+                root / "bundle" / "policies" / "p.md",
+                """\
+                type: Policy
+                title: A Policy
+                description: Upstream-anchored; website is supplementary context only.
+                tags: [policy]
+                timestamp: "2026-06-26T00:00:00Z"
+                id: policies/p
+                status: reviewed
+                visibility: public
+                resource: https://javavolcano-touroperator.com/policy/x
+                source_refs:
+                  - source_id: SRC-POLICY
+                    repo: sambuko82/llm-wiki
+                    path: wiki/sources/jvto-policy-pack-v6.md
+                    source_class: operational_direct
+                    captured_at: "2026-05-26"
+                """,
+                """\
+                # Overview
+                Body.
+                """,
+            )
+            result = self._validate(root, release=False)
+            self.assertEqual(result.returncode, 0, result.stderr)
+
+    def test_jvto18_website_allowed_as_supplementary_with_stronger_basis(self) -> None:
+        # (c) The website may appear as supplementary context when the record also carries a stronger
+        # source basis (here a non-website external citation). Both URLs present -> passes.
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._write_concept(
+                root / "bundle" / "travel-guides" / "g.md",
+                """\
+                type: Travel Guide
+                title: A Guide
+                description: Authority citation plus a supplementary website link.
+                tags: [travel-guides]
+                timestamp: "2026-06-26T00:00:00Z"
+                id: travel-guides/g
+                status: reviewed
+                visibility: public
+                """,
+                """\
+                # Overview
+                Body.
+
+                # Citations
+
+                - https://bbksdajatim.org
+                - https://javavolcano-touroperator.com/guide/x
+                """,
+            )
+            result = self._validate(root, release=False)
+            self.assertEqual(result.returncode, 0, result.stderr)
 
     def test_jvto18_allows_external_url_with_brand_in_path(self) -> None:
         # A Trustpilot review URL contains the brand in its PATH but its host is trustpilot.com.

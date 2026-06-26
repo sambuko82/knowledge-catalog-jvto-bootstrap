@@ -20,8 +20,10 @@ Rules:
   JVTO-15 a Tour Package identity (package_key) must originate once
   JVTO-16 Review Platform observations, when present, carry current rating/count/as_of/source
   JVTO-17 concept type is a known concept type (config: known_concept_types)
-  JVTO-04 (relaxed) required-citation types carry a non-website public URL OR a source_refs anchor
-  JVTO-18 the JVTO website host is not allowed as a citation/resource (config: forbidden_citation_domains)
+  JVTO-04 (relaxed) required-citation types carry a non-secondary public URL OR a source_refs anchor
+  JVTO-18 the JVTO website (a secondary presentation layer) may not be the SOLE evidence for a claim;
+          a source_refs anchor or a non-website external citation/resource must also be present
+          (config: secondary_presentation_domains)
 """
 from __future__ import annotations
 
@@ -90,16 +92,16 @@ def main() -> int:
         for name, spec in (scope.get("repos", {}) or {}).items()
     }
     derived_classes = set((scope.get("rules", {}) or {}).get("derived_source_classes", []))
-    # R4: the JVTO website is not a valid source/citation/resource (matched by host, so an
-    # external URL that merely contains the brand in its path — e.g. a trustpilot review URL —
-    # is NOT flagged).
-    forbidden_domains = [str(d).strip().lower() for d in rules.get("forbidden_citation_domains", []) if str(d).strip()]
+    # R4: the JVTO website is a secondary presentation/corroboration layer, never the sole evidence
+    # for a claim (matched by host, so an external URL that merely contains the brand in its path —
+    # e.g. a trustpilot review URL — is NOT a secondary-domain match).
+    secondary_domains = [str(d).strip().lower() for d in rules.get("secondary_presentation_domains", []) if str(d).strip()]
     website_re = re.compile(
-        r"https?://(?:[a-z0-9-]+\.)*(?:" + "|".join(re.escape(d) for d in forbidden_domains) + r")(?:[/:?]|$)",
+        r"https?://(?:[a-z0-9-]+\.)*(?:" + "|".join(re.escape(d) for d in secondary_domains) + r")(?:[/:?]|$)",
         re.I,
-    ) if forbidden_domains else None
+    ) if secondary_domains else None
 
-    def is_website(value: str) -> bool:
+    def is_secondary(value: str) -> bool:
         return bool(website_re.search(str(value))) if website_re else False
 
     bundle_resolved = BUNDLE_ROOT.resolve()
@@ -144,19 +146,28 @@ def main() -> int:
         if meta.get("type") in citation_types:
             block = citations_block(body)
             urls = URL.findall(block) if block else []
-            non_website_urls = [u for u in urls if not is_website(u)]
+            non_secondary_urls = [u for u in urls if not is_secondary(u)]
             has_source_refs = isinstance(meta.get("source_refs"), list) and len(meta.get("source_refs")) > 0
-            if not non_website_urls and not has_source_refs:
+            if not non_secondary_urls and not has_source_refs:
                 errors.append({"rule": "JVTO-04", "path": relative, "message": "Required-citation type needs a non-website public-URL citation or a source_refs anchor."})
 
-        # JVTO-18: the JVTO website is not a valid citation/resource source.
+        # JVTO-18: the JVTO website is a secondary presentation/corroboration layer. It may appear as
+        # supplementary context, but it may not be the SOLE evidence for a claim — a concept that
+        # references the website must also carry a source_refs anchor or a non-website external URL.
         if website_re:
-            if is_website(meta.get("resource", "")):
-                errors.append({"rule": "JVTO-18", "path": relative, "message": f"JVTO website not allowed as resource: {meta.get('resource')}"})
             cblock = citations_block(body)
-            for u in (URL.findall(cblock) if cblock else []):
-                if is_website(u):
-                    errors.append({"rule": "JVTO-18", "path": relative, "message": f"JVTO website not allowed as citation: {u}"})
+            citation_urls = URL.findall(cblock) if cblock else []
+            resource_val = str(meta.get("resource", ""))
+            has_secondary = is_secondary(resource_val) or any(is_secondary(u) for u in citation_urls)
+            if has_secondary:
+                refs = meta.get("source_refs")
+                has_source_refs = isinstance(refs, list) and len(refs) > 0
+                has_nonsecondary_url = (
+                    (bool(resource_val.strip()) and not is_secondary(resource_val) and bool(URL.match(resource_val)))
+                    or any(not is_secondary(u) for u in citation_urls)
+                )
+                if not (has_source_refs or has_nonsecondary_url):
+                    errors.append({"rule": "JVTO-18", "path": relative, "message": "JVTO website may not be the sole evidence for a claim; add a source_refs anchor or a non-website external citation/resource."})
 
         lower = text.lower()
         for term in forbidden:
