@@ -25,7 +25,7 @@ in effect at the time of travel.
 
 # Related Concepts
 
-- [Dr. Ahmad Irwandanu](/trust/partners/dr-ahmad-irwandanu.md)
+- [Dr. Ahmad Irwandanu](/people/dr-ahmad-irwandanu.md)
 - [Ijen Health Screening](/policies/ijen-health-screening.md)
 - [Kawah Ijen](/destinations/kawah-ijen.md)
 
