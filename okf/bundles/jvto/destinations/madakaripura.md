@@ -11,7 +11,14 @@ tags:
 timestamp: '2026-06-23T00:00:00+07:00'
 status: reviewed
 visibility: public
-last_verified: '2026-06-23'
+last_verified: '2026-06-26'
+activity:
+  typical_schedule: Late-morning visit, often paired same-day with Bromo; a roughly
+    1.5 km gorge walk to the falls.
+  effort: moderate
+  access_requirements:
+  - local guide
+  - raincoat recommended (spray on the gorge walk)
 source_refs:
 - source_id: SRC-DEST
   repo: sambuko82/llm-wiki

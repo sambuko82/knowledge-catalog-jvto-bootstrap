@@ -23,6 +23,10 @@ review_mentions:
   google: 6
   trustpilot: 0
   tripadvisor: 0
+review_themes:
+- english-fluency
+- professionalism
+- detail-oriented
 source_refs:
 - source_id: SRC-CREW-REGISTRY
   repo: sambuko82/llm-wiki

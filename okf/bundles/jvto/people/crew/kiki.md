@@ -25,6 +25,11 @@ review_mentions:
   google: 12
   trustpilot: 5
   tripadvisor: 0
+review_themes:
+- photography
+- communication
+- fun-energy
+- versatility
 source_refs:
 - source_id: SRC-CREW-REGISTRY
   repo: sambuko82/llm-wiki

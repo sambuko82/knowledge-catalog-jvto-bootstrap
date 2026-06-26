@@ -43,6 +43,17 @@ This is a historical award artifact only.
 It is not a current Booking.com rating, an active listing, or a current
 partnership, and the shipping label is not standalone legal-continuity proof.
 
+# Evidence
+
+The award plaque and the award-shipment label are the original artifacts; their
+SHA-hashed entries are held in the evidence registry (locator `booking-2015`), and
+the hosted images are linked below as supplementary visual context.
+
 # Related Concepts
 
 - [Java Volcano Tour Operator (JVTO)](/organization.md)
+
+# Citations
+
+- https://javavolcano-touroperator.com/history/booking-2015-plaque.jpg
+- https://javavolcano-touroperator.com/history/booking-2015-shipping-label.jpg

@@ -13,7 +13,15 @@ tags:
 timestamp: '2026-06-23T00:00:00+07:00'
 status: reviewed
 visibility: public
-last_verified: '2026-06-23'
+last_verified: '2026-06-26'
+activity:
+  typical_schedule: Hotel departure around midnight; the crater rim is reached near
+    dawn for the blue fire and sunrise; finish mid-morning.
+  effort: hard
+  access_requirements:
+  - BBKSDA health screening and certificate when their regulations are in effect
+  - gas mask and trekking poles (provided by JVTO)
+  - licensed local guide
 source_refs:
 - source_id: SRC-DEST
   repo: sambuko82/llm-wiki

@@ -53,3 +53,6 @@ fully readable or that publication metadata is verified.
 # Citations
 
 - https://www.amazon.de/-/en/Stefan-Loose-Reisef%C3%BChrer-Indonesien-Reiseatlas/dp/3770167651
+- https://javavolcano-touroperator.com/history/stefan-loose-ijen-bondowoso-page.png
+- https://javavolcano-touroperator.com/history/stefan_loose_crop_enh.jpg
+- https://javavolcano-touroperator.com/history/guest-visit-ijen-bondowoso-homestay-stefan-loose-inspired.jpg

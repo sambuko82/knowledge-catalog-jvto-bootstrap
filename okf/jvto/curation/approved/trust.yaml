@@ -64,6 +64,18 @@ records:
     page, where the identifiers can be cross-checked.
 
 
+    # Company Registry and Classification
+
+
+    The operating company is registered with the Indonesian Ministry of Law and
+
+    Human Rights (AHU) as **AHU-0023020**, checkable on the AHU company-search
+
+    portal. Its business activity is classified under KBLI codes **79121** (Travel
+
+    Agency), **79911** (Tour Operator), and **62019** (IT services).
+
+
     # Related Concepts
 
 
@@ -74,6 +86,7 @@ records:
     '
   citations:
   - https://oss.go.id
+  - https://ahu.go.id/pencarian/perseroan
   source_refs:
   - source_id: SRC-LEGAL-LICENSES
     repo: sambuko82/llm-wiki

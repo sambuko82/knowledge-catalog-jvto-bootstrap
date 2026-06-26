@@ -24,6 +24,11 @@ review_mentions:
   google: 15
   trustpilot: 4
   tripadvisor: 1
+review_themes:
+- punctuality
+- sunrise-positioning
+- safe-driving
+- professionalism
 source_refs:
 - source_id: SRC-CREW-REGISTRY
   repo: sambuko82/llm-wiki

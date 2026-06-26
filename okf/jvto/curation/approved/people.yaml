@@ -130,6 +130,11 @@ records:
     google: 8
     trustpilot: 3
     tripadvisor: 1
+  review_themes:
+  - photography
+  - astrophotography
+  - professionalism
+  - english-fluency
   source_refs:
   - source_id: SRC-CREW-REGISTRY
     repo: sambuko82/llm-wiki
@@ -200,6 +205,11 @@ records:
     google: 4
     trustpilot: 3
     tripadvisor: 1
+  review_themes:
+  - family-friendly
+  - thorough-briefings
+  - flexibility
+  - humor
   source_refs:
   - source_id: SRC-CREW-REGISTRY
     repo: sambuko82/llm-wiki
@@ -266,6 +276,11 @@ records:
     google: 14
     trustpilot: 7
     tripadvisor: 1
+  review_themes:
+  - crater-safety
+  - photography
+  - professionalism
+  - advance-briefings
   source_refs:
   - source_id: SRC-CREW-REGISTRY
     repo: sambuko82/llm-wiki
@@ -335,6 +350,11 @@ records:
     google: 12
     trustpilot: 5
     tripadvisor: 0
+  review_themes:
+  - photography
+  - communication
+  - fun-energy
+  - versatility
   source_refs:
   - source_id: SRC-CREW-REGISTRY
     repo: sambuko82/llm-wiki
@@ -401,6 +421,11 @@ records:
     google: 16
     trustpilot: 3
     tripadvisor: 1
+  review_themes:
+  - hike-safety
+  - photography
+  - geology
+  - encouragement
   source_refs:
   - source_id: SRC-CREW-REGISTRY
     repo: sambuko82/llm-wiki
@@ -466,6 +491,10 @@ records:
     google: 5
     trustpilot: 1
     tripadvisor: 0
+  review_themes:
+  - attentiveness
+  - photo-documentation
+  - crowd-management
   source_refs:
   - source_id: SRC-CREW-REGISTRY
     repo: sambuko82/llm-wiki
@@ -532,6 +561,11 @@ records:
     google: 9
     trustpilot: 13
     tripadvisor: 1
+  review_themes:
+  - ijen-expertise
+  - safety-first
+  - equipment-readiness
+  - logistics
   source_refs:
   - source_id: SRC-CREW-REGISTRY
     repo: sambuko82/llm-wiki
@@ -599,6 +633,10 @@ records:
     google: 9
     trustpilot: 7
     tripadvisor: 0
+  review_themes:
+  - reliability
+  - pre-day-briefings
+  - attentiveness
   source_refs:
   - source_id: SRC-CREW-REGISTRY
     repo: sambuko82/llm-wiki
@@ -662,6 +700,11 @@ records:
     google: 15
     trustpilot: 4
     tripadvisor: 1
+  review_themes:
+  - punctuality
+  - sunrise-positioning
+  - safe-driving
+  - professionalism
   source_refs:
   - source_id: SRC-CREW-REGISTRY
     repo: sambuko82/llm-wiki
@@ -723,6 +766,10 @@ records:
     google: 4
     trustpilot: 2
     tripadvisor: 0
+  review_themes:
+  - punctuality
+  - safe-driving
+  - positive-demeanor
   source_refs:
   - source_id: SRC-CREW-REGISTRY
     repo: sambuko82/llm-wiki
@@ -784,6 +831,10 @@ records:
     google: 4
     trustpilot: 15
     tripadvisor: 0
+  review_themes:
+  - experienced
+  - safe-driving
+  - positive-energy
   source_refs:
   - source_id: SRC-CREW-REGISTRY
     repo: sambuko82/llm-wiki
@@ -844,6 +895,10 @@ records:
     google: 7
     trustpilot: 0
     tripadvisor: 0
+  review_themes:
+  - punctuality
+  - smooth-driving
+  - professionalism
   source_refs:
   - source_id: SRC-CREW-REGISTRY
     repo: sambuko82/llm-wiki
@@ -906,6 +961,10 @@ records:
     google: 2
     trustpilot: 1
     tripadvisor: 0
+  review_themes:
+  - caring
+  - cultural-sharing
+  - recommendations
   source_refs:
   - source_id: SRC-CREW-REGISTRY
     repo: sambuko82/llm-wiki
@@ -966,6 +1025,10 @@ records:
     google: 6
     trustpilot: 0
     tripadvisor: 0
+  review_themes:
+  - english-fluency
+  - professionalism
+  - detail-oriented
   source_refs:
   - source_id: SRC-CREW-REGISTRY
     repo: sambuko82/llm-wiki

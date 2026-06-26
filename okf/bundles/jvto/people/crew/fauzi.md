@@ -24,6 +24,10 @@ review_mentions:
   google: 5
   trustpilot: 1
   tripadvisor: 0
+review_themes:
+- attentiveness
+- photo-documentation
+- crowd-management
 source_refs:
 - source_id: SRC-CREW-REGISTRY
   repo: sambuko82/llm-wiki

@@ -25,6 +25,11 @@ review_mentions:
   google: 4
   trustpilot: 3
   tripadvisor: 1
+review_themes:
+- family-friendly
+- thorough-briefings
+- flexibility
+- humor
 source_refs:
 - source_id: SRC-CREW-REGISTRY
   repo: sambuko82/llm-wiki

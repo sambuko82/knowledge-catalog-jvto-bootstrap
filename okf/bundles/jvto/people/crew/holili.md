@@ -23,6 +23,10 @@ review_mentions:
   google: 4
   trustpilot: 2
   tripadvisor: 0
+review_themes:
+- punctuality
+- safe-driving
+- positive-demeanor
 source_refs:
 - source_id: SRC-CREW-REGISTRY
   repo: sambuko82/llm-wiki
