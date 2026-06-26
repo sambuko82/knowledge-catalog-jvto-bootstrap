@@ -28,7 +28,8 @@ page, where the identifiers can be cross-checked.
 
 # Related Concepts
 
-- [Verifiable Licenses](/trust/credentials/verifiable-licenses.md)
+- [Police-Led Operations](/trust/claims/police-led.md)
+- [Java Volcano Tour Operator (JVTO)](/organization.md)
 
 # Citations
 
