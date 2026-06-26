@@ -943,6 +943,9 @@ class OkfToolsTest(unittest.TestCase):
     def test_jvto18_website_only_is_blocked(self) -> None:
         # (a) The website cannot establish a material claim by itself: a concept whose only evidence
         # is the website host (no source_refs, no non-website external URL) fails JVTO-18.
+        # Note: JVTO-18 cannot fire in isolation for any current type — a required-citation type
+        # co-triggers JVTO-04 and a Person co-triggers JVTO-12 — so the assertIn("JVTO-18") below
+        # is the load-bearing assertion that proves JVTO-18's distinct contribution.
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
             self._write_concept(
@@ -970,6 +973,8 @@ class OkfToolsTest(unittest.TestCase):
             result = self._validate(root, release=False)
             self.assertEqual(result.returncode, 2, result.stdout)
             self.assertIn("JVTO-18", result.stderr)
+            # The JVTO-18 error is about this concept being the sole evidence, on its own path.
+            self.assertRegex(result.stderr, r"JVTO-18 policies/p\.md: .*sole evidence")
 
     def test_jvto18_upstream_supported_survives_website_only(self) -> None:
         # (b) An upstream-supported claim stays valid even when the website is the only external URL.
@@ -1002,6 +1007,8 @@ class OkfToolsTest(unittest.TestCase):
             )
             result = self._validate(root, release=False)
             self.assertEqual(result.returncode, 0, result.stderr)
+            # Make the intent explicit: JVTO-18 specifically does not fire when source_refs anchors it.
+            self.assertNotIn("JVTO-18", result.stderr)
 
     def test_jvto18_website_allowed_as_supplementary_with_stronger_basis(self) -> None:
         # (c) The website may appear as supplementary context when the record also carries a stronger
@@ -1061,6 +1068,76 @@ class OkfToolsTest(unittest.TestCase):
             )
             result = self._validate(root, release=False)
             self.assertEqual(result.returncode, 0, result.stderr)
+
+    def test_jvto18_relative_resource_is_not_a_basis(self) -> None:
+        # The relative-resource guard: a bundle-relative resource (/tours/...) is not an external
+        # URL, so it cannot rescue a website-only concept — JVTO-18 still fires.
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._write_concept(
+                root / "bundle" / "policies" / "p.md",
+                """\
+                type: Policy
+                title: A Policy
+                description: A relative resource is not external evidence.
+                tags: [policy]
+                timestamp: "2026-06-26T00:00:00Z"
+                id: policies/p
+                status: reviewed
+                visibility: public
+                resource: /tours/from-surabaya/x
+                """,
+                """\
+                # Overview
+                Body.
+
+                # Citations
+
+                - https://javavolcano-touroperator.com/policy/x
+                """,
+            )
+            result = self._validate(root, release=False)
+            self.assertEqual(result.returncode, 2, result.stdout)
+            self.assertIn("JVTO-18", result.stderr)
+
+    def test_jvto04_accepts_nonwebsite_resource_anchor(self) -> None:
+        # JVTO-04 and JVTO-18 share one definition of a stronger basis: a non-website external URL
+        # in the `resource` field counts, even when the only citation is a supplementary website link
+        # and there are no source_refs. (Locks JVTO-04<->JVTO-18 consistency on `resource`.)
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._write_concept(
+                root / "bundle" / "policies" / "p.md",
+                """\
+                type: Policy
+                title: A Policy
+                description: External primary URL lives in resource; website is supplementary.
+                tags: [policy]
+                timestamp: "2026-06-26T00:00:00Z"
+                id: policies/p
+                status: reviewed
+                visibility: public
+                resource: https://bbksdajatim.org
+                """,
+                """\
+                # Overview
+                Body.
+
+                # Citations
+
+                - https://javavolcano-touroperator.com/policy/x
+                """,
+            )
+            result = self._validate(root, release=False)
+            self.assertEqual(result.returncode, 0, result.stderr)
+
+    def test_secondary_presentation_domains_configured(self) -> None:
+        # Guard the silent no-op: JVTO-18 is gated on a non-empty secondary_presentation_domains
+        # list, so an emptied/renamed key would disable the rule with no signal.
+        text = (TOOL_ROOT / "config" / "publication-rules.yaml").read_text(encoding="utf-8")
+        self.assertIn("secondary_presentation_domains:", text)
+        key_idx = text.index("secondary_presentation_domains:")
+        self.assertIn("javavolcano-touroperator.com", text[key_idx:])
 
     def test_jvto04_passes_with_source_refs_and_no_citation(self) -> None:
         with tempfile.TemporaryDirectory() as temp:

@@ -20,7 +20,7 @@ Rules:
   JVTO-15 a Tour Package identity (package_key) must originate once
   JVTO-16 Review Platform observations, when present, carry current rating/count/as_of/source
   JVTO-17 concept type is a known concept type (config: known_concept_types)
-  JVTO-04 (relaxed) required-citation types carry a non-secondary public URL OR a source_refs anchor
+  JVTO-04 (relaxed) required-citation types carry a non-secondary public URL (citation or resource) OR a source_refs anchor
   JVTO-18 the JVTO website (a secondary presentation layer) may not be the SOLE evidence for a claim;
           a source_refs anchor or a non-website external citation/resource must also be present
           (config: secondary_presentation_domains)
@@ -143,31 +143,31 @@ def main() -> int:
             else:
                 seen_ids[concept_id] = relative
 
-        if meta.get("type") in citation_types:
-            block = citations_block(body)
-            urls = URL.findall(block) if block else []
-            non_secondary_urls = [u for u in urls if not is_secondary(u)]
-            has_source_refs = isinstance(meta.get("source_refs"), list) and len(meta.get("source_refs")) > 0
-            if not non_secondary_urls and not has_source_refs:
-                errors.append({"rule": "JVTO-04", "path": relative, "message": "Required-citation type needs a non-website public-URL citation or a source_refs anchor."})
+        # Evidence basis shared by JVTO-04 and JVTO-18 so the two rules can never diverge on what
+        # counts as a non-website (stronger) basis. A non-secondary external URL may live in the
+        # rendered "# Citations" block OR in the `resource` frontmatter field; a relative resource
+        # (e.g. /tours/...) yields no http(s) URL and so is correctly not counted as evidence.
+        cblock = citations_block(body)
+        citation_urls = URL.findall(cblock) if cblock else []
+        resource_val = str(meta.get("resource", "")).strip()
+        resource_urls = URL.findall(resource_val)
+        non_secondary_urls = [u for u in (citation_urls + resource_urls) if not is_secondary(u)]
+        refs = meta.get("source_refs")
+        has_source_refs = isinstance(refs, list) and len(refs) > 0
+        has_stronger_basis = has_source_refs or bool(non_secondary_urls)
+
+        # JVTO-04: required-citation types must carry a non-website public URL (citation or resource)
+        # or a source_refs anchor.
+        if meta.get("type") in citation_types and not has_stronger_basis:
+            errors.append({"rule": "JVTO-04", "path": relative, "message": "Required-citation type needs a non-website public-URL citation or a source_refs anchor."})
 
         # JVTO-18: the JVTO website is a secondary presentation/corroboration layer. It may appear as
         # supplementary context, but it may not be the SOLE evidence for a claim — a concept that
         # references the website must also carry a source_refs anchor or a non-website external URL.
         if website_re:
-            cblock = citations_block(body)
-            citation_urls = URL.findall(cblock) if cblock else []
-            resource_val = str(meta.get("resource", ""))
             has_secondary = is_secondary(resource_val) or any(is_secondary(u) for u in citation_urls)
-            if has_secondary:
-                refs = meta.get("source_refs")
-                has_source_refs = isinstance(refs, list) and len(refs) > 0
-                has_nonsecondary_url = (
-                    (bool(resource_val.strip()) and not is_secondary(resource_val) and bool(URL.match(resource_val)))
-                    or any(not is_secondary(u) for u in citation_urls)
-                )
-                if not (has_source_refs or has_nonsecondary_url):
-                    errors.append({"rule": "JVTO-18", "path": relative, "message": "JVTO website may not be the sole evidence for a claim; add a source_refs anchor or a non-website external citation/resource."})
+            if has_secondary and not has_stronger_basis:
+                errors.append({"rule": "JVTO-18", "path": relative, "message": "JVTO website may not be the sole evidence for a claim; add a source_refs anchor or a non-website external citation/resource."})
 
         lower = text.lower()
         for term in forbidden:

@@ -8,8 +8,10 @@ version: 1
 # for the denied-source-path check. It is distinct from `upstreams.yaml` +
 # fetch_snapshots.py, which govern CONTENT fetching (a stricter allow-list).
 #
-# Principle: the public website is never a source, comparator, validator, or
-# downgrade-reason. Data is not rejected merely because it is absent from the website.
+# Principle: the public website is never a provenance SOURCE / source_refs anchor here, and its
+# absence is never a downgrade-reason. It is a secondary presentation/corroboration layer — it may
+# corroborate or cross-check, but is never the sole evidence for a claim (see publication-rules.yaml
+# JVTO-18). Data is not rejected merely because it is absent from the website.
 
 repos:
   llm-wiki:
@@ -54,4 +56,3 @@ rules:
   derived_source_classes: [generated, manual_seed, inferred]
   # A direct source_ref must retain at least these locator fields.
   direct_locator_fields: [repo, path]
-  website_is_not_a_source: true
