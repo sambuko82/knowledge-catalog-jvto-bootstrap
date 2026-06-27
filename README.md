@@ -31,7 +31,7 @@ knowledge-catalog/
 8. Use `okf/jvto/skills/jvto-okf-verified-curation/SKILL.md` whenever a concept needs generation and claim-level verification in the same workflow.
 9. Run `python scripts/validate_okf.py --strict-links`.
 10. Only release after `python scripts/validate_okf.py --release --strict-links` passes.
-11. Generate `viz.html` with Knowledge Catalog's existing `reference-agent visualize` command.
+11. Generate `viz.html` with `python scripts/visualize.py` (or `make viz`). This is the OKF visualize capability ported from Knowledge Catalog's reference agent; the output is git-ignored and regenerated on demand. See `okf/jvto/docs/09-okf-spec-conformance.md`.
 
 ## Merge into `knowledge-catalog`
 
