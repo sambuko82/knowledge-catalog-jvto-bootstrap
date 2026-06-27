@@ -102,6 +102,25 @@ class VisualizeTests(unittest.TestCase):
             self.assertEqual(org["data"]["color"], visualize._TYPE_PALETTE["Organization"])
             self.assertEqual(org["data"]["status"], "reviewed")
 
+    def test_script_close_sequence_is_escaped(self) -> None:
+        import tempfile
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write(
+                root,
+                "organization.md",
+                "---\ntype: Organization\ntitle: JVTO\n---\n\n"
+                "Nasty content: </script><img src=x onerror=alert(1)>\n",
+            )
+            out = root / "viz.html"
+            visualize.generate_visualization(root, out, bundle_name="JVTO")
+            html = out.read_text(encoding="utf-8")
+            # The literal closing-script sequence from the body must not survive
+            # into the embedded data; it is escaped to its \\u003c form.
+            self.assertNotIn("</script><img", html)
+            self.assertIn("\\u003c/script\\u003e", html)
+
     def test_output_is_deterministic(self) -> None:
         import tempfile
 

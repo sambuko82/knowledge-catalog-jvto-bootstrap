@@ -19,7 +19,7 @@ python scripts/visualize.py    # writes ../bundles/jvto/viz.html
 # or: make viz
 ```
 
-The output is a single self-contained HTML file (Cytoscape.js graph, coloured by concept type, with search, type filtering, backlinks, and a markdown detail panel). It is generated on demand and git-ignored. See [`docs/09-okf-spec-conformance.md`](docs/09-okf-spec-conformance.md) for how JVTO maps onto OKF v0.1.
+The output is a single HTML file (Cytoscape.js graph, coloured by concept type, with search, type filtering, backlinks, and a markdown detail panel). It is generated on demand and git-ignored. Cytoscape.js and marked.js load from a CDN, so the first time you open `viz.html` it needs network access; opened fully offline the graph will not render. See [`docs/09-okf-spec-conformance.md`](docs/09-okf-spec-conformance.md) for how JVTO maps onto OKF v0.1.
 
 ## Verified curation skill
 

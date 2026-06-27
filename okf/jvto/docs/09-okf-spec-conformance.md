@@ -96,8 +96,15 @@ python scripts/visualize.py          # writes ../bundles/jvto/viz.html
 # or: make viz
 ```
 
-The output is a single self-contained HTML file (Cytoscape.js + marked.js via
-CDN), coloured by concept `type`, with search, type filtering, backlinks, and
-the concept body rendered in a detail panel. It is generated on demand and is
-git-ignored (not committed) to keep the published bundle to concepts and
-indexes; regenerate it any time from the curated bundle.
+The output is a single HTML file, coloured by concept `type`, with search,
+type filtering, backlinks, and the concept body rendered in a detail panel. It
+is generated on demand and is git-ignored (not committed) to keep the
+published bundle to concepts and indexes; regenerate it any time from the
+curated bundle.
+
+Cytoscape.js and marked.js are loaded from a CDN, so the file is single-file
+but not fully offline: the first render needs network access, and opening it
+in an environment that blocks external CDNs shows a blank graph. This mirrors
+the upstream reference agent's viewer. If a fully offline viewer is ever
+required, vendor the two libraries into `scripts/viz_assets/` and inline them
+the same way `viz.css` / `viz.js` are inlined.

@@ -186,7 +186,7 @@
     const html = marked.parse(body, { breaks: false, gfm: true });
     const bodyEl = document.getElementById("detail-body");
     bodyEl.innerHTML = html;
-    rewriteInternalLinks(bodyEl);
+    rewriteInternalLinks(bodyEl, conceptId);
 
     const bl = backlinks[conceptId] || [];
     const blSection = document.getElementById("detail-backlinks");
@@ -214,21 +214,41 @@
     cy.animate({ center: { eles: node }, zoom: Math.max(cy.zoom(), 1.0) }, { duration: 200 });
   }
 
-  function rewriteInternalLinks(root) {
+  // Resolve a relative ``.md`` href (e.g. ``../destinations/kawah-ijen.md``)
+  // against the linking concept's directory into a concept id, mirroring the
+  // Python _extract_links resolution so graph edges and clickable detail
+  // links stay consistent for both absolute and relative link forms.
+  function resolveRelative(baseId, href) {
+    const baseDir = baseId.includes("/")
+      ? baseId.slice(0, baseId.lastIndexOf("/"))
+      : "";
+    const parts = baseDir ? baseDir.split("/") : [];
+    for (const seg of href.replace(/\.md$/, "").split("/")) {
+      if (seg === "" || seg === ".") continue;
+      if (seg === "..") parts.pop();
+      else parts.push(seg);
+    }
+    return parts.join("/");
+  }
+
+  function rewriteInternalLinks(root, baseId) {
     root.querySelectorAll("a[href]").forEach((a) => {
       const href = a.getAttribute("href");
       if (!href) return;
-      if (href.startsWith("/") && href.endsWith(".md")) {
-        const target = href.slice(1, -3);
-        if (nodeIndex[target]) {
-          a.className = "internal";
-          a.setAttribute("href", "javascript:void(0)");
-          a.addEventListener("click", (e) => {
-            e.preventDefault();
-            showDetail(target);
-          });
-          return;
-        }
+      let target = null;
+      if (href.endsWith(".md") && !href.includes("://")) {
+        target = href.startsWith("/")
+          ? href.slice(1, -3)
+          : resolveRelative(baseId, href);
+      }
+      if (target && nodeIndex[target]) {
+        a.className = "internal";
+        a.setAttribute("href", "javascript:void(0)");
+        a.addEventListener("click", (e) => {
+          e.preventDefault();
+          showDetail(target);
+        });
+        return;
       }
       a.className = "external";
       a.setAttribute("target", "_blank");

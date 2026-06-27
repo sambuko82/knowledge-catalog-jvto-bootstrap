@@ -180,6 +180,23 @@ def _build_graph(concepts: list[Concept]) -> dict[str, Any]:
     }
 
 
+def _embed_json(value: Any) -> str:
+    """Serialize ``value`` for safe embedding inside an inline ``<script>``.
+
+    ``json.dumps`` would leave a literal ``</script>`` from concept content
+    intact, which a browser would treat as closing the script tag (breaking
+    the viewer and allowing the trailing bundle text to be parsed as HTML).
+    Escaping ``<`` and ``>`` to their ``\\uXXXX`` forms keeps the value valid
+    JSON/JS while making ``</script>`` impossible to emit. The result is
+    deterministic (no timestamps, sorted keys).
+    """
+    return (
+        json.dumps(value, sort_keys=True)
+        .replace("<", "\\u003c")
+        .replace(">", "\\u003e")
+    )
+
+
 def generate_visualization(
     bundle_root: Path,
     out_path: Path,
@@ -206,8 +223,8 @@ def generate_visualization(
         template
         .replace("/*__VIZ_CSS__*/", css)
         .replace("/*__VIZ_JS__*/", js)
-        .replace("__BUNDLE_NAME__", json.dumps(name))
-        .replace("__BUNDLE_DATA__", json.dumps(graph, sort_keys=True))
+        .replace("__BUNDLE_NAME__", _embed_json(name))
+        .replace("__BUNDLE_DATA__", _embed_json(graph))
     )
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(html, encoding="utf-8")
