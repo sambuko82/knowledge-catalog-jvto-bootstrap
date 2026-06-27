@@ -11,8 +11,27 @@ from pathlib import Path
 SCRIPTS = Path(__file__).resolve().parents[1] / "scripts"
 sys.path.insert(0, str(SCRIPTS))
 
+import common  # noqa: E402
 import okf_core  # noqa: E402
 import visualize  # noqa: E402
+
+
+class BundleConformanceTests(unittest.TestCase):
+    def test_root_index_declares_okf_version(self) -> None:
+        """OKF SPEC §11: okf_version is declared in the bundle-root index.md."""
+        root_index = common.BUNDLE_ROOT / "index.md"
+        meta, _ = common.parse_frontmatter(root_index.read_text(encoding="utf-8"))
+        self.assertEqual(meta.get("okf_version"), "0.1")
+
+    def test_non_root_indexes_have_no_frontmatter(self) -> None:
+        """Only the bundle-root index.md may carry frontmatter (SPEC §6/§11)."""
+        for index in common.BUNDLE_ROOT.rglob("index.md"):
+            if index.parent == common.BUNDLE_ROOT:
+                continue
+            self.assertFalse(
+                index.read_text(encoding="utf-8").startswith("---\n"),
+                f"non-root index has frontmatter: {index}",
+            )
 
 
 class OKFDocumentTests(unittest.TestCase):

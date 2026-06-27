@@ -353,7 +353,13 @@ def build_indexes() -> None:
                 "`generated_pending_review` drafts cannot enter a public release.",
                 "",
             ])
-        (folder / "index.md").write_text("\n".join(lines), encoding="utf-8")
+        content = "\n".join(lines)
+        # OKF v0.1 (SPEC §11) permits a single `okf_version` declaration, and only
+        # in the bundle-root index.md frontmatter. All other index files stay
+        # frontmatter-free.
+        if is_root:
+            content = '---\nokf_version: "0.1"\n---\n\n' + content
+        (folder / "index.md").write_text(content, encoding="utf-8")
 
 
 def main() -> int:

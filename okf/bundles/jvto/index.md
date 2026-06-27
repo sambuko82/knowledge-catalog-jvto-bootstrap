@@ -1,3 +1,7 @@
+---
+okf_version: "0.1"
+---
+
 # Java Volcano Tour Operator — Knowledge Bundle
 
 Public, self-contained Open Knowledge Format bundle for JVTO. Each concept
