@@ -9,13 +9,15 @@ see [05-concept-model.md](05-concept-model.md).
 
 A self-contained, public-safe knowledge bundle at `okf/bundles/jvto/` that AI
 agents, search tools, and the Knowledge Catalog visualizer can consume **without
-any runtime access** to the private upstream repositories.
+any runtime access** to the private upstream repositories. The committed
+`catalog.json` sidecar is the machine-readable index that serves the search
+tools / AI agents in a single fetch.
 
 ## Flow
 
 ```text
 upstream snapshots        controlled extraction      curation              validation        release
-(local clone or remote)   (gated, draft-only)        (human verified)      (11 rule checks)  (gate)
+(local clone or remote)   (gated, draft-only)        (human verified)      (19 rule checks)  (gate)
         │                         │                        │                      │              │
 llm-wiki ─┐                 build_packages() ─┐      curation/approved/*.yaml     │              │
 itinerary ┤─ fetch_snapshots ─► snapshots ──► build_policies() ─► drafts ─┐       ▼              ▼
@@ -33,6 +35,7 @@ itinerary ┤─ fetch_snapshots ─► snapshots ──► build_policies() ─
 | Extract: policies | `build_bundle.py` `build_policies()` | `policies/<policy_id>.md` | `generated_pending_review` |
 | Curate | `curation/approved/*.yaml` → `build_curated()` | any concept type | `reviewed` / `verified` / `qualified` / `published` |
 | Index | `build_bundle.py` `build_indexes()` (release-eligible concepts only) | every `index.md` | n/a |
+| Consumption index | `build_bundle.py` `build_catalog()` (release-eligible concepts only) | `catalog.json` (machine-readable knowledge graph: concepts + cross-link edges + type counts) | n/a |
 | Validate | `scripts/validate_okf.py` | `build/validation-report.json` | gate |
 
 ## Gates (what blocks bad data)

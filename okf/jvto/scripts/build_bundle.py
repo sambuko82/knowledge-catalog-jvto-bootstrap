@@ -14,10 +14,12 @@ concepts. The bundle log (log.md) is not modified by the build.
 from __future__ import annotations
 
 import argparse
+import json
 import re
 from pathlib import Path
 from typing import Any
 
+from bundle_graph import build_catalog, walk_concepts
 from common import (
     BUNDLE_ROOT,
     BUILD_ROOT,
@@ -362,6 +364,23 @@ def build_indexes() -> None:
         (folder / "index.md").write_text(content, encoding="utf-8")
 
 
+def build_catalog_file() -> int:
+    """Write the machine-readable consumption manifest (catalog.json).
+
+    Walks the built bundle (release-eligible concepts only, matching the index
+    policy so drafts never leak) and writes a deterministic JSON graph of all
+    concepts and their cross-links, so AI agents and search tools can load the
+    whole bundle in a single fetch. Regenerated whenever the indexes are.
+    """
+    concepts = walk_concepts(BUNDLE_ROOT, statuses=RELEASE_CURATION_STATUSES)
+    catalog = build_catalog(concepts, okf_version="0.1", bundle="jvto")
+    (BUNDLE_ROOT / "catalog.json").write_text(
+        json.dumps(catalog, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    return len(concepts)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--packages", action="store_true")
@@ -374,8 +393,10 @@ def main() -> int:
     packages = build_packages() if args.packages or args.all or default else []
     policies = build_policies() if args.policies or args.all or default else []
     curated = build_curated() if args.curated or args.all or default else []
+    cataloged = 0
     if args.indexes or args.all or default:
         build_indexes()
+        cataloged = build_catalog_file()
     write_json(
         BUILD_ROOT / "build-report.json",
         {
@@ -383,11 +404,12 @@ def main() -> int:
             "package_candidates": packages,
             "policy_candidates": policies,
             "curated_concepts": curated,
+            "cataloged_concepts": cataloged,
         },
     )
     print(
         f"Built {len(packages)} package candidate(s), {len(policies)} policy candidate(s), "
-        f"and {len(curated)} curated concept(s)."
+        f"and {len(curated)} curated concept(s); cataloged {cataloged} concept(s)."
     )
     return 0
 
