@@ -6,6 +6,9 @@ fetch:
 build:
 	$(PYTHON) scripts/build_bundle.py --all
 
+viz:
+	$(PYTHON) scripts/visualize.py
+
 validate:
 	$(PYTHON) scripts/validate_okf.py --strict-links
 

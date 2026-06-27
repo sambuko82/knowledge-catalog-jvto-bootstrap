@@ -11,6 +11,9 @@ okf/jvto/sources/snapshots/*
 okf/jvto/build/*
 !okf/jvto/build/.gitkeep
 
+# Generated interactive bundle visualization (regenerate with `make viz`).
+okf/bundles/jvto/viz.html
+
 # Never commit potentially sensitive source exports.
 *.sql
 *.xlsx
