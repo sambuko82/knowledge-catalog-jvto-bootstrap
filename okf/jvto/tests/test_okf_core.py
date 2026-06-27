@@ -11,6 +11,7 @@ from pathlib import Path
 SCRIPTS = Path(__file__).resolve().parents[1] / "scripts"
 sys.path.insert(0, str(SCRIPTS))
 
+import bundle_graph  # noqa: E402
 import common  # noqa: E402
 import okf_core  # noqa: E402
 import visualize  # noqa: E402
@@ -32,6 +33,99 @@ class BundleConformanceTests(unittest.TestCase):
                 index.read_text(encoding="utf-8").startswith("---\n"),
                 f"non-root index has frontmatter: {index}",
             )
+
+    def test_committed_catalog_matches_bundle(self) -> None:
+        """catalog.json exists, parses, and counts the release-eligible concepts."""
+        catalog_path = common.BUNDLE_ROOT / "catalog.json"
+        catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
+        self.assertEqual(catalog["okf_version"], "0.1")
+        self.assertEqual(catalog["bundle"], "jvto")
+
+        release = set(__import__("build_bundle").RELEASE_CURATION_STATUSES)
+        md_concepts = 0
+        for md in common.BUNDLE_ROOT.rglob("*.md"):
+            if md.name in common.RESERVED_FILENAMES:
+                continue
+            meta, _ = common.parse_frontmatter(md.read_text(encoding="utf-8"))
+            if meta.get("status") in release:
+                md_concepts += 1
+        self.assertEqual(catalog["concept_count"], md_concepts)
+        self.assertEqual(catalog["concept_count"], len(catalog["concepts"]))
+
+        ids = {c["id"] for c in catalog["concepts"]}
+        for edge in catalog["edges"]:
+            self.assertIn(edge["source"], ids)
+            self.assertIn(edge["target"], ids)
+        self.assertEqual(sum(catalog["type_counts"].values()), catalog["concept_count"])
+
+
+class BundleGraphTests(unittest.TestCase):
+    def _write(self, root: Path, rel: str, text: str) -> None:
+        path = root / rel
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(text, encoding="utf-8")
+
+    def test_status_filter_and_link_resolution(self) -> None:
+        import tempfile
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write(
+                root,
+                "organization.md",
+                "---\ntype: Organization\ntitle: JVTO\nstatus: reviewed\n---\n\n"
+                "See [Ijen](/destinations/kawah-ijen.md) and "
+                "[guide](./travel-guides/x.md).\n",
+            )
+            self._write(
+                root,
+                "destinations/kawah-ijen.md",
+                "---\ntype: Destination\ntitle: Kawah Ijen\nstatus: reviewed\n---\n\n"
+                "Back to [JVTO](/organization.md).\n",
+            )
+            self._write(
+                root,
+                "travel-guides/x.md",
+                "---\ntype: Travel Guide\ntitle: X\nstatus: reviewed\n---\n\nGuide.\n",
+            )
+            self._write(
+                root,
+                "tours/draft.md",
+                "---\ntype: Tour Package\ntitle: Draft\nstatus: generated_pending_review\n---\n\nD.\n",
+            )
+
+            # No filter: all four concepts; draft included.
+            all_c = bundle_graph.walk_concepts(root)
+            self.assertEqual({c.id for c in all_c}, {
+                "organization", "destinations/kawah-ijen", "travel-guides/x", "tours/draft",
+            })
+
+            # Release filter drops the draft.
+            rel = bundle_graph.walk_concepts(root, statuses={"reviewed"})
+            self.assertNotIn("tours/draft", {c.id for c in rel})
+
+            catalog = bundle_graph.build_catalog(rel)
+            self.assertEqual(catalog["concept_count"], 3)
+            edges = {(e["source"], e["target"]) for e in catalog["edges"]}
+            # Absolute link org -> destination and relative link org -> guide both resolve.
+            self.assertIn(("organization", "destinations/kawah-ijen"), edges)
+            self.assertIn(("organization", "travel-guides/x"), edges)
+            self.assertIn(("destinations/kawah-ijen", "organization"), edges)
+
+    def test_catalog_is_deterministic(self) -> None:
+        import tempfile
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write(
+                root,
+                "organization.md",
+                "---\ntype: Organization\ntitle: JVTO\nstatus: reviewed\n---\n\nBody.\n",
+            )
+            concepts = bundle_graph.walk_concepts(root, statuses={"reviewed"})
+            a = json.dumps(bundle_graph.build_catalog(concepts), sort_keys=True)
+            b = json.dumps(bundle_graph.build_catalog(concepts), sort_keys=True)
+            self.assertEqual(a, b)
 
 
 class OKFDocumentTests(unittest.TestCase):

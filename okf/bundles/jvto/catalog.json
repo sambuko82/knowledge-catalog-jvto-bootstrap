@@ -1,0 +1,1981 @@
+{
+  "bundle": "jvto",
+  "concept_count": 71,
+  "concepts": [
+    {
+      "citations": [
+        "https://bbksdajatim.org"
+      ],
+      "description": "Active East Java volcano known for its turquoise acidic crater lake, pre-dawn \"blue fire\", and active sulfur mining, reached by a guided night hike.",
+      "id": "destinations/kawah-ijen",
+      "last_verified": "2026-06-26",
+      "links_to": [
+        "policies/ijen-health-screening",
+        "references/bbksda-ijen-guide-training-2024",
+        "tours/from-surabaya/ijen-bromo-madakaripura-3d2n",
+        "trust/partners/hpwki"
+      ],
+      "path": "destinations/kawah-ijen.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "destination",
+        "east-java",
+        "volcano",
+        "ijen",
+        "hiking",
+        "blue-fire"
+      ],
+      "title": "Kawah Ijen",
+      "type": "Destination",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "Java's tallest waterfall, in a narrow Probolinggo canyon near Bromo, reached by a short gorge walk where visitors get wet from the spray.",
+      "id": "destinations/madakaripura",
+      "last_verified": "2026-06-26",
+      "links_to": [],
+      "path": "destinations/madakaripura.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "destination",
+        "east-java",
+        "waterfall",
+        "madakaripura"
+      ],
+      "title": "Madakaripura Waterfall",
+      "type": "Destination",
+      "visibility": "public"
+    },
+    {
+      "citations": [
+        "https://bbksdajatim.org"
+      ],
+      "description": "Active East Java volcano in the Tengger caldera \"Sea of Sand\", famous for its pre-dawn sunrise panorama reached by 4WD jeep.",
+      "id": "destinations/mount-bromo",
+      "last_verified": "2026-06-26",
+      "links_to": [],
+      "path": "destinations/mount-bromo.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "destination",
+        "east-java",
+        "volcano",
+        "bromo",
+        "sunrise"
+      ],
+      "title": "Mount Bromo",
+      "type": "Destination",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "A white-sand beach with offshore rock formations and a headland viewpoint in Jember, East Java — the one coastal stop on JVTO's volcano circuits.",
+      "id": "destinations/papuma-beach",
+      "last_verified": "2026-06-26",
+      "links_to": [],
+      "path": "destinations/papuma-beach.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "destination",
+        "east-java",
+        "beach",
+        "papuma"
+      ],
+      "title": "Papuma Beach",
+      "type": "Destination",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "A wide multi-tiered \"curtain\" waterfall in Lumajang, East Java, often called \"Java's Niagara\", with an easy rim viewpoint and an optional steep canyon descent.",
+      "id": "destinations/tumpak-sewu",
+      "last_verified": "2026-06-26",
+      "links_to": [],
+      "path": "destinations/tumpak-sewu.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "destination",
+        "east-java",
+        "waterfall",
+        "tumpak-sewu"
+      ],
+      "title": "Tumpak Sewu Waterfall",
+      "type": "Destination",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "Private, police-led volcano tour operator based in East Java, running tours to Kawah Ijen, Mount Bromo, Tumpak Sewu, and Madakaripura.",
+      "id": "organization",
+      "last_verified": "2026-06-23",
+      "links_to": [
+        "people/dr-ahmad-irwandanu",
+        "references/booking-com-guest-review-award-2015",
+        "references/detik-tourist-police-bondowoso-2021",
+        "references/stefan-loose-indonesien-3770167651",
+        "trust/partners/hpwki",
+        "trust/partners/indecon"
+      ],
+      "path": "organization.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "organization",
+        "jvto",
+        "east-java",
+        "tour-operator",
+        "volcano"
+      ],
+      "title": "Java Volcano Tour Operator (JVTO)",
+      "type": "Organization",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "JVTO's founder, a serving officer of the Indonesian Tourist Police, around whom the company's police-led safety model is built.",
+      "id": "people/agung-sambuko",
+      "last_verified": "",
+      "links_to": [
+        "organization",
+        "references/detik-tourist-police-bondowoso-2021",
+        "trust/claims/police-led"
+      ],
+      "path": "people/agung-sambuko.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "person",
+        "founder",
+        "police-led",
+        "tourist-police"
+      ],
+      "title": "Agung \"Mr. Sam\" Sambuko — Founder",
+      "type": "Person",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "JVTO mountain guide, HPWKI KTA-credentialed (KTA-G-2024-006), named in guest reviews across three platforms.",
+      "id": "people/crew/anjas",
+      "last_verified": "",
+      "links_to": [
+        "references/bbksda-ijen-guide-training-2024",
+        "reviews/trustpilot",
+        "trust/partners/hpwki"
+      ],
+      "path": "people/crew/anjas.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "person",
+        "crew",
+        "guide",
+        "ijen",
+        "hpwki-kta"
+      ],
+      "title": "Anjas — JVTO Guide",
+      "type": "Person",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "JVTO guide, HPWKI KTA-credentialed (KTA-G-2024-004), the most-reviewed guide; named in guest reviews across three platforms.",
+      "id": "people/crew/boy",
+      "last_verified": "",
+      "links_to": [
+        "references/bbksda-ijen-guide-training-2024",
+        "reviews/trustpilot",
+        "trust/partners/hpwki"
+      ],
+      "path": "people/crew/boy.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "person",
+        "crew",
+        "guide",
+        "ijen",
+        "hpwki-kta"
+      ],
+      "title": "Boy (Ahboy) — JVTO Guide",
+      "type": "Person",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "JVTO driver, active in the live roster with KTA pending; named in guest reviews on Google and Trustpilot.",
+      "id": "people/crew/dika",
+      "last_verified": "",
+      "links_to": [
+        "reviews/trustpilot",
+        "trust/partners/hpwki"
+      ],
+      "path": "people/crew/dika.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "person",
+        "crew",
+        "driver",
+        "kta-pending"
+      ],
+      "title": "Dika — JVTO Driver",
+      "type": "Person",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "JVTO guide, HPWKI KTA-credentialed (KTA-G-2024-010), named in guest reviews on Google and Trustpilot.",
+      "id": "people/crew/fauzi",
+      "last_verified": "",
+      "links_to": [
+        "references/bbksda-ijen-guide-training-2024",
+        "reviews/trustpilot",
+        "trust/partners/hpwki"
+      ],
+      "path": "people/crew/fauzi.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "person",
+        "crew",
+        "guide",
+        "ijen",
+        "hpwki-kta"
+      ],
+      "title": "Fauzi — JVTO Guide",
+      "type": "Person",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "JVTO driver, HPWKI KTA-credentialed (KTA-D-2024-005), the most-reviewed driver; named across three platforms.",
+      "id": "people/crew/fredi",
+      "last_verified": "",
+      "links_to": [
+        "reviews/trustpilot",
+        "trust/partners/hpwki"
+      ],
+      "path": "people/crew/fredi.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "person",
+        "crew",
+        "driver",
+        "hpwki-kta"
+      ],
+      "title": "Fredi — JVTO Driver",
+      "type": "Person",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "JVTO guide, HPWKI KTA-credentialed (KTA-G-2024-001), with geology and volcano-photography strengths; named in guest reviews across three platforms.",
+      "id": "people/crew/gufron",
+      "last_verified": "",
+      "links_to": [
+        "references/bbksda-ijen-guide-training-2024",
+        "reviews/trustpilot",
+        "trust/partners/hpwki"
+      ],
+      "path": "people/crew/gufron.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "person",
+        "crew",
+        "guide",
+        "ijen",
+        "hpwki-kta"
+      ],
+      "title": "Gufron — JVTO Guide",
+      "type": "Person",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "JVTO driver, HPWKI KTA-credentialed (KTA-D-2024-009), named in guest reviews on Google and Trustpilot.",
+      "id": "people/crew/holili",
+      "last_verified": "",
+      "links_to": [
+        "reviews/trustpilot",
+        "trust/partners/hpwki"
+      ],
+      "path": "people/crew/holili.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "person",
+        "crew",
+        "driver",
+        "hpwki-kta"
+      ],
+      "title": "Holili — JVTO Driver",
+      "type": "Person",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "JVTO driver, HPWKI KTA-credentialed (KTA-D-2024-011), the most-reviewed driver on Trustpilot.",
+      "id": "people/crew/joyo",
+      "last_verified": "",
+      "links_to": [
+        "reviews/trustpilot",
+        "trust/partners/hpwki"
+      ],
+      "path": "people/crew/joyo.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "person",
+        "crew",
+        "driver",
+        "hpwki-kta"
+      ],
+      "title": "Joyo — JVTO Driver",
+      "type": "Person",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "JVTO guide, HPWKI KTA-credentialed (KTA-G-2024-008), named in guest reviews on Google and Trustpilot.",
+      "id": "people/crew/kiki",
+      "last_verified": "",
+      "links_to": [
+        "references/bbksda-ijen-guide-training-2024",
+        "reviews/trustpilot",
+        "trust/partners/hpwki"
+      ],
+      "path": "people/crew/kiki.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "person",
+        "crew",
+        "guide",
+        "ijen",
+        "hpwki-kta"
+      ],
+      "title": "Kiki — JVTO Guide",
+      "type": "Person",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "JVTO driver, active in the live roster with KTA pending; named in guest reviews on Google.",
+      "id": "people/crew/pras",
+      "last_verified": "",
+      "links_to": [
+        "reviews/trustpilot",
+        "trust/partners/hpwki"
+      ],
+      "path": "people/crew/pras.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "person",
+        "crew",
+        "driver",
+        "kta-pending"
+      ],
+      "title": "Pras — JVTO Driver",
+      "type": "Person",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "JVTO guide, HPWKI KTA-credentialed (KTA-G-2024-002), with expedition-safety and crater-rescue strengths; named in guest reviews across three platforms.",
+      "id": "people/crew/rendi",
+      "last_verified": "",
+      "links_to": [
+        "references/bbksda-ijen-guide-training-2024",
+        "reviews/trustpilot",
+        "trust/partners/hpwki"
+      ],
+      "path": "people/crew/rendi.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "person",
+        "crew",
+        "guide",
+        "ijen",
+        "hpwki-kta",
+        "safety"
+      ],
+      "title": "Rendi — JVTO Guide",
+      "type": "Person",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "JVTO guide, HPWKI KTA-credentialed (KTA-G-2024-007), named in guest reviews across three platforms.",
+      "id": "people/crew/taufik",
+      "last_verified": "",
+      "links_to": [
+        "references/bbksda-ijen-guide-training-2024",
+        "reviews/trustpilot",
+        "trust/partners/hpwki"
+      ],
+      "path": "people/crew/taufik.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "person",
+        "crew",
+        "guide",
+        "ijen",
+        "hpwki-kta"
+      ],
+      "title": "Taufik — JVTO Guide",
+      "type": "Person",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "JVTO driver, HPWKI KTA-credentialed (KTA-D-2024-003), named in guest reviews on Google and Trustpilot.",
+      "id": "people/crew/yandi",
+      "last_verified": "",
+      "links_to": [
+        "reviews/trustpilot",
+        "trust/partners/hpwki"
+      ],
+      "path": "people/crew/yandi.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "person",
+        "crew",
+        "driver",
+        "hpwki-kta"
+      ],
+      "title": "Yandi — JVTO Driver",
+      "type": "Person",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "JVTO driver, active in the live roster with KTA pending; named in guest reviews on Google.",
+      "id": "people/crew/yusuf",
+      "last_verified": "",
+      "links_to": [
+        "reviews/trustpilot",
+        "trust/partners/hpwki"
+      ],
+      "path": "people/crew/yusuf.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "person",
+        "crew",
+        "driver",
+        "kta-pending"
+      ],
+      "title": "Yusuf — JVTO Driver",
+      "type": "Person",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "The doctor JVTO identifies for its applicable Ijen pre-hike health-screening coordination.",
+      "id": "people/dr-ahmad-irwandanu",
+      "last_verified": "",
+      "links_to": [
+        "destinations/kawah-ijen",
+        "policies/ijen-health-screening",
+        "trust/claims/medical-screening"
+      ],
+      "path": "people/dr-ahmad-irwandanu.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "person",
+        "doctor",
+        "ijen",
+        "health-screening",
+        "medical"
+      ],
+      "title": "Dr. Ahmad Irwandanu",
+      "type": "Person",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "Use only JVTO's official channels; JVTO never asks for full card numbers, CVV, banking passwords, or OTP codes.",
+      "id": "policies/anti-fraud",
+      "last_verified": "2026-06-23",
+      "links_to": [
+        "policies/booking-paths"
+      ],
+      "path": "policies/anti-fraud.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "policy",
+        "anti-fraud",
+        "safety",
+        "payment"
+      ],
+      "title": "Booking Safety & Anti-Fraud",
+      "type": "Policy",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "JVTO's two official booking paths — website Instant Book and WhatsApp-assisted booking.",
+      "id": "policies/booking-paths",
+      "last_verified": "2026-06-23",
+      "links_to": [],
+      "path": "policies/booking-paths.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "policy",
+        "booking",
+        "whatsapp",
+        "instant-book"
+      ],
+      "title": "How to Book",
+      "type": "Policy",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "How JVTO handles guest-initiated cancellations — Travel Credit instead of cash refunds, on a 48-hour cut-off.",
+      "id": "policies/cancellation-travel-credit",
+      "last_verified": "2026-06-23",
+      "links_to": [
+        "tours/from-surabaya/ijen-bromo-madakaripura-3d2n"
+      ],
+      "path": "policies/cancellation-travel-credit.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "policy",
+        "cancellation",
+        "travel-credit",
+        "booking"
+      ],
+      "title": "Cancellation & Lifetime Travel Credit",
+      "type": "Policy",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "For Ijen crater hikes, JVTO coordinates a health screening with licensed medical staff when BBKSDA regulations require it.",
+      "id": "policies/ijen-health-screening",
+      "last_verified": "2026-06-23",
+      "links_to": [
+        "destinations/kawah-ijen"
+      ],
+      "path": "policies/ijen-health-screening.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "policy",
+        "ijen",
+        "health-screening",
+        "safety",
+        "bbksda"
+      ],
+      "title": "Ijen Health Screening",
+      "type": "Policy",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "Kawah Ijen closes to all visitors on the first Friday of each month for the Rijik ecosystem-cleaning program; JVTO schedules tours around it so guests are unaffected.",
+      "id": "policies/ijen-rijik-monthly-closure",
+      "last_verified": "2026-06-26",
+      "links_to": [
+        "destinations/kawah-ijen",
+        "travel-guides/weather-and-closures",
+        "trust/partners/hpwki"
+      ],
+      "path": "policies/ijen-rijik-monthly-closure.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "policy",
+        "ijen",
+        "closure",
+        "conservation",
+        "rijik"
+      ],
+      "title": "Ijen Monthly Closure (Rijik Program)",
+      "type": "Policy",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "JVTO tours are all-inclusive of transport, crew, entrance fees, water, and stated meals; flights, insurance, tips, and personal expenses are excluded.",
+      "id": "policies/inclusions-exclusions",
+      "last_verified": "2026-06-23",
+      "links_to": [],
+      "path": "policies/inclusions-exclusions.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "policy",
+        "inclusions",
+        "all-inclusive"
+      ],
+      "title": "What's Included",
+      "type": "Policy",
+      "visibility": "public"
+    },
+    {
+      "citations": [
+        "https://www.isic.org/discounts/?providerId=259268"
+      ],
+      "description": "JVTO is an official ISIC provider offering student pricing on selected packages to verified ISIC cardholders.",
+      "id": "policies/isic-student",
+      "last_verified": "2026-06-23",
+      "links_to": [],
+      "path": "policies/isic-student.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "policy",
+        "isic",
+        "student",
+        "pricing"
+      ],
+      "title": "ISIC Student Pricing",
+      "type": "Policy",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "JVTO cannot guarantee weather-dependent sights such as sunrise or Ijen's blue fire; itineraries are planned to maximise the chance.",
+      "id": "policies/natural-phenomena",
+      "last_verified": "2026-06-23",
+      "links_to": [
+        "destinations/kawah-ijen"
+      ],
+      "path": "policies/natural-phenomena.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "policy",
+        "weather",
+        "expectations",
+        "blue-fire",
+        "sunrise"
+      ],
+      "title": "Natural Phenomena Are Not Guaranteed",
+      "type": "Policy",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "A deposit secures the booking, with the balance due before the tour; exact amounts and deadlines are on the booking page.",
+      "id": "policies/payment-rules",
+      "last_verified": "2026-06-23",
+      "links_to": [
+        "policies/cancellation-travel-credit"
+      ],
+      "path": "policies/payment-rules.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "policy",
+        "payment",
+        "deposit",
+        "booking"
+      ],
+      "title": "Payment & Deposit",
+      "type": "Policy",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "For large groups, JVTO can coordinate an official traffic-police escort on some road segments, subject to authority approval.",
+      "id": "policies/police-escort",
+      "last_verified": "2026-06-23",
+      "links_to": [
+        "trust/claims/police-led"
+      ],
+      "path": "policies/police-escort.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "policy",
+        "groups",
+        "police-escort",
+        "safety"
+      ],
+      "title": "Police Escort for Large Groups",
+      "type": "Policy",
+      "visibility": "public"
+    },
+    {
+      "citations": [
+        "https://bbksdajatim.org/pelatihan-pemandu-kawah-ijen/",
+        "https://javavolcano-touroperator.com/press/screenshot-bbksda-pelatihan-pemandu-kawah-ijen.png"
+      ],
+      "description": "BBKSDA Jawa Timur documented guide training conducted with HPWKI in May 2024 at TWA Kawah Ijen.",
+      "id": "references/bbksda-ijen-guide-training-2024",
+      "last_verified": "2026-06-26",
+      "links_to": [
+        "destinations/kawah-ijen",
+        "trust/partners/hpwki"
+      ],
+      "path": "references/bbksda-ijen-guide-training-2024.md",
+      "resource": "https://bbksdajatim.org/pelatihan-pemandu-kawah-ijen/",
+      "status": "verified",
+      "tags": [
+        "reference",
+        "bbksda",
+        "hpwki",
+        "ijen",
+        "guide-training",
+        "sar",
+        "ppgd"
+      ],
+      "title": "BBKSDA Jawa Timur — Pelatihan Pemandu Kawah Ijen (2024)",
+      "type": "Reference",
+      "visibility": "public"
+    },
+    {
+      "citations": [
+        "https://javavolcano-touroperator.com/history/booking-2015-plaque.jpg",
+        "https://javavolcano-touroperator.com/history/booking-2015-shipping-label.jpg"
+      ],
+      "description": "A historical Booking.com Guest Review Award artifact names \"Ijen Bondowoso Home Stay\" with a 9.4/10 score.",
+      "id": "references/booking-com-guest-review-award-2015",
+      "last_verified": "2026-06-26",
+      "links_to": [
+        "organization"
+      ],
+      "path": "references/booking-com-guest-review-award-2015.md",
+      "resource": "",
+      "status": "qualified",
+      "tags": [
+        "reference",
+        "booking-com",
+        "award-2015",
+        "history",
+        "ijen-bondowoso-homestay"
+      ],
+      "title": "Booking.com Guest Review Award 2015",
+      "type": "Reference",
+      "visibility": "public"
+    },
+    {
+      "citations": [
+        "https://news.detik.com/berita-jawa-timur/d-5492690/suka-duka-polisi-pariwisata-bondowoso-tegakkan-prokes-sambil-lawan-dingin",
+        "https://javavolcano-touroperator.com/press/screencapture-news-detik-berita-jawa-timur-d-5492690-suka-duka-polisi-pariwisata-bondowoso-tegakkan-prokes-sambil-lawan-dingin-2026-01-14-02_48_41.png"
+      ],
+      "description": "A 2021 Detik.com report names \"Bripka Agung Sambuko\" in Tourist Police duties in the Bondowoso area.",
+      "id": "references/detik-tourist-police-bondowoso-2021",
+      "last_verified": "2026-06-26",
+      "links_to": [
+        "trust/claims/police-led"
+      ],
+      "path": "references/detik-tourist-police-bondowoso-2021.md",
+      "resource": "https://news.detik.com/berita-jawa-timur/d-5492690/suka-duka-polisi-pariwisata-bondowoso-tegakkan-prokes-sambil-lawan-dingin",
+      "status": "verified",
+      "tags": [
+        "reference",
+        "detik",
+        "press",
+        "tourist-police",
+        "bondowoso",
+        "2021"
+      ],
+      "title": "Detik.com — Suka Duka Polisi Pariwisata Bondowoso (2021)",
+      "type": "Reference",
+      "visibility": "public"
+    },
+    {
+      "citations": [
+        "https://radarjember.jawapos.com/bondowoso/791103903/tak-seharusnya-bau-menyengat-itu-ada"
+      ],
+      "description": "A 2021 Radar Jember report describes a Tourist Police / Disparpora environmental patrol related to agricultural waste and cleanliness in Bondowoso.",
+      "id": "references/radar-jember-ijen-environmental-patrol-2021",
+      "last_verified": "2026-06-26",
+      "links_to": [
+        "trust/claims/police-led"
+      ],
+      "path": "references/radar-jember-ijen-environmental-patrol-2021.md",
+      "resource": "https://radarjember.jawapos.com/bondowoso/791103903/tak-seharusnya-bau-menyengat-itu-ada",
+      "status": "verified",
+      "tags": [
+        "reference",
+        "radar-jember",
+        "press",
+        "environmental-patrol",
+        "bondowoso",
+        "2021"
+      ],
+      "title": "Radar Jember — Tourist Police Environmental Patrol (2021)",
+      "type": "Reference",
+      "visibility": "public"
+    },
+    {
+      "citations": [
+        "https://radarjember.jawapos.com/bondowoso/791102263/polpar-dibentuk-untuk-mendukung-ijen-geopark",
+        "https://javavolcano-touroperator.com/press/screenshot-radarjember.jawapos.com-polpar-dibentuk-untuk-mendukung-ijen-geopark.png"
+      ],
+      "description": "A 2021 Radar Jember report describes the formation of Tourist Police (Polpar) to support the Ijen Geopark.",
+      "id": "references/radar-jember-polpar-ijen-geopark-2021",
+      "last_verified": "2026-06-26",
+      "links_to": [
+        "trust/claims/police-led"
+      ],
+      "path": "references/radar-jember-polpar-ijen-geopark-2021.md",
+      "resource": "https://radarjember.jawapos.com/bondowoso/791102263/polpar-dibentuk-untuk-mendukung-ijen-geopark",
+      "status": "verified",
+      "tags": [
+        "reference",
+        "radar-jember",
+        "press",
+        "polpar",
+        "ijen-geopark",
+        "2021"
+      ],
+      "title": "Radar Jember — Polpar Dibentuk untuk Mendukung Ijen Geopark (2021)",
+      "type": "Reference",
+      "visibility": "public"
+    },
+    {
+      "citations": [
+        "https://www.amazon.de/-/en/Stefan-Loose-Reisef%C3%BChrer-Indonesien-Reiseatlas/dp/3770167651",
+        "https://javavolcano-touroperator.com/history/stefan-loose-ijen-bondowoso-page.png",
+        "https://javavolcano-touroperator.com/history/stefan_loose_crop_enh.jpg",
+        "https://javavolcano-touroperator.com/history/guest-visit-ijen-bondowoso-homestay-stefan-loose-inspired.jpg"
+      ],
+      "description": "A historical Stefan Loose guidebook page identifies \"Agung\" in connection with the Ijen Bondowoso Homestay and tour arrangements.",
+      "id": "references/stefan-loose-indonesien-3770167651",
+      "last_verified": "2026-06-26",
+      "links_to": [
+        "organization"
+      ],
+      "path": "references/stefan-loose-indonesien-3770167651.md",
+      "resource": "",
+      "status": "qualified",
+      "tags": [
+        "reference",
+        "stefan-loose",
+        "guidebook",
+        "history",
+        "ijen-bondowoso-homestay"
+      ],
+      "title": "Stefan Loose Reiseführer Indonesien (guidebook reference)",
+      "type": "Reference",
+      "visibility": "public"
+    },
+    {
+      "citations": [
+        "https://www.google.com/maps?cid=1266403973589689021"
+      ],
+      "description": "JVTO's public Google Maps / Google Business profile; the latest reliable observation is about 4.9/5 from around 123 reviews.",
+      "id": "reviews/google-maps",
+      "last_verified": "2026-05-26",
+      "links_to": [
+        "reviews/trustpilot"
+      ],
+      "path": "reviews/google-maps.md",
+      "resource": "https://www.google.com/maps?cid=1266403973589689021",
+      "status": "reviewed",
+      "tags": [
+        "reviews",
+        "google",
+        "social-proof",
+        "reputation"
+      ],
+      "title": "JVTO on Google Maps",
+      "type": "Review Platform",
+      "visibility": "public"
+    },
+    {
+      "citations": [
+        "https://www.tripadvisor.com/Attraction_Review-g297715-d19983165-Reviews-Java_Volcano_Tour_Operator-Surabaya_East_Java_Java.html"
+      ],
+      "description": "JVTO's public Tripadvisor profile; the latest observed rating is about 5.0/5 from 21 reviews.",
+      "id": "reviews/tripadvisor",
+      "last_verified": "2026-06-25",
+      "links_to": [
+        "reviews/trustpilot"
+      ],
+      "path": "reviews/tripadvisor.md",
+      "resource": "https://www.tripadvisor.com/Attraction_Review-g297715-d19983165-Reviews-Java_Volcano_Tour_Operator-Surabaya_East_Java_Java.html",
+      "status": "reviewed",
+      "tags": [
+        "reviews",
+        "tripadvisor",
+        "social-proof",
+        "reputation"
+      ],
+      "title": "JVTO on Tripadvisor",
+      "type": "Review Platform",
+      "visibility": "public"
+    },
+    {
+      "citations": [
+        "https://www.trustpilot.com/review/javavolcano-touroperator.com"
+      ],
+      "description": "JVTO's public Trustpilot profile, where past travelers leave independent reviews; the latest observed score is 4.5/5 from 56 reviews.",
+      "id": "reviews/trustpilot",
+      "last_verified": "2026-06-25",
+      "links_to": [
+        "reviews/google-maps",
+        "trust/claims/police-led"
+      ],
+      "path": "reviews/trustpilot.md",
+      "resource": "https://www.trustpilot.com/review/javavolcano-touroperator.com",
+      "status": "reviewed",
+      "tags": [
+        "reviews",
+        "trustpilot",
+        "social-proof",
+        "reputation"
+      ],
+      "title": "JVTO on Trustpilot",
+      "type": "Review Platform",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "A 3D2N private tour from Bali: 3 Day Bromo & Ijen Volcano Discovery from Bali.",
+      "id": "tours/from-bali/bromo-ijen-3d2n",
+      "last_verified": "2026-06-23",
+      "links_to": [],
+      "path": "tours/from-bali/bromo-ijen-3d2n.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "bromo",
+        "ijen",
+        "origin-bali",
+        "tour-package"
+      ],
+      "title": "3 Day Bromo & Ijen Volcano Discovery from Bali",
+      "type": "Tour Package",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "A 3D2N private tour from Bali: 3 Day Ijen, Bromo & Madakaripura Waterfall Journey from Bali to Surabaya.",
+      "id": "tours/from-bali/ijen-bromo-madakaripura-3d2n",
+      "last_verified": "2026-06-23",
+      "links_to": [],
+      "path": "tours/from-bali/ijen-bromo-madakaripura-3d2n.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "bromo",
+        "ijen",
+        "madakaripura",
+        "origin-bali",
+        "tour-package"
+      ],
+      "title": "3 Day Ijen, Bromo & Madakaripura Waterfall Journey from Bali to Surabaya",
+      "type": "Tour Package",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "A 4D3N private tour from Bali: 4 Day Ijen, Papuma Beach, Tumpak Sewu & Bromo Expedition from Bali to Surabaya.",
+      "id": "tours/from-bali/ijen-papuma-tumpak-sewu-bromo-4d3n",
+      "last_verified": "2026-06-23",
+      "links_to": [],
+      "path": "tours/from-bali/ijen-papuma-tumpak-sewu-bromo-4d3n.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "bromo",
+        "ijen",
+        "origin-bali",
+        "papuma",
+        "tour-package",
+        "tumpak-sewu"
+      ],
+      "title": "4 Day Ijen, Papuma Beach, Tumpak Sewu & Bromo Expedition from Bali to Surabaya",
+      "type": "Tour Package",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "A 5D4N private tour from Bali: 5 Day Ijen, Papuma Beach, Tumpak Sewu & Bromo Discovery from Bali to Surabaya.",
+      "id": "tours/from-bali/ijen-papuma-tumpak-sewu-bromo-5d4n",
+      "last_verified": "2026-06-23",
+      "links_to": [],
+      "path": "tours/from-bali/ijen-papuma-tumpak-sewu-bromo-5d4n.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "bromo",
+        "ijen",
+        "origin-bali",
+        "papuma",
+        "tour-package",
+        "tumpak-sewu"
+      ],
+      "title": "5 Day Ijen, Papuma Beach, Tumpak Sewu & Bromo Discovery from Bali to Surabaya",
+      "type": "Tour Package",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "A 1D1N private tour from Surabaya: 1 Day Bromo Midnight Experience from Surabaya.",
+      "id": "tours/from-surabaya/bromo-1d1n",
+      "last_verified": "2026-06-23",
+      "links_to": [],
+      "path": "tours/from-surabaya/bromo-1d1n.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "bromo",
+        "origin-surabaya",
+        "tour-package"
+      ],
+      "title": "1 Day Bromo Midnight Experience from Surabaya",
+      "type": "Tour Package",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "A 2D1N private tour from Surabaya: 2 Day Bromo Sunrise Adventure from Surabaya.",
+      "id": "tours/from-surabaya/bromo-2d1n",
+      "last_verified": "2026-06-23",
+      "links_to": [],
+      "path": "tours/from-surabaya/bromo-2d1n.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "bromo",
+        "origin-surabaya",
+        "tour-package"
+      ],
+      "title": "2 Day Bromo Sunrise Adventure from Surabaya",
+      "type": "Tour Package",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "A 3D2N private tour from Surabaya: 3 Day Bromo, Madakaripura & Ijen Overland from Surabaya to Bali.",
+      "id": "tours/from-surabaya/bromo-madakaripura-ijen-3d2n",
+      "last_verified": "2026-06-23",
+      "links_to": [],
+      "path": "tours/from-surabaya/bromo-madakaripura-ijen-3d2n.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "bromo",
+        "ijen",
+        "madakaripura",
+        "origin-surabaya",
+        "tour-package"
+      ],
+      "title": "3 Day Bromo, Madakaripura & Ijen Overland from Surabaya to Bali",
+      "type": "Tour Package",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "A 2D1N private tour from Surabaya: 2 Day Ijen Blue Fire Expedition from Surabaya.",
+      "id": "tours/from-surabaya/ijen-2d1n",
+      "last_verified": "2026-06-23",
+      "links_to": [],
+      "path": "tours/from-surabaya/ijen-2d1n.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "ijen",
+        "origin-surabaya",
+        "tour-package"
+      ],
+      "title": "2 Day Ijen Blue Fire Expedition from Surabaya",
+      "type": "Tour Package",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "A 3D2N private tour from Surabaya: 3 Day Ijen, Bromo & Madakaripura Waterfall Discovery from Surabaya.",
+      "id": "tours/from-surabaya/ijen-bromo-madakaripura-3d2n",
+      "last_verified": "2026-06-23",
+      "links_to": [],
+      "path": "tours/from-surabaya/ijen-bromo-madakaripura-3d2n.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "bromo",
+        "ijen",
+        "madakaripura",
+        "origin-surabaya",
+        "tour-package"
+      ],
+      "title": "3 Day Ijen, Bromo & Madakaripura Waterfall Discovery from Surabaya",
+      "type": "Tour Package",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "A 4D3N private tour from Surabaya: 4 Day Ijen, Bromo & Madakaripura Waterfall Expedition from Surabaya.",
+      "id": "tours/from-surabaya/ijen-bromo-madakaripura-4d3n",
+      "last_verified": "2026-06-23",
+      "links_to": [],
+      "path": "tours/from-surabaya/ijen-bromo-madakaripura-4d3n.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "bromo",
+        "ijen",
+        "madakaripura",
+        "origin-surabaya",
+        "tour-package"
+      ],
+      "title": "4 Day Ijen, Bromo & Madakaripura Waterfall Expedition from Surabaya",
+      "type": "Tour Package",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "A 5D4N private tour from Surabaya: 5 Day Ijen, Bromo, Madakaripura & Malang City Adventure from Surabaya.",
+      "id": "tours/from-surabaya/ijen-bromo-madakaripura-malang-5d4n",
+      "last_verified": "2026-06-23",
+      "links_to": [],
+      "path": "tours/from-surabaya/ijen-bromo-madakaripura-malang-5d4n.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "bromo",
+        "ijen",
+        "madakaripura",
+        "malang",
+        "origin-surabaya",
+        "tour-package"
+      ],
+      "title": "5 Day Ijen, Bromo, Madakaripura & Malang City Adventure from Surabaya",
+      "type": "Tour Package",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "A 4D3N private tour from Surabaya: 4 Day Ijen, Papuma Beach, Tumpak Sewu & Bromo Journey from Surabaya.",
+      "id": "tours/from-surabaya/ijen-papuma-tumpak-sewu-bromo-4d3n",
+      "last_verified": "2026-06-23",
+      "links_to": [],
+      "path": "tours/from-surabaya/ijen-papuma-tumpak-sewu-bromo-4d3n.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "bromo",
+        "ijen",
+        "origin-surabaya",
+        "papuma",
+        "tour-package",
+        "tumpak-sewu"
+      ],
+      "title": "4 Day Ijen, Papuma Beach, Tumpak Sewu & Bromo Journey from Surabaya",
+      "type": "Tour Package",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "A 5D4N private tour from Surabaya: 5 Day Ijen, Papuma Beach, Tumpak Sewu & Bromo Nature Trip from Surabaya.",
+      "id": "tours/from-surabaya/ijen-papuma-tumpak-sewu-bromo-5d4n",
+      "last_verified": "2026-06-23",
+      "links_to": [],
+      "path": "tours/from-surabaya/ijen-papuma-tumpak-sewu-bromo-5d4n.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "bromo",
+        "ijen",
+        "origin-surabaya",
+        "papuma",
+        "tour-package",
+        "tumpak-sewu"
+      ],
+      "title": "5 Day Ijen, Papuma Beach, Tumpak Sewu & Bromo Nature Trip from Surabaya",
+      "type": "Tour Package",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "A 6D5N private tour from Surabaya: 6 Day Ijen, Papuma Beach, Tumpak Sewu, Bromo & Malang City Discovery from Surabaya.",
+      "id": "tours/from-surabaya/ijen-papuma-tumpak-sewu-bromo-malang-6d5n",
+      "last_verified": "2026-06-23",
+      "links_to": [],
+      "path": "tours/from-surabaya/ijen-papuma-tumpak-sewu-bromo-malang-6d5n.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "bromo",
+        "ijen",
+        "malang",
+        "origin-surabaya",
+        "papuma",
+        "tour-package",
+        "tumpak-sewu"
+      ],
+      "title": "6 Day Ijen, Papuma Beach, Tumpak Sewu, Bromo & Malang City Discovery from Surabaya",
+      "type": "Tour Package",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "A 3D2N private tour from Surabaya: 3 Day Taman Safari Prigen, Bromo & Madakaripura from Surabaya.",
+      "id": "tours/from-surabaya/taman-safari-prigen-bromo-madakaripura-3d2n",
+      "last_verified": "2026-06-23",
+      "links_to": [],
+      "path": "tours/from-surabaya/taman-safari-prigen-bromo-madakaripura-3d2n.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "bromo",
+        "madakaripura",
+        "origin-surabaya",
+        "tour-package"
+      ],
+      "title": "3 Day Taman Safari Prigen, Bromo & Madakaripura from Surabaya",
+      "type": "Tour Package",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "A 4D3N private tour from Surabaya: 4 Day Tumpak Sewu, Bromo & Ijen Adventure from Surabaya to Bali.",
+      "id": "tours/from-surabaya/tumpak-sewu-bromo-ijen-4d3n",
+      "last_verified": "2026-06-23",
+      "links_to": [],
+      "path": "tours/from-surabaya/tumpak-sewu-bromo-ijen-4d3n.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "bromo",
+        "ijen",
+        "origin-surabaya",
+        "tour-package",
+        "tumpak-sewu"
+      ],
+      "title": "4 Day Tumpak Sewu, Bromo & Ijen Adventure from Surabaya to Bali",
+      "type": "Tour Package",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "When to go — the dry season gives the clearest conditions for East Java's volcanoes and waterfalls; the wet season brings cloud and muddier access.",
+      "id": "travel-guides/best-time-to-visit",
+      "last_verified": "2026-06-23",
+      "links_to": [
+        "travel-guides/weather-and-closures"
+      ],
+      "path": "travel-guides/best-time-to-visit.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "travel-guide",
+        "planning",
+        "season",
+        "weather"
+      ],
+      "title": "Best Time to Visit East Java",
+      "type": "Travel Guide",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "Which volcano suits you — Bromo is an easier sunrise caldera experience, Ijen is a more demanding pre-dawn hike for the blue fire and acidic crater lake.",
+      "id": "travel-guides/bromo-vs-ijen",
+      "last_verified": "2026-06-23",
+      "links_to": [
+        "destinations/kawah-ijen",
+        "destinations/mount-bromo"
+      ],
+      "path": "travel-guides/bromo-vs-ijen.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "travel-guide",
+        "comparison",
+        "bromo",
+        "ijen",
+        "planning"
+      ],
+      "title": "Mount Bromo vs Kawah Ijen",
+      "type": "Travel Guide",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "Matching trip length to what you want to see — from a single Bromo sunrise to a multi-day circuit adding Ijen, waterfalls, and the coast.",
+      "id": "travel-guides/how-many-days",
+      "last_verified": "2026-06-23",
+      "links_to": [
+        "travel-guides/surabaya-vs-bali-starting-point"
+      ],
+      "path": "travel-guides/how-many-days.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "travel-guide",
+        "planning",
+        "itinerary",
+        "duration"
+      ],
+      "title": "How Many Days Do You Need?",
+      "type": "Travel Guide",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "What to bring and the fitness each destination needs — warm layers for cold pre-dawn starts, grippy footwear for volcanic and canyon terrain, and waterproofing where you get wet.",
+      "id": "travel-guides/packing-and-fitness",
+      "last_verified": "2026-06-23",
+      "links_to": [
+        "destinations/kawah-ijen",
+        "destinations/mount-bromo"
+      ],
+      "path": "travel-guides/packing-and-fitness.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "travel-guide",
+        "packing",
+        "fitness",
+        "preparation"
+      ],
+      "title": "Packing & Fitness",
+      "type": "Travel Guide",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "How JVTO makes safety decisions — a written framework with pre-hike briefings, trained guides, proper equipment, and contingency procedures.",
+      "id": "travel-guides/safety-on-tours",
+      "last_verified": "2026-06-23",
+      "links_to": [
+        "policies/ijen-health-screening",
+        "trust/claims/police-led"
+      ],
+      "path": "travel-guides/safety-on-tours.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "travel-guide",
+        "safety",
+        "briefing",
+        "plan-b"
+      ],
+      "title": "Safety on Tours",
+      "type": "Travel Guide",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "Choosing your origin — the destinations are the same volcanoes and waterfalls; the difference is logistics, transfer times, and (for Bali) a ferry crossing.",
+      "id": "travel-guides/surabaya-vs-bali-starting-point",
+      "last_verified": "2026-06-23",
+      "links_to": [],
+      "path": "travel-guides/surabaya-vs-bali-starting-point.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "travel-guide",
+        "planning",
+        "surabaya",
+        "bali",
+        "logistics"
+      ],
+      "title": "Starting from Surabaya vs Bali",
+      "type": "Travel Guide",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "What happens when conditions change — Bromo and Ijen are active volcanoes, and JVTO follows authority instructions and activates a Plan-B if access is restricted.",
+      "id": "travel-guides/weather-and-closures",
+      "last_verified": "2026-06-23",
+      "links_to": [
+        "destinations/mount-bromo",
+        "policies/natural-phenomena"
+      ],
+      "path": "travel-guides/weather-and-closures.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "travel-guide",
+        "weather",
+        "closures",
+        "volcanic-activity",
+        "plan-b"
+      ],
+      "title": "Weather, Volcanic Activity & Closures",
+      "type": "Travel Guide",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "For Ijen crater hikes, JVTO coordinates a health screening with a licensed doctor when conservation-authority rules require it, included in the tour.",
+      "id": "trust/claims/medical-screening",
+      "last_verified": "2026-06-23",
+      "links_to": [
+        "destinations/kawah-ijen",
+        "people/dr-ahmad-irwandanu",
+        "policies/ijen-health-screening"
+      ],
+      "path": "trust/claims/medical-screening.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "trust",
+        "safety",
+        "medical-screening",
+        "ijen"
+      ],
+      "title": "Ijen Medical Screening Included",
+      "type": "Trust Claim",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "JVTO tours are all-inclusive of transport, crew, entrance fees, water, and stated meals, with no on-the-day surprise charges.",
+      "id": "trust/claims/no-hidden-costs",
+      "last_verified": "2026-06-23",
+      "links_to": [
+        "policies/inclusions-exclusions"
+      ],
+      "path": "trust/claims/no-hidden-costs.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "trust",
+        "all-inclusive",
+        "pricing",
+        "transparency"
+      ],
+      "title": "No Hidden Costs",
+      "type": "Trust Claim",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "JVTO is founded and led by a serving member of the Indonesian Tourist Police, and publishes verifiable documentation of that role.",
+      "id": "trust/claims/police-led",
+      "last_verified": "2026-06-23",
+      "links_to": [
+        "destinations/kawah-ijen",
+        "references/detik-tourist-police-bondowoso-2021",
+        "references/radar-jember-ijen-environmental-patrol-2021",
+        "references/radar-jember-polpar-ijen-geopark-2021",
+        "reviews/trustpilot"
+      ],
+      "path": "trust/claims/police-led.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "trust",
+        "police-led",
+        "safety",
+        "credentials",
+        "verification"
+      ],
+      "title": "Police-Led Operations",
+      "type": "Trust Claim",
+      "visibility": "public"
+    },
+    {
+      "citations": [],
+      "description": "Every JVTO tour is fully private — a dedicated vehicle, driver, and guide, with no shared groups.",
+      "id": "trust/claims/private-format",
+      "last_verified": "2026-06-23",
+      "links_to": [],
+      "path": "trust/claims/private-format.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "trust",
+        "private",
+        "format",
+        "differentiator"
+      ],
+      "title": "100% Private Tours",
+      "type": "Trust Claim",
+      "visibility": "public"
+    },
+    {
+      "citations": [
+        "https://oss.go.id",
+        "https://ahu.go.id/pencarian/perseroan"
+      ],
+      "description": "JVTO operates as PT Java Volcano Rendezvous under Indonesian business number (NIB) 1102230032918, publicly verifiable on the OSS portal.",
+      "id": "trust/credentials/legal-registration",
+      "last_verified": "2026-06-23",
+      "links_to": [
+        "organization",
+        "trust/claims/police-led"
+      ],
+      "path": "trust/credentials/legal-registration.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "trust",
+        "credential",
+        "legal",
+        "registration",
+        "nib"
+      ],
+      "title": "Legal Registration (NIB)",
+      "type": "Credential",
+      "visibility": "public"
+    },
+    {
+      "citations": [
+        "https://ahu.go.id/sabh/perkumpulan/qrcode/?kode=NjAyNDAxMjczNTEwMTM2MV8wXzA3IEZlYnJ1YXJpIDIwMjRfMjcgSmFudWFyeSAyMDI0",
+        "https://bbksdajatim.org/pelatihan-pemandu-kawah-ijen/",
+        "https://javavolcano-touroperator.com/legal/HPWKI-approval-preview.png"
+      ],
+      "description": "JVTO publicly presents HPWKI as a local volcanic-tourism industry and competence context around Ijen.",
+      "id": "trust/partners/hpwki",
+      "last_verified": "2026-06-26",
+      "links_to": [
+        "destinations/kawah-ijen",
+        "references/bbksda-ijen-guide-training-2024"
+      ],
+      "path": "trust/partners/hpwki.md",
+      "resource": "",
+      "status": "reviewed",
+      "tags": [
+        "partner",
+        "hpwki",
+        "ijen",
+        "local-guides",
+        "volcanic-tourism",
+        "guide-competence"
+      ],
+      "title": "Himpunan Pelaku Wisata Khusus Ijen (HPWKI)",
+      "type": "Partner",
+      "visibility": "public"
+    },
+    {
+      "citations": [
+        "https://www.indecon.id/spotlight-networks/java-volcano-tour-operator/"
+      ],
+      "description": "JVTO is featured in INDECON's public Spotlight Networks listing of the Indonesia Ecotourism Network.",
+      "id": "trust/partners/indecon",
+      "last_verified": "2026-06-26",
+      "links_to": [
+        "organization"
+      ],
+      "path": "trust/partners/indecon.md",
+      "resource": "https://www.indecon.id/spotlight-networks/java-volcano-tour-operator/",
+      "status": "verified",
+      "tags": [
+        "partner",
+        "indecon",
+        "ecotourism",
+        "network-listing",
+        "community-based-tourism"
+      ],
+      "title": "INDECON (Indonesia Ecotourism Network)",
+      "type": "Partner",
+      "visibility": "public"
+    }
+  ],
+  "edges": [
+    {
+      "source": "destinations/kawah-ijen",
+      "target": "policies/ijen-health-screening"
+    },
+    {
+      "source": "destinations/kawah-ijen",
+      "target": "references/bbksda-ijen-guide-training-2024"
+    },
+    {
+      "source": "destinations/kawah-ijen",
+      "target": "tours/from-surabaya/ijen-bromo-madakaripura-3d2n"
+    },
+    {
+      "source": "destinations/kawah-ijen",
+      "target": "trust/partners/hpwki"
+    },
+    {
+      "source": "organization",
+      "target": "people/dr-ahmad-irwandanu"
+    },
+    {
+      "source": "organization",
+      "target": "references/booking-com-guest-review-award-2015"
+    },
+    {
+      "source": "organization",
+      "target": "references/detik-tourist-police-bondowoso-2021"
+    },
+    {
+      "source": "organization",
+      "target": "references/stefan-loose-indonesien-3770167651"
+    },
+    {
+      "source": "organization",
+      "target": "trust/partners/hpwki"
+    },
+    {
+      "source": "organization",
+      "target": "trust/partners/indecon"
+    },
+    {
+      "source": "people/agung-sambuko",
+      "target": "organization"
+    },
+    {
+      "source": "people/agung-sambuko",
+      "target": "references/detik-tourist-police-bondowoso-2021"
+    },
+    {
+      "source": "people/agung-sambuko",
+      "target": "trust/claims/police-led"
+    },
+    {
+      "source": "people/crew/anjas",
+      "target": "references/bbksda-ijen-guide-training-2024"
+    },
+    {
+      "source": "people/crew/anjas",
+      "target": "reviews/trustpilot"
+    },
+    {
+      "source": "people/crew/anjas",
+      "target": "trust/partners/hpwki"
+    },
+    {
+      "source": "people/crew/boy",
+      "target": "references/bbksda-ijen-guide-training-2024"
+    },
+    {
+      "source": "people/crew/boy",
+      "target": "reviews/trustpilot"
+    },
+    {
+      "source": "people/crew/boy",
+      "target": "trust/partners/hpwki"
+    },
+    {
+      "source": "people/crew/dika",
+      "target": "reviews/trustpilot"
+    },
+    {
+      "source": "people/crew/dika",
+      "target": "trust/partners/hpwki"
+    },
+    {
+      "source": "people/crew/fauzi",
+      "target": "references/bbksda-ijen-guide-training-2024"
+    },
+    {
+      "source": "people/crew/fauzi",
+      "target": "reviews/trustpilot"
+    },
+    {
+      "source": "people/crew/fauzi",
+      "target": "trust/partners/hpwki"
+    },
+    {
+      "source": "people/crew/fredi",
+      "target": "reviews/trustpilot"
+    },
+    {
+      "source": "people/crew/fredi",
+      "target": "trust/partners/hpwki"
+    },
+    {
+      "source": "people/crew/gufron",
+      "target": "references/bbksda-ijen-guide-training-2024"
+    },
+    {
+      "source": "people/crew/gufron",
+      "target": "reviews/trustpilot"
+    },
+    {
+      "source": "people/crew/gufron",
+      "target": "trust/partners/hpwki"
+    },
+    {
+      "source": "people/crew/holili",
+      "target": "reviews/trustpilot"
+    },
+    {
+      "source": "people/crew/holili",
+      "target": "trust/partners/hpwki"
+    },
+    {
+      "source": "people/crew/joyo",
+      "target": "reviews/trustpilot"
+    },
+    {
+      "source": "people/crew/joyo",
+      "target": "trust/partners/hpwki"
+    },
+    {
+      "source": "people/crew/kiki",
+      "target": "references/bbksda-ijen-guide-training-2024"
+    },
+    {
+      "source": "people/crew/kiki",
+      "target": "reviews/trustpilot"
+    },
+    {
+      "source": "people/crew/kiki",
+      "target": "trust/partners/hpwki"
+    },
+    {
+      "source": "people/crew/pras",
+      "target": "reviews/trustpilot"
+    },
+    {
+      "source": "people/crew/pras",
+      "target": "trust/partners/hpwki"
+    },
+    {
+      "source": "people/crew/rendi",
+      "target": "references/bbksda-ijen-guide-training-2024"
+    },
+    {
+      "source": "people/crew/rendi",
+      "target": "reviews/trustpilot"
+    },
+    {
+      "source": "people/crew/rendi",
+      "target": "trust/partners/hpwki"
+    },
+    {
+      "source": "people/crew/taufik",
+      "target": "references/bbksda-ijen-guide-training-2024"
+    },
+    {
+      "source": "people/crew/taufik",
+      "target": "reviews/trustpilot"
+    },
+    {
+      "source": "people/crew/taufik",
+      "target": "trust/partners/hpwki"
+    },
+    {
+      "source": "people/crew/yandi",
+      "target": "reviews/trustpilot"
+    },
+    {
+      "source": "people/crew/yandi",
+      "target": "trust/partners/hpwki"
+    },
+    {
+      "source": "people/crew/yusuf",
+      "target": "reviews/trustpilot"
+    },
+    {
+      "source": "people/crew/yusuf",
+      "target": "trust/partners/hpwki"
+    },
+    {
+      "source": "people/dr-ahmad-irwandanu",
+      "target": "destinations/kawah-ijen"
+    },
+    {
+      "source": "people/dr-ahmad-irwandanu",
+      "target": "policies/ijen-health-screening"
+    },
+    {
+      "source": "people/dr-ahmad-irwandanu",
+      "target": "trust/claims/medical-screening"
+    },
+    {
+      "source": "policies/anti-fraud",
+      "target": "policies/booking-paths"
+    },
+    {
+      "source": "policies/cancellation-travel-credit",
+      "target": "tours/from-surabaya/ijen-bromo-madakaripura-3d2n"
+    },
+    {
+      "source": "policies/ijen-health-screening",
+      "target": "destinations/kawah-ijen"
+    },
+    {
+      "source": "policies/ijen-rijik-monthly-closure",
+      "target": "destinations/kawah-ijen"
+    },
+    {
+      "source": "policies/ijen-rijik-monthly-closure",
+      "target": "travel-guides/weather-and-closures"
+    },
+    {
+      "source": "policies/ijen-rijik-monthly-closure",
+      "target": "trust/partners/hpwki"
+    },
+    {
+      "source": "policies/natural-phenomena",
+      "target": "destinations/kawah-ijen"
+    },
+    {
+      "source": "policies/payment-rules",
+      "target": "policies/cancellation-travel-credit"
+    },
+    {
+      "source": "policies/police-escort",
+      "target": "trust/claims/police-led"
+    },
+    {
+      "source": "references/bbksda-ijen-guide-training-2024",
+      "target": "destinations/kawah-ijen"
+    },
+    {
+      "source": "references/bbksda-ijen-guide-training-2024",
+      "target": "trust/partners/hpwki"
+    },
+    {
+      "source": "references/booking-com-guest-review-award-2015",
+      "target": "organization"
+    },
+    {
+      "source": "references/detik-tourist-police-bondowoso-2021",
+      "target": "trust/claims/police-led"
+    },
+    {
+      "source": "references/radar-jember-ijen-environmental-patrol-2021",
+      "target": "trust/claims/police-led"
+    },
+    {
+      "source": "references/radar-jember-polpar-ijen-geopark-2021",
+      "target": "trust/claims/police-led"
+    },
+    {
+      "source": "references/stefan-loose-indonesien-3770167651",
+      "target": "organization"
+    },
+    {
+      "source": "reviews/google-maps",
+      "target": "reviews/trustpilot"
+    },
+    {
+      "source": "reviews/tripadvisor",
+      "target": "reviews/trustpilot"
+    },
+    {
+      "source": "reviews/trustpilot",
+      "target": "reviews/google-maps"
+    },
+    {
+      "source": "reviews/trustpilot",
+      "target": "trust/claims/police-led"
+    },
+    {
+      "source": "travel-guides/best-time-to-visit",
+      "target": "travel-guides/weather-and-closures"
+    },
+    {
+      "source": "travel-guides/bromo-vs-ijen",
+      "target": "destinations/kawah-ijen"
+    },
+    {
+      "source": "travel-guides/bromo-vs-ijen",
+      "target": "destinations/mount-bromo"
+    },
+    {
+      "source": "travel-guides/how-many-days",
+      "target": "travel-guides/surabaya-vs-bali-starting-point"
+    },
+    {
+      "source": "travel-guides/packing-and-fitness",
+      "target": "destinations/kawah-ijen"
+    },
+    {
+      "source": "travel-guides/packing-and-fitness",
+      "target": "destinations/mount-bromo"
+    },
+    {
+      "source": "travel-guides/safety-on-tours",
+      "target": "policies/ijen-health-screening"
+    },
+    {
+      "source": "travel-guides/safety-on-tours",
+      "target": "trust/claims/police-led"
+    },
+    {
+      "source": "travel-guides/weather-and-closures",
+      "target": "destinations/mount-bromo"
+    },
+    {
+      "source": "travel-guides/weather-and-closures",
+      "target": "policies/natural-phenomena"
+    },
+    {
+      "source": "trust/claims/medical-screening",
+      "target": "destinations/kawah-ijen"
+    },
+    {
+      "source": "trust/claims/medical-screening",
+      "target": "people/dr-ahmad-irwandanu"
+    },
+    {
+      "source": "trust/claims/medical-screening",
+      "target": "policies/ijen-health-screening"
+    },
+    {
+      "source": "trust/claims/no-hidden-costs",
+      "target": "policies/inclusions-exclusions"
+    },
+    {
+      "source": "trust/claims/police-led",
+      "target": "destinations/kawah-ijen"
+    },
+    {
+      "source": "trust/claims/police-led",
+      "target": "references/detik-tourist-police-bondowoso-2021"
+    },
+    {
+      "source": "trust/claims/police-led",
+      "target": "references/radar-jember-ijen-environmental-patrol-2021"
+    },
+    {
+      "source": "trust/claims/police-led",
+      "target": "references/radar-jember-polpar-ijen-geopark-2021"
+    },
+    {
+      "source": "trust/claims/police-led",
+      "target": "reviews/trustpilot"
+    },
+    {
+      "source": "trust/credentials/legal-registration",
+      "target": "organization"
+    },
+    {
+      "source": "trust/credentials/legal-registration",
+      "target": "trust/claims/police-led"
+    },
+    {
+      "source": "trust/partners/hpwki",
+      "target": "destinations/kawah-ijen"
+    },
+    {
+      "source": "trust/partners/hpwki",
+      "target": "references/bbksda-ijen-guide-training-2024"
+    },
+    {
+      "source": "trust/partners/indecon",
+      "target": "organization"
+    }
+  ],
+  "okf_version": "0.1",
+  "type_counts": {
+    "Credential": 1,
+    "Destination": 5,
+    "Organization": 1,
+    "Partner": 2,
+    "Person": 16,
+    "Policy": 10,
+    "Reference": 6,
+    "Review Platform": 3,
+    "Tour Package": 16,
+    "Travel Guide": 7,
+    "Trust Claim": 4
+  }
+}
