@@ -31,5 +31,14 @@
     "live availability",
     "raw route geometry"
   ],
+  "route_sequence_policy": "Customer-facing route_sequence is derived from the published itinerary (day_titles); operational route legs + feasibility are owned by jvto-itinerary-core (operational_route_ref). Bootstrap never asserts a directional route leg.",
+  "core_route_order_discrepancies": [
+    "bali/bromo-ijen-3d2n",
+    "bali/ijen-papuma-tumpak-sewu-bromo-4d3n",
+    "ijen-papuma-tumpak-sewu-bromo-4d3n",
+    "ijen-papuma-tumpak-sewu-bromo-5d4n",
+    "ijen-papuma-tumpak-sewu-bromo-malang-6d5n",
+    "taman-safari-prigen-bromo-madakaripura-3d2n"
+  ],
   "principle": "Write a reusable module once; each package stores only what changes (variation)."
 }
