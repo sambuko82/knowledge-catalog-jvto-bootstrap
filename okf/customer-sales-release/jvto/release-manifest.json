@@ -27,6 +27,17 @@
     "policy": "available",
     "destination_guidance": "available"
   },
+  "module_layer": {
+    "schema_version": "general-modules-v1",
+    "general-modules.json": 67,
+    "package-variations.json": 16,
+    "module-compatibility.json": 1,
+    "module-manifest.json": 1,
+    "note": "Reusable general modules + per-package variation projection derived from the existing release objects and the read-only jvto-itinerary-core intelligence layer. No new customer-facing facts authored; see module-manifest.json.",
+    "composition_gaps": [
+      "bali/ijen-papuma-tumpak-sewu-bromo-5d4n: no Bali-origin 5D4N entry in core 11-package-route-map; route_sequence/route_leg_refs left empty (do-not-invent)."
+    ]
+  },
   "price_published": true,
   "price_note": "Exact per-pax standard price tiers are published (business-approved). Availability still requires live confirmation.",
   "excluded": [

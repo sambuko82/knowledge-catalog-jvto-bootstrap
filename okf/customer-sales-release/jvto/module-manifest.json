@@ -1,0 +1,35 @@
+{
+  "release_id": "customer-sales-release-20260628-001",
+  "schema_version": "general-modules-v1",
+  "generated_from": "okf/customer-sales-release/jvto (existing release) + jvto-itinerary-core generated intelligence (read-only projection)",
+  "general_module_count": 67,
+  "general_module_categories": {
+    "policy": 10,
+    "service": 4,
+    "inclusion": 1,
+    "inclusion_component": 11,
+    "destination": 5,
+    "location": 14,
+    "route_leg": 16,
+    "staging": 6
+  },
+  "package_variation_count": 16,
+  "baseline_inclusions": [
+    "private transport (dedicated vehicle)",
+    "dedicated private driver and guide(s)",
+    "all entrance fees and permits",
+    "drinking water",
+    "meals as stated in the itinerary",
+    "full pick-up to drop-off assistance"
+  ],
+  "excluded_from_modules": [
+    "supplier rates",
+    "internal costs",
+    "margin",
+    "vendor allocation",
+    "PII",
+    "live availability",
+    "raw route geometry"
+  ],
+  "principle": "Write a reusable module once; each package stores only what changes (variation)."
+}
