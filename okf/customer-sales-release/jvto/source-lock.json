@@ -1,10 +1,10 @@
 {
   "schema_version": "customer-sales-source-lock-v1",
   "release_id": "customer-sales-release-20260628-001",
-  "created_at": "2026-06-28T07:34:25+00:00",
+  "created_at": "2026-06-28T07:41:07+00:00",
   "knowledge_catalog": {
     "repo": "sambuko82/knowledge-catalog-jvto-bootstrap",
-    "revision": "06db28d5b4a183a7835dc8e3d86873a19e2be00a",
+    "revision": "6fa9a8af8ededd3620d6132f27ccddc91356f599",
     "catalog_path": "okf/bundles/jvto/catalog.json",
     "catalog_sha256": "9b45a6f051007f62a2d708951cbfdb7b98c61e12567107540845b42b38d79e58"
   },

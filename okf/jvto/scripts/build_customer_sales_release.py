@@ -74,6 +74,34 @@ def _readiness(**flags: bool) -> dict[str, str]:
     return {cap: ("available" if flags.get(cap) else "unavailable") for cap in CAPABILITIES}
 
 
+# Overnight sentinels that are NOT a lodging room (transit / day-trip).
+NON_LODGING_OVERNIGHTS = {"no_overnight", "overnight_in_vehicle"}
+
+
+def _dropoff_matches(option: str, ctx: dict[str, Any]) -> bool:
+    """Precisely match a standard_dropoff_option string to one dropoff context.
+
+    Avoids the broad location_group substring match that would, e.g., attach the
+    train-station context to a package whose only options are Surabaya Airport/Hotel.
+    """
+    o = option.lower()
+    typ = ctx.get("type", "")
+    lg = (ctx.get("location_group") or "").lower()
+    if typ == "airport":
+        return "airport" in o and lg in o
+    if typ == "hotel":
+        return "hotel" in o and lg in o
+    if typ == "harbor":
+        return "ketapang" in o or "harbor" in o
+    if typ == "bali_area":
+        return "bali" in o or "gilimanuk" in o
+    if typ == "train_station":
+        return "train" in o or "station" in o
+    if typ == "city_point":
+        return bool(lg) and lg in o
+    return False
+
+
 def _base_inclusions(tokens: list[str], origin: str, ferry_included: bool) -> dict[str, Any]:
     included = [
         "private transport (dedicated vehicle)",
@@ -135,7 +163,7 @@ def build(core_root: Path, release_id: str) -> dict[str, Any]:
         # --- package profile ---
         days = op.get("days", []) or []
         has_price = price is not None
-        overnights = [d.get("overnight") for d in days if d.get("overnight") and d.get("overnight") != "no_overnight"]
+        overnights = [d.get("overnight") for d in days if d.get("overnight") and d.get("overnight") not in NON_LODGING_OVERNIGHTS]
         profiles.append({
             **source_ref,
             "package_key": pkg,
@@ -190,7 +218,7 @@ def build(core_root: Path, release_id: str) -> dict[str, Any]:
         options = rm.get("standard_dropoff_options", []) or []
         finish_details = []
         for ctx_id, ctx in dropoffs.items():
-            if any(ctx.get("location_group", "").lower() in opt.lower() or opt.lower() in ctx.get("label", "").lower() for opt in options):
+            if any(_dropoff_matches(opt, ctx) for opt in options):
                 finish_details.append({"id": ctx_id, "label": ctx.get("label"), "type": ctx.get("type"),
                                        "connects_to": ctx.get("connects_to", []), "required_customer_fields": ctx.get("required_customer_fields", [])})
         endpoints.append({

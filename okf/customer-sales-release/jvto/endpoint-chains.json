@@ -30,16 +30,6 @@
         ]
       },
       {
-        "id": "surabaya_train_station_dropoff",
-        "label": "Surabaya train station dropoff",
-        "type": "train_station",
-        "connects_to": [],
-        "required_customer_fields": [
-          "train_departure_time",
-          "station_name"
-        ]
-      },
-      {
         "id": "malang_dropoff",
         "label": "Malang dropoff",
         "type": "city_point",
@@ -86,16 +76,6 @@
         "required_customer_fields": [
           "hotel_area"
         ]
-      },
-      {
-        "id": "surabaya_train_station_dropoff",
-        "label": "Surabaya train station dropoff",
-        "type": "train_station",
-        "connects_to": [],
-        "required_customer_fields": [
-          "train_departure_time",
-          "station_name"
-        ]
       }
     ],
     "note": "\"Finish in Bali\" means a Ketapang/ferry crossing and optional Bali transfer, not a direct hotel drop unless stated.",
@@ -134,16 +114,6 @@
         "connects_to": [],
         "required_customer_fields": [
           "hotel_area"
-        ]
-      },
-      {
-        "id": "surabaya_train_station_dropoff",
-        "label": "Surabaya train station dropoff",
-        "type": "train_station",
-        "connects_to": [],
-        "required_customer_fields": [
-          "train_departure_time",
-          "station_name"
         ]
       }
     ],
@@ -200,16 +170,6 @@
         "required_customer_fields": [
           "hotel_area"
         ]
-      },
-      {
-        "id": "surabaya_train_station_dropoff",
-        "label": "Surabaya train station dropoff",
-        "type": "train_station",
-        "connects_to": [],
-        "required_customer_fields": [
-          "train_departure_time",
-          "station_name"
-        ]
       }
     ],
     "note": null,
@@ -248,16 +208,6 @@
         "connects_to": [],
         "required_customer_fields": [
           "hotel_area"
-        ]
-      },
-      {
-        "id": "surabaya_train_station_dropoff",
-        "label": "Surabaya train station dropoff",
-        "type": "train_station",
-        "connects_to": [],
-        "required_customer_fields": [
-          "train_departure_time",
-          "station_name"
         ]
       }
     ],
@@ -300,16 +250,6 @@
         ]
       },
       {
-        "id": "surabaya_airport_dropoff",
-        "label": "Surabaya Airport dropoff",
-        "type": "airport",
-        "connects_to": [],
-        "required_customer_fields": [
-          "flight_number",
-          "departure_time"
-        ]
-      },
-      {
         "id": "bali_hotel_dropoff",
         "label": "Bali hotel dropoff",
         "type": "bali_area",
@@ -317,25 +257,6 @@
         "required_customer_fields": [
           "hotel_name",
           "hotel_area"
-        ]
-      },
-      {
-        "id": "surabaya_hotel_dropoff",
-        "label": "Surabaya hotel dropoff",
-        "type": "hotel",
-        "connects_to": [],
-        "required_customer_fields": [
-          "hotel_area"
-        ]
-      },
-      {
-        "id": "surabaya_train_station_dropoff",
-        "label": "Surabaya train station dropoff",
-        "type": "train_station",
-        "connects_to": [],
-        "required_customer_fields": [
-          "train_departure_time",
-          "station_name"
         ]
       }
     ],
@@ -395,16 +316,6 @@
         "required_customer_fields": [
           "hotel_area"
         ]
-      },
-      {
-        "id": "surabaya_train_station_dropoff",
-        "label": "Surabaya train station dropoff",
-        "type": "train_station",
-        "connects_to": [],
-        "required_customer_fields": [
-          "train_departure_time",
-          "station_name"
-        ]
       }
     ],
     "note": null,
@@ -443,16 +354,6 @@
         "connects_to": [],
         "required_customer_fields": [
           "hotel_area"
-        ]
-      },
-      {
-        "id": "surabaya_train_station_dropoff",
-        "label": "Surabaya train station dropoff",
-        "type": "train_station",
-        "connects_to": [],
-        "required_customer_fields": [
-          "train_departure_time",
-          "station_name"
         ]
       }
     ],
@@ -493,16 +394,6 @@
         "required_customer_fields": [
           "hotel_area"
         ]
-      },
-      {
-        "id": "surabaya_train_station_dropoff",
-        "label": "Surabaya train station dropoff",
-        "type": "train_station",
-        "connects_to": [],
-        "required_customer_fields": [
-          "train_departure_time",
-          "station_name"
-        ]
       }
     ],
     "note": null,
@@ -542,16 +433,6 @@
         "connects_to": [],
         "required_customer_fields": [
           "hotel_area"
-        ]
-      },
-      {
-        "id": "surabaya_train_station_dropoff",
-        "label": "Surabaya train station dropoff",
-        "type": "train_station",
-        "connects_to": [],
-        "required_customer_fields": [
-          "train_departure_time",
-          "station_name"
         ]
       },
       {
@@ -601,16 +482,6 @@
         "required_customer_fields": [
           "hotel_area"
         ]
-      },
-      {
-        "id": "surabaya_train_station_dropoff",
-        "label": "Surabaya train station dropoff",
-        "type": "train_station",
-        "connects_to": [],
-        "required_customer_fields": [
-          "train_departure_time",
-          "station_name"
-        ]
       }
     ],
     "note": null,
@@ -649,16 +520,6 @@
         "connects_to": [],
         "required_customer_fields": [
           "hotel_area"
-        ]
-      },
-      {
-        "id": "surabaya_train_station_dropoff",
-        "label": "Surabaya train station dropoff",
-        "type": "train_station",
-        "connects_to": [],
-        "required_customer_fields": [
-          "train_departure_time",
-          "station_name"
         ]
       }
     ],
@@ -699,16 +560,6 @@
         "connects_to": [],
         "required_customer_fields": [
           "hotel_area"
-        ]
-      },
-      {
-        "id": "surabaya_train_station_dropoff",
-        "label": "Surabaya train station dropoff",
-        "type": "train_station",
-        "connects_to": [],
-        "required_customer_fields": [
-          "train_departure_time",
-          "station_name"
         ]
       },
       {
@@ -757,16 +608,6 @@
         "connects_to": [],
         "required_customer_fields": [
           "hotel_area"
-        ]
-      },
-      {
-        "id": "surabaya_train_station_dropoff",
-        "label": "Surabaya train station dropoff",
-        "type": "train_station",
-        "connects_to": [],
-        "required_customer_fields": [
-          "train_departure_time",
-          "station_name"
         ]
       }
     ],

@@ -65,15 +65,13 @@
   {
     "release_id": "customer-sales-release-20260628-001",
     "package_key": "bromo-1d1n",
-    "overnights": [
-      "overnight_in_vehicle"
-    ],
+    "overnights": [],
     "rooming_assumption": "standard rooming per the package; twin/double or extra room on request (subject to confirmation)",
     "source_evidence": [
       "knowledge:tours/from-surabaya/bromo-1d1n.md"
     ],
     "readiness": {
-      "rooming": "available"
+      "rooming": "unavailable"
     }
   },
   {
