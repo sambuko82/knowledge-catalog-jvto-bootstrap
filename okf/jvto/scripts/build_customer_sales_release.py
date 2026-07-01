@@ -365,6 +365,28 @@ def build(core_root: Path, release_id: str) -> dict[str, Any]:
     return {"objects": objects, "coverage": coverage, "gap_report": gap_report, "package_keys": package_keys}
 
 
+# Module-layer files (Phase A, PR #24): general-modules.json, package-variations.json,
+# module-compatibility.json, module-manifest.json. No script in this repo generates these
+# yet (they were hand-authored alongside module-manifest.json); this function only READS
+# the counts already on disk so a release-manifest rebuild never silently drops the
+# descriptive block that makes them discoverable (this repo authors nothing here either).
+def _module_layer_block(out_dir: Path) -> dict[str, Any] | None:
+    names = ["general-modules.json", "package-variations.json", "module-compatibility.json", "module-manifest.json"]
+    if not all((out_dir / n).exists() for n in names):
+        return None
+    module_manifest = read_json(out_dir / "module-manifest.json")
+    return {
+        "schema_version": module_manifest.get("schema_version", "general-modules-v1"),
+        "general-modules.json": len(read_json(out_dir / "general-modules.json")),
+        "package-variations.json": len(read_json(out_dir / "package-variations.json")),
+        "module-compatibility.json": 1,
+        "module-manifest.json": 1,
+        "note": "Reusable general modules + per-package variation projection derived from the existing release objects and the read-only jvto-itinerary-core intelligence layer. No new customer-facing facts authored; see module-manifest.json.",
+        "route_sequence_policy": "Customer-facing route_sequence is derived from the published itinerary (day_titles), not core's seeded route map. Operational route legs + feasibility are owned by jvto-itinerary-core and referenced via operational_route_ref; Bootstrap never asserts a directional route leg.",
+        "core_route_order_discrepancies_recorded_in": "module-manifest.json#core_route_order_discrepancies (core's operational map disagrees with the published order for some packages; the published order is authoritative for the customer).",
+    }
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(prog="build_customer_sales_release")
     parser.add_argument("--core-root", required=True, help="Path to a local jvto-itinerary-core checkout")
@@ -407,10 +429,13 @@ def main() -> None:
         "package_count": built["coverage"]["package_count"],
         "object_counts": built["coverage"]["object_counts"],
         "capability_readiness": built["coverage"]["capability_readiness"],
-        "price_published": True,
-        "price_note": "Exact per-pax standard price tiers are published (business-approved). Availability still requires live confirmation.",
-        "excluded": ["supplier rates", "internal costs", "margin", "vendor allocation", "PII"],
     }
+    module_layer = _module_layer_block(out_dir)
+    if module_layer is not None:
+        manifest["module_layer"] = module_layer
+    manifest["price_published"] = True
+    manifest["price_note"] = "Exact per-pax standard price tiers are published (business-approved). Availability still requires live confirmation."
+    manifest["excluded"] = ["supplier rates", "internal costs", "margin", "vendor allocation", "PII"]
     write_json(out_dir / "release-manifest.json", manifest)
     print(f"Customer Sales Release written to {out_dir} ({built['coverage']['package_count']} packages)")
 
