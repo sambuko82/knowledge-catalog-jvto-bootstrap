@@ -45,9 +45,14 @@ CORE_ROUTE_MAP = "generated/itinerary-intelligence/11-package-route-map.json"
 CORE_DROPOFFS = "generated/itinerary-intelligence/02-dropoff-contexts.json"
 CORE_ALIASES = "generated/itinerary-intelligence/location-alias-registry.json"
 # Per-package classified standard route truth (valid pickups/dropoffs, structured
-# Bali-transfer boundary, per-field classification). Projected VERBATIM — the runtime
-# must never present a fact above the evidence class Core assigned it.
+# Bali-transfer boundary, per-field classification, staging, route_recommendations,
+# per-destination weather_advisory). Projected VERBATIM — the runtime must never present
+# a fact above the evidence class Core assigned it.
 CORE_ROUTE_TRUTH = "generated/itinerary-intelligence/agent-contract/standard-route-truth.json"
+# Per-destination operational overlay (fatigue, required live-checks, activity window).
+# Previously read nowhere downstream of Core; destination-guidance.json carried only
+# knowledge-catalog concept text with no operational facts at all.
+CORE_OVERLAYS = "generated/itinerary-intelligence/agent-contract/destination-operational-overlays.json"
 
 # Tokens that must never appear in any emitted record (cost/margin/supplier/PII).
 FORBIDDEN_SUBSTRINGS = (
@@ -106,6 +111,18 @@ def _dropoff_matches(option: str, ctx: dict[str, Any]) -> bool:
     return False
 
 
+def _overlay_for_concept(concept_id: str, overlays: dict[str, dict[str, Any]]) -> dict[str, Any] | None:
+    """Match a destinations/<slug> OKF concept id to Core's destination-operational-overlays.json
+    destination key by substring (kawah-ijen->ijen, mount-bromo->bromo, tumpak-sewu->tumpak_sewu,
+    papuma-beach->papuma, madakaripura->madakaripura). No crosswalk file exists for this pairing
+    yet; this mirrors the keyword-match pattern already used by _dropoff_matches above."""
+    slug = concept_id.rsplit("/", 1)[-1].replace("-", "_")
+    for dest_id, overlay in overlays.items():
+        if dest_id in slug or slug in dest_id:
+            return overlay
+    return None
+
+
 def _base_inclusions(tokens: list[str], origin: str, ferry_included: bool) -> dict[str, Any]:
     included = [
         "private transport (dedicated vehicle)",
@@ -135,6 +152,7 @@ def build(core_root: Path, release_id: str) -> dict[str, Any]:
     dropoffs = {row["id"]: row for row in read_json(core_root / CORE_DROPOFFS)}
     aliases_raw = read_json(core_root / CORE_ALIASES)
     route_truth = {p["package_key"]: p for p in read_json(core_root / CORE_ROUTE_TRUTH).get("packages", [])}
+    overlays = {o["destination"]: o for o in read_json(core_root / CORE_OVERLAYS)}
 
     catalog = read_json(BUNDLE_ROOT / "catalog.json")
     concepts = catalog.get("concepts", [])
@@ -235,6 +253,11 @@ def build(core_root: Path, release_id: str) -> dict[str, Any]:
         endpoint_options = rt.get("valid_dropoffs", [])
         bali_transfer = rt.get("bali_transfer")
         note = bali_transfer.get("note") if bali_transfer else None
+        # Package/route-level advisories (ferry buffer, Ijen access risk, backtracking
+        # avoidance) — previously computed by Core's 12-recommendation-rules.json but
+        # consumed only by its internal CLI scenario evaluator, never reaching this release.
+        # Already condition-matched per package in CORE_ROUTE_TRUTH; projected verbatim.
+        route_recommendations = rt.get("route_recommendations", [])
         endpoints.append({
             **source_ref,
             "package_key": pkg,
@@ -246,6 +269,7 @@ def build(core_root: Path, release_id: str) -> dict[str, Any]:
             "finish_details": finish_details,
             "endpoint_options": endpoint_options,
             "bali_transfer": bali_transfer,
+            "route_recommendations": route_recommendations,
             "note": note,
             "source_evidence": ["core:" + CORE_ROUTE_MAP, "core:" + CORE_DROPOFFS, "core:" + CORE_ROUTE_TRUTH],
             "readiness": {
@@ -259,12 +283,18 @@ def build(core_root: Path, release_id: str) -> dict[str, Any]:
             gaps.append({"package_key": pkg, "capability": "pickup_options", "reason": "no valid_pickups in core standard-route-truth"})
 
         # --- accommodation rules (named overnights only; no supplier rates) ---
+        # Core's staging purpose/operational_notes/risk_if_arrival_late were previously
+        # computed (agent-contract/staging-logic.json) but never reached this release —
+        # only the knowledge-catalog concept's bare overnight names did. Already classified
+        # per package in CORE_ROUTE_TRUTH.staging; projected verbatim (no supplier rates).
+        staging_notes = rt.get("staging", [])
         accommodation.append({
             **source_ref,
             "package_key": pkg,
             "overnights": overnights,
             "rooming_assumption": "standard rooming per the package; twin/double or extra room on request (subject to confirmation)",
-            "source_evidence": ["knowledge:" + entry["path"]],
+            "staging_notes": staging_notes,
+            "source_evidence": ["knowledge:" + entry["path"], "core:" + CORE_ROUTE_TRUTH],
             "readiness": {"rooming": "available" if overnights else "unavailable"},
         })
         if not overnights:
@@ -279,7 +309,23 @@ def build(core_root: Path, release_id: str) -> dict[str, Any]:
             "source_evidence": ["knowledge:" + entry["path"]],
             "readiness": {"vehicle_luggage": "available" if op.get("vehicle_category") else "unavailable"},
         })
-        gaps.append({"package_key": pkg, "capability": "vehicle_luggage", "reason": "luggage allowance not published (vehicle class available)"})
+        # vehicle CLASS is published (answers the vehicle question); the luggage ALLOWANCE
+        # is a genuine source absence — no kg/pieces figure exists in any connected source
+        # (jvto-web only mentions luggage in prose; Core pickup contexts carry only
+        # luggage_loading / unclear_luggage_plan risk tags, not an allowance). Recorded as a
+        # full structured missing_data record, not a bare reason string, so it is a concrete
+        # actionable gap rather than a vague note. Stays "partial" — not invented.
+        gaps.append({
+            "package_key": pkg, "capability": "vehicle_luggage",
+            "reason": "luggage allowance not published (vehicle class available)",
+            "missing_data": {
+                "field": "luggage_rule (per-guest luggage allowance: pieces / weight by vehicle class)",
+                "affected": pkg,
+                "required_source": "an ops-published luggage policy (e.g. 1 checked bag + 1 carry-on per guest, by AC MPV vs Hiace). No luggage-allowance figure exists in any connected source today — jvto-web packageDetailSnapshots mentions luggage only in prose, Core pickup contexts carry only luggage_loading / unclear_luggage_plan risk tags.",
+                "current_fallback": "vehicle_category IS published and answers the vehicle question; luggage_rule stays null; oversized/special luggage already routes to a live check via the runtime's vehicle disclosure. readiness.vehicle_luggage=partial (never 'available' while the allowance is unsourced).",
+                "gating": "optional",
+            },
+        })
 
         # --- guide support ---
         guide_support.append({
@@ -303,17 +349,37 @@ def build(core_root: Path, release_id: str) -> dict[str, Any]:
 
     # --- destination guidance ---
     destination_guidance = []
+    overlay_gaps: list[dict[str, Any]] = []
     for entry in concepts:
         if entry.get("type") != "Destination":
             continue
         front, body = _load_concept(entry["path"])
         activity = front.get("activity", {}) or {}
+        # Fatigue/required-live-check/weather-advisory facts computed by Core but previously
+        # never read by this script — destination-guidance.json carried only OKF concept text.
+        overlay = _overlay_for_concept(entry["id"], overlays)
+        source_evidence = ["knowledge:" + entry["path"]]
+        operational_overlay = None
+        if overlay:
+            source_evidence.append("core:" + CORE_OVERLAYS)
+            oo = overlay.get("operational_overlay", {})
+            operational_overlay = {
+                "fatigue_score": oo.get("fatigue_score"),
+                "requires_live_check": oo.get("requires_live_check", []),
+                "warning_rules": oo.get("warning_rules", []),
+            }
+        else:
+            overlay_gaps.append({"concept": entry["id"], "capability": "destination_operational_overlay",
+                                  "reason": "no matching Core destination-operational-overlays.json entry for this concept id"})
         destination_guidance.append({**source_ref, "id": entry["id"], "title": entry.get("title"),
                                      "description": entry.get("description"),
                                      "typical_schedule": activity.get("typical_schedule"),
                                      "effort": activity.get("effort"),
                                      "access_requirements": activity.get("access_requirements", []) or [],
-                                     "source_evidence": ["knowledge:" + entry["path"]], "readiness": {"destination_guidance": "available"}})
+                                     "operational_overlay": operational_overlay,
+                                     "source_evidence": source_evidence, "readiness": {"destination_guidance": "available"}})
+
+    gaps.extend(overlay_gaps)
 
     # --- location aliases ---
     location_aliases = sorted(
@@ -416,7 +482,7 @@ def main() -> None:
         "itinerary_core": {
             "repo": "sambuko82/jvto-itinerary-core",
             "revision": _git_revision(core_root),
-            "sources": {rel: _sha256_file(core_root / rel) for rel in [CORE_PRICING, CORE_CATALOG_INDEX, CORE_ROUTE_MAP, CORE_DROPOFFS, CORE_ALIASES, CORE_ROUTE_TRUTH]},
+            "sources": {rel: _sha256_file(core_root / rel) for rel in [CORE_PRICING, CORE_CATALOG_INDEX, CORE_ROUTE_MAP, CORE_DROPOFFS, CORE_ALIASES, CORE_ROUTE_TRUTH, CORE_OVERLAYS]},
         },
     }
     write_json(out_dir / "source-lock.json", source_lock)
