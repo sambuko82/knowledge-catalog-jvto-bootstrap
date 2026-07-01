@@ -79,6 +79,21 @@ class BuildCustomerSalesReleaseTest(unittest.TestCase):
         report = json.loads(result.stdout)
         self.assertEqual(report["status"], "pass", report)
 
+    def test_vehicle_luggage_gap_is_a_structured_missing_data_record_not_a_bare_note(self) -> None:
+        gaps = self._read("gap-report.json")["gaps"]
+        vl = [g for g in gaps if g["capability"] == "vehicle_luggage"]
+        self.assertTrue(vl, "vehicle_luggage gaps should still be reported")
+        for g in vl:
+            self.assertIn("missing_data", g, f"{g['package_key']}: vehicle_luggage gap must carry structured missing_data")
+            for field in ("field", "affected", "required_source", "current_fallback", "gating"):
+                self.assertIn(field, g["missing_data"], f"{g['package_key']}: missing_data.{field} required")
+            self.assertEqual(g["missing_data"]["gating"], "optional")
+        # vehicle class stays available even though luggage allowance is absent (partial, not invented)
+        vehicle = {r["package_key"]: r for r in self._read("vehicle-and-luggage-rules.json")}
+        sample = next(iter(vehicle.values()))
+        self.assertIsNotNone(sample.get("vehicle_category"))
+        self.assertIsNone(sample.get("luggage_rule"))
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -309,7 +309,23 @@ def build(core_root: Path, release_id: str) -> dict[str, Any]:
             "source_evidence": ["knowledge:" + entry["path"]],
             "readiness": {"vehicle_luggage": "available" if op.get("vehicle_category") else "unavailable"},
         })
-        gaps.append({"package_key": pkg, "capability": "vehicle_luggage", "reason": "luggage allowance not published (vehicle class available)"})
+        # vehicle CLASS is published (answers the vehicle question); the luggage ALLOWANCE
+        # is a genuine source absence — no kg/pieces figure exists in any connected source
+        # (jvto-web only mentions luggage in prose; Core pickup contexts carry only
+        # luggage_loading / unclear_luggage_plan risk tags, not an allowance). Recorded as a
+        # full structured missing_data record, not a bare reason string, so it is a concrete
+        # actionable gap rather than a vague note. Stays "partial" — not invented.
+        gaps.append({
+            "package_key": pkg, "capability": "vehicle_luggage",
+            "reason": "luggage allowance not published (vehicle class available)",
+            "missing_data": {
+                "field": "luggage_rule (per-guest luggage allowance: pieces / weight by vehicle class)",
+                "affected": pkg,
+                "required_source": "an ops-published luggage policy (e.g. 1 checked bag + 1 carry-on per guest, by AC MPV vs Hiace). No luggage-allowance figure exists in any connected source today — jvto-web packageDetailSnapshots mentions luggage only in prose, Core pickup contexts carry only luggage_loading / unclear_luggage_plan risk tags.",
+                "current_fallback": "vehicle_category IS published and answers the vehicle question; luggage_rule stays null; oversized/special luggage already routes to a live check via the runtime's vehicle disclosure. readiness.vehicle_luggage=partial (never 'available' while the allowance is unsourced).",
+                "gating": "optional",
+            },
+        })
 
         # --- guide support ---
         guide_support.append({
