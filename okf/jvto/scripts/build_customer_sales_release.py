@@ -44,6 +44,10 @@ CORE_CATALOG_INDEX = "generated/itinerary-intelligence/package-catalog-index.jso
 CORE_ROUTE_MAP = "generated/itinerary-intelligence/11-package-route-map.json"
 CORE_DROPOFFS = "generated/itinerary-intelligence/02-dropoff-contexts.json"
 CORE_ALIASES = "generated/itinerary-intelligence/location-alias-registry.json"
+# Per-package classified standard route truth (valid pickups/dropoffs, structured
+# Bali-transfer boundary, per-field classification). Projected VERBATIM — the runtime
+# must never present a fact above the evidence class Core assigned it.
+CORE_ROUTE_TRUTH = "generated/itinerary-intelligence/agent-contract/standard-route-truth.json"
 
 # Tokens that must never appear in any emitted record (cost/margin/supplier/PII).
 FORBIDDEN_SUBSTRINGS = (
@@ -130,6 +134,7 @@ def build(core_root: Path, release_id: str) -> dict[str, Any]:
     route_map = {row["package_id"]: row for row in read_json(core_root / CORE_ROUTE_MAP)}
     dropoffs = {row["id"]: row for row in read_json(core_root / CORE_DROPOFFS)}
     aliases_raw = read_json(core_root / CORE_ALIASES)
+    route_truth = {p["package_key"]: p for p in read_json(core_root / CORE_ROUTE_TRUTH).get("packages", [])}
 
     catalog = read_json(BUNDLE_ROOT / "catalog.json")
     concepts = catalog.get("concepts", [])
@@ -221,19 +226,37 @@ def build(core_root: Path, release_id: str) -> dict[str, Any]:
             if any(_dropoff_matches(opt, ctx) for opt in options):
                 finish_details.append({"id": ctx_id, "label": ctx.get("label"), "type": ctx.get("type"),
                                        "connects_to": ctx.get("connects_to", []), "required_customer_fields": ctx.get("required_customer_fields", [])})
+        # Classified truth from Core (verbatim): valid pickups, classified endpoint options,
+        # and the structured Bali-transfer boundary. The old free-text "finish in Bali" note
+        # was mis-applied to Bali-ORIGIN packages that actually finish in Surabaya; the
+        # boundary is now direction-aware (from_bali / to_bali / both / none).
+        rt = route_truth.get(pkg, {})
+        pickup_options = rt.get("valid_pickups", [])
+        endpoint_options = rt.get("valid_dropoffs", [])
+        bali_transfer = rt.get("bali_transfer")
+        note = bali_transfer.get("note") if bali_transfer else None
         endpoints.append({
             **source_ref,
             "package_key": pkg,
             "origin": op.get("origin"),
             "ferry_included": ferry,
+            "standard_pickup_options": [p.get("label") for p in pickup_options],
+            "pickup_details": pickup_options,
             "standard_dropoff_options": options,
             "finish_details": finish_details,
-            "note": "\"Finish in Bali\" means a Ketapang/ferry crossing and optional Bali transfer, not a direct hotel drop unless stated." if ferry else None,
-            "source_evidence": ["core:" + CORE_ROUTE_MAP, "core:" + CORE_DROPOFFS],
-            "readiness": {"endpoint_chain": "available" if options else "unavailable"},
+            "endpoint_options": endpoint_options,
+            "bali_transfer": bali_transfer,
+            "note": note,
+            "source_evidence": ["core:" + CORE_ROUTE_MAP, "core:" + CORE_DROPOFFS, "core:" + CORE_ROUTE_TRUTH],
+            "readiness": {
+                "endpoint_chain": "available" if options else "unavailable",
+                "pickup_options": "available" if pickup_options else "unavailable",
+            },
         })
         if not options:
             gaps.append({"package_key": pkg, "capability": "endpoint_chain", "reason": "no standard_dropoff_options in route map"})
+        if not pickup_options:
+            gaps.append({"package_key": pkg, "capability": "pickup_options", "reason": "no valid_pickups in core standard-route-truth"})
 
         # --- accommodation rules (named overnights only; no supplier rates) ---
         accommodation.append({
@@ -342,6 +365,28 @@ def build(core_root: Path, release_id: str) -> dict[str, Any]:
     return {"objects": objects, "coverage": coverage, "gap_report": gap_report, "package_keys": package_keys}
 
 
+# Module-layer files (Phase A, PR #24): general-modules.json, package-variations.json,
+# module-compatibility.json, module-manifest.json. No script in this repo generates these
+# yet (they were hand-authored alongside module-manifest.json); this function only READS
+# the counts already on disk so a release-manifest rebuild never silently drops the
+# descriptive block that makes them discoverable (this repo authors nothing here either).
+def _module_layer_block(out_dir: Path) -> dict[str, Any] | None:
+    names = ["general-modules.json", "package-variations.json", "module-compatibility.json", "module-manifest.json"]
+    if not all((out_dir / n).exists() for n in names):
+        return None
+    module_manifest = read_json(out_dir / "module-manifest.json")
+    return {
+        "schema_version": module_manifest.get("schema_version", "general-modules-v1"),
+        "general-modules.json": len(read_json(out_dir / "general-modules.json")),
+        "package-variations.json": len(read_json(out_dir / "package-variations.json")),
+        "module-compatibility.json": 1,
+        "module-manifest.json": 1,
+        "note": "Reusable general modules + per-package variation projection derived from the existing release objects and the read-only jvto-itinerary-core intelligence layer. No new customer-facing facts authored; see module-manifest.json.",
+        "route_sequence_policy": "Customer-facing route_sequence is derived from the published itinerary (day_titles), not core's seeded route map. Operational route legs + feasibility are owned by jvto-itinerary-core and referenced via operational_route_ref; Bootstrap never asserts a directional route leg.",
+        "core_route_order_discrepancies_recorded_in": "module-manifest.json#core_route_order_discrepancies (core's operational map disagrees with the published order for some packages; the published order is authoritative for the customer).",
+    }
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(prog="build_customer_sales_release")
     parser.add_argument("--core-root", required=True, help="Path to a local jvto-itinerary-core checkout")
@@ -371,7 +416,7 @@ def main() -> None:
         "itinerary_core": {
             "repo": "sambuko82/jvto-itinerary-core",
             "revision": _git_revision(core_root),
-            "sources": {rel: _sha256_file(core_root / rel) for rel in [CORE_PRICING, CORE_CATALOG_INDEX, CORE_ROUTE_MAP, CORE_DROPOFFS, CORE_ALIASES]},
+            "sources": {rel: _sha256_file(core_root / rel) for rel in [CORE_PRICING, CORE_CATALOG_INDEX, CORE_ROUTE_MAP, CORE_DROPOFFS, CORE_ALIASES, CORE_ROUTE_TRUTH]},
         },
     }
     write_json(out_dir / "source-lock.json", source_lock)
@@ -384,10 +429,13 @@ def main() -> None:
         "package_count": built["coverage"]["package_count"],
         "object_counts": built["coverage"]["object_counts"],
         "capability_readiness": built["coverage"]["capability_readiness"],
-        "price_published": True,
-        "price_note": "Exact per-pax standard price tiers are published (business-approved). Availability still requires live confirmation.",
-        "excluded": ["supplier rates", "internal costs", "margin", "vendor allocation", "PII"],
     }
+    module_layer = _module_layer_block(out_dir)
+    if module_layer is not None:
+        manifest["module_layer"] = module_layer
+    manifest["price_published"] = True
+    manifest["price_note"] = "Exact per-pax standard price tiers are published (business-approved). Availability still requires live confirmation."
+    manifest["excluded"] = ["supplier rates", "internal costs", "margin", "vendor allocation", "PII"]
     write_json(out_dir / "release-manifest.json", manifest)
     print(f"Customer Sales Release written to {out_dir} ({built['coverage']['package_count']} packages)")
 
