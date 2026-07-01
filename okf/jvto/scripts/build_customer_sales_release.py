@@ -44,6 +44,10 @@ CORE_CATALOG_INDEX = "generated/itinerary-intelligence/package-catalog-index.jso
 CORE_ROUTE_MAP = "generated/itinerary-intelligence/11-package-route-map.json"
 CORE_DROPOFFS = "generated/itinerary-intelligence/02-dropoff-contexts.json"
 CORE_ALIASES = "generated/itinerary-intelligence/location-alias-registry.json"
+# Per-package classified standard route truth (valid pickups/dropoffs, structured
+# Bali-transfer boundary, per-field classification). Projected VERBATIM — the runtime
+# must never present a fact above the evidence class Core assigned it.
+CORE_ROUTE_TRUTH = "generated/itinerary-intelligence/agent-contract/standard-route-truth.json"
 
 # Tokens that must never appear in any emitted record (cost/margin/supplier/PII).
 FORBIDDEN_SUBSTRINGS = (
@@ -130,6 +134,7 @@ def build(core_root: Path, release_id: str) -> dict[str, Any]:
     route_map = {row["package_id"]: row for row in read_json(core_root / CORE_ROUTE_MAP)}
     dropoffs = {row["id"]: row for row in read_json(core_root / CORE_DROPOFFS)}
     aliases_raw = read_json(core_root / CORE_ALIASES)
+    route_truth = {p["package_key"]: p for p in read_json(core_root / CORE_ROUTE_TRUTH).get("packages", [])}
 
     catalog = read_json(BUNDLE_ROOT / "catalog.json")
     concepts = catalog.get("concepts", [])
@@ -221,19 +226,37 @@ def build(core_root: Path, release_id: str) -> dict[str, Any]:
             if any(_dropoff_matches(opt, ctx) for opt in options):
                 finish_details.append({"id": ctx_id, "label": ctx.get("label"), "type": ctx.get("type"),
                                        "connects_to": ctx.get("connects_to", []), "required_customer_fields": ctx.get("required_customer_fields", [])})
+        # Classified truth from Core (verbatim): valid pickups, classified endpoint options,
+        # and the structured Bali-transfer boundary. The old free-text "finish in Bali" note
+        # was mis-applied to Bali-ORIGIN packages that actually finish in Surabaya; the
+        # boundary is now direction-aware (from_bali / to_bali / both / none).
+        rt = route_truth.get(pkg, {})
+        pickup_options = rt.get("valid_pickups", [])
+        endpoint_options = rt.get("valid_dropoffs", [])
+        bali_transfer = rt.get("bali_transfer")
+        note = bali_transfer.get("note") if bali_transfer else None
         endpoints.append({
             **source_ref,
             "package_key": pkg,
             "origin": op.get("origin"),
             "ferry_included": ferry,
+            "standard_pickup_options": [p.get("label") for p in pickup_options],
+            "pickup_details": pickup_options,
             "standard_dropoff_options": options,
             "finish_details": finish_details,
-            "note": "\"Finish in Bali\" means a Ketapang/ferry crossing and optional Bali transfer, not a direct hotel drop unless stated." if ferry else None,
-            "source_evidence": ["core:" + CORE_ROUTE_MAP, "core:" + CORE_DROPOFFS],
-            "readiness": {"endpoint_chain": "available" if options else "unavailable"},
+            "endpoint_options": endpoint_options,
+            "bali_transfer": bali_transfer,
+            "note": note,
+            "source_evidence": ["core:" + CORE_ROUTE_MAP, "core:" + CORE_DROPOFFS, "core:" + CORE_ROUTE_TRUTH],
+            "readiness": {
+                "endpoint_chain": "available" if options else "unavailable",
+                "pickup_options": "available" if pickup_options else "unavailable",
+            },
         })
         if not options:
             gaps.append({"package_key": pkg, "capability": "endpoint_chain", "reason": "no standard_dropoff_options in route map"})
+        if not pickup_options:
+            gaps.append({"package_key": pkg, "capability": "pickup_options", "reason": "no valid_pickups in core standard-route-truth"})
 
         # --- accommodation rules (named overnights only; no supplier rates) ---
         accommodation.append({
@@ -371,7 +394,7 @@ def main() -> None:
         "itinerary_core": {
             "repo": "sambuko82/jvto-itinerary-core",
             "revision": _git_revision(core_root),
-            "sources": {rel: _sha256_file(core_root / rel) for rel in [CORE_PRICING, CORE_CATALOG_INDEX, CORE_ROUTE_MAP, CORE_DROPOFFS, CORE_ALIASES]},
+            "sources": {rel: _sha256_file(core_root / rel) for rel in [CORE_PRICING, CORE_CATALOG_INDEX, CORE_ROUTE_MAP, CORE_DROPOFFS, CORE_ALIASES, CORE_ROUTE_TRUTH]},
         },
     }
     write_json(out_dir / "source-lock.json", source_lock)
