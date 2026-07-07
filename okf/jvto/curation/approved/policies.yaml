@@ -170,6 +170,15 @@ records:
     medical staff, and the verified certificate is checked at the crater gate.
 
 
+    The certificate check has been in force at the gate since the site''s
+
+    January 2024 reopening (reported by Kompas at the time), and screening
+
+    covers basic fitness measures such as blood pressure and oxygen
+
+    saturation.
+
+
     Where a guest is advised not to hike, the group can continue while that
 
     person sits out.
@@ -198,6 +207,7 @@ records:
   citations:
   - https://tiket.bbksdajatim.org
   - https://bbksdajatim.org
+  - https://surabaya.kompas.com/read/2024/01/05/135127978/kawah-ijen-kembali-dibuka-pengunjung-wajib-bawa-surat-sehat-dan-punya
   source_refs:
   - source_id: SRC-POLICY-PACK
     repo: sambuko82/llm-wiki

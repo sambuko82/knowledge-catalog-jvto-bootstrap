@@ -11,7 +11,7 @@ tags:
 - hiking
 - blue-fire
 timestamp: '2026-07-07T00:00:00+07:00'
-status: reviewed
+status: qualified
 visibility: public
 last_verified: '2026-07-07'
 activity:
@@ -54,6 +54,16 @@ fire" — burning sulfuric gas visible before dawn under suitable conditions
   SE.1658/KSA.9/2024); JVTO coordinates the screening.
 - On JVTO tours, gas masks and trekking poles are provided as standard.
 
+# Fees & Tickets
+
+- Entrance tariff (BBKSDA, effective 2024-10-01): foreign visitors IDR 100,000
+  weekday / IDR 150,000 weekend; domestic IDR 20,000 / IDR 35,000.
+- Tickets are online-only via tiket.bbksdajatim.org, with a daily visitor cap
+  and cashless (QRIS) payment since 2025-01-31. JVTO handles park ticketing
+  and fees on its tours.
+- Figures are the published tariff at the 2026-07-07 source check; tariffs
+  and access rules change, so re-verify at booking time.
+
 # Related Concepts
 
 - [3D2N Ijen, Bromo & Madakaripura tour](/tours/from-surabaya/ijen-bromo-madakaripura-3d2n.md)
@@ -64,3 +74,4 @@ fire" — burning sulfuric gas visible before dawn under suitable conditions
 # Citations
 
 - https://bbksdajatim.org
+- https://tiket.bbksdajatim.org

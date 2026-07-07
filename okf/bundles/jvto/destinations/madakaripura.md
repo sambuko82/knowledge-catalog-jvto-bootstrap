@@ -8,7 +8,7 @@ tags:
 - east-java
 - waterfall
 - madakaripura
-timestamp: '2026-06-23T00:00:00+07:00'
+timestamp: '2026-07-07T00:00:00+07:00'
 status: reviewed
 visibility: public
 last_verified: '2026-06-26'
@@ -41,6 +41,10 @@ its proximity to Bromo makes it a natural same-day pairing.
   visitors get wet from the spray, so a raincoat is recommended.
 - JVTO guides accompany guests through the canyon; helmets at the entrance are
   provided by the local site management, not by JVTO.
+- The narrow canyon is rain-sensitive: heavy rain can trigger flash floods
+  and landslides, and site management closes access during high water. Visits
+  are scheduled to be out of the canyon before typical afternoon rains,
+  which is one reason the stop is paired with Bromo earlier in the day.
 
 # Related Concepts
 
