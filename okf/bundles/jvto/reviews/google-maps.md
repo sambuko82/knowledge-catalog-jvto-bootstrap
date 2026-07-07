@@ -9,7 +9,7 @@ tags:
 - google
 - social-proof
 - reputation
-timestamp: '2026-06-23T00:00:00+07:00'
+timestamp: '2026-07-07T00:00:00+07:00'
 status: reviewed
 visibility: public
 last_verified: '2026-05-26'
@@ -27,6 +27,11 @@ source_refs:
   source_class: direct_external_export
   captured_at: '2026-05-26'
   locator: pages 1-3 (123 reviews)
+- source_id: SRC-REVIEW-PATTERNS
+  repo: sambuko82/llm-wiki
+  path: wiki/reviews/review-patterns.md
+  source_class: operational_aggregate
+  captured_at: '2026-07-07'
 id: reviews/google-maps
 ---
 
@@ -51,6 +56,16 @@ the last reliable read.
 
 Google reviews name JVTO crew individually — most-mentioned: Gufron (16), Fredi
 (15), Rendi (14), Kiki (12). See the per-person concepts under `/people/crew/`.
+
+# Review Themes
+
+Across platforms, guest reviews cluster into five recurring themes:
+private-tour quality (dedicated guide and vehicle), guide knowledge and
+English communication, the Ijen blue-fire experience and its
+health-screening coordination, safety and trust (often referencing the
+founder's police background), and all-inclusive clarity with no surprise
+costs. Guide-and-driver pairings are often praised by name (e.g. Rendi
+with Fredi, Gufron with Joyo, Boy with Yandi).
 
 # Related Concepts
 

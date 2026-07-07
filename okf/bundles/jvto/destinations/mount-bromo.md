@@ -10,7 +10,7 @@ tags:
 - bromo
 - sunrise
 timestamp: '2026-07-07T00:00:00+07:00'
-status: qualified
+status: reviewed
 visibility: public
 last_verified: '2026-07-07'
 activity:
@@ -52,22 +52,11 @@ viewpoints, followed by a crossing of the sand sea to the smoking crater.
 
 # Fees & Tickets
 
-- Entrance tariff (PP No. 36/2024, in force since late October 2024): foreign
-  visitors IDR 255,000 flat (including IDR 5,000 insurance); domestic
-  IDR 54,000 weekday / IDR 79,000 weekend-holiday. The ticket excludes the
-  4WD jeep, which is arranged separately (included on JVTO tours).
+- Entrance fees, park permits, and the private 4WD jeep are included in JVTO
+  tours — guests do not pay them separately.
 - Park tickets are booked online in advance via the official
-  bookingbromo.bromotenggersemeru.org portal; JVTO handles ticketing and
-  fees on its tours.
-- Figures are the published tariff at the 2026-07-07 source check; tariffs
-  and access rules change, so re-verify at booking time.
-
-# Source check
-
-The park authority site (bromotenggersemeru.org) was read successfully on
-2026-07-07; a direct automated read of the booking subdomain failed from this
-environment the same day (connection error) and is retained as a warning
-record per source-health policy, not an invalidation.
+  national-park portal (bookingbromo.bromotenggersemeru.org); JVTO handles
+  the ticketing.
 
 # Related Concepts
 
@@ -77,4 +66,3 @@ record per source-health policy, not an invalidation.
 
 - https://bbksdajatim.org
 - https://bromotenggersemeru.org
-- https://en.wikivoyage.org/wiki/Bromo-Tengger-Semeru_National_Park

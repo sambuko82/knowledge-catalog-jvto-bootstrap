@@ -11,7 +11,7 @@ tags:
 - hiking
 - blue-fire
 timestamp: '2026-07-07T00:00:00+07:00'
-status: qualified
+status: reviewed
 visibility: public
 last_verified: '2026-07-07'
 activity:
@@ -56,12 +56,11 @@ fire" — burning sulfuric gas visible before dawn under suitable conditions
 
 # Fees & Tickets
 
-- Entrance fees are set by BBKSDA and published on its official online
-  ticketing portal (tiket.bbksdajatim.org); check the portal for the current
-  tariff, which changes by government decree.
-- Tickets are online-only via that portal, with a daily visitor cap and
-  cashless (QRIS) payment since 2025-01-31. JVTO handles park ticketing and
-  fees on its tours.
+- Entrance fees and park permits are included in JVTO tours — guests do not
+  pay them separately.
+- Park tickets are online-only via the official BBKSDA portal
+  (tiket.bbksdajatim.org), with a daily visitor cap and cashless (QRIS)
+  payment since 2025-01-31; JVTO handles the ticketing.
 
 # Related Concepts
 

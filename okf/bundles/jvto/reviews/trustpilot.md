@@ -9,7 +9,7 @@ tags:
 - trustpilot
 - social-proof
 - reputation
-timestamp: '2026-06-23T00:00:00+07:00'
+timestamp: '2026-07-07T00:00:00+07:00'
 status: reviewed
 visibility: public
 last_verified: '2026-06-25'
@@ -30,6 +30,11 @@ source_refs:
   path: wiki/sources/trustpilot-reviews-2026.md
   source_class: direct_external_export
   captured_at: '2026-05-18'
+- source_id: SRC-REVIEW-PATTERNS
+  repo: sambuko82/llm-wiki
+  path: wiki/reviews/review-patterns.md
+  source_class: operational_aggregate
+  captured_at: '2026-07-07'
 id: reviews/trustpilot
 ---
 
@@ -53,6 +58,16 @@ the 2026-06-25 observation is retained as the last successful read, not invalida
 
 Trustpilot reviews name JVTO crew individually — most-mentioned: Boy (13), Joyo
 (15), Rendi (7), Yandi (7). See the per-person concepts under `/people/crew/`.
+
+# Review Themes
+
+Across platforms, guest reviews cluster into five recurring themes:
+private-tour quality (dedicated guide and vehicle), guide knowledge and
+English communication, the Ijen blue-fire experience and its
+health-screening coordination, safety and trust (often referencing the
+founder's police background), and all-inclusive clarity with no surprise
+costs. Reviews in Spanish, French, Dutch, Chinese, and Russian corroborate
+the service for non-English speakers.
 
 # Related Concepts
 

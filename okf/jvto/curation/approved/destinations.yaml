@@ -12,7 +12,7 @@ records:
   - hiking
   - blue-fire
   timestamp: '2026-07-07T00:00:00+07:00'
-  status: qualified
+  status: reviewed
   visibility: public
   last_verified: '2026-07-07'
   activity:
@@ -31,11 +31,10 @@ records:
     \ steep trail, typically started around midnight or pre-dawn.\n- Access is managed by the East Java\
     \ conservation authority (BBKSDA). A health\n  certificate is mandatory for every guest before crater\
     \ entry (BBKSDA\n  SE.1658/KSA.9/2024); JVTO coordinates the screening.\n- On JVTO tours, gas masks and trekking poles are\
-    \ provided as standard.\n\n# Fees & Tickets\n\n- Entrance fees are set by BBKSDA and published on its\
-    \ official online\n  ticketing portal (tiket.bbksdajatim.org); check the portal for the current\n\
-    \  tariff, which changes by government decree.\n- Tickets are online-only via that portal, with a daily\
-    \ visitor cap and\n  cashless (QRIS) payment since 2025-01-31. JVTO handles park ticketing and\n  fees\
-    \ on its tours.\n\n# Related Concepts\n\n- [3D2N Ijen, Bromo & Madakaripura tour](/tours/from-surabaya/ijen-bromo-madakaripura-3d2n.md)\n\
+    \ provided as standard.\n\n# Fees & Tickets\n\n- Entrance fees and park permits are included in JVTO tours\
+    \ — guests do not\n  pay them separately.\n- Park tickets are online-only via the official BBKSDA portal\n\
+    \  (tiket.bbksdajatim.org), with a daily visitor cap and cashless (QRIS)\n  payment since 2025-01-31;\
+    \ JVTO handles the ticketing.\n\n# Related Concepts\n\n- [3D2N Ijen, Bromo & Madakaripura tour](/tours/from-surabaya/ijen-bromo-madakaripura-3d2n.md)\n\
     - [HPWKI](/trust/partners/hpwki.md)\n- [BBKSDA Ijen Guide Training 2024](/references/bbksda-ijen-guide-training-2024.md)\n\
     - [Ijen Health Screening](/policies/ijen-health-screening.md)\n"
   citations:
@@ -64,7 +63,7 @@ records:
   - bromo
   - sunrise
   timestamp: '2026-07-07T00:00:00+07:00'
-  status: qualified
+  status: reviewed
   visibility: public
   last_verified: '2026-07-07'
   activity:
@@ -81,20 +80,13 @@ records:
     \ sunrise; a 4WD jeep crosses the\n  sand sea, then a short walk (or optional horse ride) reaches\
     \ the crater rim.\n- The area is managed by the national-park / BBKSDA authority.\n- Volcanic activity\
     \ can occasionally restrict crater access; check the current\n  status before travel.\n\n# Fees &\
-    \ Tickets\n\n- Entrance tariff (PP No. 36/2024, in force since late October 2024): foreign\n  visitors\
-    \ IDR 255,000 flat (including IDR 5,000 insurance); domestic\n  IDR 54,000 weekday / IDR 79,000 weekend-holiday.\
-    \ The ticket excludes the\n  4WD jeep, which is arranged separately (included on JVTO tours).\n- Park\
-    \ tickets are booked online in advance via the official\n  bookingbromo.bromotenggersemeru.org portal;\
-    \ JVTO handles ticketing and\n  fees on its tours.\n- Figures are the published tariff at the 2026-07-07\
-    \ source check; tariffs\n  and access rules change, so re-verify at booking time.\n\n# Source check\n\
-    \nThe park authority site (bromotenggersemeru.org) was read successfully on\n2026-07-07; a direct automated\
-    \ read of the booking subdomain failed from this\nenvironment the same day (connection error) and is\
-    \ retained as a warning\nrecord per source-health policy, not an invalidation.\n\n# Related\
+    \ Tickets\n\n- Entrance fees, park permits, and the private 4WD jeep are included in JVTO\n  tours —\
+    \ guests do not pay them separately.\n- Park tickets are booked online in advance via the official\n\
+    \  national-park portal (bookingbromo.bromotenggersemeru.org); JVTO handles\n  the ticketing.\n\n# Related\
     \ Concepts\n\n- [All tours](/tours/index.md)\n"
   citations:
   - https://bbksdajatim.org
   - https://bromotenggersemeru.org
-  - https://en.wikivoyage.org/wiki/Bromo-Tengger-Semeru_National_Park
   source_refs:
   - source_id: SRC-DEST
     repo: sambuko82/llm-wiki

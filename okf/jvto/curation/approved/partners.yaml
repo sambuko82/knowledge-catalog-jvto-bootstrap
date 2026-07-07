@@ -119,3 +119,77 @@ records:
     path: wiki/people/crew-registry.md
     source_class: operational_direct
     captured_at: '2026-05-26'
+- id: trust/partners/isic
+  type: Partner
+  title: ISIC (International Student Identity Card)
+  description: JVTO is listed as a provider in ISIC's public discount directory (provider ID 259268),
+    the basis for its student pricing on selected packages.
+  resource: https://www.isic.org/discounts/?providerId=259268
+  tags:
+  - partner
+  - isic
+  - student
+  - provider-listing
+  timestamp: '2026-07-07T00:00:00+07:00'
+  status: needs_review
+  visibility: public
+  relationship_type: provider_listing
+  body: '# Relationship
+
+
+    JVTO is listed as a provider in ISIC''s public discount directory under
+
+    provider ID 259268. JVTO uses ISIC verification (Alive Verify API) to
+
+    confirm student status for its student pricing on selected packages.
+
+
+    # Claim Boundary
+
+
+    This concept records a public ISIC provider-directory listing only. It
+
+    does not establish a certification, endorsement, corporate membership, or
+
+    partnership beyond that listing.
+
+
+    # Source check
+
+
+    NOT RELEASE-ELIGIBLE YET (partner boundary: provider listing only after
+
+    direct provider evidence is available). Direct reads on 2026-07-07 — an
+
+    HTTP fetch and a headless render — could not render the JS-only directory
+
+    entry from this environment; the listing is so far anchored only on the
+
+    knowledge-base source-health record (provider 259268 recorded live).
+
+    Promote to reviewed once the rendered provider entry identifying JVTO is
+
+    captured directly (screenshot or rendered-DOM capture).
+
+
+    # Related Concepts
+
+
+    - [ISIC Student Pricing](/policies/isic-student.md)
+
+    - [Java Volcano Tour Operator (JVTO)](/organization.md)
+
+    '
+  citations:
+  - https://www.isic.org/discounts/?providerId=259268
+  source_refs:
+  - source_id: SRC-TRUST-SIGNALS
+    repo: sambuko82/llm-wiki
+    path: wiki/credentials/trust-signals.md
+    source_class: operational_direct
+    captured_at: '2026-07-07'
+  - source_id: SRC-LEGAL-LICENSES
+    repo: sambuko82/llm-wiki
+    path: wiki/credentials/legal-licenses.md
+    source_class: operational_direct
+    captured_at: '2026-07-07'
