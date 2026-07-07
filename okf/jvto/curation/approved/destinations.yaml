@@ -11,16 +11,16 @@ records:
   - ijen
   - hiking
   - blue-fire
-  timestamp: '2026-06-23T00:00:00+07:00'
-  status: reviewed
+  timestamp: '2026-07-07T00:00:00+07:00'
+  status: qualified
   visibility: public
-  last_verified: '2026-06-26'
+  last_verified: '2026-07-07'
   activity:
     typical_schedule: Hotel departure around midnight; the crater rim is reached near dawn for the
       blue fire and sunrise; finish mid-morning.
     effort: hard
     access_requirements:
-    - BBKSDA health screening and certificate when their regulations are in effect
+    - BBKSDA-required health certificate, mandatory for every guest (screening coordinated by JVTO)
     - gas mask and trekking poles (provided by JVTO)
     - licensed local guide
   body: "# Overview\n\nKawah Ijen is an active volcano on the Banyuwangi–Bondowoso border of East\nJava,\
@@ -29,13 +29,18 @@ records:
     \ conditions\n(not guaranteed). An active sulfur-mining operation works inside the crater.\n\n# Visiting\n\
     \n- Reached on foot from the Paltuding trailhead — roughly 3 km one way, about\n  90 minutes up a\
     \ steep trail, typically started around midnight or pre-dawn.\n- Access is managed by the East Java\
-    \ conservation authority (BBKSDA). When\n  their regulations are in effect, crater access can require\
-    \ a short health\n  screening and certificate.\n- On JVTO tours, gas masks and trekking poles are\
-    \ provided as standard.\n\n# Related Concepts\n\n- [3D2N Ijen, Bromo & Madakaripura tour](/tours/from-surabaya/ijen-bromo-madakaripura-3d2n.md)\n\
+    \ conservation authority (BBKSDA). A health\n  certificate is mandatory for every guest before crater\
+    \ entry (BBKSDA\n  SE.1658/KSA.9/2024); JVTO coordinates the screening.\n- On JVTO tours, gas masks and trekking poles are\
+    \ provided as standard.\n\n# Fees & Tickets\n\n- Entrance fees are set by BBKSDA and published on its\
+    \ official online\n  ticketing portal (tiket.bbksdajatim.org); check the portal for the current\n\
+    \  tariff, which changes by government decree.\n- Tickets are online-only via that portal, with a daily\
+    \ visitor cap and\n  cashless (QRIS) payment since 2025-01-31. JVTO handles park ticketing and\n  fees\
+    \ on its tours.\n\n# Related Concepts\n\n- [3D2N Ijen, Bromo & Madakaripura tour](/tours/from-surabaya/ijen-bromo-madakaripura-3d2n.md)\n\
     - [HPWKI](/trust/partners/hpwki.md)\n- [BBKSDA Ijen Guide Training 2024](/references/bbksda-ijen-guide-training-2024.md)\n\
     - [Ijen Health Screening](/policies/ijen-health-screening.md)\n"
   citations:
   - https://bbksdajatim.org
+  - https://tiket.bbksdajatim.org
   source_refs:
   - source_id: SRC-DEST
     repo: sambuko82/llm-wiki
@@ -58,10 +63,10 @@ records:
   - volcano
   - bromo
   - sunrise
-  timestamp: '2026-06-23T00:00:00+07:00'
-  status: reviewed
+  timestamp: '2026-07-07T00:00:00+07:00'
+  status: qualified
   visibility: public
-  last_verified: '2026-06-26'
+  last_verified: '2026-07-07'
   activity:
     typical_schedule: Pre-dawn departure (around 03:00) by 4WD jeep for the sunrise viewpoint, then
       a crossing of the sand sea and a short ascent to the crater rim; finish mid-morning.
@@ -75,10 +80,21 @@ records:
     \ the sand sea to the smoking crater.\n\n# Visiting\n\n- A typical visit departs around 03:00 for\
     \ sunrise; a 4WD jeep crosses the\n  sand sea, then a short walk (or optional horse ride) reaches\
     \ the crater rim.\n- The area is managed by the national-park / BBKSDA authority.\n- Volcanic activity\
-    \ can occasionally restrict crater access; check the current\n  status before travel.\n\n# Related\
+    \ can occasionally restrict crater access; check the current\n  status before travel.\n\n# Fees &\
+    \ Tickets\n\n- Entrance tariff (PP No. 36/2024, in force since late October 2024): foreign\n  visitors\
+    \ IDR 255,000 flat (including IDR 5,000 insurance); domestic\n  IDR 54,000 weekday / IDR 79,000 weekend-holiday.\
+    \ The ticket excludes the\n  4WD jeep, which is arranged separately (included on JVTO tours).\n- Park\
+    \ tickets are booked online in advance via the official\n  bookingbromo.bromotenggersemeru.org portal;\
+    \ JVTO handles ticketing and\n  fees on its tours.\n- Figures are the published tariff at the 2026-07-07\
+    \ source check; tariffs\n  and access rules change, so re-verify at booking time.\n\n# Source check\n\
+    \nThe park authority site (bromotenggersemeru.org) was read successfully on\n2026-07-07; a direct automated\
+    \ read of the booking subdomain failed from this\nenvironment the same day (connection error) and is\
+    \ retained as a warning\nrecord per source-health policy, not an invalidation.\n\n# Related\
     \ Concepts\n\n- [All tours](/tours/index.md)\n"
   citations:
   - https://bbksdajatim.org
+  - https://bromotenggersemeru.org
+  - https://en.wikivoyage.org/wiki/Bromo-Tengger-Semeru_National_Park
   source_refs:
   - source_id: SRC-DEST
     repo: sambuko82/llm-wiki
@@ -135,7 +151,7 @@ records:
   - east-java
   - waterfall
   - madakaripura
-  timestamp: '2026-06-23T00:00:00+07:00'
+  timestamp: '2026-07-07T00:00:00+07:00'
   status: reviewed
   visibility: public
   last_verified: '2026-06-26'
@@ -151,7 +167,11 @@ records:
     \ 14th-century Majapahit prime minister, and\nits proximity to Bromo makes it a natural same-day pairing.\n\
     \n# Visiting\n\n- Reached by a gorge walk of roughly 1.5 km over wet, slippery ground;\n  visitors\
     \ get wet from the spray, so a raincoat is recommended.\n- JVTO guides accompany guests through the\
-    \ canyon; helmets at the entrance are\n  provided by the local site management, not by JVTO.\n\n#\
+    \ canyon; helmets at the entrance are\n  provided by the local site management, not by JVTO.\n- The\
+    \ narrow canyon is rain-sensitive: heavy rain can trigger flash floods\n  and landslides, and site\
+    \ management closes access during high water. Visits\n  are scheduled to be out of the canyon before\
+    \ typical afternoon rains,\n  which is one reason the stop is paired with Bromo earlier in the day.\n\
+    \n#\
     \ Related Concepts\n\n- [All tours](/tours/index.md)\n"
   source_refs:
   - source_id: SRC-DEST

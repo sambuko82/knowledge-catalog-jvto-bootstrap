@@ -9,10 +9,10 @@ tags:
 - volcano
 - bromo
 - sunrise
-timestamp: '2026-06-23T00:00:00+07:00'
-status: reviewed
+timestamp: '2026-07-07T00:00:00+07:00'
+status: qualified
 visibility: public
-last_verified: '2026-06-26'
+last_verified: '2026-07-07'
 activity:
   typical_schedule: Pre-dawn departure (around 03:00) by 4WD jeep for the sunrise
     viewpoint, then a crossing of the sand sea and a short ascent to the crater rim;
@@ -50,6 +50,25 @@ viewpoints, followed by a crossing of the sand sea to the smoking crater.
 - Volcanic activity can occasionally restrict crater access; check the current
   status before travel.
 
+# Fees & Tickets
+
+- Entrance tariff (PP No. 36/2024, in force since late October 2024): foreign
+  visitors IDR 255,000 flat (including IDR 5,000 insurance); domestic
+  IDR 54,000 weekday / IDR 79,000 weekend-holiday. The ticket excludes the
+  4WD jeep, which is arranged separately (included on JVTO tours).
+- Park tickets are booked online in advance via the official
+  bookingbromo.bromotenggersemeru.org portal; JVTO handles ticketing and
+  fees on its tours.
+- Figures are the published tariff at the 2026-07-07 source check; tariffs
+  and access rules change, so re-verify at booking time.
+
+# Source check
+
+The park authority site (bromotenggersemeru.org) was read successfully on
+2026-07-07; a direct automated read of the booking subdomain failed from this
+environment the same day (connection error) and is retained as a warning
+record per source-health policy, not an invalidation.
+
 # Related Concepts
 
 - [All tours](/tours/index.md)
@@ -57,3 +76,5 @@ viewpoints, followed by a crossing of the sand sea to the smoking crater.
 # Citations
 
 - https://bbksdajatim.org
+- https://bromotenggersemeru.org
+- https://en.wikivoyage.org/wiki/Bromo-Tengger-Semeru_National_Park

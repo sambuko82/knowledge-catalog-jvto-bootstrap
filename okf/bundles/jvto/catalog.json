@@ -4,11 +4,12 @@
   "concepts": [
     {
       "citations": [
-        "https://bbksdajatim.org"
+        "https://bbksdajatim.org",
+        "https://tiket.bbksdajatim.org"
       ],
       "description": "Active East Java volcano known for its turquoise acidic crater lake, pre-dawn \"blue fire\", and active sulfur mining, reached by a guided night hike.",
       "id": "destinations/kawah-ijen",
-      "last_verified": "2026-06-26",
+      "last_verified": "2026-07-07",
       "links_to": [
         "policies/ijen-health-screening",
         "references/bbksda-ijen-guide-training-2024",
@@ -17,7 +18,7 @@
       ],
       "path": "destinations/kawah-ijen.md",
       "resource": "",
-      "status": "reviewed",
+      "status": "qualified",
       "tags": [
         "destination",
         "east-java",
@@ -51,15 +52,17 @@
     },
     {
       "citations": [
-        "https://bbksdajatim.org"
+        "https://bbksdajatim.org",
+        "https://bromotenggersemeru.org",
+        "https://en.wikivoyage.org/wiki/Bromo-Tengger-Semeru_National_Park"
       ],
       "description": "Active East Java volcano in the Tengger caldera \"Sea of Sand\", famous for its pre-dawn sunrise panorama reached by 4WD jeep.",
       "id": "destinations/mount-bromo",
-      "last_verified": "2026-06-26",
+      "last_verified": "2026-07-07",
       "links_to": [],
       "path": "destinations/mount-bromo.md",
       "resource": "",
-      "status": "reviewed",
+      "status": "qualified",
       "tags": [
         "destination",
         "east-java",
@@ -484,7 +487,7 @@
     },
     {
       "citations": [],
-      "description": "The doctor JVTO identifies for its applicable Ijen pre-hike health-screening coordination.",
+      "description": "The doctor JVTO identifies for its Ijen pre-hike health-screening coordination.",
       "id": "people/dr-ahmad-irwandanu",
       "last_verified": "",
       "links_to": [
@@ -568,16 +571,20 @@
       "visibility": "public"
     },
     {
-      "citations": [],
-      "description": "For Ijen crater hikes, JVTO coordinates a health screening with licensed medical staff when BBKSDA regulations require it.",
+      "citations": [
+        "https://tiket.bbksdajatim.org",
+        "https://bbksdajatim.org",
+        "https://surabaya.kompas.com/read/2024/01/05/135127978/kawah-ijen-kembali-dibuka-pengunjung-wajib-bawa-surat-sehat-dan-punya"
+      ],
+      "description": "A health certificate is mandatory for every guest before Kawah Ijen crater entry; JVTO coordinates the screening with licensed medical staff.",
       "id": "policies/ijen-health-screening",
-      "last_verified": "2026-06-23",
+      "last_verified": "2026-07-07",
       "links_to": [
         "destinations/kawah-ijen"
       ],
       "path": "policies/ijen-health-screening.md",
       "resource": "",
-      "status": "reviewed",
+      "status": "qualified",
       "tags": [
         "policy",
         "ijen",
@@ -617,7 +624,7 @@
       "citations": [],
       "description": "JVTO tours are all-inclusive of transport, crew, entrance fees, water, and stated meals; flights, insurance, tips, and personal expenses are excluded.",
       "id": "policies/inclusions-exclusions",
-      "last_verified": "2026-06-23",
+      "last_verified": "2026-07-07",
       "links_to": [],
       "path": "policies/inclusions-exclusions.md",
       "resource": "",
@@ -1372,14 +1379,18 @@
       "visibility": "public"
     },
     {
-      "citations": [],
+      "citations": [
+        "https://travel.kompas.com/read/2023/06/25/210100227/lama-perjalanan-kapal-feri-ketapang-gilimanuk-jangan-bingung-karena-zona",
+        "https://bali.bisnis.com/read/20241031/537/1812258/asdp-lakukan-penyesuaian-tarif-lintas-penyeberangan-ketapang-gilimanuk",
+        "https://trip.ferizy.com"
+      ],
       "description": "Choosing your origin — the destinations are the same volcanoes and waterfalls; the difference is logistics, transfer times, and (for Bali) a ferry crossing.",
       "id": "travel-guides/surabaya-vs-bali-starting-point",
-      "last_verified": "2026-06-23",
+      "last_verified": "2026-07-07",
       "links_to": [],
       "path": "travel-guides/surabaya-vs-bali-starting-point.md",
       "resource": "",
-      "status": "reviewed",
+      "status": "qualified",
       "tags": [
         "travel-guide",
         "planning",
@@ -1392,17 +1403,22 @@
       "visibility": "public"
     },
     {
-      "citations": [],
+      "citations": [
+        "https://www.esdm.go.id/en/media-center/news-archives/status-g-ijen-diturunkan-dari-siaga-menjadi-waspada",
+        "https://jatim.antaranews.com/berita/819779/8-september-taman-wisata-alam-kawah-ijen-kembali-dibuka",
+        "https://volcano.si.edu/showreport.cfm?wvar=GVP.WVAR20240807-263350"
+      ],
       "description": "What happens when conditions change — Bromo and Ijen are active volcanoes, and JVTO follows authority instructions and activates a Plan-B if access is restricted.",
       "id": "travel-guides/weather-and-closures",
-      "last_verified": "2026-06-23",
+      "last_verified": "2026-07-07",
       "links_to": [
+        "destinations/kawah-ijen",
         "destinations/mount-bromo",
         "policies/natural-phenomena"
       ],
       "path": "travel-guides/weather-and-closures.md",
       "resource": "",
-      "status": "reviewed",
+      "status": "qualified",
       "tags": [
         "travel-guide",
         "weather",
@@ -1416,9 +1432,9 @@
     },
     {
       "citations": [],
-      "description": "For Ijen crater hikes, JVTO coordinates a health screening with a licensed doctor when conservation-authority rules require it, included in the tour.",
+      "description": "A health certificate is mandatory for every guest before Kawah Ijen crater entry; JVTO coordinates the screening with a licensed doctor, included in the tour.",
       "id": "trust/claims/medical-screening",
-      "last_verified": "2026-06-23",
+      "last_verified": "2026-07-07",
       "links_to": [
         "destinations/kawah-ijen",
         "people/dr-ahmad-irwandanu",
@@ -1898,6 +1914,10 @@
     {
       "source": "travel-guides/safety-on-tours",
       "target": "trust/claims/police-led"
+    },
+    {
+      "source": "travel-guides/weather-and-closures",
+      "target": "destinations/kawah-ijen"
     },
     {
       "source": "travel-guides/weather-and-closures",

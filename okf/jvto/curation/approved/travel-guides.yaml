@@ -138,10 +138,10 @@ records:
   - closures
   - volcanic-activity
   - plan-b
-  timestamp: '2026-06-23T00:00:00+07:00'
-  status: reviewed
+  timestamp: '2026-07-07T00:00:00+07:00'
+  status: qualified
   visibility: public
-  last_verified: '2026-06-23'
+  last_verified: '2026-07-07'
   body: '# Overview
 
 
@@ -165,6 +165,33 @@ records:
     that varies each year and can restrict crater access during that window.
 
 
+    # Who Decides Closures
+
+
+    Two authorities are involved, and they answer different questions. Volcanic
+
+    alert levels (1–4) are set nationally by the geological agency (PVMBG /
+
+    Badan Geologi, published on MAGMA Indonesia); the on-the-ground decision to
+
+    close or reopen a park area is then made by the park authority — BBKSDA
+
+    East Java for Kawah Ijen, the TNBTS national-park office for Bromo. In
+
+    2024, for example, Ijen was closed in mid-July after volcanic unrest, the
+
+    alert was lowered in mid-August, and BBKSDA reopened the site on
+
+    8 September 2024.
+
+
+    Alert status changes without notice — JVTO monitors it operationally, and
+
+    the live level can be re-checked any time on MAGMA Indonesia
+
+    (magma.esdm.go.id) or bbksdajatim.org.
+
+
     # Related Concepts
 
 
@@ -172,7 +199,13 @@ records:
 
     - [Mount Bromo](/destinations/mount-bromo.md)
 
+    - [Kawah Ijen](/destinations/kawah-ijen.md)
+
     '
+  citations:
+  - https://www.esdm.go.id/en/media-center/news-archives/status-g-ijen-diturunkan-dari-siaga-menjadi-waspada
+  - https://jatim.antaranews.com/berita/819779/8-september-taman-wisata-alam-kawah-ijen-kembali-dibuka
+  - https://volcano.si.edu/showreport.cfm?wvar=GVP.WVAR20240807-263350
   source_refs:
   - source_id: SRC-OPS-FACTS
     repo: sambuko82/llm-wiki
@@ -233,10 +266,10 @@ records:
   - surabaya
   - bali
   - logistics
-  timestamp: '2026-06-23T00:00:00+07:00'
-  status: reviewed
+  timestamp: '2026-07-07T00:00:00+07:00'
+  status: qualified
   visibility: public
-  last_verified: '2026-06-23'
+  last_verified: '2026-07-07'
   body: '# Overview
 
 
@@ -251,12 +284,47 @@ records:
     Choose the origin that fits your flights and timeline.
 
 
+    # The Bali Ferry Crossing
+
+
+    Bali-origin routes cross the Ketapang–Gilimanuk strait. Actual sailing time
+
+    is roughly 45–60 minutes; itineraries that look like a 2-hour crossing are
+
+    usually counting the 1-hour clock change between Bali (WITA) and Java
+
+    (WIB). The ferry runs around the clock, roughly hourly, with a full stop
+
+    during the Balinese Nyepi day each year.
+
+
+    Ferry tickets are online-only via the official Ferizy platform — on-site
+
+    purchase has been abolished, and a GPS geofence blocks online purchase near
+
+    the ports, so tickets must be held before arriving at the harbor. JVTO
+
+    pre-books the crossing on Bali-origin tours. For reference, the regular
+
+    adult passenger fare is IDR 11,100 under tariff decree KM 131/2024 (in
+
+    force since November 2024); vehicle classes and holiday periods carry
+
+    higher tariffs, and fares change by decree — figures are as of the
+
+    2026-07-07 source check.
+
+
     # Related Concepts
 
 
     - [All tours](/tours/index.md)
 
     '
+  citations:
+  - https://travel.kompas.com/read/2023/06/25/210100227/lama-perjalanan-kapal-feri-ketapang-gilimanuk-jangan-bingung-karena-zona
+  - https://bali.bisnis.com/read/20241031/537/1812258/asdp-lakukan-penyesuaian-tarif-lintas-penyeberangan-ketapang-gilimanuk
+  - https://trip.ferizy.com
   source_refs:
   - source_id: SRC-OPS-FACTS
     repo: sambuko82/llm-wiki

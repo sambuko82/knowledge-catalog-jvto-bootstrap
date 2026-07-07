@@ -25,12 +25,19 @@ Rules:
   JVTO-18 the JVTO website (a secondary presentation layer) may not be the SOLE evidence for a claim;
           a source_refs anchor or a non-website external citation/resource must also be present
           (config: secondary_presentation_domains)
+  JVTO-20 claim-boundary denylist: no over-claim / superseded-framing regex match on an active
+          paragraph (config: claim_boundaries + claim_boundary_context_markers; ported from
+          llm-wiki scripts/claim_boundaries.yml)
+  JVTO-21 freshness SLA, WARNING only: a verified/qualified concept whose last verification date
+          exceeds its type's stale_after_days is surfaced as a source-health worklist item
+          (config: freshness.stale_after_days; ported from llm-wiki's F1 compiler rule)
 """
 from __future__ import annotations
 
 import argparse
 import re
 import sys
+from datetime import date
 from pathlib import Path
 
 from common import BUNDLE_ROOT, BUILD_ROOT, RESERVED_FILENAMES, parse_frontmatter, read_yaml, utc_now, write_json
@@ -86,6 +93,22 @@ def main() -> int:
     source_ref_types = set(rules.get("source_ref_required_types", []))
     source_ref_fields = list(rules.get("source_ref_required_fields", []))
     stale_claims = rules.get("stale_review_claims", []) or []
+    # JVTO-21 config: per-type freshness SLA in days (ported from llm-wiki's F1 rule).
+    freshness_sla = {
+        str(ctype): int(days)
+        for ctype, days in ((rules.get("freshness", {}) or {}).get("stale_after_days", {}) or {}).items()
+    }
+    # JVTO-20 config: claim-boundary denylist (ported from llm-wiki claim_boundaries.yml).
+    boundary_markers = [str(m).lower() for m in rules.get("claim_boundary_context_markers", []) or []]
+    claim_boundaries: list[tuple[str, re.Pattern[str], str]] = []
+    for spec in rules.get("claim_boundaries", []) or []:
+        pattern = str(spec.get("pattern", "")).strip()
+        if pattern:
+            claim_boundaries.append((
+                str(spec.get("id", "UNNAMED")),
+                re.compile(pattern),
+                str(spec.get("message", "Claim boundary violated.")),
+            ))
     scope_path = Path(__file__).resolve().parents[1] / "config" / "source-scope.yaml"
     scope = read_yaml(scope_path) if scope_path.exists() else {}
     deny_by_repo = {
@@ -169,6 +192,21 @@ def main() -> int:
         if status in {"verified", "qualified"} and all(field_missing(meta, f) for f in VERIFICATION_FIELDS):
             errors.append({"rule": "JVTO-09", "path": relative, "message": f"Status {status!r} requires verification metadata ({' or '.join(VERIFICATION_FIELDS)})."})
 
+        # JVTO-21: freshness SLA, WARNING only — never an error and never a release blocker
+        # (external staleness must not auto-invalidate a concept). A verified/qualified concept
+        # past its type's SLA becomes a source-health worklist item in the validation report.
+        if freshness_sla and status in {"verified", "qualified"}:
+            sla_days = freshness_sla.get(str(meta.get("type")))
+            verified_on = next((str(meta.get(f)).strip() for f in VERIFICATION_FIELDS if not field_missing(meta, f)), "")
+            if sla_days and verified_on:
+                try:
+                    age_days = (date.today() - date.fromisoformat(verified_on[:10])).days
+                except ValueError:
+                    warnings.append({"rule": "JVTO-21", "path": relative, "message": f"Unparseable verification date {verified_on!r}; cannot measure freshness SLA."})
+                else:
+                    if age_days > sla_days:
+                        warnings.append({"rule": "JVTO-21", "path": relative, "message": f"Last verification {verified_on[:10]} is {age_days} days old (SLA {sla_days}d for {meta.get('type')}); schedule a source-health re-check."})
+
         concept_id = str(meta.get("id", "")).strip()
         if concept_id:
             if concept_id in seen_ids:
@@ -225,6 +263,21 @@ def main() -> int:
             )
             if hit:
                 errors.append({"rule": "JVTO-11", "path": relative, "message": f"Stale review count {count} near '{platform}'."})
+
+        # JVTO-20: claim-boundary denylist. An affirmative match on an active paragraph fails the
+        # concept; a paragraph carrying a context marker records a superseded/unsupported value
+        # (e.g. a "# Claim Boundary" section) and is skipped. Paragraphs are whitespace-flattened
+        # so wrapped prose cannot dodge a pattern. Each boundary reports at most once per concept.
+        if claim_boundaries:
+            hit_boundaries: set[str] = set()
+            for block in re.split(r"\n\s*\n", text):
+                flat = " ".join(block.split())
+                if not flat or any(marker in flat.lower() for marker in boundary_markers):
+                    continue
+                for boundary_id, boundary_re, boundary_msg in claim_boundaries:
+                    if boundary_id not in hit_boundaries and boundary_re.search(flat):
+                        hit_boundaries.add(boundary_id)
+                        errors.append({"rule": "JVTO-20", "path": relative, "message": f"[{boundary_id}] {boundary_msg}"})
 
         # JVTO-12: provenance required for Person + records carrying observation/operational/commercial fields.
         source_refs = meta.get("source_refs")

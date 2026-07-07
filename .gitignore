@@ -22,3 +22,7 @@ okf/bundles/jvto/viz.html
 *.zip
 *.key
 .env
+
+# Local agent/tooling session artifacts — never repo data.
+.gstack/
+.superpowers/

@@ -1,4 +1,0 @@
-{"ts":"2026-06-25T04:11:17.791Z","cmd":"goto","args":"https://www.trustpilot.com/review/javavolcano-touroperator.com","origin":"https://www.trustpilot.com/review/javavolcano-touroperator.com","durationMs":4192,"status":"ok","hasCookies":false,"mode":"launched"}
-{"ts":"2026-06-25T04:11:17.983Z","cmd":"data","args":"--jsonld","origin":"https://www.trustpilot.com/review/javavolcano-touroperator.com","durationMs":4,"status":"ok","hasCookies":false,"mode":"launched"}
-{"ts":"2026-06-25T04:11:18.161Z","cmd":"text","args":"","origin":"https://www.trustpilot.com/review/javavolcano-touroperator.com","durationMs":3,"status":"ok","hasCookies":false,"mode":"launched"}
-{"ts":"2026-06-25T04:12:09.501Z","cmd":"goto","args":"https://www.trustpilot.com/review/javavolcano-touroperator.com","origin":"https://www.trustpilot.com/review/javavolcano-touroperator.com","durationMs":31479,"status":"ok","hasCookies":false,"mode":"headed"}
