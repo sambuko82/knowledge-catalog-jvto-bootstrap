@@ -1085,6 +1085,137 @@ class OkfToolsTest(unittest.TestCase):
             self.assertIn("JVTO-17", result.stderr)
 
 
+    # ---- JVTO-20 claim-boundary denylist (ported from llm-wiki claim_boundaries.yml) ----
+
+    def test_claim_boundary_overclaim_blocked(self) -> None:
+        # An active assertion of dropped Stefan Loose edition metadata fails JVTO-20.
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._write_concept(
+                root / "bundle" / "references" / "stefan.md",
+                """\
+                type: Reference
+                title: Stefan Loose Guidebook
+                description: Historical guidebook reference with over-claimed edition metadata.
+                tags: [reference]
+                timestamp: "2026-07-07T00:00:00Z"
+                id: references/stefan
+                status: reviewed
+                visibility: public
+                """,
+                """\
+                # Overview
+                The Stefan Loose guidebook, 4th edition, mentions the homestay.
+
+                # Claim Boundary
+                Historical guidebook reference only.
+
+                # Citations
+
+                - https://example.org/stefan-loose
+                """,
+            )
+            result = self._validate(root)
+            self.assertEqual(result.returncode, 2, result.stdout)
+            self.assertIn("JVTO-20", result.stderr)
+            self.assertIn("STEFAN-EDITION", result.stderr)
+
+    def test_claim_boundary_medical_conditional_blocked(self) -> None:
+        # The superseded conditional health-screening framing fails JVTO-20 even when the
+        # sentence wraps across lines inside one paragraph (paragraphs are flattened).
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._write_concept(
+                root / "bundle" / "policies" / "screening.md",
+                """\
+                type: Policy
+                title: Ijen Health Screening
+                description: Screening policy carrying the superseded conditional framing.
+                tags: [policy]
+                timestamp: "2026-07-07T00:00:00Z"
+                id: policies/screening
+                status: reviewed
+                visibility: public
+                """,
+                """\
+                # Overview
+                JVTO coordinates a health screening when
+                BBKSDA regulations require it.
+
+                # Citations
+
+                - https://bbksdajatim.org
+                """,
+            )
+            result = self._validate(root)
+            self.assertEqual(result.returncode, 2, result.stdout)
+            self.assertIn("JVTO-20", result.stderr)
+            self.assertIn("MEDICAL-CONDITIONAL", result.stderr)
+
+    def test_claim_boundary_mandatory_wording_passes(self) -> None:
+        # The adjudicated mandatory wording (2026-07-06) does not trip the regression guard.
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._write_concept(
+                root / "bundle" / "policies" / "screening.md",
+                """\
+                type: Policy
+                title: Ijen Health Screening
+                description: Screening policy with the adjudicated mandatory wording.
+                tags: [policy]
+                timestamp: "2026-07-07T00:00:00Z"
+                id: policies/screening
+                status: reviewed
+                visibility: public
+                """,
+                """\
+                # Overview
+                A health certificate is mandatory for every guest before crater
+                entry; JVTO coordinates the screening with licensed medical staff.
+
+                # Citations
+
+                - https://bbksdajatim.org
+                """,
+            )
+            result = self._validate(root)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertNotIn("JVTO-20", result.stderr)
+
+    def test_claim_boundary_context_marker_skipped(self) -> None:
+        # A paragraph that records a superseded value as history (context marker present)
+        # is a note about the value, not an assertion, and is skipped.
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._write_concept(
+                root / "bundle" / "references" / "stefan.md",
+                """\
+                type: Reference
+                title: Stefan Loose Guidebook
+                description: Historical guidebook reference recording superseded metadata.
+                tags: [reference]
+                timestamp: "2026-07-07T00:00:00Z"
+                id: references/stefan
+                status: reviewed
+                visibility: public
+                """,
+                """\
+                # Overview
+                The guidebook identifies the homestay operator.
+
+                # Claim Boundary
+                The Stefan Loose 4th edition attribution was superseded and is
+                not asserted here; only the canonical ISBN-13 is used.
+
+                # Citations
+
+                - https://example.org/stefan-loose
+                """,
+            )
+            result = self._validate(root)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertNotIn("JVTO-20", result.stderr)
+
     # ---- R4 authority-hierarchy rule (JVTO-04 relaxed, JVTO-18 sole-evidence) ----
     # The JVTO website is a secondary presentation/corroboration layer: allowed as supplementary
     # context, never as the sole evidence for a claim, and never a reason to delete/downgrade a

@@ -106,3 +106,54 @@ stale_review_claims:
 # gap as a publication propagation recommendation instead.
 secondary_presentation_domains:
   - javavolcano-touroperator.com
+
+# ---------------------------------------------------------------------------
+# JVTO-20: claim-boundary denylist (validate_okf.py).
+# Ported from llm-wiki scripts/claim_boundaries.yml — the content-side linter that
+# self-describes as the analog of this repo's boundary checks. It machine-enforces
+# the root CLAUDE.md Partner/Reference claim boundaries.
+#
+# An affirmative regex match on an ACTIVE paragraph fails the concept. A paragraph
+# containing one of the context markers below is a note ABOUT a superseded or
+# unsupported value (e.g. a "# Claim Boundary" section stating what the evidence
+# does NOT support), not an active assertion, and is skipped. Patterns are Python
+# `re`, matched against whitespace-flattened paragraphs so wrapped prose cannot
+# dodge a pattern.
+# ---------------------------------------------------------------------------
+
+claim_boundary_context_markers:
+  - supersed
+  - do not publish
+  - do not use
+  - no longer
+  - not asserted
+  - does not support
+  - does not confirm
+  - does not establish
+  - not evidence
+  - is never
+
+claim_boundaries:
+  - id: STEFAN-EDITION
+    # Only the DROPPED metadata: the dropped ISBN-13 (978-3-7701-7881-0) and the canonical
+    # (978-3-770-16765-4) share the "9783770" prefix, so match the unique "7701-7881" segment.
+    pattern: '(?i)stefan.{0,80}?(4th edition|2016 edition|\b2018\b|dumont|7701[- ]?7881|9783770178810)'
+    message: Stefan Loose year/edition/publisher asserted — historical guidebook reference only (llm-wiki DEC-001).
+  - id: BOOKING-CONTINUITY
+    pattern: '(?i)(same address where jvto operates|confirming operational continuity|demonstrating continuous operational presence|address[- ]continuity evidence|''a'' suffix was added after|suffix was added after the pt)'
+    message: Booking.com 2015 framed as address continuity / legal succession — historical award artifact only.
+  - id: DETIK-IJEN
+    pattern: '(?i)detik.{0,45}?(at ijen|kawah ijen|patrolling the ijen|duties at ijen|officer at ijen)'
+    message: Detik press attributed to Kawah-Ijen-specific duty — Detik evidences general Bondowoso duty only.
+  - id: BBKSDA-CERTIFIED
+    pattern: '(?i)bbksda[- ]?certified'
+    message: Over-claim 'BBKSDA certified' — BBKSDA supervises HPWKI guide training; it does not certify JVTO.
+  - id: ISIC-PARTNER
+    pattern: '(?i)isic.{0,40}?(official provider listing|as a partner|is a partner)'
+    message: ISIC asserted as partner / official provider listing without direct provider evidence.
+  - id: MEDICAL-CONDITIONAL
+    # Regression guard for the 2026-07-06 adjudication (mirrors jvto-web's
+    # validate-content-drift.mjs): Ijen health screening is mandatory for every guest,
+    # with BBKSDA SE.1658/KSA.9/2024 as supporting authority — never threshold-conditional.
+    pattern: '(?i)(?:health[- ]?(?:screening|certificate|check)|\bscreening\b)[^.!?]{0,80}?\b(?:when|where|if|depending on)\b[^.!?]{0,60}?\b(?:requires?|regulations?|rules|in effect)\b|\b(?:when|where|if)\b[^.!?]{0,60}?\b(?:bbksda|conservation[- ]authority|access rules)\b[^.!?]{0,60}?require[^.!?]{0,80}?(?:screening|health[- ]?certificate)|(?:crater access|access rules) can require|\b(?:may|can) require\b[^.!?]{0,60}?(?:screening|health[- ]?certificate)'
+    message: Ijen health screening framed as conditional — it is mandatory for every guest (adjudicated 2026-07-06; BBKSDA SE.1658/KSA.9/2024 is supporting authority, not a trigger).

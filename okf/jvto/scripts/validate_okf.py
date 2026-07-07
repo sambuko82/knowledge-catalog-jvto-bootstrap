@@ -25,6 +25,9 @@ Rules:
   JVTO-18 the JVTO website (a secondary presentation layer) may not be the SOLE evidence for a claim;
           a source_refs anchor or a non-website external citation/resource must also be present
           (config: secondary_presentation_domains)
+  JVTO-20 claim-boundary denylist: no over-claim / superseded-framing regex match on an active
+          paragraph (config: claim_boundaries + claim_boundary_context_markers; ported from
+          llm-wiki scripts/claim_boundaries.yml)
 """
 from __future__ import annotations
 
@@ -86,6 +89,17 @@ def main() -> int:
     source_ref_types = set(rules.get("source_ref_required_types", []))
     source_ref_fields = list(rules.get("source_ref_required_fields", []))
     stale_claims = rules.get("stale_review_claims", []) or []
+    # JVTO-20 config: claim-boundary denylist (ported from llm-wiki claim_boundaries.yml).
+    boundary_markers = [str(m).lower() for m in rules.get("claim_boundary_context_markers", []) or []]
+    claim_boundaries: list[tuple[str, re.Pattern[str], str]] = []
+    for spec in rules.get("claim_boundaries", []) or []:
+        pattern = str(spec.get("pattern", "")).strip()
+        if pattern:
+            claim_boundaries.append((
+                str(spec.get("id", "UNNAMED")),
+                re.compile(pattern),
+                str(spec.get("message", "Claim boundary violated.")),
+            ))
     scope_path = Path(__file__).resolve().parents[1] / "config" / "source-scope.yaml"
     scope = read_yaml(scope_path) if scope_path.exists() else {}
     deny_by_repo = {
@@ -225,6 +239,21 @@ def main() -> int:
             )
             if hit:
                 errors.append({"rule": "JVTO-11", "path": relative, "message": f"Stale review count {count} near '{platform}'."})
+
+        # JVTO-20: claim-boundary denylist. An affirmative match on an active paragraph fails the
+        # concept; a paragraph carrying a context marker records a superseded/unsupported value
+        # (e.g. a "# Claim Boundary" section) and is skipped. Paragraphs are whitespace-flattened
+        # so wrapped prose cannot dodge a pattern. Each boundary reports at most once per concept.
+        if claim_boundaries:
+            hit_boundaries: set[str] = set()
+            for block in re.split(r"\n\s*\n", text):
+                flat = " ".join(block.split())
+                if not flat or any(marker in flat.lower() for marker in boundary_markers):
+                    continue
+                for boundary_id, boundary_re, boundary_msg in claim_boundaries:
+                    if boundary_id not in hit_boundaries and boundary_re.search(flat):
+                        hit_boundaries.add(boundary_id)
+                        errors.append({"rule": "JVTO-20", "path": relative, "message": f"[{boundary_id}] {boundary_msg}"})
 
         # JVTO-12: provenance required for Person + records carrying observation/operational/commercial fields.
         source_refs = meta.get("source_refs")
