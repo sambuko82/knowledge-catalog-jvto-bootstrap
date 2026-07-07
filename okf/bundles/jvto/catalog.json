@@ -1,6 +1,6 @@
 {
   "bundle": "jvto",
-  "concept_count": 72,
+  "concept_count": 71,
   "concepts": [
     {
       "citations": [
@@ -1594,30 +1594,6 @@
       "title": "INDECON (Indonesia Ecotourism Network)",
       "type": "Partner",
       "visibility": "public"
-    },
-    {
-      "citations": [
-        "https://www.isic.org/discounts/?providerId=259268"
-      ],
-      "description": "JVTO is listed as a provider in ISIC's public discount directory (provider ID 259268), the basis for its student pricing on selected packages.",
-      "id": "trust/partners/isic",
-      "last_verified": "2026-07-07",
-      "links_to": [
-        "organization",
-        "policies/isic-student"
-      ],
-      "path": "trust/partners/isic.md",
-      "resource": "https://www.isic.org/discounts/?providerId=259268",
-      "status": "reviewed",
-      "tags": [
-        "partner",
-        "isic",
-        "student",
-        "provider-listing"
-      ],
-      "title": "ISIC (International Student Identity Card)",
-      "type": "Partner",
-      "visibility": "public"
     }
   ],
   "edges": [
@@ -2004,14 +1980,6 @@
     {
       "source": "trust/partners/indecon",
       "target": "organization"
-    },
-    {
-      "source": "trust/partners/isic",
-      "target": "organization"
-    },
-    {
-      "source": "trust/partners/isic",
-      "target": "policies/isic-student"
     }
   ],
   "okf_version": "0.1",
@@ -2019,7 +1987,7 @@
     "Credential": 1,
     "Destination": 5,
     "Organization": 1,
-    "Partner": 3,
+    "Partner": 2,
     "Person": 16,
     "Policy": 10,
     "Reference": 6,

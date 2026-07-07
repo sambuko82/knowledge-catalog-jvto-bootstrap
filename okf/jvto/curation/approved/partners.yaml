@@ -131,9 +131,8 @@ records:
   - student
   - provider-listing
   timestamp: '2026-07-07T00:00:00+07:00'
-  status: reviewed
+  status: needs_review
   visibility: public
-  last_verified: '2026-07-07'
   relationship_type: provider_listing
   body: '# Relationship
 
@@ -158,15 +157,19 @@ records:
     # Source check
 
 
-    The directory page is a JS-rendered application: a direct automated read
+    NOT RELEASE-ELIGIBLE YET (partner boundary: provider listing only after
 
-    on 2026-07-07 returned the page shell without rendering the provider
+    direct provider evidence is available). Direct reads on 2026-07-07 — an
 
-    entry. The listing is anchored on the knowledge-base source-health record
+    HTTP fetch and a headless render — could not render the JS-only directory
 
-    (provider 259268 recorded live) and retained per source-health policy —
+    entry from this environment; the listing is so far anchored only on the
 
-    a JS-only page is a warning record, not an invalidation.
+    knowledge-base source-health record (provider 259268 recorded live).
+
+    Promote to reviewed once the rendered provider entry identifying JVTO is
+
+    captured directly (screenshot or rendered-DOM capture).
 
 
     # Related Concepts
