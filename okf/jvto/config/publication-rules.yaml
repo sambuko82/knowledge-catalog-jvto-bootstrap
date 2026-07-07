@@ -121,6 +121,29 @@ secondary_presentation_domains:
 # dodge a pattern.
 # ---------------------------------------------------------------------------
 
+# ---------------------------------------------------------------------------
+# JVTO-21: freshness SLA (validate_okf.py, WARNINGS ONLY — never errors, and no
+# effect on --release exit codes; external staleness must not auto-invalidate a
+# concept). Ported from llm-wiki's F1 compiler rule (last_verified vs
+# stale_after_days). A verified/qualified concept whose last verification date
+# is older than its type's SLA is surfaced in build/validation-report.json as a
+# machine-generated worklist for the separate source-health review.
+# ---------------------------------------------------------------------------
+
+freshness:
+  stale_after_days:
+    Review Platform: 90      # ratings/counts drift fastest
+    Trust Claim: 180
+    Policy: 180
+    Credential: 180
+    Partner: 180
+    Organization: 365
+    Destination: 365
+    Travel Guide: 365        # fee tariffs and access rules change on ~annual decree cycles
+    Tour Package: 365
+    Person: 365
+    Reference: 730           # historical artifacts decay slowest
+
 claim_boundary_context_markers:
   - supersed
   - do not publish

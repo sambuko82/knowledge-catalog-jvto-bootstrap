@@ -31,8 +31,9 @@ root contract wins.
 - `build_bundle.py` — `build_packages()` / `build_policies()` (gated drafts),
   `build_curated()` (release concepts), `build_indexes()` (every `index.md`;
   root carries `okf_version: "0.1"`), `build_catalog_file()` (`catalog.json`).
-- `validate_okf.py` — the 20-rule gate (`OKF-01`, `JVTO-02..20`); run with
-  `--strict-links` and, for release, `--release --strict-links`.
+- `validate_okf.py` — the 21-rule gate (`OKF-01`, `JVTO-02..21`; `JVTO-21` is
+  warning-only); run with `--strict-links` and, for release,
+  `--release --strict-links`.
 - `visualize.py` — local `viz.html` graph (git-ignored, regenerate on demand).
 - `bundle_graph.py` — shared concept-walk + graph model used by both
   `visualize.py` and `build_catalog`. `okf_core.py` — shared OKF

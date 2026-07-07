@@ -28,12 +28,16 @@ Rules:
   JVTO-20 claim-boundary denylist: no over-claim / superseded-framing regex match on an active
           paragraph (config: claim_boundaries + claim_boundary_context_markers; ported from
           llm-wiki scripts/claim_boundaries.yml)
+  JVTO-21 freshness SLA, WARNING only: a verified/qualified concept whose last verification date
+          exceeds its type's stale_after_days is surfaced as a source-health worklist item
+          (config: freshness.stale_after_days; ported from llm-wiki's F1 compiler rule)
 """
 from __future__ import annotations
 
 import argparse
 import re
 import sys
+from datetime import date
 from pathlib import Path
 
 from common import BUNDLE_ROOT, BUILD_ROOT, RESERVED_FILENAMES, parse_frontmatter, read_yaml, utc_now, write_json
@@ -89,6 +93,11 @@ def main() -> int:
     source_ref_types = set(rules.get("source_ref_required_types", []))
     source_ref_fields = list(rules.get("source_ref_required_fields", []))
     stale_claims = rules.get("stale_review_claims", []) or []
+    # JVTO-21 config: per-type freshness SLA in days (ported from llm-wiki's F1 rule).
+    freshness_sla = {
+        str(ctype): int(days)
+        for ctype, days in ((rules.get("freshness", {}) or {}).get("stale_after_days", {}) or {}).items()
+    }
     # JVTO-20 config: claim-boundary denylist (ported from llm-wiki claim_boundaries.yml).
     boundary_markers = [str(m).lower() for m in rules.get("claim_boundary_context_markers", []) or []]
     claim_boundaries: list[tuple[str, re.Pattern[str], str]] = []
@@ -182,6 +191,21 @@ def main() -> int:
             errors.append({"rule": "JVTO-03", "path": relative, "message": f"Release requires status in {sorted(allowed)}."})
         if status in {"verified", "qualified"} and all(field_missing(meta, f) for f in VERIFICATION_FIELDS):
             errors.append({"rule": "JVTO-09", "path": relative, "message": f"Status {status!r} requires verification metadata ({' or '.join(VERIFICATION_FIELDS)})."})
+
+        # JVTO-21: freshness SLA, WARNING only — never an error and never a release blocker
+        # (external staleness must not auto-invalidate a concept). A verified/qualified concept
+        # past its type's SLA becomes a source-health worklist item in the validation report.
+        if freshness_sla and status in {"verified", "qualified"}:
+            sla_days = freshness_sla.get(str(meta.get("type")))
+            verified_on = next((str(meta.get(f)).strip() for f in VERIFICATION_FIELDS if not field_missing(meta, f)), "")
+            if sla_days and verified_on:
+                try:
+                    age_days = (date.today() - date.fromisoformat(verified_on[:10])).days
+                except ValueError:
+                    warnings.append({"rule": "JVTO-21", "path": relative, "message": f"Unparseable verification date {verified_on!r}; cannot measure freshness SLA."})
+                else:
+                    if age_days > sla_days:
+                        warnings.append({"rule": "JVTO-21", "path": relative, "message": f"Last verification {verified_on[:10]} is {age_days} days old (SLA {sla_days}d for {meta.get('type')}); schedule a source-health re-check."})
 
         concept_id = str(meta.get("id", "")).strip()
         if concept_id:

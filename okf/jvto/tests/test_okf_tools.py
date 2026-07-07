@@ -1216,6 +1216,54 @@ class OkfToolsTest(unittest.TestCase):
             self.assertEqual(result.returncode, 0, result.stderr)
             self.assertNotIn("JVTO-20", result.stderr)
 
+    # ---- JVTO-21 freshness SLA (warning only; ported from llm-wiki's F1 rule) ----
+
+    def _freshness_concept(self, root: Path, last_verified: str) -> None:
+        self._write_concept(
+            root / "bundle" / "policies" / "p.md",
+            f"""\
+            type: Policy
+            title: A Policy
+            description: Policy whose verification date drives the freshness SLA.
+            tags: [policy]
+            timestamp: "2026-07-07T00:00:00Z"
+            id: policies/p
+            status: qualified
+            visibility: public
+            last_verified: "{last_verified}"
+            """,
+            """\
+            # Overview
+            Body.
+
+            # Citations
+
+            - https://example.org/policy-source
+            """,
+        )
+
+    def test_freshness_sla_stale_warns_but_passes(self) -> None:
+        # A qualified concept far past its type SLA yields a JVTO-21 WARNING in the
+        # validation report — exit stays 0 even in release mode (never a blocker).
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._freshness_concept(root, "2020-01-01")
+            result = self._validate(root)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            report = json.loads((root / "build" / "validation-report.json").read_text(encoding="utf-8"))
+            jvto21 = [w for w in report["warnings"] if w["rule"] == "JVTO-21"]
+            self.assertEqual(len(jvto21), 1, report["warnings"])
+            self.assertIn("source-health", jvto21[0]["message"])
+
+    def test_freshness_sla_fresh_concept_no_warning(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._freshness_concept(root, "2099-01-01")
+            result = self._validate(root)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            report = json.loads((root / "build" / "validation-report.json").read_text(encoding="utf-8"))
+            self.assertEqual([w for w in report["warnings"] if w["rule"] == "JVTO-21"], [])
+
     # ---- R4 authority-hierarchy rule (JVTO-04 relaxed, JVTO-18 sole-evidence) ----
     # The JVTO website is a secondary presentation/corroboration layer: allowed as supplementary
     # context, never as the sole evidence for a claim, and never a reason to delete/downgrade a
