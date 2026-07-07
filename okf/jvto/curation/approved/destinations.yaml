@@ -11,16 +11,16 @@ records:
   - ijen
   - hiking
   - blue-fire
-  timestamp: '2026-06-23T00:00:00+07:00'
+  timestamp: '2026-07-07T00:00:00+07:00'
   status: reviewed
   visibility: public
-  last_verified: '2026-06-26'
+  last_verified: '2026-07-07'
   activity:
     typical_schedule: Hotel departure around midnight; the crater rim is reached near dawn for the
       blue fire and sunrise; finish mid-morning.
     effort: hard
     access_requirements:
-    - BBKSDA health screening and certificate when their regulations are in effect
+    - BBKSDA-required health certificate, mandatory for every guest (screening coordinated by JVTO)
     - gas mask and trekking poles (provided by JVTO)
     - licensed local guide
   body: "# Overview\n\nKawah Ijen is an active volcano on the Banyuwangi–Bondowoso border of East\nJava,\
@@ -29,8 +29,8 @@ records:
     \ conditions\n(not guaranteed). An active sulfur-mining operation works inside the crater.\n\n# Visiting\n\
     \n- Reached on foot from the Paltuding trailhead — roughly 3 km one way, about\n  90 minutes up a\
     \ steep trail, typically started around midnight or pre-dawn.\n- Access is managed by the East Java\
-    \ conservation authority (BBKSDA). When\n  their regulations are in effect, crater access can require\
-    \ a short health\n  screening and certificate.\n- On JVTO tours, gas masks and trekking poles are\
+    \ conservation authority (BBKSDA). A health\n  certificate is mandatory for every guest before crater\
+    \ entry (BBKSDA\n  SE.1658/KSA.9/2024); JVTO coordinates the screening.\n- On JVTO tours, gas masks and trekking poles are\
     \ provided as standard.\n\n# Related Concepts\n\n- [3D2N Ijen, Bromo & Madakaripura tour](/tours/from-surabaya/ijen-bromo-madakaripura-3d2n.md)\n\
     - [HPWKI](/trust/partners/hpwki.md)\n- [BBKSDA Ijen Guide Training 2024](/references/bbksda-ijen-guide-training-2024.md)\n\
     - [Ijen Health Screening](/policies/ijen-health-screening.md)\n"

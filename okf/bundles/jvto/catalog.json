@@ -8,7 +8,7 @@
       ],
       "description": "Active East Java volcano known for its turquoise acidic crater lake, pre-dawn \"blue fire\", and active sulfur mining, reached by a guided night hike.",
       "id": "destinations/kawah-ijen",
-      "last_verified": "2026-06-26",
+      "last_verified": "2026-07-07",
       "links_to": [
         "policies/ijen-health-screening",
         "references/bbksda-ijen-guide-training-2024",
@@ -484,7 +484,7 @@
     },
     {
       "citations": [],
-      "description": "The doctor JVTO identifies for its applicable Ijen pre-hike health-screening coordination.",
+      "description": "The doctor JVTO identifies for its Ijen pre-hike health-screening coordination.",
       "id": "people/dr-ahmad-irwandanu",
       "last_verified": "",
       "links_to": [
@@ -568,16 +568,19 @@
       "visibility": "public"
     },
     {
-      "citations": [],
-      "description": "For Ijen crater hikes, JVTO coordinates a health screening with licensed medical staff when BBKSDA regulations require it.",
+      "citations": [
+        "https://tiket.bbksdajatim.org",
+        "https://bbksdajatim.org"
+      ],
+      "description": "A health certificate is mandatory for every guest before Kawah Ijen crater entry; JVTO coordinates the screening with licensed medical staff.",
       "id": "policies/ijen-health-screening",
-      "last_verified": "2026-06-23",
+      "last_verified": "2026-07-07",
       "links_to": [
         "destinations/kawah-ijen"
       ],
       "path": "policies/ijen-health-screening.md",
       "resource": "",
-      "status": "reviewed",
+      "status": "qualified",
       "tags": [
         "policy",
         "ijen",
@@ -617,7 +620,7 @@
       "citations": [],
       "description": "JVTO tours are all-inclusive of transport, crew, entrance fees, water, and stated meals; flights, insurance, tips, and personal expenses are excluded.",
       "id": "policies/inclusions-exclusions",
-      "last_verified": "2026-06-23",
+      "last_verified": "2026-07-07",
       "links_to": [],
       "path": "policies/inclusions-exclusions.md",
       "resource": "",
@@ -1416,9 +1419,9 @@
     },
     {
       "citations": [],
-      "description": "For Ijen crater hikes, JVTO coordinates a health screening with a licensed doctor when conservation-authority rules require it, included in the tour.",
+      "description": "A health certificate is mandatory for every guest before Kawah Ijen crater entry; JVTO coordinates the screening with a licensed doctor, included in the tour.",
       "id": "trust/claims/medical-screening",
-      "last_verified": "2026-06-23",
+      "last_verified": "2026-07-07",
       "links_to": [
         "destinations/kawah-ijen",
         "people/dr-ahmad-irwandanu",

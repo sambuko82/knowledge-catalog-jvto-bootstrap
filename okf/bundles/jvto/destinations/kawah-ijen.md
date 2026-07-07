@@ -10,16 +10,17 @@ tags:
 - ijen
 - hiking
 - blue-fire
-timestamp: '2026-06-23T00:00:00+07:00'
+timestamp: '2026-07-07T00:00:00+07:00'
 status: reviewed
 visibility: public
-last_verified: '2026-06-26'
+last_verified: '2026-07-07'
 activity:
   typical_schedule: Hotel departure around midnight; the crater rim is reached near
     dawn for the blue fire and sunrise; finish mid-morning.
   effort: hard
   access_requirements:
-  - BBKSDA health screening and certificate when their regulations are in effect
+  - BBKSDA-required health certificate, mandatory for every guest (screening coordinated
+    by JVTO)
   - gas mask and trekking poles (provided by JVTO)
   - licensed local guide
 source_refs:
@@ -48,9 +49,9 @@ fire" — burning sulfuric gas visible before dawn under suitable conditions
 
 - Reached on foot from the Paltuding trailhead — roughly 3 km one way, about
   90 minutes up a steep trail, typically started around midnight or pre-dawn.
-- Access is managed by the East Java conservation authority (BBKSDA). When
-  their regulations are in effect, crater access can require a short health
-  screening and certificate.
+- Access is managed by the East Java conservation authority (BBKSDA). A health
+  certificate is mandatory for every guest before crater entry (BBKSDA
+  SE.1658/KSA.9/2024); JVTO coordinates the screening.
 - On JVTO tours, gas masks and trekking poles are provided as standard.
 
 # Related Concepts
