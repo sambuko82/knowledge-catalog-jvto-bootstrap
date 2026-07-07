@@ -10,7 +10,7 @@ tags:
 - bali
 - logistics
 timestamp: '2026-07-07T00:00:00+07:00'
-status: qualified
+status: reviewed
 visibility: public
 last_verified: '2026-07-07'
 source_refs:
@@ -40,12 +40,9 @@ during the Balinese Nyepi day each year.
 
 Ferry tickets are online-only via the official Ferizy platform — on-site
 purchase has been abolished, and a GPS geofence blocks online purchase near
-the ports, so tickets must be held before arriving at the harbor. JVTO
-pre-books the crossing on Bali-origin tours. For reference, the regular
-adult passenger fare is IDR 11,100 under tariff decree KM 131/2024 (in
-force since November 2024); vehicle classes and holiday periods carry
-higher tariffs, and fares change by decree — figures are as of the
-2026-07-07 source check.
+the ports, so tickets must be held before arriving at the harbor. The
+crossing is included on Bali-origin JVTO tours, and JVTO pre-books it —
+guests do not buy ferry tickets themselves.
 
 # Related Concepts
 
@@ -54,5 +51,4 @@ higher tariffs, and fares change by decree — figures are as of the
 # Citations
 
 - https://travel.kompas.com/read/2023/06/25/210100227/lama-perjalanan-kapal-feri-ketapang-gilimanuk-jangan-bingung-karena-zona
-- https://bali.bisnis.com/read/20241031/537/1812258/asdp-lakukan-penyesuaian-tarif-lintas-penyeberangan-ketapang-gilimanuk
 - https://trip.ferizy.com

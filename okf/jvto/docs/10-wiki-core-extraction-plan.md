@@ -79,6 +79,14 @@ Skipped as below the evidence bar: jeep rates and gear-zone SOP (medium
 confidence), Tumpak Sewu incident leads and Kasada closure dates (low /
 unverified — research round 3 still open).
 
+**Amendment 2026-07-07 (owner direction):** all specific ticket/fare amounts
+(Bromo entrance tariff, Ijen tariff pointer, ferry passenger fare) were
+subsequently removed from the bundle — entrance fees and the ferry crossing
+are included in JVTO packages, so public tariff figures are out of scope for
+this catalog. The retained facts are the JVTO-relevant logistics: fees are
+included, ticketing is online-only, and JVTO handles it. The fee-driven
+`qualified` statuses reverted to `reviewed`.
+
 ### E4 — Freshness SLA → `JVTO-21` *(pattern, from Wiki)*
 Ported llm-wiki's F1 rule (`last_verified` vs `stale_after_days`) as a
 **warnings-only** check: verified/qualified concepts past their type SLA

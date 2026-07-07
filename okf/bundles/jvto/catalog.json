@@ -18,7 +18,7 @@
       ],
       "path": "destinations/kawah-ijen.md",
       "resource": "",
-      "status": "qualified",
+      "status": "reviewed",
       "tags": [
         "destination",
         "east-java",
@@ -53,8 +53,7 @@
     {
       "citations": [
         "https://bbksdajatim.org",
-        "https://bromotenggersemeru.org",
-        "https://en.wikivoyage.org/wiki/Bromo-Tengger-Semeru_National_Park"
+        "https://bromotenggersemeru.org"
       ],
       "description": "Active East Java volcano in the Tengger caldera \"Sea of Sand\", famous for its pre-dawn sunrise panorama reached by 4WD jeep.",
       "id": "destinations/mount-bromo",
@@ -62,7 +61,7 @@
       "links_to": [],
       "path": "destinations/mount-bromo.md",
       "resource": "",
-      "status": "qualified",
+      "status": "reviewed",
       "tags": [
         "destination",
         "east-java",
@@ -1381,7 +1380,6 @@
     {
       "citations": [
         "https://travel.kompas.com/read/2023/06/25/210100227/lama-perjalanan-kapal-feri-ketapang-gilimanuk-jangan-bingung-karena-zona",
-        "https://bali.bisnis.com/read/20241031/537/1812258/asdp-lakukan-penyesuaian-tarif-lintas-penyeberangan-ketapang-gilimanuk",
         "https://trip.ferizy.com"
       ],
       "description": "Choosing your origin — the destinations are the same volcanoes and waterfalls; the difference is logistics, transfer times, and (for Bali) a ferry crossing.",
@@ -1390,7 +1388,7 @@
       "links_to": [],
       "path": "travel-guides/surabaya-vs-bali-starting-point.md",
       "resource": "",
-      "status": "qualified",
+      "status": "reviewed",
       "tags": [
         "travel-guide",
         "planning",
