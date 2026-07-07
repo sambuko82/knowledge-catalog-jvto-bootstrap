@@ -60,7 +60,13 @@ fetch and source-scope allow lists and its `internal_operational_context_only`
 role is untouched. Entrance/ferry figures are public government tariffs (never
 JVTO prices), framed with as-of dates and re-verify caveats.
 
-- `destinations/kawah-ijen` → BBKSDA tariff + online-only ticketing → `qualified`
+- `destinations/kawah-ijen` → BBKSDA online-only ticketing + fee-authority
+  pointer → `qualified`. Specific Ijen tariff amounts are deliberately *not*
+  published: the in-repo figures (Core research, operator-blog sourced) were
+  credibly disputed in PR #27 review, and the working scope keeps external
+  sources out — the concept points to the BBKSDA ticketing portal for the
+  live tariff instead. Recorded upstream as a Core research round-3
+  re-verification item.
 - `destinations/mount-bromo` → PP 36/2024 tariff + mandatory online booking → `qualified`
 - `destinations/madakaripura` → flash-flood risk + afternoon-rain scheduling rationale
 - `travel-guides/weather-and-closures` → PVMBG/MAGMA alert vs BBKSDA/TNBTS

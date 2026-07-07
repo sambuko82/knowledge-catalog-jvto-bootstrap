@@ -56,13 +56,12 @@ fire" — burning sulfuric gas visible before dawn under suitable conditions
 
 # Fees & Tickets
 
-- Entrance tariff (BBKSDA, effective 2024-10-01): foreign visitors IDR 100,000
-  weekday / IDR 150,000 weekend; domestic IDR 20,000 / IDR 35,000.
-- Tickets are online-only via tiket.bbksdajatim.org, with a daily visitor cap
-  and cashless (QRIS) payment since 2025-01-31. JVTO handles park ticketing
-  and fees on its tours.
-- Figures are the published tariff at the 2026-07-07 source check; tariffs
-  and access rules change, so re-verify at booking time.
+- Entrance fees are set by BBKSDA and published on its official online
+  ticketing portal (tiket.bbksdajatim.org); check the portal for the current
+  tariff, which changes by government decree.
+- Tickets are online-only via that portal, with a daily visitor cap and
+  cashless (QRIS) payment since 2025-01-31. JVTO handles park ticketing and
+  fees on its tours.
 
 # Related Concepts
 
