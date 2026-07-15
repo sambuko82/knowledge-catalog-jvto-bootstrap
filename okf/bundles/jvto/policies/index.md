@@ -4,7 +4,7 @@
 
 * [Booking Safety & Anti-Fraud](anti-fraud.md) - Use only JVTO's official channels; JVTO never asks for full card numbers, CVV, banking passwords, or OTP codes.
 * [How to Book](booking-paths.md) - JVTO accepts bookings only through the official website; WhatsApp and email are for support, not for booking.
-* [Cancellation & Lifetime Package Credit](cancellation-travel-credit.md) - How JVTO handles cancellations — a 48-hour cut-off, Lifetime Package Credit for early full cancellations, and cash refunds only for partial passenger cancellations.
+* [Cancellation & Lifetime Package Credit](cancellation-package-credit.md) - How JVTO handles cancellations — a 48-hour cut-off, Lifetime Package Credit for early full cancellations, and cash refunds only for partial passenger cancellations.
 * [Ijen Health Screening](ijen-health-screening.md) - A health certificate is mandatory for every guest before Kawah Ijen crater entry; JVTO coordinates the screening with licensed medical staff.
 * [Ijen Monthly Closure (Rijik Program)](ijen-rijik-monthly-closure.md) - Kawah Ijen closes to all visitors on the first Friday of each month for the Rijik ecosystem-cleaning program; JVTO schedules tours around it so guests are unaffected.
 * [What's Included](inclusions-exclusions.md) - JVTO tours are all-inclusive of transport, crew, entrance fees, water, and stated meals; flights, insurance, tips, and personal expenses are excluded.

@@ -34,7 +34,7 @@
     ]
   },
   {
-    "module_id": "policy_cancellation_travel_credit",
+    "module_id": "policy_cancellation_package_credit",
     "category": "policy",
     "scope": "global",
     "title": "Cancellation & Lifetime Package Credit",
@@ -42,12 +42,12 @@
     "detail_summary": "Full cancellation 48h+ before Day 1 converts the confirmed package to Lifetime Package Credit (never expires; same package, pax, and price; one transfer; not cash). Within 48h it is forfeited. Partial passenger cancellations get a cash refund of the cancelled travelers' price (100% at 48h+, 50% within 48h). Verified flight cancellations can reactivate the package for a 50% Recovery Fee.",
     "customer_visible": true,
     "reusable": true,
-    "detail_ref": "policies/cancellation-travel-credit",
-    "link_key": "cancellation_travel_credit",
+    "detail_ref": "policies/cancellation-package-credit",
+    "link_key": "cancellation_package_credit",
     "visual_key": "cancellation_card",
     "approval_status": "approved",
     "source_evidence": [
-      "knowledge:policies/cancellation-travel-credit.md"
+      "knowledge:policies/cancellation-package-credit.md"
     ]
   },
   {

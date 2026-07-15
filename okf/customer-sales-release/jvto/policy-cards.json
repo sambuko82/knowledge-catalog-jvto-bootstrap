@@ -27,12 +27,12 @@
   },
   {
     "release_id": "customer-sales-release-20260628-001",
-    "id": "policies/cancellation-travel-credit",
+    "id": "policies/cancellation-package-credit",
     "title": "Cancellation & Lifetime Package Credit",
     "description": "How JVTO handles cancellations — a 48-hour cut-off, Lifetime Package Credit for early full cancellations, and cash refunds only for partial passenger cancellations.",
     "body": "# Overview\n\nThe binding terms are in the published Booking, Payment & Cancellation policy;\nthis is a summary — see that page for exact details. Bookings are made only on\nthe official JVTO website, and normally start with a 20% deposit.\n\n# Full Cancellation (the whole booking)\n\n- **48 hours or more before Day 1:** the confirmed package converts to\n  **Lifetime Package Credit**. It never expires and keeps the same package, your\n  original number of travelers, and your original confirmed package price.\n  Package Credit is not cash and cannot be exchanged for cash; it cannot be\n  split or moved to a different package, and it may be transferred once.\n- **Less than 48 hours before Day 1 (or a no-show):** the booking is forfeited\n  and no Package Credit is created.\n\n# Partial Cancellation (some travelers drop, the tour continues)\n\nCancelled travelers receive a cash refund of their confirmed per-person price:\n100% at 48 hours or more before Day 1, 50% within 48 hours, and 0% after Day 1.\nAt least two paying travelers must remain, otherwise it is treated as a full\ncancellation.\n\n# Flight Disruption & Force Majeure\n\n- **Verified flight cancellation** (for example volcanic ash): the package can be\n  reactivated once for a 50% Recovery Fee of the original confirmed package price.\n- **Verified destination closure:** if the whole tour is impossible you may choose\n  Lifetime Package Credit or a cash refund less any non-recoverable vendor cost;\n  if only part is affected, JVTO offers an alternative route first, then a refund\n  of the affected component.\n\n# Related Concepts\n\n- [3D2N Ijen, Bromo & Madakaripura tour](/tours/from-surabaya/ijen-bromo-madakaripura-3d2n.md)",
     "source_evidence": [
-      "knowledge:policies/cancellation-travel-credit.md"
+      "knowledge:policies/cancellation-package-credit.md"
     ],
     "readiness": {
       "policy": "available"
@@ -108,7 +108,7 @@
     "id": "policies/payment-rules",
     "title": "Payment & Deposit",
     "description": "A deposit secures the booking, with the balance due before the tour; exact amounts and deadlines are on the booking page.",
-    "body": "# Overview\n\nA deposit (standard 20% of the booking value) secures a booking, with the\nbalance due before the tour starts; close-to-departure bookings may require\nfuller payment. Exact amounts, accepted methods, and deadlines are shown at\ncheckout and on the booking information page.\n\nPay only through JVTO's official payment links and listed accounts.\n\n# Related Concepts\n\n- [Cancellation & Lifetime Package Credit](/policies/cancellation-travel-credit.md)",
+    "body": "# Overview\n\nA deposit (standard 20% of the booking value) secures a booking, with the\nbalance due before the tour starts; close-to-departure bookings may require\nfuller payment. Exact amounts, accepted methods, and deadlines are shown at\ncheckout and on the booking information page.\n\nPay only through JVTO's official payment links and listed accounts.\n\n# Related Concepts\n\n- [Cancellation & Lifetime Package Credit](/policies/cancellation-package-credit.md)",
     "source_evidence": [
       "knowledge:policies/payment-rules.md"
     ],
