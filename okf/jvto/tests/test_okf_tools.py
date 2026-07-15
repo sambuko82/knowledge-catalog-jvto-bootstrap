@@ -34,7 +34,7 @@ class OkfToolsTest(unittest.TestCase):
             write_json("package-registry.json", [{"package_id": "bromo-1d1n", "slug": "bromo-1d1n", "origin": "surabaya", "title": "1 Day Bromo", "duration": "1D1N", "public_url": "/tours/from-surabaya/bromo-1d1n", "ijen_relevant": False, "visits_madakaripura": False, "is_specialty": False}])
             write_json("package-pricing.json", [{"package_id": "bromo-1d1n", "currency": "IDR", "pax_tiers": []}])
             write_json("package-itineraries.json", [{"package_id": "bromo-1d1n", "days": [{"title": "Bromo sunrise"}]}])
-            write_json("booking-compatibility.json", [{"package_id": "bromo-1d1n", "instant_book": True, "whatsapp_assisted": True}])
+            write_json("booking-compatibility.json", [{"package_id": "bromo-1d1n", "instant_book": True, "whatsapp_assisted": False}])
 
             env = os.environ.copy()
             env.update({
@@ -242,10 +242,10 @@ class OkfToolsTest(unittest.TestCase):
                     {
                         "policy_id": "booking-paths",
                         "domain": "Booking Paths",
-                        "notes": "Two official booking paths.",
+                        "notes": "Website-only booking.",
                         "consumers": ["faq", "website"],
                         "evidence": [
-                            {"section": "Booking Flow", "text": "Website instant book and WhatsApp-assisted. See [[products/packages-overview|the overview]]."}
+                            {"section": "Booking Flow", "text": "Bookings are accepted only through the official website. See [[products/packages-overview|the overview]]."}
                         ],
                     }
                 ]),

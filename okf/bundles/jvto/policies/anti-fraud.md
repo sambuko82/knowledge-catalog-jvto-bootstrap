@@ -23,11 +23,11 @@ id: policies/anti-fraud
 
 # Overview
 
-Book and pay only through JVTO's official channels — the website, the
-official WhatsApp number, the official email, and JVTO's listed payment
-links and accounts. JVTO never asks for your full card number, CVV, online
-banking password, or one-time codes by chat or email. If an account number,
-link, or contact looks different, pause and verify through an official
+Book on the official JVTO website and pay only through JVTO's official payment
+links and listed accounts. WhatsApp and email are for support only — they are
+not booking or payment channels. JVTO never asks for your full card number, CVV,
+online banking password, or one-time codes by chat or email. If an account
+number, link, or contact looks different, pause and verify through an official
 channel.
 
 # Related Concepts
