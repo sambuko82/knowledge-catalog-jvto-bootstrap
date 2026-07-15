@@ -1,29 +1,60 @@
 records:
 - id: policies/cancellation-travel-credit
   type: Policy
-  title: Cancellation & Lifetime Travel Credit
-  description: How JVTO handles guest-initiated cancellations — Travel Credit instead of cash refunds,
-    on a 48-hour cut-off.
+  title: Cancellation & Lifetime Package Credit
+  description: How JVTO handles cancellations — a 48-hour cut-off, Lifetime Package Credit for early full
+    cancellations, and cash refunds only for partial passenger cancellations.
   tags:
   - policy
   - cancellation
   - travel-credit
   - booking
-  timestamp: '2026-06-23T00:00:00+07:00'
+  timestamp: '2026-07-15T00:00:00+07:00'
   status: reviewed
   visibility: public
-  last_verified: '2026-06-23'
-  body: "# Overview\n\nFor guest-initiated cancellations JVTO uses Travel Credit rather than cash\nrefunds.\
-    \ The binding terms are in the published Booking, Payment &\nCancellation policy; this is a summary\
-    \ — see that page for exact details.\n\n# The Rule\n\n- **48 hours or more before Day 1:** payments\
-    \ already made are not refunded\n  in cash, but 100% of what you have paid converts to JVTO Lifetime\
-    \ Travel\n  Credit (no expiry, transferable). One free reschedule may also be\n  requested in this\
-    \ window.\n- **Less than 48 hours before Day 1:** the booking may be forfeited up to\n  100%, and\
-    \ Travel Credit or cash refunds are generally not provided.\n\nCash refunds are not available for\
-    \ guest-initiated cancellations. Travel\nCredit can be applied to any JVTO package on a future date.\
-    \ Bookings\nnormally start with a 20% deposit.\n\n# Related Concepts\n\n- [3D2N Ijen, Bromo & Madakaripura\
-    \ tour](/tours/from-surabaya/ijen-bromo-madakaripura-3d2n.md)\n"
+  last_verified: '2026-07-15'
+  body: |
+    # Overview
+
+    The binding terms are in the published Booking, Payment & Cancellation policy;
+    this is a summary — see that page for exact details. Bookings are made only on
+    the official JVTO website, and normally start with a 20% deposit.
+
+    # Full Cancellation (the whole booking)
+
+    - **48 hours or more before Day 1:** the confirmed package converts to
+      **Lifetime Package Credit**. It never expires and keeps the same package, your
+      original number of travelers, and your original confirmed package price.
+      Package Credit is not cash and cannot be exchanged for cash; it cannot be
+      split or moved to a different package, and it may be transferred once.
+    - **Less than 48 hours before Day 1 (or a no-show):** the booking is forfeited
+      and no Package Credit is created.
+
+    # Partial Cancellation (some travelers drop, the tour continues)
+
+    Cancelled travelers receive a cash refund of their confirmed per-person price:
+    100% at 48 hours or more before Day 1, 50% within 48 hours, and 0% after Day 1.
+    At least two paying travelers must remain, otherwise it is treated as a full
+    cancellation.
+
+    # Flight Disruption & Force Majeure
+
+    - **Verified flight cancellation** (for example volcanic ash): the package can be
+      reactivated once for a 50% Recovery Fee of the original confirmed package price.
+    - **Verified destination closure:** if the whole tour is impossible you may choose
+      Lifetime Package Credit or a cash refund less any non-recoverable vendor cost;
+      if only part is affected, JVTO offers an alternative route first, then a refund
+      of the affected component.
+
+    # Related Concepts
+
+    - [3D2N Ijen, Bromo & Madakaripura tour](/tours/from-surabaya/ijen-bromo-madakaripura-3d2n.md)
   source_refs:
+  - source_id: SRC-PACKAGES-OVERVIEW
+    repo: sambuko82/llm-wiki
+    path: wiki/products/packages-overview.md
+    source_class: operational_direct
+    captured_at: '2026-07-15'
   - source_id: SRC-POLICY-PACK
     repo: sambuko82/llm-wiki
     path: wiki/sources/jvto-policy-pack-v6.md
@@ -32,21 +63,36 @@ records:
 - id: policies/booking-paths
   type: Policy
   title: How to Book
-  description: JVTO's two official booking paths — website Instant Book and WhatsApp-assisted booking.
+  description: JVTO accepts bookings only through the official website; WhatsApp and email are for support,
+    not for booking.
   tags:
   - policy
   - booking
-  - whatsapp
-  - instant-book
-  timestamp: '2026-06-23T00:00:00+07:00'
+  timestamp: '2026-07-15T00:00:00+07:00'
   status: reviewed
   visibility: public
-  last_verified: '2026-06-23'
-  body: "# Overview\n\nJVTO offers two official ways to book:\n\n- **Website Instant Book** — choose a\
-    \ package, date, and number of travelers,\n  review the price, accept the terms, and pay.\n- **WhatsApp-assisted\
-    \ booking** — for custom routes or special requests; JVTO\n  confirms availability and price and sends\
-    \ a payment link.\n\nBook only through JVTO's official channels.\n\n# Related Concepts\n\n- [All tours](/tours/index.md)\n"
+  last_verified: '2026-07-15'
+  body: |
+    # Overview
+
+    JVTO accepts bookings only through the official JVTO website. Choose a package,
+    date, and number of travelers, review the price, accept the terms, and pay — the
+    booking is recorded under a valid JVTO Booking ID.
+
+    WhatsApp and email are for customer assistance only (questions about custom
+    routes, groups, or complex pick-up/drop-off). They do not create, confirm,
+    modify, cancel, or transfer a booking; every booking action is completed on the
+    website.
+
+    # Related Concepts
+
+    - [All tours](/tours/index.md)
   source_refs:
+  - source_id: SRC-PACKAGES-OVERVIEW
+    repo: sambuko82/llm-wiki
+    path: wiki/products/packages-overview.md
+    source_class: operational_direct
+    captured_at: '2026-07-15'
   - source_id: SRC-POLICY-PACK
     repo: sambuko82/llm-wiki
     path: wiki/sources/jvto-policy-pack-v6.md
@@ -84,7 +130,7 @@ records:
     # Related Concepts
 
 
-    - [Cancellation & Lifetime Travel Credit](/policies/cancellation-travel-credit.md)
+    - [Cancellation & Lifetime Package Credit](/policies/cancellation-travel-credit.md)
 
     '
   source_refs:
@@ -350,28 +396,19 @@ records:
   status: reviewed
   visibility: public
   last_verified: '2026-06-23'
-  body: '# Overview
+  body: |
+    # Overview
 
-
-    Book and pay only through JVTO''s official channels — the website, the
-
-    official WhatsApp number, the official email, and JVTO''s listed payment
-
-    links and accounts. JVTO never asks for your full card number, CVV, online
-
-    banking password, or one-time codes by chat or email. If an account number,
-
-    link, or contact looks different, pause and verify through an official
-
+    Book on the official JVTO website and pay only through JVTO's official payment
+    links and listed accounts. WhatsApp and email are for support only — they are
+    not booking or payment channels. JVTO never asks for your full card number, CVV,
+    online banking password, or one-time codes by chat or email. If an account
+    number, link, or contact looks different, pause and verify through an official
     channel.
-
 
     # Related Concepts
 
-
     - [How to Book](/policies/booking-paths.md)
-
-    '
   source_refs:
   - source_id: SRC-POLICY-PACK
     repo: sambuko82/llm-wiki

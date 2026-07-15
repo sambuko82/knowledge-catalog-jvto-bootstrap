@@ -75,7 +75,7 @@
       "ferry_included": true,
       "booking_mode": {
         "instant_book": true,
-        "whatsapp_assisted": true
+        "whatsapp_assisted": false
       },
       "price_tier_ref": "standard_price_bromo_ijen_3d2n",
       "pax_range": {
@@ -185,7 +185,7 @@
       "ferry_included": true,
       "booking_mode": {
         "instant_book": true,
-        "whatsapp_assisted": true
+        "whatsapp_assisted": false
       },
       "price_tier_ref": "standard_price_ijen_bromo_madakaripura_3d2n",
       "pax_range": {
@@ -305,7 +305,7 @@
       "ferry_included": true,
       "booking_mode": {
         "instant_book": true,
-        "whatsapp_assisted": true
+        "whatsapp_assisted": false
       },
       "price_tier_ref": "standard_price_ijen_papuma_tumpak_sewu_bromo_4d3n",
       "pax_range": {
@@ -421,7 +421,7 @@
       "ferry_included": true,
       "booking_mode": {
         "instant_book": true,
-        "whatsapp_assisted": true
+        "whatsapp_assisted": false
       },
       "price_tier_ref": "standard_price_ijen_papuma_tumpak_sewu_bromo_5d4n",
       "pax_range": {
@@ -512,7 +512,7 @@
       "ferry_included": false,
       "booking_mode": {
         "instant_book": true,
-        "whatsapp_assisted": true
+        "whatsapp_assisted": false
       },
       "price_tier_ref": "standard_price_bromo_1d1n",
       "pax_range": {
@@ -605,7 +605,7 @@
       "ferry_included": false,
       "booking_mode": {
         "instant_book": true,
-        "whatsapp_assisted": true
+        "whatsapp_assisted": false
       },
       "price_tier_ref": "standard_price_bromo_2d1n",
       "pax_range": {
@@ -713,7 +713,7 @@
       "ferry_included": false,
       "booking_mode": {
         "instant_book": true,
-        "whatsapp_assisted": true
+        "whatsapp_assisted": false
       },
       "price_tier_ref": "standard_price_bromo_madakaripura_ijen_3d2n",
       "pax_range": {
@@ -815,7 +815,7 @@
       "ferry_included": false,
       "booking_mode": {
         "instant_book": true,
-        "whatsapp_assisted": true
+        "whatsapp_assisted": false
       },
       "price_tier_ref": "standard_price_ijen_2d1n",
       "pax_range": {
@@ -922,7 +922,7 @@
       "ferry_included": false,
       "booking_mode": {
         "instant_book": true,
-        "whatsapp_assisted": true
+        "whatsapp_assisted": false
       },
       "price_tier_ref": "standard_price_ijen_bromo_madakaripura_3d2n",
       "pax_range": {
@@ -1034,7 +1034,7 @@
       "ferry_included": false,
       "booking_mode": {
         "instant_book": true,
-        "whatsapp_assisted": true
+        "whatsapp_assisted": false
       },
       "price_tier_ref": "standard_price_ijen_bromo_madakaripura_4d3n",
       "pax_range": {
@@ -1152,7 +1152,7 @@
       "ferry_included": false,
       "booking_mode": {
         "instant_book": true,
-        "whatsapp_assisted": true
+        "whatsapp_assisted": false
       },
       "price_tier_ref": "standard_price_ijen_bromo_madakaripura_malang_5d4n",
       "pax_range": {
@@ -1273,7 +1273,7 @@
       "ferry_included": false,
       "booking_mode": {
         "instant_book": true,
-        "whatsapp_assisted": true
+        "whatsapp_assisted": false
       },
       "price_tier_ref": "standard_price_ijen_papuma_tumpak_sewu_bromo_4d3n",
       "pax_range": {
@@ -1394,7 +1394,7 @@
       "ferry_included": false,
       "booking_mode": {
         "instant_book": true,
-        "whatsapp_assisted": true
+        "whatsapp_assisted": false
       },
       "price_tier_ref": "standard_price_ijen_papuma_tumpak_sewu_bromo_5d4n",
       "pax_range": {
@@ -1521,7 +1521,7 @@
       "ferry_included": false,
       "booking_mode": {
         "instant_book": true,
-        "whatsapp_assisted": true
+        "whatsapp_assisted": false
       },
       "price_tier_ref": "standard_price_ijen_papuma_tumpak_sewu_bromo_malang_6d5n",
       "pax_range": {
@@ -1630,7 +1630,7 @@
       "ferry_included": false,
       "booking_mode": {
         "instant_book": true,
-        "whatsapp_assisted": true
+        "whatsapp_assisted": false
       },
       "price_tier_ref": "standard_price_taman_safari_prigen_bromo_madakaripura_3d2n",
       "pax_range": {
@@ -1743,7 +1743,7 @@
       "ferry_included": false,
       "booking_mode": {
         "instant_book": true,
-        "whatsapp_assisted": true
+        "whatsapp_assisted": false
       },
       "price_tier_ref": "standard_price_tumpak_sewu_bromo_ijen_4d3n",
       "pax_range": {

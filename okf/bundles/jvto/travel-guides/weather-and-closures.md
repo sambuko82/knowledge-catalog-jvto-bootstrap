@@ -30,7 +30,7 @@ restrict or close access, and JVTO follows those instructions without
 exception. If a closure affects a booking, JVTO offers reasonable
 alternatives where feasible — a different viewpoint, adjusted timing, or a
 replacement destination — and where a key part of the itinerary cannot run
-at all, Travel Credit applies to the unused portion under the booking terms.
+at all, Lifetime Package Credit or a refund of the affected component applies under the booking terms.
 
 The annual Tengger "Kasada" ceremony at Bromo falls on a lunar-calendar date
 that varies each year and can restrict crater access during that window.
