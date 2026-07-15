@@ -549,18 +549,18 @@
     {
       "citations": [],
       "description": "How JVTO handles cancellations — a 48-hour cut-off, Lifetime Package Credit for early full cancellations, and cash refunds only for partial passenger cancellations.",
-      "id": "policies/cancellation-travel-credit",
+      "id": "policies/cancellation-package-credit",
       "last_verified": "2026-07-15",
       "links_to": [
         "tours/from-surabaya/ijen-bromo-madakaripura-3d2n"
       ],
-      "path": "policies/cancellation-travel-credit.md",
+      "path": "policies/cancellation-package-credit.md",
       "resource": "",
       "status": "reviewed",
       "tags": [
         "policy",
         "cancellation",
-        "travel-credit",
+        "package-credit",
         "booking"
       ],
       "title": "Cancellation & Lifetime Package Credit",
@@ -684,7 +684,7 @@
       "id": "policies/payment-rules",
       "last_verified": "2026-06-23",
       "links_to": [
-        "policies/cancellation-travel-credit"
+        "policies/cancellation-package-credit"
       ],
       "path": "policies/payment-rules.md",
       "resource": "",
@@ -1804,7 +1804,7 @@
       "target": "policies/booking-paths"
     },
     {
-      "source": "policies/cancellation-travel-credit",
+      "source": "policies/cancellation-package-credit",
       "target": "tours/from-surabaya/ijen-bromo-madakaripura-3d2n"
     },
     {
@@ -1829,7 +1829,7 @@
     },
     {
       "source": "policies/payment-rules",
-      "target": "policies/cancellation-travel-credit"
+      "target": "policies/cancellation-package-credit"
     },
     {
       "source": "policies/police-escort",

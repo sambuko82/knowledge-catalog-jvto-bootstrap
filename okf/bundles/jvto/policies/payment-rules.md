@@ -32,4 +32,4 @@ Pay only through JVTO's official payment links and listed accounts.
 
 # Related Concepts
 
-- [Cancellation & Lifetime Package Credit](/policies/cancellation-travel-credit.md)
+- [Cancellation & Lifetime Package Credit](/policies/cancellation-package-credit.md)

@@ -1,5 +1,5 @@
 records:
-- id: policies/cancellation-travel-credit
+- id: policies/cancellation-package-credit
   type: Policy
   title: Cancellation & Lifetime Package Credit
   description: How JVTO handles cancellations — a 48-hour cut-off, Lifetime Package Credit for early full
@@ -7,7 +7,7 @@ records:
   tags:
   - policy
   - cancellation
-  - travel-credit
+  - package-credit
   - booking
   timestamp: '2026-07-15T00:00:00+07:00'
   status: reviewed
@@ -130,7 +130,7 @@ records:
     # Related Concepts
 
 
-    - [Cancellation & Lifetime Package Credit](/policies/cancellation-travel-credit.md)
+    - [Cancellation & Lifetime Package Credit](/policies/cancellation-package-credit.md)
 
     '
   source_refs:

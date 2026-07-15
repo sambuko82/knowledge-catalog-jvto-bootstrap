@@ -7,7 +7,7 @@ description: How JVTO handles cancellations — a 48-hour cut-off, Lifetime Pack
 tags:
 - policy
 - cancellation
-- travel-credit
+- package-credit
 - booking
 timestamp: '2026-07-15T00:00:00+07:00'
 status: reviewed
@@ -24,7 +24,7 @@ source_refs:
   path: wiki/sources/jvto-policy-pack-v6.md
   source_class: operational_direct
   captured_at: '2026-05-26'
-id: policies/cancellation-travel-credit
+id: policies/cancellation-package-credit
 ---
 
 # Overview
