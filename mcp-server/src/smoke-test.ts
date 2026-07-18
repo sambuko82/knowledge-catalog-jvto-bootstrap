@@ -4,19 +4,18 @@ import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
 import assert from "node:assert/strict";
 
-function textContent(result: unknown): string {
-  const r = result as any;
-  const first = r.content?.[0];
+function textContent(result: Awaited<ReturnType<Client["callTool"]>>): string {
+  if ("toolResult" in result) throw new Error("expected a text content block");
+  const first = result.content[0];
   if (!first || first.type !== "text" || typeof first.text !== "string") {
     throw new Error("expected a text content block");
   }
   return first.text;
 }
 
-function textResourceContent(result: unknown): string {
-  const r = result as any;
-  const first = r.contents?.[0];
-  if (!first || typeof first.text !== "string") {
+function textResourceContent(result: Awaited<ReturnType<Client["readResource"]>>): string {
+  const first = result.contents[0];
+  if (!first || !("text" in first) || typeof first.text !== "string") {
     throw new Error("expected a text resource content");
   }
   return first.text;
