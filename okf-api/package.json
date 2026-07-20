@@ -1,0 +1,21 @@
+{
+  "name": "jvto-okf-api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Read-only JSON API exposing JVTO OKF bundle content (starting with travel guides) for consumption by other apps (e.g. the website).",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "tsx src/server.ts",
+    "test": "node --import tsx --test src/bundle.test.ts"
+  },
+  "dependencies": {
+    "js-yaml": "^5.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "tsx": "^4.23.1",
+    "typescript": "^7.0.2"
+  }
+}
