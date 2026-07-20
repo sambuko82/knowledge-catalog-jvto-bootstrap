@@ -23,12 +23,35 @@ REQUIRED_FILES = [
 ]
 
 # Anything that would mean supplier cost / margin / internal-ops / PII leaked into the release.
-FORBIDDEN_SUBSTRINGS = (
-    "driver_cost", "escort_cost", "supplier", "margin", "vendor", "profit",
-    "backoffice_observed", "rate_idr", "cost_idr", "price_per_day", "per_day_rate",
-    "customer_email", "customer_phone", "passport", "payment_reference",
-    "api_key", "private_key",
+# Split into two tiers because a flat substring scan over the whole serialized JSON (keys
+# *and* values) makes ordinary English words unusable in customer-facing prose values, e.g.
+# a policy body legitimately saying "non-recoverable vendor cost" or "bring your passport".
+#
+# FIELD_NAME_SUBSTRINGS: snake_case, machine-identifier-shaped. Effectively never occurs in
+# natural prose, so still safe to scan across full text (keys *and* values) — this is what
+# actually catches an internal field accidentally serialized wholesale into a value.
+FIELD_NAME_SUBSTRINGS = (
+    "driver_cost", "escort_cost", "backoffice_observed", "rate_idr", "cost_idr",
+    "price_per_day", "per_day_rate", "customer_email", "customer_phone",
+    "payment_reference", "api_key", "private_key",
 )
+# WORD_SUBSTRINGS: ordinary English words that are real leak signals only as a *field name*
+# (e.g. a key literally called "vendor" or "vendor_categories"), not when they occur inside
+# free-text prose values — so these are checked against JSON keys only, never full text.
+WORD_SUBSTRINGS = ("supplier", "margin", "vendor", "profit", "passport")
+
+FORBIDDEN_SUBSTRINGS = FIELD_NAME_SUBSTRINGS + WORD_SUBSTRINGS
+
+
+def _iter_keys(node: object):
+    """Yield every JSON object key found anywhere in a nested structure."""
+    if isinstance(node, dict):
+        for key, value in node.items():
+            yield key
+            yield from _iter_keys(value)
+    elif isinstance(node, list):
+        for item in node:
+            yield from _iter_keys(item)
 
 PACKAGE_KEYED = [
     "package-profiles.json", "standard-price-tiers.json", "component-matrices.json",
@@ -53,10 +76,15 @@ def validate(out_dir: Path) -> dict:
     for name in REQUIRED_FILES:
         if name in meta_files:
             continue
-        text = (out_dir / name).read_text(encoding="utf-8").lower()
-        for needle in FORBIDDEN_SUBSTRINGS:
+        raw = (out_dir / name).read_text(encoding="utf-8")
+        text = raw.lower()
+        for needle in FIELD_NAME_SUBSTRINGS:
             if needle in text:
                 findings.append(f"{name}: forbidden field/term present: {needle}")
+        keys_text = " ".join(_iter_keys(json.loads(raw))).lower()
+        for needle in WORD_SUBSTRINGS:
+            if needle in keys_text:
+                findings.append(f"{name}: forbidden field name present: {needle}")
 
     # Package-keyed records must carry package_key + release_id + readiness + source_evidence.
     for name in PACKAGE_KEYED:
