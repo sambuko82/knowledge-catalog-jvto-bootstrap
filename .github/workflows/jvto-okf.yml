@@ -1,15 +1,18 @@
-name: JVTO OKF Validation
+name: JVTO OKF Validation & Deploy
 
 on:
   pull_request:
     paths:
       - 'okf/bundles/jvto/**'
       - 'okf/jvto/**'
+      - 'okf-api/**'
   push:
-    branches: [main]
+    branches: [david]
     paths:
       - 'okf/bundles/jvto/**'
       - 'okf/jvto/**'
+      - 'okf-api/**'
+  workflow_dispatch: {}
 
 jobs:
   validate:
@@ -30,3 +33,44 @@ jobs:
       - run: git -C "$GITHUB_WORKSPACE" diff --exit-code -- okf/bundles/jvto
       - run: python scripts/validate_okf.py --strict-links
       - run: python scripts/validate_okf.py --release --strict-links
+
+  deploy:
+    name: Deploy okf-api to VPS
+    needs: validate
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install deploy SSH key
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H "${{ secrets.DEPLOY_HOST }}" >> ~/.ssh/known_hosts
+
+      - name: Sync public bundle data (okf/bundles/jvto)
+        run: |
+          rsync -avz --delete -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=yes" \
+            okf/bundles/jvto/ \
+            "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:/var/www/okf-api/okf/bundles/jvto/"
+
+      - name: Sync okf-api app code
+        run: |
+          rsync -avz --delete \
+            --exclude node_modules --exclude dist \
+            -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=yes" \
+            okf-api/ \
+            "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:/var/www/okf-api/okf-api/"
+
+      - name: Install, build, and reload via pm2
+        run: |
+          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=yes \
+            "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}" \
+            'set -euo pipefail; cd /var/www/okf-api/okf-api && npm install && npm run build && pm2 startOrReload ecosystem.config.cjs && pm2 save'
+
+      - name: Health check
+        run: |
+          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=yes \
+            "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}" \
+            'curl -sf http://127.0.0.1:3300/healthz'
