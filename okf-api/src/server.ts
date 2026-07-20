@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { createServer, type ServerResponse } from "node:http";
 import { listConcepts, getConcept } from "./bundle.js";
+import { renderDocsHtml } from "./docs.js";
 
 const HOST = process.env.HOST ?? "127.0.0.1";
 const PORT = Number(process.env.PORT ?? 3300);
@@ -34,6 +35,15 @@ const server = createServer((req, res) => {
 
   if (url.pathname === "/healthz") {
     sendJson(res, 200, { ok: true });
+    return;
+  }
+
+  if (url.pathname === "/" || url.pathname === "/docs") {
+    res.writeHead(200, {
+      "content-type": "text/html; charset=utf-8",
+      "access-control-allow-origin": "*",
+    });
+    res.end(renderDocsHtml());
     return;
   }
 
