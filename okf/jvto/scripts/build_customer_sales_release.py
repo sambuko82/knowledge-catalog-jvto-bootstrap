@@ -135,7 +135,7 @@ def _base_inclusions(tokens: list[str], origin: str, ferry_included: bool) -> di
     if "bromo" in tokens:
         included.append("private 4WD jeep for Bromo")
     if "ijen" in tokens:
-        included.extend(["gas masks and trekking poles for Ijen", "Ijen health-screening coordination where required"])
+        included.extend(["gas masks and trekking poles for Ijen", "mandatory Ijen health-screening coordination (certificate required for every guest)"])
     if ferry_included or origin == "bali":
         included.append("ferry crossing (East Java – Bali)")
     return {

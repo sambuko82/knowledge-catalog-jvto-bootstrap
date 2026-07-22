@@ -583,7 +583,7 @@
     {
       "data": "ijen_health_screening",
       "looks_general": "\"All tours need health screening\"",
-      "actual": "Only Ijen packages, and only when BBKSDA requires it",
+      "actual": "Only Ijen packages, but on those it is mandatory for every guest",
       "applies_to": [
         "bali/bromo-ijen-3d2n",
         "bali/ijen-bromo-madakaripura-3d2n",
