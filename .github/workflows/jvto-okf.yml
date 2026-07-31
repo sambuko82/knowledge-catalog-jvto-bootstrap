@@ -37,17 +37,50 @@ jobs:
       - run: python scripts/validate_okf.py --release --strict-links
 
       # jvto-web consumes okf/customer-sales-release/jvto/*.json directly (see
-      # jvto-web's scripts/sync-okf.mjs) — until this run, a push touching only
-      # that directory triggered no CI at all (path filter above didn't cover
-      # it), so a bad release could reach jvto-web unvalidated. A full
-      # rebuild-and-diff gate needs a jvto-itinerary-core checkout
-      # (scripts/build_customer_sales_release.py --core-root) this repo doesn't
-      # have wired in — but validate_customer_sales_release.py needs no such
-      # checkout; it validates the already-committed release files directly
-      # (missing files, malformed records, leaked private/internal/PII
-      # fields). Runs before the dispatch step below, so a bad release blocks
-      # the notify rather than propagating to jvto-web unvalidated.
+      # jvto-web's scripts/sync-okf.mjs). Two independent gates guard it, both
+      # before the dispatch step below so a bad release blocks the notify rather
+      # than propagating to jvto-web:
+      #  (1) validate_customer_sales_release.py — content/leak check on the
+      #      committed files directly (missing files, malformed records, leaked
+      #      private/internal/PII fields). Needs no external checkout.
       - run: python scripts/validate_customer_sales_release.py
+
+      #  (2) verify_customer_sales_release.py — REBUILD-AND-DIFF reproducibility
+      #      gate (the release analog of the build_bundle.py no-diff guard
+      #      above). Rebuilds the release from its DECLARED sources — the current
+      #      OKF catalog + a jvto-itinerary-core checkout pinned to the revision
+      #      in source-lock.json — and fails if any deterministic artifact
+      #      drifted (hand-edit, or an OKF concept change not propagated into the
+      #      release). Secret-guarded on GH_PAT (read access to the private
+      #      itinerary-core): until that secret is configured on this repo the
+      #      gate self-skips with a notice rather than hard-failing.
+      - name: Resolve release-gate config
+        id: gate
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: |
+          if [ -z "$GH_PAT" ]; then
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::GH_PAT not set — customer-sales-release reproducibility gate skipped. Add GH_PAT (read access to sambuko82/jvto-itinerary-core) to enable."
+          else
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          fi
+          rev="$(python -c "import json; print(json.load(open('$GITHUB_WORKSPACE/okf/customer-sales-release/jvto/source-lock.json'))['itinerary_core']['revision'])")"
+          echo "rev=$rev" >> "$GITHUB_OUTPUT"
+
+      - name: Checkout jvto-itinerary-core (pinned to source-lock revision)
+        if: steps.gate.outputs.configured == 'true'
+        uses: actions/checkout@v4
+        with:
+          repository: sambuko82/jvto-itinerary-core
+          ref: ${{ steps.gate.outputs.rev }}
+          path: jvto-itinerary-core
+          token: ${{ secrets.GH_PAT }}
+          fetch-depth: 0
+
+      - name: Verify customer-sales-release reproducibility
+        if: steps.gate.outputs.configured == 'true'
+        run: python scripts/verify_customer_sales_release.py --core-root "$GITHUB_WORKSPACE/jvto-itinerary-core"
 
       # After a merge to main, notify jvto-web to sync the freshly-updated
       # customer-sales-release artifacts (only reached if the validation step
