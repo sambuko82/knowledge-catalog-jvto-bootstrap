@@ -61,9 +61,16 @@ def _sha256(path: Path) -> str:
 
 
 def _check_source_lock(core_root: Path) -> list[str]:
-    """Verify the 7 core source files match the SHAs pinned in source-lock.json."""
+    """Verify BOTH declared sources match source-lock.json: the 7 itinerary-core
+    files (by SHA) AND the OKF catalog (by SHA). The catalog check matters because
+    source-lock.json is excluded from the byte diff on the premise its content is
+    pinned by catalog_sha256 — but a catalog-only change that doesn't touch the
+    fields builder.build reads (e.g. catalog edges / non-release concept metadata)
+    would leave source-lock stale while the data artifacts still reproduce. Fail
+    here so a stale lock is caught rather than silently reported reproducible."""
     lock = read_json(RELEASE_DIR / "source-lock.json")
     findings: list[str] = []
+
     core = lock.get("itinerary_core", {})
     for rel, want in (core.get("sources") or {}).items():
         src = core_root / rel
@@ -77,6 +84,20 @@ def _check_source_lock(core_root: Path) -> list[str]:
                 f"    expected {want} (source-lock pins itinerary_core@{core.get('revision', '?')[:12]})\n"
                 f"    got      {got} — is --core-root at the pinned revision?"
             )
+
+    kc = lock.get("knowledge_catalog", {})
+    want_cat = kc.get("catalog_sha256")
+    if want_cat:
+        catalog = builder.BUNDLE_ROOT / "catalog.json"
+        got_cat = _sha256(catalog) if catalog.exists() else None
+        if got_cat != want_cat:
+            findings.append(
+                f"OKF catalog SHA mismatch: {catalog.name}\n"
+                f"    expected {want_cat} (source-lock pins knowledge_catalog@{kc.get('revision', '?')[:12]})\n"
+                f"    got      {got_cat or 'MISSING'} — the OKF catalog changed since the release was locked; "
+                f"rebuild the release to refresh source-lock."
+            )
+
     return findings
 
 
