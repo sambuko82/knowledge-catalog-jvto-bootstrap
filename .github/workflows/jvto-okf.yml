@@ -12,6 +12,9 @@ on:
       - 'okf/bundles/jvto/**'
       - 'okf/jvto/**'
       - 'okf/customer-sales-release/jvto/**'
+  # Lets JVTO_WEB_DISPATCH_TOKEN be verified on demand (Actions -> JVTO OKF
+  # Validation -> Run workflow) without needing a real content push.
+  workflow_dispatch:
 
 jobs:
   validate:
@@ -52,7 +55,7 @@ jobs:
       # from a secret and never printed; continue-on-error so a not-yet-
       # configured secret doesn't fail the whole job — it fails only this step.
       - name: Notify jvto-web (repository_dispatch)
-        if: github.event_name == 'push'
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
         continue-on-error: true
         env:
           GH_TOKEN: ${{ secrets.JVTO_WEB_DISPATCH_TOKEN }}
