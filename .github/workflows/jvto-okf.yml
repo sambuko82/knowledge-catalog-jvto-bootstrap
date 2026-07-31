@@ -5,11 +5,13 @@ on:
     paths:
       - 'okf/bundles/jvto/**'
       - 'okf/jvto/**'
+      - 'okf/customer-sales-release/jvto/**'
   push:
     branches: [main]
     paths:
       - 'okf/bundles/jvto/**'
       - 'okf/jvto/**'
+      - 'okf/customer-sales-release/jvto/**'
 
 jobs:
   validate:
@@ -30,3 +32,26 @@ jobs:
       - run: git -C "$GITHUB_WORKSPACE" diff --exit-code -- okf/bundles/jvto
       - run: python scripts/validate_okf.py --strict-links
       - run: python scripts/validate_okf.py --release --strict-links
+
+      # jvto-web consumes okf/customer-sales-release/jvto/*.json directly (see
+      # jvto-web's scripts/sync-okf.mjs) — until this run, a push touching only
+      # that directory triggered no CI at all (path filter above didn't cover
+      # it), so a bad release could reach jvto-web unvalidated. Rebuilding it
+      # requires a jvto-itinerary-core checkout (scripts/build_customer_sales_
+      # release.py --core-root), which this repo doesn't have access to here —
+      # only a path-trigger + notify step is added; a rebuild-and-diff gate for
+      # this artifact is a follow-up once that checkout is wired in.
+
+      # After a merge to main, notify jvto-web to sync the freshly-updated
+      # customer-sales-release artifacts. Mirrors llm-wiki's ci.yml dispatch
+      # step exactly. Token is read from a secret and never printed; if the
+      # secret isn't yet configured on this repo, this step fails harmlessly
+      # (auth error) without affecting the validate job above.
+      - name: Notify jvto-web (repository_dispatch)
+        if: github.event_name == 'push'
+        env:
+          GH_TOKEN: ${{ secrets.JVTO_WEB_DISPATCH_TOKEN }}
+        run: |
+          gh api -X POST repos/jvto-devteam/jvto-web/dispatches \
+            -f event_type=okf-master-updated \
+            -f "client_payload[sha]=${GITHUB_SHA}"
