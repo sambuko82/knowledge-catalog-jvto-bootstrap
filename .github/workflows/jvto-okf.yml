@@ -36,22 +36,27 @@ jobs:
       # jvto-web consumes okf/customer-sales-release/jvto/*.json directly (see
       # jvto-web's scripts/sync-okf.mjs) — until this run, a push touching only
       # that directory triggered no CI at all (path filter above didn't cover
-      # it), so a bad release could reach jvto-web unvalidated. Rebuilding it
-      # requires a jvto-itinerary-core checkout (scripts/build_customer_sales_
-      # release.py --core-root), which this repo doesn't have access to here —
-      # only a path-trigger + notify step is added; a rebuild-and-diff gate for
-      # this artifact is a follow-up once that checkout is wired in.
+      # it), so a bad release could reach jvto-web unvalidated. A full
+      # rebuild-and-diff gate needs a jvto-itinerary-core checkout
+      # (scripts/build_customer_sales_release.py --core-root) this repo doesn't
+      # have wired in — but validate_customer_sales_release.py needs no such
+      # checkout; it validates the already-committed release files directly
+      # (missing files, malformed records, leaked private/internal/PII
+      # fields). Runs before the dispatch step below, so a bad release blocks
+      # the notify rather than propagating to jvto-web unvalidated.
+      - run: python scripts/validate_customer_sales_release.py
 
       # After a merge to main, notify jvto-web to sync the freshly-updated
-      # customer-sales-release artifacts. Mirrors llm-wiki's ci.yml dispatch
-      # step exactly. Token is read from a secret and never printed; if the
-      # secret isn't yet configured on this repo, this step fails harmlessly
-      # (auth error) without affecting the validate job above.
+      # customer-sales-release artifacts (only reached if the validation step
+      # above passed). Mirrors llm-wiki's ci.yml dispatch step. Token is read
+      # from a secret and never printed; continue-on-error so a not-yet-
+      # configured secret doesn't fail the whole job — it fails only this step.
       - name: Notify jvto-web (repository_dispatch)
         if: github.event_name == 'push'
+        continue-on-error: true
         env:
           GH_TOKEN: ${{ secrets.JVTO_WEB_DISPATCH_TOKEN }}
         run: |
           gh api -X POST repos/jvto-devteam/jvto-web/dispatches \
-            -f event_type=okf-master-updated \
+            -f event_type=okf-main-updated \
             -f "client_payload[sha]=${GITHUB_SHA}"
