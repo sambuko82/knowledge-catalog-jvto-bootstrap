@@ -23,8 +23,12 @@ REQUIRED_FILES = [
 ]
 
 # Anything that would mean supplier cost / margin / internal-ops / PII leaked into the release.
+# "vendor_" (not bare "vendor") — bare "vendor" false-positived on legitimate customer-facing
+# refund-policy prose ("cash refund less any non-recoverable vendor cost" in policy-cards.json);
+# the leak this guards against is an internal snake_case field name (vendor_cost, vendor_rate,
+# vendor_allocation — see release-manifest.json's own excluded list), not the English word.
 FORBIDDEN_SUBSTRINGS = (
-    "driver_cost", "escort_cost", "supplier", "margin", "vendor", "profit",
+    "driver_cost", "escort_cost", "supplier", "margin", "vendor_", "profit",
     "backoffice_observed", "rate_idr", "cost_idr", "price_per_day", "per_day_rate",
     "customer_email", "customer_phone", "passport", "payment_reference",
     "api_key", "private_key",
