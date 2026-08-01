@@ -72,7 +72,7 @@ This concept covers JVTO's coordination of the mandatory screening. The
 coordinating doctor's medical-license validity is evidenced separately (see
 the Dr. Ahmad Irwandanu concept). The certificate's electronic-signature
 format is now evidenced: a sample Health Screening Form on file carries a
-BSSN/BSrE electronic signature (llm-wiki source, cited via source_refs),
+BSSN/BSrE electronic signature (a sample held in the llm-wiki knowledge base),
 establishing the signature format the issued surat sehat uses. This evidences
 the signature format only — it does not establish that the digital document
 is verified or accepted at the Ijen gate, nor the legal status of any
