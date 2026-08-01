@@ -39,6 +39,19 @@ root contract wins.
   `visualize.py` and `build_catalog`. `okf_core.py` — shared OKF
   document/path primitives (lenient parser; the strict gate stays in `common`).
 
+Customer Sales Release (`okf/customer-sales-release/jvto/`) — a separate
+publication artifact, NOT part of the no-diff-guarded bundle above:
+- `build_customer_sales_release.py --core-root <jvto-itinerary-core>` — joins
+  release-eligible concepts with itinerary-core operational/pricing facts into
+  the 10 release objects + coverage/gap/source-lock/release-manifest.
+- `validate_customer_sales_release.py` — content/leak gate on the committed
+  files (missing files, malformed records, private/internal/PII leaks).
+- `verify_customer_sales_release.py --core-root <jvto-itinerary-core>` —
+  rebuild-and-diff reproducibility gate: checks the 7 core source SHAs + the
+  OKF `catalog_sha256` against `source-lock.json`, then byte-compares the 12
+  deterministic artifacts. CI runs it (`jvto-okf.yml`, GH_PAT-gated); run it
+  locally with a core checkout pinned to `source-lock`'s revision.
+
 ## Derived bundle artifacts
 - `index.md` (every directory) — progressive-disclosure listings; root declares
   `okf_version`.
