@@ -71,10 +71,12 @@ succeeded on retry; recorded per source-health policy).
 This concept covers JVTO's coordination of the mandatory screening. The
 coordinating doctor's medical-license validity is evidenced separately (see
 the Dr. Ahmad Irwandanu concept). The certificate's electronic-signature
-format is now evidenced: a sample BSSN/BSrE-signed Health Screening Form is
-held upstream in the llm-wiki source (cited via source_refs), so the issued
-surat sehat is a legally recognised, gate-verifiable e-document rather than a
-self-printed form. This concept does not itself certify the individual guest
+format is now evidenced: a sample Health Screening Form on file carries a
+BSSN/BSrE electronic signature (llm-wiki source, cited via source_refs),
+establishing the signature format the issued surat sehat uses. This evidences
+the signature format only — it does not establish that the digital document
+is verified or accepted at the Ijen gate, nor the legal status of any
+individual certificate. This concept does not itself certify the individual guest
 screening certificates — a per-guest certificate attests only to that
 guest's own screening.
 
