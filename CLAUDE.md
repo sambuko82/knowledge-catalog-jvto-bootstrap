@@ -24,7 +24,7 @@ and `verified` concepts, not a static placeholder.)
 ## Partner Claim Boundaries
 - INDECON: public network listing only.
 - HPWKI: public partner or membership context only.
-- Dr. Ahmad Irwandanu: Ijen screening coordination only.
+- Dr. Ahmad Irwandanu: Ijen screening coordination. Medical-license validity is evidenced (SIP No. 503.446/664/DRU/4/430.9.13/2026, STR QN00001073380217 valid to 2031-01-06, publicly checkable via Kemenkes SatuSehat / KKI). Do not assert private-practice marketing details, and do not certify individual guest screening certificates.
 - ISIC: provider listing only after direct provider evidence is available.
 
 ## Reference Claim Boundaries

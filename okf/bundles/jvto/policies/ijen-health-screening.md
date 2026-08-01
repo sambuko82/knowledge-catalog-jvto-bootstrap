@@ -63,10 +63,12 @@ is the BBKSDA ticket portal's crater-access terms (cited below, last
 checked 2026-07-07 — a first automated read that day was reset and
 succeeded on retry; recorded per source-health policy).
 
-This concept covers JVTO's coordination of the mandatory screening only.
-Beyond the regulatory requirement stated above, it does not confirm any
-further legitimacy of the issued certificate; any such attributes are held
-upstream pending direct evidence and are not published here.
+This concept covers JVTO's coordination of the mandatory screening. The
+coordinating doctor's medical-license validity is evidenced separately (see
+the Dr. Ahmad Irwandanu concept). This concept does not itself certify the
+individual guest screening certificates; the per-certificate electronic
+signature is corroborated by the same issuing authority rather than
+separately attached here.
 
 # Related Concepts
 
