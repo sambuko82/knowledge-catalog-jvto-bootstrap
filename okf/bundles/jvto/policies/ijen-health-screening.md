@@ -29,6 +29,11 @@ source_refs:
   path: wiki/sources/2026-08-01-ijen-screening-owner-brief.md
   source_class: operational_direct
   captured_at: '2026-08-01'
+- source_id: SRC-WIKI-SURAT-SAMPLE
+  repo: sambuko82/llm-wiki
+  path: wiki/credentials/surat-sehat.md
+  source_class: operational_direct
+  captured_at: '2026-08-01'
 id: policies/ijen-health-screening
 ---
 
@@ -65,10 +70,13 @@ succeeded on retry; recorded per source-health policy).
 
 This concept covers JVTO's coordination of the mandatory screening. The
 coordinating doctor's medical-license validity is evidenced separately (see
-the Dr. Ahmad Irwandanu concept). This concept does not itself certify the
-individual guest screening certificates; the per-certificate electronic
-signature is corroborated by the same issuing authority rather than
-separately attached here.
+the Dr. Ahmad Irwandanu concept). The certificate's electronic-signature
+format is now evidenced: a sample BSSN/BSrE-signed Health Screening Form is
+held upstream in the llm-wiki source (cited via source_refs), so the issued
+surat sehat is a legally recognised, gate-verifiable e-document rather than a
+self-printed form. This concept does not itself certify the individual guest
+screening certificates — a per-guest certificate attests only to that
+guest's own screening.
 
 # Related Concepts
 
