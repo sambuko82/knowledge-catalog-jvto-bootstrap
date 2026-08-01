@@ -63,16 +63,10 @@ is the BBKSDA ticket portal's crater-access terms (cited below, last
 checked 2026-07-07 — a first automated read that day was reset and
 succeeded on retry; recorded per source-health policy).
 
-A separate owner brief (2026-08-01) additionally states the issued
-certificate carries the legal validity of a licensed doctor and a BSrE
-(Balai Sertifikasi Elektronik) certified electronic signature on every
-document. Those document-legitimacy claims are recorded upstream in
-llm-wiki as owner-stated and are not asserted here: per the Dr. Ahmad
-Irwandanu claim boundary, this concept covers screening coordination only
-and does not confirm medical-license validity. Promoting the
-license-validity and BSrE claims to public status is a publication
-propagation recommendation, pending direct evidence (a SIP verification
-reference and a BSrE certificate reference).
+This concept covers JVTO's coordination of the mandatory screening only.
+Beyond the regulatory requirement stated above, it does not confirm any
+further legitimacy of the issued certificate; any such attributes are held
+upstream pending direct evidence and are not published here.
 
 # Related Concepts
 
