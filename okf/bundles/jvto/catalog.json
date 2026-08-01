@@ -485,10 +485,13 @@
       "visibility": "public"
     },
     {
-      "citations": [],
+      "citations": [
+        "https://satusehat.kemkes.go.id/sdmk/nakes/QN00001073380217",
+        "https://www.kki.go.id/cekdokter/form"
+      ],
       "description": "The doctor JVTO identifies for its Ijen pre-hike health-screening coordination.",
       "id": "people/dr-ahmad-irwandanu",
-      "last_verified": "",
+      "last_verified": "2026-08-01",
       "links_to": [
         "destinations/kawah-ijen",
         "policies/ijen-health-screening",
