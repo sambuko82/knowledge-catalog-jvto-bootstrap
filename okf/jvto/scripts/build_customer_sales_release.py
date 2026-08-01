@@ -453,6 +453,32 @@ def _module_layer_block(out_dir: Path) -> dict[str, Any] | None:
     }
 
 
+def build_release_manifest(built: dict[str, Any], out_dir: Path, release_id: str, created_at: str) -> dict[str, Any]:
+    """Assemble the release-manifest.json content.
+
+    Split out of main() so the reproducibility gate (verify_customer_sales_release.py)
+    can rebuild the manifest and byte-compare every field except the created_at
+    timestamp — the whole file was previously excluded from the diff, leaving
+    deterministic fields (release_id, package_count, object_counts, readiness,
+    price_published, ...) unprotected."""
+    manifest: dict[str, Any] = {
+        "schema_version": RELEASE_SCHEMA,
+        "release_id": release_id,
+        "created_at": created_at,
+        "customer_traffic_ready": False,
+        "package_count": built["coverage"]["package_count"],
+        "object_counts": built["coverage"]["object_counts"],
+        "capability_readiness": built["coverage"]["capability_readiness"],
+    }
+    module_layer = _module_layer_block(out_dir)
+    if module_layer is not None:
+        manifest["module_layer"] = module_layer
+    manifest["price_published"] = True
+    manifest["price_note"] = "Exact per-pax standard price tiers are published (business-approved). Availability still requires live confirmation."
+    manifest["excluded"] = ["supplier rates", "internal costs", "margin", "vendor allocation", "PII"]
+    return manifest
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(prog="build_customer_sales_release")
     parser.add_argument("--core-root", required=True, help="Path to a local jvto-itinerary-core checkout")
@@ -487,21 +513,7 @@ def main() -> None:
     }
     write_json(out_dir / "source-lock.json", source_lock)
 
-    manifest = {
-        "schema_version": RELEASE_SCHEMA,
-        "release_id": args.release_id,
-        "created_at": utc_now(),
-        "customer_traffic_ready": False,
-        "package_count": built["coverage"]["package_count"],
-        "object_counts": built["coverage"]["object_counts"],
-        "capability_readiness": built["coverage"]["capability_readiness"],
-    }
-    module_layer = _module_layer_block(out_dir)
-    if module_layer is not None:
-        manifest["module_layer"] = module_layer
-    manifest["price_published"] = True
-    manifest["price_note"] = "Exact per-pax standard price tiers are published (business-approved). Availability still requires live confirmation."
-    manifest["excluded"] = ["supplier rates", "internal costs", "margin", "vendor allocation", "PII"]
+    manifest = build_release_manifest(built, out_dir, args.release_id, utc_now())
     write_json(out_dir / "release-manifest.json", manifest)
     print(f"Customer Sales Release written to {out_dir} ({built['coverage']['package_count']} packages)")
 

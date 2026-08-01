@@ -8,11 +8,12 @@ no-diff guard). It rebuilds the release from:
 and fails if any DETERMINISTIC artifact differs from what is committed. It catches a
 hand-edited release, or an OKF concept change that was not propagated into the release.
 
-Two files are excluded from the byte comparison because they legitimately change every
-build and carry no customer-facing content:
-  - source-lock.json     (created_at timestamp + knowledge_catalog.revision = the OKF git
-                           HEAD; content is pinned by catalog_sha256, which IS compared)
-  - release-manifest.json (created_at timestamp)
+source-lock.json is excluded from the byte comparison because it legitimately changes
+every build and carries no customer-facing content (created_at timestamp +
+knowledge_catalog.revision = the OKF git HEAD; its content is pinned by catalog_sha256,
+which IS compared). release-manifest.json also carries a created_at timestamp, but its
+remaining fields are deterministic build output, so it is rebuilt and compared field by
+field with only created_at normalized.
 
 Before rebuilding, the 7 itinerary-core source files are checked against the SHA256s in
 source-lock.json so a wrong --core-root revision fails with a clear message instead of a
@@ -39,7 +40,8 @@ import build_customer_sales_release as builder
 RELEASE_DIR = OKF_ROOT / "customer-sales-release" / "jvto"
 
 # Deterministic outputs that MUST reproduce byte-for-byte (the 10 data objects + the two
-# report files). source-lock.json / release-manifest.json are intentionally excluded.
+# report files). source-lock.json is excluded (checked via SHAs above); release-manifest.json
+# is compared separately below (rebuilt, all fields except created_at).
 DETERMINISTIC_FILES = [
     "package-profiles.json",
     "standard-price-tiers.json",
@@ -133,6 +135,18 @@ def main() -> None:
 
         drifted = [name for name in DETERMINISTIC_FILES
                    if not filecmp.cmp(RELEASE_DIR / name, tmp / name, shallow=False)]
+
+        # release-manifest.json carries a created_at timestamp that legitimately
+        # changes every build, but its remaining fields (release_id, package_count,
+        # object_counts, capability_readiness, price_published, module_layer, ...) are
+        # deterministic build output. Rebuild the manifest and compare every field
+        # except created_at, so a hand-edited or stale manifest is caught rather than
+        # excluded wholesale. (_module_layer_block reads the module files copied into
+        # tmp, i.e. the committed ones — the same inputs the committed manifest used.)
+        committed_manifest = {**read_json(RELEASE_DIR / "release-manifest.json"), "created_at": ""}
+        rebuilt_manifest = builder.build_release_manifest(built, tmp, args.release_id, "")
+        if committed_manifest != rebuilt_manifest:
+            drifted.append("release-manifest.json (fields other than created_at)")
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
 
@@ -147,7 +161,7 @@ def main() -> None:
         )
         sys.exit(1)
 
-    print(f"Customer Sales Release reproducible ({len(DETERMINISTIC_FILES)} deterministic artifacts match) — {args.release_id}")
+    print(f"Customer Sales Release reproducible ({len(DETERMINISTIC_FILES)} deterministic artifacts + release-manifest fields match) — {args.release_id}")
 
 
 if __name__ == "__main__":

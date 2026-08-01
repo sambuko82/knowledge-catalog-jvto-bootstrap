@@ -12,7 +12,7 @@ tags:
 timestamp: '2026-07-07T00:00:00+07:00'
 status: qualified
 visibility: public
-last_verified: '2026-07-07'
+last_verified: '2026-08-01'
 source_refs:
 - source_id: SRC-POLICY-PACK
   repo: sambuko82/llm-wiki
@@ -24,6 +24,11 @@ source_refs:
   path: wiki/credentials/medical-screening.md
   source_class: operational_direct
   captured_at: '2026-07-07'
+- source_id: SRC-WIKI-SCREEN-BRIEF
+  repo: sambuko82/llm-wiki
+  path: wiki/sources/2026-08-01-ijen-screening-owner-brief.md
+  source_class: operational_direct
+  captured_at: '2026-08-01'
 id: policies/ijen-health-screening
 ---
 
@@ -44,6 +49,12 @@ saturation.
 Where a guest is advised not to hike, the group can continue while that
 person sits out.
 
+For JVTO guests the screening is included with the tour and coordinated
+at the guest's hotel before the Ijen guide's hike briefing, so there is
+no clinic detour or queue. JVTO staff handle the bundled Ijen entry
+administration — the entrance tickets, the screening result, and the
+required entry documentation — so guests do not manage these themselves.
+
 # Limitation
 
 The Surat Edaran itself is an administrative circular and is not published
@@ -51,6 +62,11 @@ at a stable public URL; the publicly checkable statement of the requirement
 is the BBKSDA ticket portal's crater-access terms (cited below, last
 checked 2026-07-07 — a first automated read that day was reset and
 succeeded on retry; recorded per source-health policy).
+
+This concept covers JVTO's coordination of the mandatory screening only.
+Beyond the regulatory requirement stated above, it does not confirm any
+further legitimacy of the issued certificate; any such attributes are held
+upstream pending direct evidence and are not published here.
 
 # Related Concepts
 
