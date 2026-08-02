@@ -46,6 +46,10 @@ State exactly what the evidence supports and what it does not support.
 - Use full HTTPS URLs in Citations.
 - Do not use Obsidian wikilinks in public concepts.
 
+## Provenance in Derived Artifacts
+- `source_refs` live in the concept YAML for OKF-internal traceability, but they do **not** survive into the derived customer artifact: `okf/customer-sales-release/jvto/policy-cards.json` has no `source_refs` field (only a `source_evidence` array). **Never write a meta-reference like "cited via source_refs" into a concept `body`** — it becomes false/untraceable once the body is copied into `policy-cards.json` (caught in review 2026-08-02). State the fact plainly (e.g. "a sample held in the llm-wiki knowledge base") and keep the machine-readable anchor in `source_refs` frontmatter.
+- **Ijen surat-sehat evidence status (2026-08-02):** the certificate's BSSN/BSrE electronic-signature **format** is evidenced by a sample held upstream (llm-wiki E019). This does **not** establish gate-acceptance/verification of the digital document, nor the legal status of any individual certificate — keep the `policies/ijen-health-screening` Limitation bounded to the signature format, and keep the mandatory-screening framing (JVTO-20).
+
 ## Website Role
 - Authority runs one way: source knowledge + original evidence → the canonical OKF graph → the website.
 - The JVTO website (`javavolcano-touroperator.com`) is a **secondary** presentation and corroboration layer. It may appear as supplementary context, but it is **never the sole evidence** for a claim — a concept that cites the website must also carry a `source_refs` anchor or a non-secondary external reference URL (enforced by `validate_okf.py` JVTO-18). The validator only distinguishes secondary vs non-secondary URLs; authority, relevance, and freshness are confirmed by a separate source-health review.

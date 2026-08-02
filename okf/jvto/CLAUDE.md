@@ -68,3 +68,6 @@ python scripts/build_bundle.py --curated --indexes   # must leave no bundle diff
 python scripts/validate_okf.py --strict-links            # 0 errors
 python scripts/validate_okf.py --release --strict-links  # 0 errors
 ```
+
+## Customer Sales Release — reproducibility sequence
+`build_customer_sales_release.py` records `source-lock.json` `knowledge_catalog.revision` = `git rev-parse HEAD` and `catalog_sha256` = the working-tree catalog. **Build the release AFTER committing the curation+bundle**, so `revision` points at the catalog-bearing commit. Building *before* that commit records the parent revision (whose catalog differs), so a consumer checking out `revision` can't reproduce the release — `verify_customer_sales_release.py` hashes the current checkout and misses it (caught in review #36). Sequence when a concept changes: (1) commit `curation/` + `bundles/`; (2) `python scripts/build_customer_sales_release.py --core-root <core>`; (3) `python scripts/validate_customer_sales_release.py` then `python scripts/verify_customer_sales_release.py --core-root <core>`; (4) commit the release files. Core pin stays unless the itinerary-core source itself changed.
