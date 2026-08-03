@@ -185,5 +185,8 @@ claim_boundaries:
     # 2016-01-01 date has no authoritative AHU document (only a generic registry search URL),
     # so assert the entity via NIB 1102230032918 + AHU-0023020 with no year; 2015 = brand /
     # foundingDate, 2023 = TDUP formalization. Reinstate only if a verifiable AHU record is filed.
-    pattern: '(?i)(incorporated (?:in |on )?2016|incorporation[^.\n]{0,20}2016|founding[- ]?date[^.\n]{0,20}2016|pt[^.\n]{0,30}incorporat[^.\n]{0,12}2016|2016-01-01)'
+    # Match a founding/incorporation keyword within ~60 chars of a 2016 year (either order),
+    # so "founded in 2016", "incorporated under Indonesian law in 2016", "foundingDate 2016",
+    # "2016-01-01 incorporation" all fail — but a bare 2016 date in an unrelated fact/URL does not.
+    pattern: '(?i)\b(?:found(?:ed|ing)?|foundingdate|incorporat(?:ed|ion)?|establish(?:ed)?)\b[^.\n\r]{0,60}\b2016\b|\b2016\b[^.\n\r]{0,60}\b(?:found(?:ed|ing)?|foundingdate|incorporat(?:ed|ion)?|establish(?:ed)?)\b'
     message: PT incorporation year 2016 asserted — dropped 2026-08-03 (no incorporation year asserted pending a verifiable AHU document; assert via NIB 1102230032918 + AHU-0023020, 2015 brand, 2023 TDUP).
