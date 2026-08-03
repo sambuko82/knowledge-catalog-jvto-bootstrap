@@ -180,3 +180,10 @@ claim_boundaries:
     # with BBKSDA SE.1658/KSA.9/2024 as supporting authority — never threshold-conditional.
     pattern: '(?i)(?:health[- ]?(?:screening|certificate|check)|\bscreening\b)[^.!?]{0,80}?\b(?:when|where|if|depending on)\b[^.!?]{0,60}?\b(?:requires?|regulations?|rules|in effect)\b|\b(?:when|where|if)\b[^.!?]{0,60}?\b(?:bbksda|conservation[- ]authority|access rules)\b[^.!?]{0,60}?require[^.!?]{0,80}?(?:screening|health[- ]?certificate)|(?:crater access|access rules) can require|\b(?:may|can) require\b[^.!?]{0,60}?(?:screening|health[- ]?certificate)'
     message: Ijen health screening framed as conditional — it is mandatory for every guest (adjudicated 2026-07-06; BBKSDA SE.1658/KSA.9/2024 is supporting authority, not a trigger).
+  - id: INCORPORATION-2016
+    # Dropped 2026-08-03 per owner decision: no PT incorporation year is asserted. The
+    # 2016-01-01 date has no authoritative AHU document (only a generic registry search URL),
+    # so assert the entity via NIB 1102230032918 + AHU-0023020 with no year; 2015 = brand /
+    # foundingDate, 2023 = TDUP formalization. Reinstate only if a verifiable AHU record is filed.
+    pattern: '(?i)(incorporated (?:in |on )?2016|incorporation[^.\n]{0,20}2016|founding[- ]?date[^.\n]{0,20}2016|pt[^.\n]{0,30}incorporat[^.\n]{0,12}2016|2016-01-01)'
+    message: PT incorporation year 2016 asserted — dropped 2026-08-03 (no incorporation year asserted pending a verifiable AHU document; assert via NIB 1102230032918 + AHU-0023020, 2015 brand, 2023 TDUP).
