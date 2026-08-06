@@ -190,3 +190,13 @@ claim_boundaries:
     # "2016-01-01 incorporation" all fail — but a bare 2016 date in an unrelated fact/URL does not.
     pattern: '(?i)\b(?:found(?:ed|ing)?|foundingdate|incorporat(?:ed|ion)?|establish(?:ed)?)\b[^.\n\r]{0,60}\b2016\b|\b2016\b[^.\n\r]{0,60}\b(?:found(?:ed|ing)?|foundingdate|incorporat(?:ed|ion)?|establish(?:ed)?)\b'
     message: PT incorporation year 2016 asserted — dropped 2026-08-03 (no incorporation year asserted pending a verifiable AHU document; assert via NIB 1102230032918 + AHU-0023020, 2015 brand, 2023 TDUP).
+  - id: NO-HEALTH-CERT-QR
+    # Owner decision 2026-08-06 (mirrors jvto-web validate-content-drift.mjs `health-cert-qr`
+    # + llm-wiki claim_boundaries `NO-HEALTH-CERT-QR`): the Ijen surat-sehat / health-screening
+    # flow must NOT assert QR verification — no evidence of a guest QR flow or QR acceptance at
+    # the crater gate. Rest the anti-fraud claim on the BSrE (BSSN) electronic signature + SIP
+    # traceability; the certificate is CHECKED at the crater gate (BBKSDA). Use "no valid health
+    # certificate = no crater-zone access", not "no valid QR". The alternatives each require a
+    # separator or a health word, so the AHU/SABH `/qrcode/?kode=` registry URL token never matches.
+    pattern: '(?i)QR[- ]code|QR[- ]?verif|QR[- ]?based|QR[- ]?coded|digital QR|valid QR\b|QR verification|QR reader|no valid QR'
+    message: QR verification asserted in the Ijen health-cert / surat-sehat flow — retired 2026-08-06 (no evidence of a guest QR flow or gate QR acceptance; rest anti-fraud on the BSrE signature + SIP, certificate CHECKED at the gate).
