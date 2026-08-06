@@ -190,3 +190,19 @@ claim_boundaries:
     # "2016-01-01 incorporation" all fail — but a bare 2016 date in an unrelated fact/URL does not.
     pattern: '(?i)\b(?:found(?:ed|ing)?|foundingdate|incorporat(?:ed|ion)?|establish(?:ed)?)\b[^.\n\r]{0,60}\b2016\b|\b2016\b[^.\n\r]{0,60}\b(?:found(?:ed|ing)?|foundingdate|incorporat(?:ed|ion)?|establish(?:ed)?)\b'
     message: PT incorporation year 2016 asserted — dropped 2026-08-03 (no incorporation year asserted pending a verifiable AHU document; assert via NIB 1102230032918 + AHU-0023020, 2015 brand, 2023 TDUP).
+  - id: NO-HEALTH-CERT-QR
+    # Owner decision 2026-08-06 (mirrors jvto-web validate-content-drift.mjs `health-cert-qr`
+    # + llm-wiki claim_boundaries `NO-HEALTH-CERT-QR`): the Ijen surat-sehat / health-screening
+    # flow must NOT assert QR verification — no evidence of a guest QR flow or QR acceptance at
+    # the crater gate. Rest the anti-fraud claim on the BSrE (BSSN) electronic signature + SIP
+    # traceability; the certificate is CHECKED at the crater gate (BBKSDA). Use "no valid health
+    # certificate = no crater-zone access", not "no valid QR".
+    # Fires on a BARE `\bQR\b` only when a health-cert / surat-sehat / crater / BBKSDA / Ijen
+    # token sits within ~80 chars (either order). This (a) catches every construction — "QR code",
+    # "scan the certificate's QR", "verify by scanning its QR", "QR-verifiable", "no valid QR" —
+    # not just `QR`+suffix (Codex #41 P1); and (b) does NOT fire on an unrelated ticket / booking /
+    # payment "QR code" in some other concept, since validate_okf scans every paragraph (Codex #41
+    # P2). `\bQR\b` also never matches the AHU/SABH `/qrcode/?kode=` URL token (qr+c, no boundary)
+    # or "QRIS" (qr+i, no boundary).
+    pattern: '(?i)(?:surat[- ]?sehat|surat keterangan sehat|suket sehat|health[- ]?(?:certificate|cert|screening|clearance)|medical[- ]?(?:certificate|screening)|crater|bbksda|ijen)[^.\n]{0,80}\bQR\b|\bQR\b[^.\n]{0,80}(?:surat[- ]?sehat|surat keterangan sehat|suket sehat|health[- ]?(?:certificate|cert|screening|clearance)|medical[- ]?(?:certificate|screening)|crater|bbksda|ijen)'
+    message: QR verification asserted in the Ijen health-cert / surat-sehat flow — retired 2026-08-06 (no evidence of a guest QR flow or gate QR acceptance; rest anti-fraud on the BSrE signature + SIP, certificate CHECKED at the gate).
